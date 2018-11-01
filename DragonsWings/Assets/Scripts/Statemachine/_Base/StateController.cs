@@ -8,7 +8,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] new public Rigidbody2D rigidbody2D;
     [HideInInspector] public CircleCollider2D circleCollider2D;
 
-    public RuntimeAnimatorController animatorController;
+    public Animator animator;
 
     // Variables
     public State currentState;
