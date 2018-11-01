@@ -12,11 +12,14 @@ public class MoveAction : Action
 
     public override void Act(StateController controller)
     {
-        //   controller.rigidbody2D.AddForce(moveDirection.Value * moveSpeed);
         controller.rigidbody2D.velocity = moveDirection.Value * moveSpeed;
     }
 
-    public override void EnterState(StateController controller) { controller.canDash = true; }
+    public override void EnterState(StateController controller)
+    {
+
+    }
+
     public override void ExitState(StateController controller)
     {
         controller.rigidbody2D.velocity = Vector2.zero;
