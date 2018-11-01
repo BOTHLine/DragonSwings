@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 139792e56524fcd4ea46fd599b89dd63, type: 3}
-  m_Name: FallCheck
+  m_Name: EnemyFallCheck State
   m_EditorClassIdentifier: 
   layer: 0
   actions: []

@@ -615,6 +615,29 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!1 &1465877375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1738441973422328, guid: 033ef94b7b83c1d46a8ce76169ac40d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1951821254}
+--- !u!95 &1465877378
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465877375}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6244b98fb1c3e454d88a5cd4d5123e79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1951821254
 Prefab:
   m_ObjectHideFlags: 0
@@ -654,6 +677,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114426680646719172, guid: 033ef94b7b83c1d46a8ce76169ac40d2,
+        type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1465877378}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 033ef94b7b83c1d46a8ce76169ac40d2, type: 2}
   m_IsPrefabAsset: 0

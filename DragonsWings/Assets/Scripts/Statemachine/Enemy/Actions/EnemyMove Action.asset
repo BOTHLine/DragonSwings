@@ -14,12 +14,12 @@ MonoBehaviour:
   moveDirection:
     UseConstant: 0
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 02dadee9be5b0d741a59d71bb514759a, type: 2}
   moveSpeed:
     UseConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 7e5f572cecf8118408d03a1883e09862, type: 2}
   lastSavePosition:
     UseConstant: 0
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: d935e55ad61de404abd0011596d5c151, type: 2}
