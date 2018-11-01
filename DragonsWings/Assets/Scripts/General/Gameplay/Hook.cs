@@ -87,7 +87,6 @@ public class Hook : MonoBehaviour
 
         OnHookShoot.Raise();
 
-        LookAt(targetPosition);
 
         circleCollider2D.enabled = true;
         spriteRenderer.enabled = true;
@@ -95,6 +94,8 @@ public class Hook : MonoBehaviour
         rigidbody2D.MovePosition(startPosition);
         rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         rigidbody2D.velocity = (targetPosition - startPosition).normalized * hookSpeed;
+
+        LookAt(targetPosition);
     }
 
     public void ResetHook()
