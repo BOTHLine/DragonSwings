@@ -26,6 +26,7 @@ public class Hook : MonoBehaviour
     [SerializeField] private GameEvent OnHookHitLightHookable;
     [SerializeField] private GameEvent OnHookHitMediumHookable;
     [SerializeField] private GameEvent OnHookHitHeavyHookable;
+    [SerializeField] private GameEvent OnHookHitNotHookable;
 
     // Mono Behaviour
     private void Awake()
@@ -63,11 +64,15 @@ public class Hook : MonoBehaviour
                     OnHookHitHeavyHookable.Raise();
                     break;
             }
-        }
 
-        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-        rigidbody2D.velocity = Vector2.zero;
-        rigidbody2D.angularVelocity = 0.0f;
+            rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+            rigidbody2D.velocity = Vector2.zero;
+            rigidbody2D.angularVelocity = 0.0f;
+        }
+        else
+        {
+            OnHookHitNotHookable.Raise();
+        }
     }
 
     // Methods
