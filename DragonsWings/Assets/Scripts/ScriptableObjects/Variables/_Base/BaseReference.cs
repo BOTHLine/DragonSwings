@@ -16,7 +16,7 @@ public class BaseReference<TVariable, TDatatype>
         ConstantValue = value;
     }
 
-    public TDatatype Value { get { return UseConstant ? ConstantValue : Variable.Value; } }
+    public TDatatype Value { get { return UseConstant ? ConstantValue : Variable.Value; } set { if (UseConstant) ConstantValue = value; else Variable.Value = value; } }
 
     public static implicit operator TDatatype(BaseReference<TVariable, TDatatype> reference) { return reference.Value; }
 }

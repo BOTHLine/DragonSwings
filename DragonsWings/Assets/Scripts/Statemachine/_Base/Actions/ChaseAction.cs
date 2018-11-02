@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "Statemachine/Actions/Chase Action")]
 public class ChaseAction : Action
 {
     public Vector2Reference targetPosition;

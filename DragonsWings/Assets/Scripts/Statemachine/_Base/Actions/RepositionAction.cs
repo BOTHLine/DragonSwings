@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "Statemachine/Actions/Reposition Action")]
 public class RepositionAction : Action
 {
     public Vector2Reference targetPosition;

@@ -9,4 +9,7 @@ public abstract class RuntimeSet<T> : ScriptableObject
 
     public void Remove(T item)
     { if (Items.Contains(item)) Items.Remove(item); }
+
+    public void Clear()
+    { Items = new System.Collections.Generic.List<T>(); }
 }
