@@ -23,7 +23,7 @@ public class PlayerKeyboardInput : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
             tempMoveDirection.x -= 1.0f;
 
-        return tempMoveDirection;
+        return tempMoveDirection.normalized;
     }
 
     private Vector2 GetAimDirection()
