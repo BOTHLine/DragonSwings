@@ -22,7 +22,12 @@ public class CamFollowPlayer : MonoBehaviour
 
     public bool forshadowCam = false;
     public float forshadowRate = 0.5f;
+
     public float maxCamToPlayerDistance;
+    public float yAxisCanForeshadowFactor;
+
+
+
     private float screenRatio;
 
     void Start()
@@ -55,7 +60,11 @@ public class CamFollowPlayer : MonoBehaviour
     {
         moveCam();
         drawMyBoarders();
+
     }
+
+
+
 
 
     public void moveCam()
@@ -63,17 +72,23 @@ public class CamFollowPlayer : MonoBehaviour
         Vector3 myPosi = this.transform.position;
 
         Vector3 desiredPosition = target.position + camOffset;
-        desiredPosition = checkWorldBoarders(new Vector3(desiredPosition.x, desiredPosition.y, camZCoord));
+        
 
         if (forshadowCam)
         {
             desiredPosition = forshadow(desiredPosition);
         }
 
+        desiredPosition = checkWorldBoarders(new Vector3(desiredPosition.x, desiredPosition.y, camZCoord));
+
 
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, checkWorldBoarders(desiredPosition), smoothing * Time.deltaTime);
-
+               
         transform.position = smoothedPosition;
+
+
+        Debug.Log(smoothedPosition);
+
     }
 
     /// <summary>
@@ -97,6 +112,9 @@ public class CamFollowPlayer : MonoBehaviour
     }
 
 
+
+
+
     /// <summary>
     /// Benutzt die Velocity des Players um mit der Kamera in die Bewegungsrichtung vorher zu schauen
     /// Dabei wird das Verhältnis des Bildschirmausschnittes berücksichtig
@@ -107,15 +125,12 @@ public class CamFollowPlayer : MonoBehaviour
     public Vector3 forshadow(Vector3 actualPosition)
     {
         Vector3 result = actualPosition;
-               
-        //Debug.Log(((Vector2) target.position - (Vector2) this.transform.position).magnitude);
 
-        if (( (Vector2)target.position - (Vector2)this.transform.position).magnitude < maxCamToPlayerDistance)
-        {
-            result = actualPosition + new Vector3(playerRigidBody.velocity.x, playerRigidBody.velocity.y * screenRatio, 0) * forshadowRate;
-        }
+            Vector2 velocity = new Vector2 (playerRigidBody.velocity.x, playerRigidBody.velocity.y);
+         
+            result = actualPosition + new Vector3(velocity.x, velocity.y * yAxisCanForeshadowFactor, 0) * forshadowRate;
 
-
+        
         return result;
     }
 
