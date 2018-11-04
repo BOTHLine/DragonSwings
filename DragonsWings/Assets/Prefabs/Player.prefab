@@ -75,6 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4958927700829204}
   - component: {fileID: 114955639020634304}
+  - component: {fileID: 114454973769488676}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -125,6 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4556407849941262}
   - component: {fileID: 212710938072122142}
+  - component: {fileID: 95441183838652222}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -314,6 +316,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!95 &95441183838652222
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738441973422328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56752cc7be592674fba7b7c9006694c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114070395345001868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   circleCollider2D: {fileID: 0}
+  animator: {fileID: 0}
   currentState: {fileID: 11400000, guid: 640c4f57d0e0c0f42839a01b934c7f0e, type: 2}
   remainState: {fileID: 11400000, guid: 4f1247f8201d72744ab9a02b8dd22177, type: 2}
   canDash: 1
@@ -436,6 +457,25 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114454973769488676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224217829223784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf31f7d4d707bc49a32a973ed8ba8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection:
+    UseConstant: 0
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: 196cfa45fee27cc41807fc881b11ed0b, type: 2}
+  aimDirection:
+    UseConstant: 0
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: d048a48878bbe7945834b9a816a634d7, type: 2}
 --- !u!114 &114468031567319036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,7 +531,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224217829223784}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d6dafb803aabcc44aa99e93ac0f0039, type: 3}
   m_Name: 
@@ -636,7 +676,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c3f3e6b77144bd42a94150aaa253f05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b34821f1e24df904b8a4a04c6716f2e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
