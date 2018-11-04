@@ -12,9 +12,9 @@ public class FindNextWaypointAction : Action
     public override void Act(StateController controller)
     {
         if (ReachedWaypoint(controller))
-            currentWaypoint = (currentWaypoint + 1) % waypointSet.Items.Count;
+            currentWaypoint = (currentWaypoint + 1) % waypointSet.Items[controller.transform].Count;
 
-        moveDirection.Variable.Value = ((Vector2)(waypointSet.Items[currentWaypoint].position - controller.transform.position)).normalized;
+        moveDirection.Variable.Value = ((Vector2)(waypointSet.Items[controller.transform][currentWaypoint].position - controller.transform.position)).normalized;
     }
 
     public override void EnterState(StateController controller) { }
@@ -22,7 +22,7 @@ public class FindNextWaypointAction : Action
 
     private bool ReachedWaypoint(StateController controller)
     {
-        float squaredDistance = ((Vector2)(waypointSet.Items[currentWaypoint].position - controller.transform.position)).sqrMagnitude;
+        float squaredDistance = ((Vector2)(waypointSet.Items[controller.transform][currentWaypoint].position - controller.transform.position)).sqrMagnitude;
         return squaredDistance <= distanceThreshold * distanceThreshold;
     }
 }
