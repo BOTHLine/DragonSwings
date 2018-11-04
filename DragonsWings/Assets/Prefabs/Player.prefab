@@ -76,7 +76,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4958927700829204}
   - component: {fileID: 114955639020634304}
-  - component: {fileID: 114454973769488676}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -175,7 +174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4556407849941262}
   - component: {fileID: 212710938072122142}
-  - component: {fileID: 95441183838652222}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -519,7 +517,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   circleCollider2D: {fileID: 0}
-  animator: {fileID: 0}
   currentState: {fileID: 11400000, guid: 640c4f57d0e0c0f42839a01b934c7f0e, type: 2}
   remainState: {fileID: 11400000, guid: 4f1247f8201d72744ab9a02b8dd22177, type: 2}
   canDash: 1
@@ -551,25 +548,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114454973769488676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1224217829223784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdf31f7d4d707bc49a32a973ed8ba8b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDirection:
-    UseConstant: 0
-    ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: 196cfa45fee27cc41807fc881b11ed0b, type: 2}
-  aimDirection:
-    UseConstant: 0
-    ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: d048a48878bbe7945834b9a816a634d7, type: 2}
 --- !u!114 &114468031567319036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -655,7 +633,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224217829223784}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d6dafb803aabcc44aa99e93ac0f0039, type: 3}
   m_Name: 
