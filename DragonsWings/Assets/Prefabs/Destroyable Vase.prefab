@@ -20,10 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4314210914652364}
   - component: {fileID: 212467650217250900}
-  - component: {fileID: 58637081859431536}
-  m_Layer: 0
+  - component: {fileID: 58665961571983172}
+  - component: {fileID: 60394679285544332}
+  - component: {fileID: 114267177960125946}
+  m_Layer: 13
   m_Name: Destroyable Vase
-  m_TagString: Untagged
+  m_TagString: Vase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,13 +37,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1600505958283524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -54.47, y: -5.5, z: -0.19315803}
+  m_LocalPosition: {x: -17.46, y: -6.5, z: -0.19315803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58637081859431536
+--- !u!58 &58665961571983172
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +57,61 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.03, y: -0.01}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.47
+--- !u!60 &60394679285544332
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600505958283524}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.4252472, y: -0.049352646}
+      - {x: -0.3906746, y: -0.19327354}
+      - {x: -0.307724, y: -0.30456734}
+      - {x: -0.19202423, y: -0.38443756}
+      - {x: -0.03810501, y: -0.41763878}
+      - {x: 0.10637283, y: -0.3933487}
+      - {x: 0.22041321, y: -0.33228874}
+      - {x: 0.3262558, y: -0.20744896}
+      - {x: 0.36455917, y: -0.04247284}
+      - {x: 0.36330795, y: 0.0659771}
+      - {x: 0.23730087, y: 0.29170418}
+      - {x: 0.09928894, y: 0.36563683}
+      - {x: -0.036640167, y: 0.39107513}
+      - {x: -0.17820358, y: 0.3680687}
+      - {x: -0.29811478, y: 0.2928295}
+      - {x: -0.42311478, y: 0.06801224}
+--- !u!114 &114267177960125946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600505958283524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762e2348a57b5be45a8209dabfd0cee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
+  destroyed01: {fileID: 21300198, guid: 0c87d02ebf4d86547bee6ee33957bb8d, type: 3}
+  destroyed02: {fileID: 21300200, guid: 0c87d02ebf4d86547bee6ee33957bb8d, type: 3}
 --- !u!212 &212467650217250900
 SpriteRenderer:
   m_ObjectHideFlags: 1
