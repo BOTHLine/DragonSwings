@@ -9,8 +9,6 @@ public class StateController : MonoBehaviour
     [HideInInspector] public CircleCollider2D circleCollider2D;
     [HideInInspector] public Animator animator;
 
-    public Animator animator;
-
     // Variables
     public State currentState;
     public State remainState;
