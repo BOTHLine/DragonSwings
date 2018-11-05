@@ -38,7 +38,7 @@ public class CamFollowPlayer : MonoBehaviour
 
         //Achtung: Screen.width ist nur die halbe Kamerabildschirmbreite!
         screenSize = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        screenRatio = (float)Screen.height / (float)Screen.width;
+        screenRatio = (float) Screen.height / (float) Screen.width;
 
         Debug.Log(screenRatio);
 
@@ -72,7 +72,7 @@ public class CamFollowPlayer : MonoBehaviour
         Vector3 myPosi = this.transform.position;
 
         Vector3 desiredPosition = target.position + camOffset;
-        
+
 
         if (forshadowCam)
         {
@@ -83,11 +83,10 @@ public class CamFollowPlayer : MonoBehaviour
 
 
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, checkWorldBoarders(desiredPosition), smoothing * Time.deltaTime);
-               
+
         transform.position = smoothedPosition;
 
 
-        Debug.Log(smoothedPosition);
 
     }
 
@@ -98,13 +97,34 @@ public class CamFollowPlayer : MonoBehaviour
     /// <returns></returns>
     public Vector3 checkWorldBoarders(Vector3 myPosi)
     {
+        bool notAtCorners = true;
         //Grenze Oben links
-        if (myPosi.x - screenSize.x < upperLeftBoarder.x) myPosi.x = upperLeftBoarder.x + screenSize.x;
-        if (myPosi.y + screenSize.y > upperLeftBoarder.y) myPosi.y = upperLeftBoarder.y - screenSize.y;
+        if (myPosi.x - screenSize.x < upperLeftBoarder.x)
+        {
+            myPosi.x = upperLeftBoarder.x + screenSize.x;
+            notAtCorners = false;
+        }
 
+        if  (myPosi.y + screenSize.y > upperLeftBoarder.y)
+        {
+            myPosi.y = upperLeftBoarder.y - screenSize.y;
+            notAtCorners = false;
+        }
         //Grenze unten rechts
-        if (myPosi.x + screenSize.x > lowerRightBoarder.x) myPosi.x = lowerRightBoarder.x - screenSize.x;
-        if (myPosi.y - screenSize.y < lowerRightBoarder.y) myPosi.y = lowerRightBoarder.y + screenSize.y;
+        if  (myPosi.x + screenSize.x > lowerRightBoarder.x)
+        {
+            myPosi.x = lowerRightBoarder.x - screenSize.x;
+            notAtCorners = false;
+        }
+        if  (myPosi.y - screenSize.y < lowerRightBoarder.y)
+        {
+            myPosi.y = lowerRightBoarder.y + screenSize.y;
+            notAtCorners = false;
+        }
+
+
+
+        if (notAtCorners) myPosi = checkPlayerDistance(myPosi); 
 
         myPosi = new Vector3(myPosi.x, myPosi.y, camZCoord);
 
@@ -112,7 +132,15 @@ public class CamFollowPlayer : MonoBehaviour
     }
 
 
+    public Vector3 checkPlayerDistance(Vector3 camPosi)
+    {
+        if ((camPosi - target.transform.position).magnitude > maxCamToPlayerDistance)
+        {
+            camPosi = target.transform.position + ((camPosi - target.transform.position).normalized * maxCamToPlayerDistance);
+        }
 
+        return camPosi;
+    }
 
 
     /// <summary>
@@ -126,11 +154,11 @@ public class CamFollowPlayer : MonoBehaviour
     {
         Vector3 result = actualPosition;
 
-            Vector2 velocity = new Vector2 (playerRigidBody.velocity.x, playerRigidBody.velocity.y);
-         
-            result = actualPosition + new Vector3(velocity.x, velocity.y * yAxisCanForeshadowFactor, 0) * forshadowRate;
+        Vector2 velocity = new Vector2(playerRigidBody.velocity.x, playerRigidBody.velocity.y);
 
-        
+        result = actualPosition + new Vector3(velocity.x, velocity.y * yAxisCanForeshadowFactor, 0) * forshadowRate;
+
+
         return result;
     }
 
@@ -141,7 +169,7 @@ public class CamFollowPlayer : MonoBehaviour
 
         Vector3 desiredPosition = target.position + camOffset;
         desiredPosition = checkWorldBoarders(new Vector3(desiredPosition.x, desiredPosition.y, camZCoord));
-        
+
         transform.position = desiredPosition;
     }
 
