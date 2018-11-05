@@ -7,6 +7,10 @@ AnimatorController:
   m_PrefabInternal: {fileID: 0}
   m_Name: PlayerAnimatorController
   serializedVersion: 5
+<<<<<<< HEAD
+  m_AnimatorParameters: []
+  m_AnimatorLayers: []
+=======
   m_AnimatorParameters:
   - m_Name: IsMoving
     m_Type: 4
@@ -511,3 +515,4 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 936, y: 60, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102063920457990416}
+>>>>>>> c828cadd280b1dbd43860dbbea8e2770135d25a1
