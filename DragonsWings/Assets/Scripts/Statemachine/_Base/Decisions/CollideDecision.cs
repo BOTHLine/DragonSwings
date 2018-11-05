@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Statemachine/Decisions/Collide Decision")]
 public class CollideDecision : Decision

@@ -68,6 +68,8 @@ public class Hook : MonoBehaviour
             rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
             rigidbody2D.velocity = Vector2.zero;
             rigidbody2D.angularVelocity = 0.0f;
+
+            hookable.OnHookHit();
         }
         else
         {
