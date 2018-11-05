@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour, Hookable, Aimable
 
     public void OnHookHit()
     {
+    }
+
+    public void OnPullHit()
+    {
         if (--health <= 0)
         {
             Die();
