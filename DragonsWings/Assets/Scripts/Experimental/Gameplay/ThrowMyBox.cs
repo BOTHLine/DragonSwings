@@ -16,7 +16,7 @@ public class ThrowMyBox : MonoBehaviour
 
 
 
-    private Vector3 startPoint;  
+    private Vector3 startPoint;
     private Vector3 targetPosition;
     private Vector2 startPosi;
     private Vector2 targetPosi;
@@ -30,19 +30,25 @@ public class ThrowMyBox : MonoBehaviour
 
     private bool isMovingToPlayer = false;
     private bool isMovingAwayFromPlayer = false;
+
+    private void Awake()
+    {
+        myOldParent = transform.parent.gameObject;
+    }
+
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         shadowOriginalScale = shadow.transform.lossyScale;
- 
-	}
-	
+
+    }
 
 
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-  
+
 
         if (throwNow && !flying)
         {
@@ -50,7 +56,7 @@ public class ThrowMyBox : MonoBehaviour
 
             //targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition) + new Vector3 (0,0,9); //Vector plus um z = -10 der cam auszugleichen
             startPoint = this.transform.position;
-            
+
 
             targetPosi = new Vector2(targetPosition.x, targetPosition.y);
             startPosi = new Vector2(startPoint.x, startPoint.y);
@@ -67,18 +73,18 @@ public class ThrowMyBox : MonoBehaviour
         }
 
 
-	}
+    }
 
     public void movingToPlayer(Vector3 throwingHitPosition, GameObject futurParent)
     {
         isMovingToPlayer = true;
         myNewParent = futurParent;
 
-        if(!throwNow && !flying)
+        if (!throwNow && !flying)
         {
-          
-            throwingHitPosition = new Vector3(throwingHitPosition.x, throwingHitPosition.y + holdingOffset, 0);   
-            
+
+            throwingHitPosition = new Vector3(throwingHitPosition.x, throwingHitPosition.y + holdingOffset, 0);
+
             targetPosition = throwingHitPosition;
             throwNow = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -109,19 +115,19 @@ public class ThrowMyBox : MonoBehaviour
     private void flyTheBox()
     {
         Vector2 current = SampleParabola(startPosi, targetPosi, height, flyCounter / flyTime);
-        this.transform.position = new Vector3 (current.x, current.y, -0);
+        this.transform.position = new Vector3(current.x, current.y, -0);
 
         flyCounter++;
 
-        shadow.transform.position = Vector3.Lerp(startPoint, isMovingToPlayer ?  new Vector3 (targetPosition.x, targetPosition.y - holdingOffset, 0) : targetPosition , flyCounter / flyTime);
+        shadow.transform.position = Vector3.Lerp(startPoint, isMovingToPlayer ? new Vector3(targetPosition.x, targetPosition.y - holdingOffset, 0) : targetPosition, flyCounter / flyTime);
 
 
-  
+
         //shadow.transform.localScale *= ;
 
         if ((transform.position - targetPosition).magnitude < 0.1)
         {
-           
+
             flying = false;
 
             if (isMovingToPlayer)
@@ -161,11 +167,11 @@ public class ThrowMyBox : MonoBehaviour
         else
         {
             shadow.transform.localScale = shadowOriginalScale * (fracJourney);
-   
+
         }
 
         if (!isMovingToPlayer) shadow.transform.localScale = shadowOriginalScale * 0.7f;
-     
+
     }
 
 
@@ -193,6 +199,6 @@ public class ThrowMyBox : MonoBehaviour
         }
     }
 
-    
+
 
 }

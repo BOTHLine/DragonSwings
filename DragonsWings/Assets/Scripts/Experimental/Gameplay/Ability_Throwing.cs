@@ -21,6 +21,7 @@ public class Ability_Throwing : MonoBehaviour
     
     public void HandleThrow()
     {
+        /*
         if (!gotSomething)
         {
             currentObject = getTarget();
@@ -51,9 +52,10 @@ public class Ability_Throwing : MonoBehaviour
                 gotSomething = false;
             }
         }
+        */
     }
 
-    /*
+    
     // Update is called once per frame
     void Update()
     {
@@ -95,7 +97,7 @@ public class Ability_Throwing : MonoBehaviour
             }
         }
     }
-    */
+    
 
     public GameObject getTarget()
     {
