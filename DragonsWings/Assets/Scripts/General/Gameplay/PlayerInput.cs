@@ -12,6 +12,8 @@ public class PlayerInput : MonoBehaviour
 
     // Events
     public GameEvent OnHookInput;
+    public GameEvent OnResetHookInput;
+    public GameEvent OnResetLevelInput;
 
     // Mono Behaviour
     private void Awake()
@@ -25,6 +27,12 @@ public class PlayerInput : MonoBehaviour
         aimDirection.Variable.Value = GetAxis2D("Axis4", "Axis5");
 
         if (GetAxisDown("Axis10")) { OnHookInput.Raise(); }
+
+        if (Input.GetKeyDown(KeyCode.K))
+            OnResetHookInput.Raise();
+
+        if (Input.GetKeyDown(KeyCode.L))
+            ResetLevel();
     }
 
     // Methods
@@ -89,5 +97,10 @@ public class PlayerInput : MonoBehaviour
     private bool GetAxisDown(string name)
     {
         return GetAxisDown(name, deadValue);
+    }
+
+    public void ResetLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

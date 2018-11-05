@@ -9,4 +9,9 @@ public class Enemy : MonoBehaviour, Hookable, Aimable
     public void OnHookHit()
     {
     }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }

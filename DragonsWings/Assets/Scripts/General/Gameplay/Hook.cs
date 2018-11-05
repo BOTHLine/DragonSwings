@@ -75,6 +75,12 @@ public class Hook : MonoBehaviour
         {
             OnHookHitNotHookable.Raise();
         }
+
+        HurtBox hurtBox = collision.collider.GetComponentInChildren<HurtBox>();
+        if (hurtBox != null)
+        {
+            hurtBox.Hurt(1.0f);
+        }
     }
 
     // Methods
