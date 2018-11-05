@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Vase
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - MinimapRenderLayer
   - 
   - 
   - 

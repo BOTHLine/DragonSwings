@@ -7,6 +7,7 @@ public class StateController : MonoBehaviour
     // Components
     [HideInInspector] new public Rigidbody2D rigidbody2D;
     [HideInInspector] public CircleCollider2D circleCollider2D;
+    [HideInInspector] public Animator animator;
 
     // Variables
     public State currentState;
@@ -19,6 +20,7 @@ public class StateController : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
