@@ -14,6 +14,7 @@ MonoBehaviour:
   layer: 15
   actions:
   - {fileID: 11400000, guid: 1ac079611ab9d9849b8fa843fdb06632, type: 2}
+  - {fileID: 11400000, guid: f2a161d84442b6641bbd9f349d71494a, type: 2}
   transitions:
   - decisions:
     - {fileID: 11400000, guid: 662d2cee82152ce4999448a8c89ab5b2, type: 2}

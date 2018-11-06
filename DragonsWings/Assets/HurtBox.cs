@@ -5,21 +5,21 @@
 public class HurtBox : MonoBehaviour
 {
     public FloatReference healthMax;
-    public FloatReference healthActual;
+    public FloatSet healthActual;
 
     public GameEvent OnHurt;
     public GameEvent OnDie;
 
     private void Awake()
     {
-        healthActual.Variable.Value = healthMax;
+        healthActual.Add(transform, healthMax);
     }
 
     public void Hurt(float damage)
     {
         OnHurt.Raise();
-        healthActual.Variable.Value -= damage;
-        if (healthActual <= 0.0f)
+        healthActual.ChangeValue(transform, -damage);
+        if (healthActual.Get(transform) <= 0.0f)
             Die();
     }
 

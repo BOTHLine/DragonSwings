@@ -15,7 +15,6 @@ public class PullAction : Action
     {
         controller.rigidbody2D.velocity = (hookPosition - playerPosition).normalized * pullSpeed;
 
-        Debug.Log("Current distance: " + (hookPosition - playerPosition).sqrMagnitude + ", min distance: " + distanceThreshold * distanceThreshold);
         if ((hookPosition - playerPosition).sqrMagnitude <= distanceThreshold * distanceThreshold)
             OnPullFinished.Raise();
     }

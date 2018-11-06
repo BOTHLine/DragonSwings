@@ -18,7 +18,8 @@ public class RespawnAction : Action
     public override void ExitState(StateController controller)
     {
         controller.rigidbody2D.velocity = Vector2.zero;
-     //   controller.rigidbody2D.MovePosition(lastSavePosition);
+        //   controller.rigidbody2D.MovePosition(lastSavePosition);
         controller.transform.position = lastSavePosition.Value;
+        controller.spriteRenderer.enabled = true;
     }
 }

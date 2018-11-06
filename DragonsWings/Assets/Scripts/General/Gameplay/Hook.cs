@@ -95,14 +95,17 @@ public class Hook : MonoBehaviour
 
         OnHookShoot.Raise();
 
-        LookAt(targetPosition);
+        transform.rotation = Utils.GetLookAtRotation(targetPosition, -90.0f);
 
         circleCollider2D.enabled = true;
         spriteRenderer.enabled = true;
 
-        rigidbody2D.MovePosition(startPosition);
+        Vector2 hookDirection = (targetPosition - startPosition).normalized;
+
+        //rigidbody2D.MovePosition(startPosition);
+        rigidbody2D.transform.position = startPosition.Value;
         rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-        rigidbody2D.velocity = (targetPosition - startPosition).normalized * hookSpeed;
+        rigidbody2D.velocity = hookDirection * hookSpeed;
     }
 
     public void ResetHook()
@@ -113,12 +116,5 @@ public class Hook : MonoBehaviour
         transform.parent = parent;
         transform.localPosition = Vector2.zero;
         canShoot = true;
-    }
-
-    private void LookAt(Vector2 targetPosition)
-    {
-        Vector2 targetDirection = (targetPosition - (Vector2)transform.position).normalized;
-        float zRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0.0f, 0.0f, zRotation - 90.0f);
     }
 }
