@@ -26,6 +26,8 @@ public class MoveAction : Action
 
     public override void EnterState(StateController controller)
     {
+        moveDirection.MapIdentifier = controller.transform;
+        lastSavePosition.MapIdentifier = controller.transform;
     }
 
     public override void ExitState(StateController controller)

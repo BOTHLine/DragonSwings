@@ -2,7 +2,7 @@
 
 public class WaypointSetFiller : MonoBehaviour
 {
-    public WaypointSet waypointSet;
+    public TransformListMap waypointSet;
     public Transform enemy;
 
     private void Awake()

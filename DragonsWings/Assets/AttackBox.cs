@@ -1,27 +1,22 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
+// AttackBox is the area where the Entity starts to Attack
 public class AttackBox : MonoBehaviour
 {
-    public Vector2Reference targetPosition;
+    public Color attackBoxColor;
+    public Vector2Reference attackBoxSize;
 
-    public GameEvent OnPlayerInAttackBox;
+    public Vector2Reference targetPosition;
 
     private void Update()
     {
-        transform.rotation = Quaternion.LookRotation(targetPosition - (Vector2)transform.position);
+        transform.rotation = Utils.GetLookAtRotation(transform.position, targetPosition, 90.0f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDrawGizmos()
     {
-        if (collision.tag == "Player")
-            OnPlayerInAttackBox.Raise();
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-            OnPlayerInAttackBox.Raise();
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.color = attackBoxColor;
+        Gizmos.DrawCube(Vector3.down * attackBoxSize.Value.y / 2.0f, attackBoxSize.Value);
     }
 }

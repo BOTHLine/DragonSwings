@@ -11,12 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498fc5f0959f9a74d9b6fc1b9fe4d1ab, type: 3}
   m_Name: EnemyAttack Action
   m_EditorClassIdentifier: 
-  attackTime:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 0}
   currentAttackTime:
-    UseConstant: 0
+    UseType: 0
     ConstantValue: 0
     Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   OnEnemyAttack: {fileID: 0}

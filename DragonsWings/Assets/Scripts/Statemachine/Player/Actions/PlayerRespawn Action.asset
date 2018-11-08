@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Name: PlayerRespawn Action
   m_EditorClassIdentifier: 
   lastSavePosition:
-    UseConstant: 0
+    UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: 535a0a6eca96cdb4e95529c2814d9d75, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   health:
-    UseConstant: 0
+    UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 0ac9a046feaa25749bfd4b30a4b6547c, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   OnPlayerRespawn: {fileID: 11400000, guid: 86d83f660fe20bd4181c5b0d3f494df9, type: 2}

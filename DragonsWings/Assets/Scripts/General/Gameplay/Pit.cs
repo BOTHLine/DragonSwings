@@ -15,7 +15,6 @@ public class Pit : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-
         if (Physics2D.OverlapPoint(playerPosition, LayerList.FallCheck.LayerMask) == boxCollider2D)
         {
             UnityEditor.Handles.color = new Color(255f, 0f, 0f, 0.4f);

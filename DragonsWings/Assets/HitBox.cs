@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 
 // HitBox is the area where this entities damages others
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
 public class HitBox : MonoBehaviour
 {
+    public Color hitBoxColor;
+    public Vector2Reference hitBoxSize;
+
+    public Vector2Reference targetPosition;
+
     public FloatReference damage;
 
     private System.Collections.Generic.List<HurtBox> hurtBoxes = new System.Collections.Generic.List<HurtBox>();
 
-    public GameEvent OnTargetInHitBox;
+    private void Update()
+    {
+        transform.rotation = Utils.GetLookAtRotation(transform.position, targetPosition, 90.0f);
+    }
 
     public void Attack()
     {
@@ -19,19 +25,10 @@ public class HitBox : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDrawGizmos()
     {
-        if (collision.tag == "HurtBox")
-        {
-            hurtBoxes.Add(collision.GetComponent<HurtBox>());
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "HurtBox")
-        {
-            hurtBoxes.Remove(collision.GetComponent<HurtBox>());
-        }
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.color = hitBoxColor;
+        Gizmos.DrawCube(Vector3.down * hitBoxSize.Value.y / 2.0f, hitBoxSize.Value);
     }
 }

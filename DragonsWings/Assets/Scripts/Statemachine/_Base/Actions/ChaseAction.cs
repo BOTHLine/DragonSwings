@@ -7,10 +7,10 @@ public class ChaseAction : Action
     public Vector2Reference moveDirection;
 
     public override void Act(StateController controller)
-    {
-        moveDirection.Variable.Value = (targetPosition - (Vector2)controller.transform.position).normalized;
-    }
+    { moveDirection.Value = (targetPosition - (Vector2)controller.transform.position).normalized; }
 
-    public override void EnterState(StateController controller) { }
+    public override void EnterState(StateController controller)
+    { moveDirection.MapIdentifier = controller.transform; }
+
     public override void ExitState(StateController controller) { }
 }
