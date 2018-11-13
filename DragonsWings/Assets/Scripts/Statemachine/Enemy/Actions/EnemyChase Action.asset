@@ -14,12 +14,12 @@ MonoBehaviour:
   targetPosition:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   moveDirection:
-    UseType: 0
+    UseType: 2
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 0}
-    Map: {fileID: 0}
+    Map: {fileID: 11400000, guid: 3cafedb1e0c67364c98be850865ea112, type: 2}
     MapIdentifier: {fileID: 0}

@@ -19,8 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4944039012454804}
-  - component: {fileID: 61349231262179100}
-  - component: {fileID: 50454436667591916}
   - component: {fileID: 114174519608611240}
   m_Layer: 18
   m_Name: AttackBox
@@ -57,7 +55,6 @@ GameObject:
   - component: {fileID: 222017951021096548}
   - component: {fileID: 114180879087271066}
   - component: {fileID: 114251887990499864}
-  - component: {fileID: 114285879143826230}
   m_Layer: 18
   m_Name: Health
   m_TagString: Untagged
@@ -128,8 +125,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4530002052617076}
-  - component: {fileID: 61084913134095722}
-  - component: {fileID: 50988166231490826}
   - component: {fileID: 114350231624160412}
   m_Layer: 18
   m_Name: HitBox
@@ -225,26 +220,6 @@ Transform:
   m_Father: {fileID: 4373660712988604}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50454436667591916
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1170636414107332}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!50 &50672921586522760
 Rigidbody2D:
   serializedVersion: 4
@@ -253,26 +228,6 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838723580773390}
   m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!50 &50988166231490826
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840700841724608}
-  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -299,7 +254,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!58 &58280444888683486
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -315,56 +270,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!61 &61084913134095722
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840700841724608}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 1}
-  m_EdgeRadius: 0
---- !u!61 &61349231262179100
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1170636414107332}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.75}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.75}
-  m_EdgeRadius: 0
 --- !u!95 &95060914847497130
 Animator:
   serializedVersion: 3
@@ -405,7 +310,7 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 0}
     Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
-    MapIdentifier: {fileID: 4700008073340608}
+    MapIdentifier: {fileID: 4373660712988604}
   OnHurt: {fileID: 11400000, guid: 5f0663182c311cc4d863d03ff8a71d63, type: 2}
   OnDie: {fileID: 11400000, guid: 852b6b7f8bb376347b2e96a47468686a, type: 2}
 --- !u!114 &114174519608611240
@@ -422,7 +327,7 @@ MonoBehaviour:
   attackBoxColor: {r: 1, g: 1, b: 0, a: 0.5019608}
   attackBoxSize:
     UseType: 0
-    ConstantValue: {x: 2, y: 1}
+    ConstantValue: {x: 1.5, y: 0.75}
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
@@ -483,37 +388,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   variable:
-    UseType: 0
+    UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
+    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
+    MapIdentifier: {fileID: 4373660712988604}
   max:
-    UseType: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  image: {fileID: 114180879087271066}
---- !u!114 &114285879143826230
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1460372114074160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c437561c12345d45b126eac9755d2c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    UseType: 0
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  max:
-    UseType: 0
+    UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
     Map: {fileID: 0}
@@ -551,7 +432,7 @@ MonoBehaviour:
   hitBoxColor: {r: 1, g: 0, b: 0, a: 0.5019608}
   hitBoxSize:
     UseType: 0
-    ConstantValue: {x: 1.5, y: 0.75}
+    ConstantValue: {x: 2, y: 1}
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
@@ -774,7 +655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 25}
+  m_AnchoredPosition: {x: 0, y: 37.5}
   m_SizeDelta: {x: 50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224939467366217286
