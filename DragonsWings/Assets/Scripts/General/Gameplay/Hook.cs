@@ -27,6 +27,7 @@ public class Hook : MonoBehaviour
     [SerializeField] private GameEvent OnHookHitMediumHookable;
     [SerializeField] private GameEvent OnHookHitHeavyHookable;
     [SerializeField] private GameEvent OnHookHitNotHookable;
+    [SerializeField] private GameEvent OnHookReset;
 
     // Mono Behaviour
     private void Awake()
@@ -116,5 +117,6 @@ public class Hook : MonoBehaviour
         transform.parent = parent;
         transform.localPosition = Vector2.zero;
         canShoot = true;
+        OnHookReset.Raise();
     }
 }

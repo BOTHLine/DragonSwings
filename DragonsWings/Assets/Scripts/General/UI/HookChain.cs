@@ -17,9 +17,7 @@ public class HookChain : MonoBehaviour
 
     private void Update()
     {
-        if (hookChain.gameObject.activeInHierarchy)
-        { UpdateHookChain(); }
-
+        if (hookChain.gameObject.activeInHierarchy) { UpdateHookChain(); }
     }
 
     private void UpdateHookChain()
