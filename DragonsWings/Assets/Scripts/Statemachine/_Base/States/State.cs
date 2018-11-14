@@ -53,8 +53,6 @@ public class State : ScriptableObject
                 transitions[i].decisions[j].EnterState(controller);
             }
         }
-
-        Debug.Log("Enter state " + name);
     }
 
     public void ExitState(StateController controller)

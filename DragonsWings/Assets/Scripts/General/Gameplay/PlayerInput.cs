@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
             OnResetHookInput.Raise();
 
         if (Input.GetKeyDown(KeyCode.L))
-            ResetLevel();
+            OnResetLevelInput.Raise();
     }
 
     // Methods
