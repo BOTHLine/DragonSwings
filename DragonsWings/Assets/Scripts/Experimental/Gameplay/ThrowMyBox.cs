@@ -44,9 +44,6 @@ public class ThrowMyBox : MonoBehaviour
     void Start()
     {
         shadowOriginalScale = shadow.transform.lossyScale;
-<<<<<<< HEAD
-=======
-
 
         lineHolder = new GameObject("lineHolder");
         lineHolder.transform.parent = this.gameObject.transform;
@@ -54,8 +51,6 @@ public class ThrowMyBox : MonoBehaviour
         playerLine = lineHolder.AddComponent<LineRenderer>();
         playerLine.startWidth = 0.03f;
         playerLine.endWidth = 0.03f;
-                              
->>>>>>> master
     }
 
     // Update is called once per frame
@@ -165,13 +160,7 @@ public class ThrowMyBox : MonoBehaviour
         if (!isMovingToPlayer)
         { shadow.transform.localScale = shadowOriginalScale * 0.7f; }
     }
-
-<<<<<<< HEAD
-    Vector2 SampleParabola(Vector2 start, Vector2 end, float height, float t)
-=======
-
     public Vector2 SampleParabola(Vector2 start, Vector2 end, float height, float t)
->>>>>>> master
     {
         float parabolicT = t * 2 - 1;
         if (Mathf.Abs(start.y - end.y) < 0.1f)
@@ -194,11 +183,6 @@ public class ThrowMyBox : MonoBehaviour
             return result;
         }
     }
-<<<<<<< HEAD
-}
-=======
-
-
 
     public void drawArk(Vector3 startPoint, Vector3 endPoint)
     {
@@ -231,7 +215,4 @@ public class ThrowMyBox : MonoBehaviour
     {
         playerLine.positionCount = 0;
     }
-
-
 }
->>>>>>> master
