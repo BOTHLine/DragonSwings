@@ -22,6 +22,11 @@ public class PullAction : Action
     public override void EnterState(StateController controller)
     {
         controller.rigidbody2D.velocity = (hookPosition - playerPosition).normalized * pullSpeed;
+
+        pullSpeed.SetEmptyMapIdentifier(controller.gameObject);
+        playerPosition.SetEmptyMapIdentifier(controller.gameObject);
+        hookPosition.SetEmptyMapIdentifier(controller.gameObject);
+        distanceThreshold.SetEmptyMapIdentifier(controller.gameObject);
     }
 
     public override void ExitState(StateController controller)

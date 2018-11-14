@@ -13,7 +13,10 @@ public class TimerDecision : Decision
     }
 
     public override void EnterState(StateController controller)
-    { currentTime = 0.0f; }
+    {
+        time.SetEmptyMapIdentifier(controller.gameObject);
+        currentTime = 0.0f;
+    }
 
     public override void ExitState(StateController controller) { }
 }

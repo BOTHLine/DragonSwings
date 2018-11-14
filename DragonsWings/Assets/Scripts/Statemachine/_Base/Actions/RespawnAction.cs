@@ -13,7 +13,11 @@ public class RespawnAction : Action
         OnPlayerRespawn.Raise();
     }
 
-    public override void EnterState(StateController controller) { }
+    public override void EnterState(StateController controller)
+    {
+        lastSavePosition.SetEmptyMapIdentifier(controller.gameObject);
+        health.SetEmptyMapIdentifier(controller.gameObject);
+    }
 
     public override void ExitState(StateController controller)
     {

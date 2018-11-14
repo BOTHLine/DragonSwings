@@ -310,7 +310,7 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 0}
     Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
-    MapIdentifier: {fileID: 4373660712988604}
+    MapIdentifier: {fileID: 1838723580773390}
   OnHurt: {fileID: 11400000, guid: 5f0663182c311cc4d863d03ff8a71d63, type: 2}
   OnDie: {fileID: 11400000, guid: 852b6b7f8bb376347b2e96a47468686a, type: 2}
 --- !u!114 &114174519608611240
@@ -337,6 +337,13 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  isPlayerInAttackRange:
+    UseType: 2
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: a0dc55fe1adab4c4dbdf498a43feb431, type: 2}
+    MapIdentifier: {fileID: 1838723580773390}
+  testAngle: 90
 --- !u!114 &114180879087271066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,7 +399,7 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 0}
     Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
-    MapIdentifier: {fileID: 4373660712988604}
+    MapIdentifier: {fileID: 1838723580773390}
   max:
     UseType: 1
     ConstantValue: 0

@@ -4,7 +4,7 @@ public enum ReferenceUseType
 {
     Constant = 0,
     Variable = 1,
-    Set = 2
+    Map = 2
 }
 
 [System.Serializable]
@@ -18,7 +18,7 @@ public class BaseReference<TVariable, TSet, TDatatype>
     public TDatatype ConstantValue;
     public TVariable Variable;
     public TSet Map;
-    public Transform MapIdentifier;
+    public GameObject MapIdentifier;
 
     public BaseReference() { }
 
@@ -38,7 +38,7 @@ public class BaseReference<TVariable, TSet, TDatatype>
                     return ConstantValue;
                 case ReferenceUseType.Variable:
                     return Variable.Value;
-                case ReferenceUseType.Set:
+                case ReferenceUseType.Map:
                     return Map.Get(MapIdentifier);
 
                 default:
@@ -55,7 +55,7 @@ public class BaseReference<TVariable, TSet, TDatatype>
                 case ReferenceUseType.Variable:
                     Variable.Value = value;
                     break;
-                case ReferenceUseType.Set:
+                case ReferenceUseType.Map:
                     Map.Set(MapIdentifier, value);
                     break;
             }
@@ -63,4 +63,5 @@ public class BaseReference<TVariable, TSet, TDatatype>
     }
 
     public static implicit operator TDatatype(BaseReference<TVariable, TSet, TDatatype> reference) { return reference.Value; }
+    public void SetEmptyMapIdentifier(GameObject identifier) { if (UseType == ReferenceUseType.Map && MapIdentifier == null) MapIdentifier = identifier; }
 }

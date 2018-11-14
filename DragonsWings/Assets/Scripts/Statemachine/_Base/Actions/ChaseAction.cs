@@ -10,7 +10,7 @@ public class ChaseAction : Action
     { moveDirection.Value = (targetPosition - (Vector2)controller.transform.position).normalized; }
 
     public override void EnterState(StateController controller)
-    { moveDirection.MapIdentifier = controller.transform; }
+    { if (moveDirection.MapIdentifier == null) moveDirection.MapIdentifier = controller.gameObject; }
 
     public override void ExitState(StateController controller) { }
 }

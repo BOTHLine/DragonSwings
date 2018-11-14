@@ -11,10 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498fc5f0959f9a74d9b6fc1b9fe4d1ab, type: 3}
   m_Name: EnemyAttack Action
   m_EditorClassIdentifier: 
-  currentAttackTime:
-    UseType: 0
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  OnEnemyAttack: {fileID: 0}
+  OnEnemyAttackStart: {fileID: 11400000, guid: 5b2dac19e72d3434daef4e99dfd31012, type: 2}
+  OnEnemyAttack: {fileID: 11400000, guid: 69c563021160afe4a92381bed0521901, type: 2}

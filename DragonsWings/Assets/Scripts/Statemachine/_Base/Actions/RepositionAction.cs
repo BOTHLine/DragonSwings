@@ -12,7 +12,7 @@ public class RepositionAction : Action
     }
 
     public override void EnterState(StateController controller)
-    { targetPosition.MapIdentifier = controller.transform; }
+    { targetPosition.SetEmptyMapIdentifier(controller.gameObject); }
 
     public override void ExitState(StateController controller) { }
 }

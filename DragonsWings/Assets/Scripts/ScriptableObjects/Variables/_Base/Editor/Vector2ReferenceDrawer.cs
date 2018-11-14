@@ -54,7 +54,7 @@ public class Vector2ReferenceDrawer : UnityEditor.PropertyDrawer
             case (int)ReferenceUseType.Variable:
                 UnityEditor.EditorGUI.PropertyField(position, variable, GUIContent.none);
                 break;
-            case (int)ReferenceUseType.Set:
+            case (int)ReferenceUseType.Map:
                 float width = (position.xMax - position.xMin) / 2.0f;
                 Rect positionSecond = position;
 
