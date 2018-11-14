@@ -28,6 +28,13 @@ public class ThrowMyBox : MonoBehaviour
     private bool isMovingToPlayer = false;
     private bool isMovingAwayFromPlayer = false;
 
+
+
+    private LineRenderer playerLine;
+    private GameObject lineHolder;
+
+
+
     private void Awake()
     {
         myOldParent = transform.parent.gameObject;
@@ -37,6 +44,18 @@ public class ThrowMyBox : MonoBehaviour
     void Start()
     {
         shadowOriginalScale = shadow.transform.lossyScale;
+<<<<<<< HEAD
+=======
+
+
+        lineHolder = new GameObject("lineHolder");
+        lineHolder.transform.parent = this.gameObject.transform;
+
+        playerLine = lineHolder.AddComponent<LineRenderer>();
+        playerLine.startWidth = 0.03f;
+        playerLine.endWidth = 0.03f;
+                              
+>>>>>>> master
     }
 
     // Update is called once per frame
@@ -147,7 +166,12 @@ public class ThrowMyBox : MonoBehaviour
         { shadow.transform.localScale = shadowOriginalScale * 0.7f; }
     }
 
+<<<<<<< HEAD
     Vector2 SampleParabola(Vector2 start, Vector2 end, float height, float t)
+=======
+
+    public Vector2 SampleParabola(Vector2 start, Vector2 end, float height, float t)
+>>>>>>> master
     {
         float parabolicT = t * 2 - 1;
         if (Mathf.Abs(start.y - end.y) < 0.1f)
@@ -170,4 +194,44 @@ public class ThrowMyBox : MonoBehaviour
             return result;
         }
     }
+<<<<<<< HEAD
 }
+=======
+
+
+
+    public void drawArk(Vector3 startPoint, Vector3 endPoint)
+    {
+        int arkSegmentsCount = 30;
+
+        playerLine.positionCount = arkSegmentsCount + 1;
+
+
+        float steps = ((endPoint - startPoint).magnitude) / arkSegmentsCount;
+
+        for (int i = 0; i <= arkSegmentsCount; i++)
+        {
+
+
+            Vector3 nextPoint = SampleParabola(startPoint, endPoint, height, i / (float) arkSegmentsCount);
+
+            playerLine.SetPosition(i, new Vector3(nextPoint.x, nextPoint.y, -1));
+
+
+
+
+
+
+        }
+
+
+    }
+
+    public void destroyAllLines()
+    {
+        playerLine.positionCount = 0;
+    }
+
+
+}
+>>>>>>> master
