@@ -124,7 +124,7 @@ public class CamFollowPlayer : MonoBehaviour
 
 
 
-        if (notAtCorners) myPosi = checkPlayerDistance(myPosi); 
+       //myPosi = checkPlayerDistance(myPosi); 
 
         myPosi = new Vector3(myPosi.x, myPosi.y, camZCoord);
 

@@ -13,7 +13,7 @@ public class DottedLine : MonoBehaviour
     //public float maxDistance;
     private List<GameObject> dots;
     private int lastCount = 0;
-    private GameObject cursor;
+    public GameObject cursor;
 
     public bool shrinkDots = false;
     private Vector3 startScaleDots;
@@ -25,9 +25,9 @@ public class DottedLine : MonoBehaviour
     {
         startPoint = gameObject.transform.parent.position;
         dots = new List<GameObject>();
-        cursor = aimingDot;
-        startScaleDots = cursor.transform.localScale;
-        cursor.transform.localScale = cursor.transform.localScale * 2;
+        //cursor = aimingDot;
+        startScaleDots = cursor.transform.localScale/4;
+        //cursor.transform.localScale = cursor.transform.localScale * 2;
     }
 
 
@@ -141,7 +141,8 @@ public class DottedLine : MonoBehaviour
 
 
             if (raycasthit.transform.tag == "Vase") colorAllDots(new Color(1, 0, 0, 0.8f));
-            else if (raycasthit.transform.tag == "Box") colorAllDots(new Color(0.043f, 0.4f, 0.137f, 0.8f));
+            else if (raycasthit.transform.tag == "Box" || raycasthit.transform.tag == "Wall") colorAllDots(new Color(0.043f, 0.4f, 0.137f, 0.8f));
+            else if  (raycasthit.transform.tag == "Enemy Low") colorAllDots(new Color(0.5f, 0.8f, 0.8f, 0.8f));
             else resetColorOfDots();
 
             result = raycasthit.distance;

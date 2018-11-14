@@ -11,6 +11,7 @@ public class DestroyableBox : MonoBehaviour {
     public Sprite damaged02;
     public Sprite destroyed;
 
+    public GameObject visualShadowStandingAround;
     public GameObject shadow;
     // Use this for initialization
     void Start()
@@ -57,6 +58,8 @@ public class DestroyableBox : MonoBehaviour {
         {
 
             shadow.transform.GetComponent<Renderer>().enabled = false;
+            visualShadowStandingAround.transform.GetComponent<Renderer>().enabled = false;
+
             Destroy(gameObject.transform.GetComponent<BoxCollider2D>());
             Destroy(gameObject.transform.GetComponent<PolygonCollider2D>());
 

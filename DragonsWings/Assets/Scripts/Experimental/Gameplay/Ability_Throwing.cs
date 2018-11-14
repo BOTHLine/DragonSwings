@@ -10,18 +10,22 @@ public class Ability_Throwing : MonoBehaviour
 
     public GameObject currentObject;
 
-
+    
     private bool gotSomething = false;
     private int layerMask = 1 << 13;
     // Use this for initialization
     void Start()
     {
 
+
+     
+
+
     }
     
     public void HandleThrow()
     {
-        /*
+        
         if (!gotSomething)
         {
             currentObject = getTarget();
@@ -40,61 +44,54 @@ public class Ability_Throwing : MonoBehaviour
 
                     currentObject.GetComponent<ThrowMyBox>().throwingAwayFromPlayer(raycasthit.point);
 
+                    currentObject.GetComponent<ThrowMyBox>().destroyAllLines();
                 }
 
                 else
-
                 {
                     currentObject.GetComponent<ThrowMyBox>().throwingAwayFromPlayer(transform.position + (aim.transform.position - transform.position).normalized * range);
+
+                    currentObject.GetComponent<ThrowMyBox>().destroyAllLines();
                 }
 
                 currentObject = null;
                 gotSomething = false;
+
+
+                //Linie Malen
+
+
+
+
             }
         }
-        */
+        
     }
 
     
     // Update is called once per frame
     void Update()
     {
-        if (!gotSomething)
+        if (currentObject != null && currentObject.GetComponent<ThrowMyBox>() != null && !currentObject.GetComponent<ThrowMyBox>().flying)
         {
-            if (Input.GetAxis("Axis10") > 0)
-            {
-                currentObject = getTarget();
+            
 
-                if (currentObject != null) gotSomething = true;
-
-
-
-            }
-        }
-
-
-        else
-        {
-            if (currentObject != null && currentObject.GetComponent<ThrowMyBox>() != null && !currentObject.GetComponent<ThrowMyBox>().flying && Input.GetAxis("Axis10") > 0)
+            RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, aim.transform.position - transform.parent.position, range, layerMask);
+            if (raycasthit.collider)
             {
 
-                RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, aim.transform.position - transform.parent.position, range, layerMask);
-                if (raycasthit.collider)
-                {
+                currentObject.GetComponent<ThrowMyBox>().drawArk(currentObject.transform.position, raycasthit.point);
 
-                    currentObject.GetComponent<ThrowMyBox>().throwingAwayFromPlayer(raycasthit.point);
-
-                }
-
-                else
-
-                {
-                    currentObject.GetComponent<ThrowMyBox>().throwingAwayFromPlayer(transform.position + (aim.transform.position - transform.position).normalized * range);
-                }
-
-                currentObject = null;
-                gotSomething = false;
             }
+
+            else
+
+            {
+                currentObject.GetComponent<ThrowMyBox>().drawArk(currentObject.transform.position, transform.position + (aim.transform.position - transform.position).normalized * range);
+            }
+
+
+
         }
     }
     
@@ -131,7 +128,7 @@ public class Ability_Throwing : MonoBehaviour
     }
 
 
-
+   
 
 
 }
