@@ -8,13 +8,10 @@ public class ThrowMyBox : MonoBehaviour
     public float flyTime;
     public float holdingOffset;
 
-
     public GameObject shadow;
 
     public GameObject myOldParent;
     private GameObject myNewParent;
-
-
 
     private Vector3 startPoint;
     private Vector3 targetPosition;
@@ -48,30 +45,23 @@ public class ThrowMyBox : MonoBehaviour
     {
         shadowOriginalScale = shadow.transform.lossyScale;
 
-
         lineHolder = new GameObject("lineHolder");
         lineHolder.transform.parent = this.gameObject.transform;
 
         playerLine = lineHolder.AddComponent<LineRenderer>();
         playerLine.startWidth = 0.03f;
         playerLine.endWidth = 0.03f;
-                              
     }
-
-
 
     // Update is called once per frame
     void Update()
     {
-
-
         if (throwNow && !flying)
         {
             flyCounter = 0f;
 
             //targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition) + new Vector3 (0,0,9); //Vector plus um z = -10 der cam auszugleichen
             startPoint = this.transform.position;
-
 
             targetPosi = new Vector2(targetPosition.x, targetPosition.y);
             startPosi = new Vector2(startPoint.x, startPoint.y);
@@ -84,10 +74,7 @@ public class ThrowMyBox : MonoBehaviour
         {
             flyTheBox();
             scaleTheShadow();
-
         }
-
-
     }
 
     public void movingToPlayer(Vector3 throwingHitPosition, GameObject futurParent)
@@ -113,7 +100,6 @@ public class ThrowMyBox : MonoBehaviour
         gameObject.transform.parent = myOldParent.transform;
         shadow.gameObject.transform.parent = myOldParent.transform;
 
-
         if (!throwNow && !flying)
         {
             throwingHitPosition = new Vector3(throwingHitPosition.x, throwingHitPosition.y, 0);
@@ -124,9 +110,6 @@ public class ThrowMyBox : MonoBehaviour
         }
     }
 
-
-
-
     private void flyTheBox()
     {
         Vector2 current = SampleParabola(startPosi, targetPosi, height, flyCounter / flyTime);
@@ -135,14 +118,9 @@ public class ThrowMyBox : MonoBehaviour
         flyCounter++;
 
         shadow.transform.position = Vector3.Lerp(startPoint, isMovingToPlayer ? new Vector3(targetPosition.x, targetPosition.y - holdingOffset, 0) : targetPosition, flyCounter / flyTime);
-
-
-
         //shadow.transform.localScale *= ;
-
         if ((transform.position - targetPosition).magnitude < 0.1)
         {
-
             flying = false;
 
             if (isMovingToPlayer)
@@ -164,10 +142,7 @@ public class ThrowMyBox : MonoBehaviour
 
                 isMovingAwayFromPlayer = false;
             }
-
-
         }
-
     }
 
     public void scaleTheShadow()
@@ -180,16 +155,11 @@ public class ThrowMyBox : MonoBehaviour
             currentScale = transform.localScale;
         }
         else
-        {
-            shadow.transform.localScale = shadowOriginalScale * (fracJourney);
+        { shadow.transform.localScale = shadowOriginalScale * (fracJourney); }
 
-        }
-
-        if (!isMovingToPlayer) shadow.transform.localScale = shadowOriginalScale * 0.7f;
-
+        if (!isMovingToPlayer)
+        { shadow.transform.localScale = shadowOriginalScale * 0.7f; }
     }
-
-
     public Vector2 SampleParabola(Vector2 start, Vector2 end, float height, float t)
     {
         float parabolicT = t * 2 - 1;
@@ -213,8 +183,6 @@ public class ThrowMyBox : MonoBehaviour
             return result;
         }
     }
-
-
 
     public void drawArk(Vector3 startPoint, Vector3 endPoint)
     {
@@ -247,6 +215,4 @@ public class ThrowMyBox : MonoBehaviour
     {
         playerLine.positionCount = 0;
     }
-
-
 }

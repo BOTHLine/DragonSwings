@@ -12,19 +12,27 @@ MonoBehaviour:
   m_Name: PlayerPull Action
   m_EditorClassIdentifier: 
   pullSpeed:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 1cecac61c83531b4facabfa76d196287, type: 2}
+    UseType: 0
+    ConstantValue: 20
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   playerPosition:
-    UseConstant: 0
+    UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   hookPosition:
-    UseConstant: 0
+    UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: 12dde5696aa245b46ac33b761bee0419, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   distanceThreshold:
-    UseConstant: 1
+    UseType: 0
     ConstantValue: 0.25
     Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   OnPullFinished: {fileID: 11400000, guid: 4e71e374e9a588048a15002da0c33133, type: 2}

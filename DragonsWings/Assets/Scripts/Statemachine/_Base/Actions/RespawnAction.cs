@@ -13,12 +13,17 @@ public class RespawnAction : Action
         OnPlayerRespawn.Raise();
     }
 
-    public override void EnterState(StateController controller) { }
+    public override void EnterState(StateController controller)
+    {
+        lastSavePosition.SetEmptyMapIdentifier(controller.gameObject);
+        health.SetEmptyMapIdentifier(controller.gameObject);
+    }
 
     public override void ExitState(StateController controller)
     {
         controller.rigidbody2D.velocity = Vector2.zero;
-     //   controller.rigidbody2D.MovePosition(lastSavePosition);
+        //   controller.rigidbody2D.MovePosition(lastSavePosition);
         controller.transform.position = lastSavePosition.Value;
+        controller.spriteRenderer.enabled = true;
     }
 }

@@ -19,5 +19,5 @@ public class EventDecision : Decision
     }
 
     public override void ExitState(StateController controller) { listenEvent.UnregisterListener(response); }
-    public void SetTrue() { transition = true; }
+    public void SetTrue() { transition = true; } 
 }

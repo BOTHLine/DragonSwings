@@ -38,9 +38,7 @@ public class CamFollowPlayer : MonoBehaviour
 
         //Achtung: Screen.width ist nur die halbe Kamerabildschirmbreite!
         screenSize = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        screenRatio = (float) Screen.height / (float) Screen.width;
-
-        Debug.Log(screenRatio);
+        screenRatio = (float)Screen.height / (float)Screen.width;
 
         target = playerGameObject.transform;
         playerRigidBody = playerGameObject.GetComponent<Rigidbody2D>();
@@ -105,26 +103,24 @@ public class CamFollowPlayer : MonoBehaviour
             notAtCorners = false;
         }
 
-        if  (myPosi.y + screenSize.y > upperLeftBoarder.y)
+        if (myPosi.y + screenSize.y > upperLeftBoarder.y)
         {
             myPosi.y = upperLeftBoarder.y - screenSize.y;
             notAtCorners = false;
         }
         //Grenze unten rechts
-        if  (myPosi.x + screenSize.x > lowerRightBoarder.x)
+        if (myPosi.x + screenSize.x > lowerRightBoarder.x)
         {
             myPosi.x = lowerRightBoarder.x - screenSize.x;
             notAtCorners = false;
         }
-        if  (myPosi.y - screenSize.y < lowerRightBoarder.y)
+        if (myPosi.y - screenSize.y < lowerRightBoarder.y)
         {
             myPosi.y = lowerRightBoarder.y + screenSize.y;
             notAtCorners = false;
         }
 
-
-
-       //myPosi = checkPlayerDistance(myPosi); 
+        if (notAtCorners) myPosi = checkPlayerDistance(myPosi);
 
         myPosi = new Vector3(myPosi.x, myPosi.y, camZCoord);
 

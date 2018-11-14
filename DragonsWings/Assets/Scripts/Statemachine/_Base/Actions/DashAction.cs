@@ -35,6 +35,12 @@ public class DashAction : Action
 
     public override void EnterState(StateController controller)
     {
+        dashRange.SetEmptyMapIdentifier(controller.gameObject);
+        dashSpeed.SetEmptyMapIdentifier(controller.gameObject);
+        startPosition.SetEmptyMapIdentifier(controller.gameObject);
+        targetPosition.SetEmptyMapIdentifier(controller.gameObject);
+        distanceThreshold.SetEmptyMapIdentifier(controller.gameObject);
+
         start = controller.transform.position;
         destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

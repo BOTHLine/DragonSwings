@@ -45,3 +45,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1560607807
+    locked: 0
+  - name: Ground
+    uniqueID: 3298423199
+    locked: 0
+  - name: Pits
+    uniqueID: 3587134093
+    locked: 0
+  - name: Shadow
+    uniqueID: 2939690405
+    locked: 0
+  - name: Objects
+    uniqueID: 2009635867
+    locked: 0
+  - name: Foreground
+    uniqueID: 3185492069
+    locked: 0
+  - name: UI
+    uniqueID: 1234724133
+    locked: 0
+  - name: UI Overlay
+    uniqueID: 3350889405
+    locked: 0

@@ -26,12 +26,15 @@ public class MoveAction : Action
 
     public override void EnterState(StateController controller)
     {
+        moveDirection.SetEmptyMapIdentifier(controller.gameObject);
+        moveSpeed.SetEmptyMapIdentifier(controller.gameObject);
+        lastSavePosition.SetEmptyMapIdentifier(controller.gameObject);
     }
 
     public override void ExitState(StateController controller)
     {
         controller.rigidbody2D.velocity = Vector2.zero;
-        lastSavePosition.Variable.Value = controller.transform.position;
+        lastSavePosition.Value = controller.transform.position;
         controller.animator.SetBool("IsMoving", false);
     }
 }

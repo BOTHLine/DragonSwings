@@ -12,14 +12,20 @@ MonoBehaviour:
   m_Name: EnemyMove Action
   m_EditorClassIdentifier: 
   moveDirection:
-    UseConstant: 0
+    UseType: 2
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: 02dadee9be5b0d741a59d71bb514759a, type: 2}
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: 3cafedb1e0c67364c98be850865ea112, type: 2}
+    MapIdentifier: {fileID: 0}
   moveSpeed:
-    UseConstant: 0
-    ConstantValue: 0
+    UseType: 1
+    ConstantValue: 5
     Variable: {fileID: 11400000, guid: 7e5f572cecf8118408d03a1883e09862, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   lastSavePosition:
-    UseConstant: 0
+    UseType: 2
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: d935e55ad61de404abd0011596d5c151, type: 2}
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: 839df2474588c694d85d9253880e4de4, type: 2}
+    MapIdentifier: {fileID: 0}

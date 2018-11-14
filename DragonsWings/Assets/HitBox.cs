@@ -1,37 +1,48 @@
 ﻿using UnityEngine;
 
 // HitBox is the area where this entities damages others
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
 public class HitBox : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
+
+    public Color hitBoxColor;
+    public Vector2Reference hitBoxSize;
+
+    public Vector2Reference targetPosition;
+
     public FloatReference damage;
 
-    private System.Collections.Generic.List<HurtBox> hurtBoxes = new System.Collections.Generic.List<HurtBox>();
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
-    public GameEvent OnTargetInHitBox;
+    private void OnDrawGizmos()
+    {
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.color = hitBoxColor;
+        Gizmos.DrawCube(Vector3.down * hitBoxSize.Value.y / 2.0f, hitBoxSize.Value);
+    }
+
+    public void AttackStart()
+    {
+        transform.rotation = Utils.GetLookAtRotation(transform.position, targetPosition, 90.0f);
+        spriteRenderer.enabled = true;
+    }
 
     public void Attack()
     {
-        foreach (HurtBox hurtBox in hurtBoxes)
+        Vector2 directionVector = (transform.rotation * Vector2.down).normalized;
+        Vector2 center = (Vector2)transform.position + (directionVector * hitBoxSize.Value.y);
+        Debug.Log("Center: " + center);
+        Debug.Log("Size: " + hitBoxSize.Value);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(center, hitBoxSize, 0);
+        foreach (Collider2D collider in colliders)
         {
-            hurtBox.Hurt(damage);
+            HurtBox hurtBox = collider.GetComponent<HurtBox>();
+            if (hurtBox != null && hurtBox.transform.parent != transform.parent)
+                hurtBox.Hurt(damage);
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "HurtBox")
-        {
-            hurtBoxes.Add(collision.GetComponent<HurtBox>());
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "HurtBox")
-        {
-            hurtBoxes.Remove(collision.GetComponent<HurtBox>());
-        }
+        spriteRenderer.enabled = false;
     }
 }

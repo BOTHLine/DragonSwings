@@ -11,6 +11,8 @@ public class RepositionAction : Action
 
     }
 
-    public override void EnterState(StateController controller) { }
+    public override void EnterState(StateController controller)
+    { targetPosition.SetEmptyMapIdentifier(controller.gameObject); }
+
     public override void ExitState(StateController controller) { }
 }

@@ -25,6 +25,10 @@ public class FallCheckAction : Action
         }
     }
 
-    public override void EnterState(StateController controller) { currentFallTime = 0.0f; }
+    public override void EnterState(StateController controller)
+    {
+        fallTime.SetEmptyMapIdentifier(controller.gameObject);
+        currentFallTime = 0.0f;
+    }
     public override void ExitState(StateController controller) { }
 }

@@ -21,6 +21,11 @@ public class FloatDecision : Decision
         return false;
     }
 
-    public override void EnterState(StateController controller) { }
+    public override void EnterState(StateController controller)
+    {
+        value.SetEmptyMapIdentifier(controller.gameObject);
+        compareValue.SetEmptyMapIdentifier(controller.gameObject);
+    }
+
     public override void ExitState(StateController controller) { }
 }
