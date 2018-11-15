@@ -3,6 +3,8 @@
 [CreateAssetMenu(menuName = "Statemachine/Actions/Fall Action")]
 public class FallAction : Action
 {
+    public FloatReference health;
+
     public float scaleDecrease;
     public float colorDecrease;
 
@@ -38,5 +40,7 @@ public class FallAction : Action
         controller.spriteRenderer.color = originalColor;
 
         controller.spriteRenderer.enabled = false;
+
+        health.Value -= 1.0f;
     }
 }

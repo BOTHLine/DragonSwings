@@ -11,16 +11,12 @@ public class Vector2Decision : Decision
     {
         switch (compareOperator)
         {
-            case CompareOperator.Equals: return value == compareValue;
-            case CompareOperator.NotEquals: return value != compareValue;
+            case CompareOperator.Equals: return value.Get(controller.gameObject) == compareValue.Get(controller.gameObject);
+            case CompareOperator.NotEquals: return value.Get(controller.gameObject) != compareValue.Get(controller.gameObject);
         }
         return false;
     }
 
-    public override void EnterState(StateController controller)
-    {
-        value.SetEmptyMapIdentifier(controller.gameObject);
-        compareValue.SetEmptyMapIdentifier(controller.gameObject);
-    }
+    public override void EnterState(StateController controller) { }
     public override void ExitState(StateController controller) { }
 }

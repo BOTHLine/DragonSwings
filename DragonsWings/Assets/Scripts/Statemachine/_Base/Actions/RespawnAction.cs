@@ -10,14 +10,11 @@ public class RespawnAction : Action
 
     public override void Act(StateController controller)
     {
+        lastSavePosition.MapIdentifier = health.MapIdentifier = controller.gameObject;
         OnPlayerRespawn.Raise();
     }
 
-    public override void EnterState(StateController controller)
-    {
-        lastSavePosition.SetEmptyMapIdentifier(controller.gameObject);
-        health.SetEmptyMapIdentifier(controller.gameObject);
-    }
+    public override void EnterState(StateController controller) { }
 
     public override void ExitState(StateController controller)
     {
