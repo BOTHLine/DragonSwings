@@ -186,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838723580773390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.59, y: 40.9, z: 0}
+  m_LocalPosition: {x: 33.504993, y: 28.312485, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371574835338158}
@@ -204,11 +204,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911465130991472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013, y: -0.497, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.11, z: 1}
   m_Children: []
   m_Father: {fileID: 4373660712988604}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4530002052617076
 Transform:
@@ -243,7 +243,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170636414107332}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7087891, w: -0.70542043}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -448,10 +448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fed56c474b81744bc88230624fe7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody2D: {fileID: 0}
-  circleCollider2D: {fileID: 0}
-  animator: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  rigidbody2D: {fileID: 50672921586522760}
+  circleCollider2D: {fileID: 58280444888683486}
+  animator: {fileID: 95060914847497130}
+  spriteRenderer: {fileID: 212031312922743242}
   hook: {fileID: 0}
   currentState: {fileID: 11400000, guid: 019757dbef612d9439cddb517508ef3e, type: 2}
   remainState: {fileID: 11400000, guid: 4f1247f8201d72744ab9a02b8dd22177, type: 2}
@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafef6efe05e87c429569867a0f1f9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   hitBoxColor: {r: 1, g: 0, b: 0, a: 0.5019608}
   hitBoxSize:
     UseType: 0
@@ -612,7 +613,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 272801be43ae82d40b778fa561026375, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3af640d522f9eb41bf1b7b9ffdd194c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

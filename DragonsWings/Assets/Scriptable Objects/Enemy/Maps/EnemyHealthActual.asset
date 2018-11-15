@@ -11,3 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1fca91ce79b8f4ab6388e76d31cde9, type: 3}
   m_Name: EnemyHealthActual
   m_EditorClassIdentifier: 
+  Keys:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  KeyNames:
+  - Enemy (4)
+  - Enemy (3)
+  - Enemy
+  - Enemy (1)
+  - Enemy (2)
+  Values:
+  - 1
+  - 10
+  - 10
+  - 10
+  - 10

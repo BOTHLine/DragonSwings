@@ -64,4 +64,12 @@ public class BaseReference<TVariable, TSet, TDatatype>
 
     public static implicit operator TDatatype(BaseReference<TVariable, TSet, TDatatype> reference) { return reference.Value; }
     public void SetEmptyMapIdentifier(GameObject identifier) { if (UseType == ReferenceUseType.Map && MapIdentifier == null) MapIdentifier = identifier; }
+
+    public TDatatype Get(GameObject mapIdentifier = null)
+    {
+        if (mapIdentifier != null)
+            MapIdentifier = mapIdentifier;
+
+        return Value;
+    }
 }

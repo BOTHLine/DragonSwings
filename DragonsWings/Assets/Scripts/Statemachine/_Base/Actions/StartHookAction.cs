@@ -21,12 +21,8 @@ public class StartHookAction : Action
     }
 
     public override void ExitState(StateController controller)
-    {
-        OnHookInput.UnregisterListener(hookShootEvent);
-    }
+    { OnHookInput.UnregisterListener(hookShootEvent); }
 
     public void ShootHook()
-    {
-        hook.Shoot();
-    }
+    { hook.Shoot(); }
 }

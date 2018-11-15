@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 
-public abstract class BaseMap<T> : ScriptableObject
+[System.Serializable]
+public abstract class BaseMap<T> : ScriptableObject, ISerializationCallbackReceiver
 {
-    protected System.Collections.Generic.Dictionary<GameObject, T> Items = new System.Collections.Generic.Dictionary<GameObject, T>();
+    [HideInInspector] [SerializeField] public GameObject[] Keys;
+    [SerializeField] public string[] KeyNames;
+    [SerializeField] public T[] Values;
+
+    public System.Collections.Generic.Dictionary<GameObject, T> Items = new System.Collections.Generic.Dictionary<GameObject, T>();
 
     public void Add(GameObject identifier, T item)
     { Items.Add(identifier, item); }
@@ -22,4 +27,21 @@ public abstract class BaseMap<T> : ScriptableObject
 
     public void Clear()
     { Items = new System.Collections.Generic.Dictionary<GameObject, T>(); }
+
+    public void OnBeforeSerialize()
+    {
+        Keys = new GameObject[Items.Keys.Count];
+        Items.Keys.CopyTo(Keys, 0);
+
+        KeyNames = new string[Keys.Length];
+        for (int i = 0; i < Keys.Length; i++)
+        {
+            KeyNames[i] = Utils.GetFullName(Keys[i]);
+        }
+
+        Values = new T[Items.Values.Count];
+        Items.Values.CopyTo(Values, 0);
+    }
+
+    public void OnAfterDeserialize() { }
 }

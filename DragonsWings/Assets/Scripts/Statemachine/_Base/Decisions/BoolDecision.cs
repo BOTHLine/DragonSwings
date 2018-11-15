@@ -7,26 +7,22 @@ public class BoolDecision : Decision
     public CompareOperator compareOperator;
     public BoolReference compareValue;
 
+    public bool currentValue;
+
     public override bool Decide(StateController controller)
     {
         switch (compareOperator)
         {
-            case CompareOperator.Equals: return value == compareValue;
-            case CompareOperator.NotEquals: return value != compareValue;
-            case CompareOperator.Less: return value < compareValue;
-            case CompareOperator.Greater: return value > compareValue;
-            case CompareOperator.LessEquals: return value <= compareValue;
-            case CompareOperator.GreaterEquals: return value >= compareValue;
+            case CompareOperator.Equals: return value.Get(controller.gameObject) == compareValue.Get(controller.gameObject);
+            case CompareOperator.NotEquals: return value.Get(controller.gameObject) != compareValue.Get(controller.gameObject);
+            case CompareOperator.Less: return !value.Get(controller.gameObject) && compareValue.Get(controller.gameObject);
+            case CompareOperator.Greater: return value.Get(controller.gameObject) && !compareValue.Get(controller.gameObject);
+            case CompareOperator.LessEquals: return value.Get(controller.gameObject) == compareValue.Get(controller.gameObject) || (!value.Get(controller.gameObject) && compareValue.Get(controller.gameObject));
+            case CompareOperator.GreaterEquals: return value.Get(controller.gameObject) == compareValue.Get(controller.gameObject) || (value.Get(controller.gameObject) && !compareValue.Get(controller.gameObject));
         }
         return false;
     }
 
-    public override void EnterState(StateController controller)
-    {
-        value.SetEmptyMapIdentifier(controller.gameObject);
-        compareValue.SetEmptyMapIdentifier(controller.gameObject);
-    }
-
-    public override void ExitState(StateController controller)
-    { }
+    public override void EnterState(StateController controller) { }
+    public override void ExitState(StateController controller) { }
 }

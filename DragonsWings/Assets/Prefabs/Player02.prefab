@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4799957053918620}
   - component: {fileID: 114488258175678806}
   - component: {fileID: 114235478937083874}
+  - component: {fileID: 114226455309639028}
   m_Layer: 0
   m_Name: Player02
   m_TagString: Untagged
@@ -191,7 +192,7 @@ GameObject:
   - component: {fileID: 114806435548864764}
   m_Layer: 15
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,7 +227,7 @@ GameObject:
   - component: {fileID: 114948006231905704}
   m_Layer: 15
   m_Name: HurtBox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,9 +312,10 @@ GameObject:
   - component: {fileID: 58593042330108720}
   - component: {fileID: 114309628012159530}
   - component: {fileID: 114010840267663766}
-  - component: {fileID: 114095970076995262}
   - component: {fileID: 114987859299154076}
   - component: {fileID: 114662935455363168}
+  - component: {fileID: 114962186203898220}
+  - component: {fileID: 114053335720713052}
   m_Layer: 21
   m_Name: Hook
   m_TagString: Untagged
@@ -401,8 +403,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722612528855486}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65.5, y: -29.1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224555564375184422}
@@ -697,6 +699,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hookChainPrefab: {fileID: 4991879150632248, guid: 41dc675d4bd7d7d4982457ad8d0e44e2,
     type: 2}
+--- !u!114 &114053335720713052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899631402066244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 79dc423a130582d4db25c24fe94ccebb, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114010840267663766}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114061457136218998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -722,34 +752,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &114095970076995262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1899631402066244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 4e71e374e9a588048a15002da0c33133, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114010840267663766}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -798,6 +800,34 @@ MonoBehaviour:
   NoTargetColor: {r: 1, g: 1, b: 0, a: 0.09803922}
   TargetFoundColor: {r: 0, g: 1, b: 0, a: 0.09803922}
   TargetLineColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &114226455309639028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1028981316792498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 283861cf8ec7cd54fa1e50294497c99e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114488258175678806}
+        m_MethodName: ResetLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114235478937083874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -915,7 +945,7 @@ MonoBehaviour:
     type: 2}
   OnHookHitNotHookable: {fileID: 11400000, guid: fa0576c44596a65488c73c0c11863c3a,
     type: 2}
-  OnHookReset: {fileID: 0}
+  OnHookReset: {fileID: 11400000, guid: 79dc423a130582d4db25c24fe94ccebb, type: 2}
 --- !u!114 &114455300390806406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1156,6 +1186,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fogOfWarMap: {fileID: 0}
   radius: 6
+--- !u!114 &114962186203898220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899631402066244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5e453a6f9be6c834a8207849975c2790, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114010840267663766}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114987859299154076
 MonoBehaviour:
   m_ObjectHideFlags: 1

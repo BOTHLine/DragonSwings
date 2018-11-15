@@ -9,14 +9,9 @@ public class TimerDecision : Decision
     public override bool Decide(StateController controller)
     {
         currentTime += Time.deltaTime;
-        return currentTime >= time;
+        return currentTime >= time.Get(controller.gameObject);
     }
 
-    public override void EnterState(StateController controller)
-    {
-        time.SetEmptyMapIdentifier(controller.gameObject);
-        currentTime = 0.0f;
-    }
-
+    public override void EnterState(StateController controller) { currentTime = 0.0f; }
     public override void ExitState(StateController controller) { }
 }

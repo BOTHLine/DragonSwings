@@ -12,4 +12,17 @@ public static class Utils
     {
         return GetLookAtRotation((targetPosition - startPosition).normalized, rotation);
     }
+
+    public static string GetFullName(GameObject gameObject)
+    {
+        Transform transform = gameObject.transform;
+        string output = transform.name;
+        transform = transform.parent;
+        while (transform != null)
+        {
+            output = transform.name + "." + output;
+            transform = transform.parent;
+        }
+        return output;
+    }
 }

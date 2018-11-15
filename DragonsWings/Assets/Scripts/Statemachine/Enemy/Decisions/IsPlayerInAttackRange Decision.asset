@@ -24,3 +24,4 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  currentValue: 0

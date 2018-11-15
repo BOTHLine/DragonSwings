@@ -22,6 +22,6 @@ public abstract class BaseVariable<TDatatype> : ScriptableObject, ISerialization
     public void SetValue(TDatatype value) { _Value = value; }
     public void SetValue(BaseVariable<TDatatype> value) { _Value = value.Value; }
 
-    public void OnAfterDeserialize() { _Value = InitialValue; }
     public void OnBeforeSerialize() { }
+    public void OnAfterDeserialize() { _Value = InitialValue; }
 }
