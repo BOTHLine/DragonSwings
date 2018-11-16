@@ -19,16 +19,12 @@ public class FallCheckAction : Action
         }
 
         currentFallTime += Time.deltaTime;
-        if (currentFallTime >= fallTime)
+        if (currentFallTime >= fallTime.Get(controller.gameObject))
         {
             OnPlayerFall.Raise();
         }
     }
 
-    public override void EnterState(StateController controller)
-    {
-        fallTime.SetEmptyMapIdentifier(controller.gameObject);
-        currentFallTime = 0.0f;
-    }
+    public override void EnterState(StateController controller) { currentFallTime = 0.0f; }
     public override void ExitState(StateController controller) { }
 }

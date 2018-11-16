@@ -4,13 +4,20 @@
 public class ChaseAction : Action
 {
     public Vector2Reference targetPosition;
+    public FloatReference minDistance;
+
     public Vector2Reference moveDirection;
 
     public override void Act(StateController controller)
-    { moveDirection.Value = (targetPosition - (Vector2)controller.transform.position).normalized; }
+    {
+        Vector2 distanceVector = targetPosition.Get(controller.gameObject) - (Vector2)controller.transform.position;
 
-    public override void EnterState(StateController controller)
-    { if (moveDirection.MapIdentifier == null) moveDirection.MapIdentifier = controller.gameObject; }
+        if (distanceVector.sqrMagnitude >= minDistance.Get(controller.gameObject) * minDistance.Get(controller.gameObject))
+        { moveDirection.Set(distanceVector.normalized); }
+        else
+        { moveDirection.Set(Vector2.zero); }
+    }
 
+    public override void EnterState(StateController controller) { }
     public override void ExitState(StateController controller) { }
 }

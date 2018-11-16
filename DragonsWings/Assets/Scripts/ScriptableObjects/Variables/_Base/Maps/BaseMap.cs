@@ -30,6 +30,11 @@ public abstract class BaseMap<T> : ScriptableObject, ISerializationCallbackRecei
 
     public void OnBeforeSerialize()
     {
+
+    }
+
+    public void OnAfterDeserialize()
+    {
         Keys = new GameObject[Items.Keys.Count];
         Items.Keys.CopyTo(Keys, 0);
 
@@ -42,6 +47,4 @@ public abstract class BaseMap<T> : ScriptableObject, ISerializationCallbackRecei
         Values = new T[Items.Values.Count];
         Items.Values.CopyTo(Values, 0);
     }
-
-    public void OnAfterDeserialize() { }
 }

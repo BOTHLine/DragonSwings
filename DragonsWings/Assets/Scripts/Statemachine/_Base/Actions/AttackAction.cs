@@ -7,9 +7,7 @@ public class AttackAction : Action
     public GameEvent OnEnemyAttack;
 
     public override void Act(StateController controller)
-    {
-
-    }
+    { }
 
     public override void EnterState(StateController controller)
     { OnEnemyAttackStart.Raise(); }

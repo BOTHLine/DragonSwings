@@ -7,8 +7,6 @@ public class BoolDecision : Decision
     public CompareOperator compareOperator;
     public BoolReference compareValue;
 
-    public bool currentValue;
-
     public override bool Decide(StateController controller)
     {
         switch (compareOperator)

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4079966413483350}
   - component: {fileID: 212640350878824714}
+  - component: {fileID: 114995141809102880}
   m_Layer: 0
   m_Name: testboxShadow
   m_TagString: Untagged
@@ -40,7 +41,7 @@ GameObject:
   - component: {fileID: 50068476175391532}
   - component: {fileID: 114179777944563648}
   - component: {fileID: 114286473114547670}
-  - component: {fileID: 60706360659996034}
+  - component: {fileID: 114414160487764244}
   m_Layer: 13
   m_Name: TestBox
   m_TagString: Box
@@ -73,6 +74,7 @@ GameObject:
   - component: {fileID: 4450612161846824}
   - component: {fileID: 212446681002006704}
   - component: {fileID: 61226691934386596}
+  - component: {fileID: 114805304659532006}
   m_Layer: 13
   m_Name: TestBoxShadow
   m_TagString: Box
@@ -100,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1556899316839926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.37, y: -20.1, z: -0.19315803}
+  m_LocalPosition: {x: 36.45, y: -66.97, z: -0.19315803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4852515156390462}
@@ -155,34 +157,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!60 &60706360659996034
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1104346713515244}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.14113617, y: 0.13759868}
-      - {x: -0.14231619, y: -0.14113364}
-      - {x: 0.13995616, y: -0.14231364}
-      - {x: 0.13877615, y: 0.13877615}
 --- !u!61 &61226691934386596
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -268,6 +242,45 @@ MonoBehaviour:
   destroyed: {fileID: 21300000, guid: 8d244f878ff051b4e988a525256afaff, type: 3}
   visualShadowStandingAround: {fileID: 1062903486601646}
   shadow: {fileID: 1905339592817498}
+--- !u!114 &114414160487764244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104346713515244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnlyOnce: 0
+  offset: 0
+--- !u!114 &114805304659532006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905339592817498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnlyOnce: 0
+  offset: 0
+--- !u!114 &114995141809102880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062903486601646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnlyOnce: 0
+  offset: 0
 --- !u!212 &212446681002006704
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -300,9 +313,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 33
+  m_SortingLayerID: -1355276891
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300150, guid: 0c87d02ebf4d86547bee6ee33957bb8d, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.69411767}
   m_FlipX: 0
@@ -346,9 +359,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 35
+  m_SortingLayerID: 2009635867
+  m_SortingLayer: 5
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3276568bf46262a4d85005e9e5766585, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -392,8 +405,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1355276891
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b8145767f3616904ba3ea0da6e16d1a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5647059}

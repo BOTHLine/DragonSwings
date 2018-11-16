@@ -26,13 +26,7 @@ public class State : ScriptableObject
     {
         for (int i = 0; i < transitions.Length; i++)
         {
-            bool shouldTransition = true;
-            for (int j = 0; j < transitions[i].decisions.Length; j++)
-            {
-                if (!transitions[i].decisions[j].Decide(controller)) { shouldTransition = false; }
-            }
-            State transitionState = shouldTransition ? transitions[i].trueState : transitions[i].falseState;
-            if (controller.TransitionToState(transitionState))
+            if (controller.TransitionToState(transitions[i].GetTargetState(controller)))
                 break;
         }
     }
@@ -50,10 +44,7 @@ public class State : ScriptableObject
 
         for (int i = 0; i < transitions.Length; i++)
         {
-            for (int j = 0; j < transitions[i].decisions.Length; j++)
-            {
-                transitions[i].decisions[j].EnterState(controller);
-            }
+            transitions[i].EnterState(controller);
         }
     }
 
@@ -68,10 +59,7 @@ public class State : ScriptableObject
 
         for (int i = 0; i < transitions.Length; i++)
         {
-            for (int j = 0; j < transitions[i].decisions.Length; j++)
-            {
-                transitions[i].decisions[j].ExitState(controller);
-            }
+            transitions[i].ExitState(controller);
         }
     }
 }

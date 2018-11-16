@@ -34,14 +34,15 @@ public class HitBox : MonoBehaviour
     {
         Vector2 directionVector = (transform.rotation * Vector2.down).normalized;
         Vector2 center = (Vector2)transform.position + (directionVector * hitBoxSize.Value.y);
-        Debug.Log("Center: " + center);
-        Debug.Log("Size: " + hitBoxSize.Value);
         Collider2D[] colliders = Physics2D.OverlapBoxAll(center, hitBoxSize, 0);
         foreach (Collider2D collider in colliders)
         {
-            HurtBox hurtBox = collider.GetComponent<HurtBox>();
-            if (hurtBox != null && hurtBox.transform.parent != transform.parent)
-                hurtBox.Hurt(damage);
+            if (collider.tag == "Player")
+            {
+                HurtBox hurtBox = collider.GetComponent<HurtBox>();
+                if (hurtBox != null && hurtBox.transform.parent != transform.parent)
+                    hurtBox.Hurt(damage);
+            }
         }
         spriteRenderer.enabled = false;
     }

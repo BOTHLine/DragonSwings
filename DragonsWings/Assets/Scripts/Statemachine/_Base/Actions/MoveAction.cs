@@ -10,7 +10,7 @@ public class MoveAction : Action
 
     public override void Act(StateController controller)
     {
-        controller.rigidbody2D.velocity = moveDirection.Value * moveSpeed;
+        controller.rigidbody2D.velocity = moveDirection.Get(controller.gameObject) * moveSpeed.Get(controller.gameObject);
 
         controller.animator.SetBool("IsMoving", controller.rigidbody2D.velocity.x != 0 || controller.rigidbody2D.velocity.y != 0);
 
@@ -24,17 +24,12 @@ public class MoveAction : Action
         }
     }
 
-    public override void EnterState(StateController controller)
-    {
-        moveDirection.SetEmptyMapIdentifier(controller.gameObject);
-        moveSpeed.SetEmptyMapIdentifier(controller.gameObject);
-        lastSavePosition.SetEmptyMapIdentifier(controller.gameObject);
-    }
+    public override void EnterState(StateController controller) { }
 
     public override void ExitState(StateController controller)
     {
         controller.rigidbody2D.velocity = Vector2.zero;
-        lastSavePosition.Value = controller.transform.position;
+        lastSavePosition.Set(controller.transform.position, controller.gameObject);
         controller.animator.SetBool("IsMoving", false);
     }
 }

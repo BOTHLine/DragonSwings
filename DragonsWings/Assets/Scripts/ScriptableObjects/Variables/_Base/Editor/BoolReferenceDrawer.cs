@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-/*
 [UnityEditor.CustomPropertyDrawer(typeof(BoolReference))]
 public class BoolReferenceDrawer : UnityEditor.PropertyDrawer
 {
@@ -74,4 +73,3 @@ public class BoolReferenceDrawer : UnityEditor.PropertyDrawer
         UnityEditor.EditorGUI.EndProperty();
     }
 }
-*/

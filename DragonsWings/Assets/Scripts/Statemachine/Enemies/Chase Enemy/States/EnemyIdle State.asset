@@ -9,14 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 139792e56524fcd4ea46fd599b89dd63, type: 3}
-  m_Name: EnemyChase State
+  m_Name: EnemyIdle State
   m_EditorClassIdentifier: 
   layer: 18
-  actions:
-  - {fileID: 11400000, guid: 248e1e3915a8e334ab85a20bfaa68403, type: 2}
-  - {fileID: 11400000, guid: 7fb6d41bd98de8d4c9d0f035276c2af8, type: 2}
+  actions: []
   transitions:
   - decisions:
-    - {fileID: 11400000, guid: 97ce35d0945817e4eab3229b3a97cccd, type: 2}
-    trueState: {fileID: 11400000, guid: f4052468b8aaa544a95e27ea829892c8, type: 2}
+    - {fileID: 11400000, guid: 5db4c8e97ed7c454e8b4fbac606295c2, type: 2}
+    trueState: {fileID: 11400000, guid: 019757dbef612d9439cddb517508ef3e, type: 2}
     falseState: {fileID: 11400000, guid: 4f1247f8201d72744ab9a02b8dd22177, type: 2}

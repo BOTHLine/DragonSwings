@@ -7,7 +7,7 @@ TagManager:
   - Vase
   - Box
   - Wall
-  - Enemy Low
+  - Enemy
   layers:
   - Default
   - TransparentFX
