@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139792e56524fcd4ea46fd599b89dd63, type: 3}
   m_Name: Fall State
   m_EditorClassIdentifier: 
-  layer: 16
+  layer: 14
   actions:
   - {fileID: 11400000, guid: 82bff91f7fd73e84d8914108d1fd3a47, type: 2}
   transitions:

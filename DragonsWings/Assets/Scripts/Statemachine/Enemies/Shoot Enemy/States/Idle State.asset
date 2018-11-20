@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139792e56524fcd4ea46fd599b89dd63, type: 3}
   m_Name: Idle State
   m_EditorClassIdentifier: 
-  layer: 18
+  layer: 23
   actions: []
   transitions:
   - decisions:

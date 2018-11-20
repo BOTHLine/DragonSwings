@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fb9905d04a5b344ac08d53b87cc126, type: 3}
   m_Name: OnHookShoot Decision
   m_EditorClassIdentifier: 
-  listenEvent: {fileID: 0}
+  listenEvent: {fileID: 11400000, guid: 5e453a6f9be6c834a8207849975c2790, type: 2}

@@ -15,7 +15,7 @@ public class RunAwayAction : Action
         if (distanceVector.sqrMagnitude <= maxDistance.Get(controller.gameObject) * maxDistance.Get(controller.gameObject))
         { moveDirection.Set(-distanceVector.normalized, controller.gameObject); }
         else
-        { moveDirection.Set(Vector2.zero); }
+        { moveDirection.Set(Vector2.zero, controller.gameObject); }
     }
 
     public override void EnterState(StateController controller) { }

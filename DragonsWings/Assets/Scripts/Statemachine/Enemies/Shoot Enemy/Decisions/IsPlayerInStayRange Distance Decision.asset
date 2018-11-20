@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb465664baacd249a7d0af0b03bcbee, type: 3}
-  m_Name: IsPlayerInStayRange Decision
+  m_Name: IsPlayerInStayRange Distance Decision
   m_EditorClassIdentifier: 
   position:
     UseType: 2
@@ -27,11 +27,5 @@ MonoBehaviour:
     UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 04761c3df35377e48bf8f350c3e2944c, type: 2}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  threshold:
-    UseType: 0
-    ConstantValue: 0
-    Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

@@ -8,12 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb4eab7ddceecd440b27be5b661c9a96, type: 3}
-  m_Name: AttackHasFinished TimerDecision
+  m_Script: {fileID: 11500000, guid: 4f1fca91ce79b8f4ab6388e76d31cde9, type: 3}
+  m_Name: EnemyCurrentAttackCooldown
   m_EditorClassIdentifier: 
-  time:
-    UseType: 0
-    ConstantValue: 0.5
-    Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
+  Keys: []
+  KeyNames: []
+  Values: []

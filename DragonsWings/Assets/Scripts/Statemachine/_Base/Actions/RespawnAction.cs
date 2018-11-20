@@ -20,7 +20,7 @@ public class RespawnAction : Action
     {
         controller.rigidbody2D.velocity = Vector2.zero;
         //   controller.rigidbody2D.MovePosition(lastSavePosition);
-        controller.transform.position = lastSavePosition.Value;
+        controller.transform.position = lastSavePosition.Get(controller.gameObject);
         controller.spriteRenderer.enabled = true;
     }
 }

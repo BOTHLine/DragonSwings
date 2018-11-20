@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Ability_Throwing : MonoBehaviour
 {
-    public GameObject aim;
+    public Vector2Reference _AimPosition;
     public FloatReference range;
 
 
     public GameObject currentObject;
 
     public BoolReference PlayerHasSomethingInHand;
-  //  private int layerMask = 1 << 13;
+    //  private int layerMask = 1 << 13;
 
     public void HandleThrow()
     {
@@ -26,7 +26,7 @@ public class Ability_Throwing : MonoBehaviour
         {
             if (currentObject != null && currentObject.GetComponent<ThrowMyBox>() != null && !currentObject.GetComponent<ThrowMyBox>().flying)
             {
-                RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, aim.transform.position - transform.parent.position, range, LayerList.Hook.LayerMask);
+                RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, _AimPosition - (Vector2)transform.parent.position, range, LayerList.PlayerProjectile.LayerMask);
                 if (raycasthit.collider)
                 {
 
@@ -36,7 +36,7 @@ public class Ability_Throwing : MonoBehaviour
 
                 else
                 {
-                    currentObject.GetComponent<ThrowMyBox>().throwingAwayFromPlayer(transform.position + (aim.transform.position - transform.position).normalized * range);
+                    currentObject.GetComponent<ThrowMyBox>().throwingAwayFromPlayer(transform.position + ((Vector3)_AimPosition.Value - transform.position).normalized * range);
                     currentObject.GetComponent<ThrowMyBox>().destroyAllLines();
                 }
 
@@ -54,14 +54,14 @@ public class Ability_Throwing : MonoBehaviour
     {
         if (currentObject != null && currentObject.GetComponent<ThrowMyBox>() != null && !currentObject.GetComponent<ThrowMyBox>().flying)
         {
-            RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, aim.transform.position - transform.parent.position, range, LayerList.Hook.LayerMask);
+            RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, _AimPosition - (Vector2)transform.parent.position, range, LayerList.PlayerProjectile.LayerMask);
             if (raycasthit.collider)
             {
                 currentObject.GetComponent<ThrowMyBox>().drawArk(currentObject.transform.position, raycasthit.point);
             }
             else
             {
-                currentObject.GetComponent<ThrowMyBox>().drawArk(currentObject.transform.position, transform.position + (aim.transform.position - transform.position).normalized * range);
+                currentObject.GetComponent<ThrowMyBox>().drawArk(currentObject.transform.position, transform.position + ((Vector3)_AimPosition.Value - transform.position).normalized * range);
             }
         }
     }
@@ -72,7 +72,7 @@ public class Ability_Throwing : MonoBehaviour
         bool hitSomething = false;
         GameObject currentTarget = null;
 
-        RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, aim.transform.position - transform.parent.position, range, LayerList.Hook.LayerMask);
+        RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, _AimPosition - (Vector2)transform.parent.position, range, LayerList.PlayerProjectile.LayerMask);
         if (raycasthit.collider)
         {
 

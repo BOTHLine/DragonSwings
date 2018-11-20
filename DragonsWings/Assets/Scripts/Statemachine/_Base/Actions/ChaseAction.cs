@@ -13,9 +13,9 @@ public class ChaseAction : Action
         Vector2 distanceVector = targetPosition.Get(controller.gameObject) - (Vector2)controller.transform.position;
 
         if (distanceVector.sqrMagnitude >= minDistance.Get(controller.gameObject) * minDistance.Get(controller.gameObject))
-        { moveDirection.Set(distanceVector.normalized); }
+        { moveDirection.Set(distanceVector.normalized, controller.gameObject); }
         else
-        { moveDirection.Set(Vector2.zero); }
+        { moveDirection.Set(Vector2.zero, controller.gameObject); }
     }
 
     public override void EnterState(StateController controller) { }

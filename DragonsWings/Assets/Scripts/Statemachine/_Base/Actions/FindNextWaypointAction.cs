@@ -14,7 +14,7 @@ public class FindNextWaypointAction : Action
         if (ReachedWaypoint(controller))
             currentWaypoint = (currentWaypoint + 1) % waypointSet.Length(controller.gameObject);
 
-        moveDirection.Set(((Vector2)(waypointSet.Get(controller.gameObject)[currentWaypoint].position - controller.transform.position)).normalized);
+        moveDirection.Set(((Vector2)(waypointSet.Get(controller.gameObject)[currentWaypoint].position - controller.transform.position)).normalized, controller.gameObject);
     }
 
     public override void EnterState(StateController controller) { }

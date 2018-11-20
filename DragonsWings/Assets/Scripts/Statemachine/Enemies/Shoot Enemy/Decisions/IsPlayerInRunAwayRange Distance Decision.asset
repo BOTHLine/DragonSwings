@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb465664baacd249a7d0af0b03bcbee, type: 3}
-  m_Name: IsPlayerInChaseRange Decision
+  m_Name: IsPlayerInRunAwayRange Distance Decision
   m_EditorClassIdentifier: 
   position:
     UseType: 2
@@ -24,8 +24,8 @@ MonoBehaviour:
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   maxDistance:
-    UseType: 0
-    ConstantValue: 10
-    Variable: {fileID: 0}
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 9413e0a314803ea4db8b37448c331ee9, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

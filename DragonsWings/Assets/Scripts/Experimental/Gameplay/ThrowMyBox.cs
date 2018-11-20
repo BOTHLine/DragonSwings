@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowMyBox : MonoBehaviour
+public class ThrowMyBox : MonoBehaviour, Aimable
 {
     public float height;
     public float flyTime;
@@ -33,7 +33,8 @@ public class ThrowMyBox : MonoBehaviour
     private LineRenderer playerLine;
     private GameObject lineHolder;
 
-
+    public FloatReference _Damage;
+    private System.Collections.Generic.List<HurtBox> _AlreadyDamagedHurtBoxes = new System.Collections.Generic.List<HurtBox>();
 
     private void Awake()
     {
@@ -119,10 +120,8 @@ public class ThrowMyBox : MonoBehaviour
 
         shadow.transform.position = Vector3.Lerp(startPoint, isMovingToPlayer ? new Vector3(targetPosition.x, targetPosition.y - holdingOffset, 0) : targetPosition, flyCounter / flyTime);
         //shadow.transform.localScale *= ;
-        if ((transform.position - targetPosition).magnitude < 0.1)
+        if ((transform.position - targetPosition).sqrMagnitude < 0.0001)
         {
-            flying = false;
-
             if (isMovingToPlayer)
             {
                 gameObject.transform.parent = myNewParent.transform;
@@ -133,6 +132,7 @@ public class ThrowMyBox : MonoBehaviour
                 //shadow.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 
                 isMovingToPlayer = false;
+                gameObject.layer = (int)Layer.PlayerProjectile;
             }
 
             if (isMovingAwayFromPlayer)
@@ -141,7 +141,10 @@ public class ThrowMyBox : MonoBehaviour
                 shadow.gameObject.transform.position = targetPosi;
 
                 isMovingAwayFromPlayer = false;
+                gameObject.layer = (int)Layer.Object;
+                _AlreadyDamagedHurtBoxes.Clear();
             }
+            flying = false;
         }
     }
 
@@ -197,7 +200,7 @@ public class ThrowMyBox : MonoBehaviour
         {
 
 
-            Vector3 nextPoint = SampleParabola(startPoint, endPoint, height, i / (float) arkSegmentsCount);
+            Vector3 nextPoint = SampleParabola(startPoint, endPoint, height, i / (float)arkSegmentsCount);
 
             playerLine.SetPosition(i, new Vector3(nextPoint.x, nextPoint.y, -1));
 
@@ -214,5 +217,16 @@ public class ThrowMyBox : MonoBehaviour
     public void destroyAllLines()
     {
         playerLine.positionCount = 0;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision: Flying/" + flying + ", Layer/" + gameObject.layer);
+        HurtBox hurtBox = collision.collider.GetComponentInChildren<HurtBox>();
+        if (flying && hurtBox?.tag == "Enemy" && !_AlreadyDamagedHurtBoxes.Contains(hurtBox))
+        {
+            hurtBox.Hurt(_Damage);
+            _AlreadyDamagedHurtBoxes.Add(hurtBox);
+        }
     }
 }

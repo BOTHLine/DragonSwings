@@ -10,7 +10,7 @@ public class DestroyableVase : MonoBehaviour
     public Sprite destroyed01;
     public Sprite destroyed02;
     public GameObject myShadow;
-    
+
 
     // Use this for initialization
     void Start()
@@ -29,11 +29,10 @@ public class DestroyableVase : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.CompareTag ("Box"))
+        if (other.CompareTag("Box"))
         {
             takeDmg();
         }
-
     }
 
 
@@ -43,7 +42,7 @@ public class DestroyableVase : MonoBehaviour
 
         if (hp <= 0)
         {
-            
+
             Destroy(gameObject.transform.GetComponent<CircleCollider2D>());
             Destroy(gameObject.transform.GetComponent<PolygonCollider2D>());
 
@@ -54,7 +53,7 @@ public class DestroyableVase : MonoBehaviour
 
             //Destroy(this.gameObject);
         }
-   
+
 
     }
 

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 223949250649440480}
   - component: {fileID: 114274061234839572}
   - component: {fileID: 114673655644225644}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 224225865858128468}
   - component: {fileID: 222488527434210644}
   - component: {fileID: 114764419750545306}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4413317921588510}
   - component: {fileID: 212991727407362532}
   - component: {fileID: 114950107633240204}
-  m_Layer: 25
+  m_Layer: 31
   m_Name: MinimapIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4577448357937094}
   - component: {fileID: 114992070874210060}
   - component: {fileID: 114061457136218998}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Throwing Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4570478148987300}
   - component: {fileID: 114294076777984312}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: DottedLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 50254805479695662}
   - component: {fileID: 58090851331531866}
   - component: {fileID: 114806435548864764}
-  m_Layer: 15
+  m_Layer: 13
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 222525622045445300}
   - component: {fileID: 114594258515436624}
   - component: {fileID: 114519399460244244}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1884035474557594
 GameObject:
   m_ObjectHideFlags: 1
@@ -295,7 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4816833326469702}
   - component: {fileID: 114455300390806406}
-  m_Layer: 21
+  m_Layer: 0
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 114962186203898220}
   - component: {fileID: 114053335720713052}
   - component: {fileID: 114134370019946096}
-  m_Layer: 21
+  m_Layer: 17
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,9 +333,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045552322389402}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.12, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4119848790141284}
   m_RootOrder: 6
@@ -591,7 +591,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.2
 --- !u!58 &58242327082595400
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -796,6 +796,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61493e0469e2d644b5b992ed7869d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _SourcePosition:
+    UseType: 1
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   aimRange:
     UseType: 1
     ConstantValue: 4
@@ -931,7 +937,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a7c6b7608477c4bbbb4f20ba2b8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aim: {fileID: 1878388780368176}
+  _AimPosition:
+    UseType: 1
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   aimingDot: {fileID: 1499878740651638}
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
@@ -977,6 +988,12 @@ MonoBehaviour:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  playerHasSomethingInHand:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0e0264e0a2c964345ad7a24d4ee73554, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   OnHookShoot: {fileID: 11400000, guid: 5e453a6f9be6c834a8207849975c2790, type: 2}
@@ -1070,7 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24471034, g: 0.48235294, b: 0.21568628, a: 1}
+  m_Color: {r: 0.09433961, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1215,20 +1232,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d8dfb272c8f404c8b596b0aefa2ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthMax:
+  _HealthMax:
     UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 160ef464343788d49beb7a21a7cc3ed0, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  healthActual:
+  _HealthActual:
     UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 0ac9a046feaa25749bfd4b30a4b6547c, type: 2}
-    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
-    MapIdentifier: {fileID: 4318776676240154}
-  OnHurt: {fileID: 11400000, guid: 5092d8a8c9d1bbe408d23483cf30f273, type: 2}
-  OnDie: {fileID: 11400000, guid: fe71c3cd68ae4874faf5b51d65f721cd, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _CanBeHooked: 0
+  _CanBeThrownAt: 0
+  _OnHurt: {fileID: 11400000, guid: 5092d8a8c9d1bbe408d23483cf30f273, type: 2}
+  _OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114950107633240204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1309,14 +1332,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec305bc2952852419b556e407efb227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aim: {fileID: 1878388780368176}
+  _AimPosition:
+    UseType: 1
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   range:
-    UseType: 0
+    UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: a70fefdc2aa940647bde5fdc7d8d5c08, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   currentObject: {fileID: 0}
+  PlayerHasSomethingInHand:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0e0264e0a2c964345ad7a24d4ee73554, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
 --- !u!212 &212234744853597826
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1350,7 +1384,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109475227
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 815c269f4dbebb447881bec2cc22e9f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.83137256}
@@ -1396,7 +1430,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2009635867
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7facb2a37baf47b4d862106d18fb855e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1442,7 +1476,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109475227
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6c9296052245eb946ba2a4643c724cff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1488,7 +1522,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2009635867
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b34821f1e24df904b8a4a04c6716f2e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1534,7 +1568,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1355276891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 537bee5175824824db117a36fbfdf88f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7490196}
@@ -1580,7 +1614,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109475227
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1626,7 +1660,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -944077891
-  m_SortingLayer: 8
+  m_SortingLayer: 10
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 367f29f51b53cf840ba6a9f0c899275d, type: 3}
   m_Color: {r: 0, g: 0.980809, b: 1, a: 1}

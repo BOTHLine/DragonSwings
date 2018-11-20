@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139792e56524fcd4ea46fd599b89dd63, type: 3}
   m_Name: Respawn State
   m_EditorClassIdentifier: 
-  layer: 16
+  layer: 13
   actions:
   - {fileID: 11400000, guid: b9ff9934bf6481e41a10d104874d38df, type: 2}
   transitions:

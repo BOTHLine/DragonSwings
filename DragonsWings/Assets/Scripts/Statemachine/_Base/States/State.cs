@@ -33,7 +33,7 @@ public class State : ScriptableObject
 
     public void EnterState(StateController controller)
     {
-        Debug.Log("Enter State: " + name);
+        //   Debug.Log("Enter State: " + name);
 
         controller.gameObject.layer = (int)layer;
 
@@ -50,7 +50,7 @@ public class State : ScriptableObject
 
     public void ExitState(StateController controller)
     {
-        Debug.Log("Exit State: " + name);
+        //   Debug.Log("Exit State: " + name);
 
         for (int i = 0; i < actions.Length; i++)
         {
