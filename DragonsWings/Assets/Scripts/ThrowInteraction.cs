@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// TODO: Rename "ThrowResponder", "HookResponder", "HurtBoxResponder" etc.
 public class ThrowInteraction : MonoBehaviour
 {
     public bool _AutoAim;

@@ -50,7 +50,7 @@ public class PlayerAim : MonoBehaviour
                 // TODO HurtBox als Aimable nutzen oder nicht? Eigentlich will man nur HurtBoxen anvisieren können? Oder HurtBox muss Aimable implementieren, anstatt die Gegner selbst. Dann hat aber auch Spieler eine HurtBox mit Aimable drauf
 
                 HookInteraction hookInteraction = colliders[i].GetComponentInSiblings<HookInteraction>();
-                if (hookInteraction == null) { continue; }
+                if (hookInteraction == null || !hookInteraction._AutoAim) { continue; }
 
                 if (Vector2.Distance(_SourcePosition, colliders[i].transform.position) > aimRange) { continue; }
 
