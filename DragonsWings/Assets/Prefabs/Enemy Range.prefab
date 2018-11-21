@@ -55,11 +55,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4929730895997440}
   - component: {fileID: 50652380710370190}
-  - component: {fileID: 58040388476841484}
   - component: {fileID: 114631229393924136}
   - component: {fileID: 114945916663301956}
   m_Layer: 23
-  m_Name: Range Enemy
+  m_Name: Enemy Range
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +95,22 @@ GameObject:
   m_Layer: 0
   m_Name: shadowEnemy
   m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1661885839847212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4549784127533010}
+  - component: {fileID: 58267290327075842}
+  m_Layer: 23
+  m_Name: PushBox
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +178,7 @@ Transform:
   m_Children:
   - {fileID: 224769966291935298}
   m_Father: {fileID: 4929730895997440}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4213130567272118
 Transform:
@@ -176,7 +191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4929730895997440}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4509092881372958
 Transform:
@@ -191,6 +206,19 @@ Transform:
   m_Father: {fileID: 4929730895997440}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4549784127533010
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661885839847212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4929730895997440}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4736151745833358
 Transform:
   m_ObjectHideFlags: 1
@@ -202,7 +230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4929730895997440}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4929730895997440
 Transform:
@@ -215,6 +243,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4509092881372958}
+  - {fileID: 4549784127533010}
   - {fileID: 4040069645361082}
   - {fileID: 4213130567272118}
   - {fileID: 4736151745833358}
@@ -241,12 +270,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58040388476841484
+--- !u!58 &58267290327075842
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363905136896846}
+  m_GameObject: {fileID: 1661885839847212}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -265,7 +294,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.2}
@@ -398,7 +427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
-  circleCollider2D: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   hook: {fileID: 0}

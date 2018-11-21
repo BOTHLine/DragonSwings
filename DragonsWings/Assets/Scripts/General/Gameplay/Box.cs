@@ -5,9 +5,12 @@ public class Box : MonoBehaviour, Hookable, Throwable
     public Weight Weight
     { get { return Weight.Light; } }
 
+    public float _Damage;
+    public float Damage { get { return _Damage; } }
+
     public void OnHookHit()
     {
-     //   PickUp();
+        //   PickUp();
     }
 
     public void PickUp(StateController stateController)

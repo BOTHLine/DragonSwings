@@ -6,9 +6,6 @@ public class HurtBox : MonoBehaviour
     public FloatReference _HealthMax;
     public FloatReference _HealthActual;
 
-    public bool _CanBeHooked = true;
-    public bool _CanBeThrownAt = true;
-
     public GameEvent _OnHurt;
     public UnityEngine.Events.UnityEvent _OnDieEvent;
 
@@ -23,6 +20,16 @@ public class HurtBox : MonoBehaviour
         _HealthActual.Value -= damage;
         if (_HealthActual <= 0.0f)
             Die();
+    }
+
+    public void HitByHook(Hook hook)
+    {
+
+    }
+
+    public void HitByThrowable(Throwable throwable)
+    {
+
     }
 
     public void Die()

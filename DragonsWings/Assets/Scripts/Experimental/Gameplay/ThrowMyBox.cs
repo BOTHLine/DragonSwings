@@ -34,7 +34,6 @@ public class ThrowMyBox : MonoBehaviour, Aimable
     private GameObject lineHolder;
 
     public FloatReference _Damage;
-    private System.Collections.Generic.List<HurtBox> _AlreadyDamagedHurtBoxes = new System.Collections.Generic.List<HurtBox>();
 
     private void Awake()
     {
@@ -142,9 +141,9 @@ public class ThrowMyBox : MonoBehaviour, Aimable
 
                 isMovingAwayFromPlayer = false;
                 gameObject.layer = (int)Layer.Object;
-                _AlreadyDamagedHurtBoxes.Clear();
             }
             flying = false;
+            DealDamage();
         }
     }
 
@@ -219,14 +218,17 @@ public class ThrowMyBox : MonoBehaviour, Aimable
         playerLine.positionCount = 0;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void DealDamage()
     {
-        Debug.Log("Collision: Flying/" + flying + ", Layer/" + gameObject.layer);
-        HurtBox hurtBox = collision.collider.GetComponentInChildren<HurtBox>();
-        if (flying && hurtBox?.tag == "Enemy" && !_AlreadyDamagedHurtBoxes.Contains(hurtBox))
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.0f, LayerList.PlayerProjectile.LayerMask);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            hurtBox.Hurt(_Damage);
-            _AlreadyDamagedHurtBoxes.Add(hurtBox);
+            HurtBox hurtBox = colliders[i].GetComponent<HurtBox>();
+            Debug.Log(hurtBox);
+            if (hurtBox != null)
+            {
+                hurtBox.Hurt(_Damage);
+            }
         }
     }
 }

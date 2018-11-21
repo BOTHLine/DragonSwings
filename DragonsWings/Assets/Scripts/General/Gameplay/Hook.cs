@@ -14,6 +14,8 @@ public class Hook : MonoBehaviour
     [SerializeField] private FloatReference hookRange;
     [SerializeField] private FloatReference hookSpeed;
 
+    [SerializeField] private FloatReference _Damage;
+
     [SerializeField] private Vector2Reference startPosition;
     [SerializeField] private Vector2Reference targetPosition;
 
@@ -52,6 +54,32 @@ public class Hook : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        HookInteraction hookInteraction = collision.collider.GetComponentInSiblings<HookInteraction>();
+        if (hookInteraction != null)
+        {
+            switch (hookInteraction._Weight)
+            {
+                case Weight.Light:
+                    OnHookHitLightHookable.Raise();
+                    break;
+                case Weight.Medium:
+                    OnHookHitMediumHookable.Raise();
+                    break;
+                case Weight.Heavy:
+                    OnHookHitHeavyHookable.Raise();
+                    break;
+            }
+            rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+            rigidbody2D.velocity = Vector2.zero;
+            rigidbody2D.angularVelocity = 0.0f;
+
+            hookInteraction.HitByHook(this);
+        }
+        else
+        {
+            OnHookHitNotHookable.Raise();
+        }
+        /*
         Hookable hookable = collision.collider.GetComponent<Hookable>();
         if (hookable != null)
         {
@@ -78,12 +106,7 @@ public class Hook : MonoBehaviour
         {
             OnHookHitNotHookable.Raise();
         }
-
-        HurtBox hurtBox = collision.collider.GetComponentInChildren<HurtBox>();
-        if (hurtBox != null)
-        {
-            hurtBox.Hurt(1.0f);
-        }
+        */
     }
 
     // Methods
