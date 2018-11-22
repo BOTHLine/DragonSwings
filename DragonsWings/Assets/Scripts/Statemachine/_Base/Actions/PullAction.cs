@@ -13,6 +13,8 @@ public class PullAction : Action
 
     public override void Act(StateController controller)
     {
+
+
         controller.rigidbody2D.velocity = (hookPosition - playerPosition).normalized * pullSpeed;
 
         if ((hookPosition - playerPosition).sqrMagnitude <= distanceThreshold * distanceThreshold)
