@@ -615,7 +615,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.1}
@@ -889,12 +889,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 283861cf8ec7cd54fa1e50294497c99e, type: 2}
+  Event: {fileID: 11400000, guid: 1be86f8e6b5edbb49a91eb4a47dff92d, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114488258175678806}
-        m_MethodName: ResetLevel
+      - m_Target: {fileID: 114309628012159530}
+        m_MethodName: ResetHook
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -990,6 +990,12 @@ MonoBehaviour:
     UseType: 1
     ConstantValue: 50
     Variable: {fileID: 11400000, guid: ce420c02630da994a89f7055fa8915e0, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _Damage:
+    UseType: 0
+    ConstantValue: 0
+    Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   startPosition:
@@ -1229,7 +1235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
-  circleCollider2D: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   hook: {fileID: 0}
@@ -1258,8 +1263,6 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 0ac9a046feaa25749bfd4b30a4b6547c, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _CanBeHooked: 0
-  _CanBeThrownAt: 0
   _OnHurt: {fileID: 11400000, guid: 5092d8a8c9d1bbe408d23483cf30f273, type: 2}
   _OnDieEvent:
     m_PersistentCalls:
