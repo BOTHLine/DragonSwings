@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyableVase : MonoBehaviour
 {
 
+
     public int hp;
 
     public Sprite destroyed01;
@@ -48,9 +49,11 @@ public class DestroyableVase : MonoBehaviour
 
             myShadow.transform.GetComponent<Renderer>().enabled = false;
 
-            gameObject.transform.GetComponent<SpriteRenderer>().sprite = Random.Range(0, 2) == 1 ? destroyed01 : destroyed02;
-
-
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = Random.Range(0, 2) == 1 ? destroyed01 : destroyed02;
+            spriteRenderer.sortingLayerName = "On Ground";
+            // TODO Hard coded LayerName
+            
             //Destroy(this.gameObject);
         }
 
