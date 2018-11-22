@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0693b511eedf364ebe4b30e0ff399af, type: 3}
   m_Name: HookRange
   m_EditorClassIdentifier: 
-  InitialValue: 8.5
-  _Value: 8.5
+  InitialValue: 16
+  _Value: 16
