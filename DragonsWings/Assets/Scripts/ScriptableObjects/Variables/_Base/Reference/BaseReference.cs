@@ -13,7 +13,7 @@ public class BaseReference<TVariable, TSet, TDatatype>
     where TSet : BaseMap<TDatatype>
 {
 
-    public ReferenceUseType UseType;
+    public ReferenceUseType UseType = ReferenceUseType.Variable;
 
     public TDatatype ConstantValue;
     public TVariable Variable;
