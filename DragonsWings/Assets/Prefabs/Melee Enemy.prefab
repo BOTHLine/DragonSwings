@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114277562133288624}
   - component: {fileID: 114120205622860236}
   - component: {fileID: 114347532281533360}
+  - component: {fileID: 114039902721352170}
   m_Layer: 26
   m_Name: HitBox
   m_TagString: Untagged
@@ -244,7 +245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4373660712988604}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4530002052617076
 Transform:
@@ -356,7 +357,7 @@ Animator:
   m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114039902721352170
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840700841724608}
