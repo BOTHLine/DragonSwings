@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &120391948 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4593864979319534, guid: 04e8c6312979bea498a465dd3aea449f,
+    type: 2}
+  m_PrefabInternal: {fileID: 643779927}
 --- !u!1001 &643779927
 Prefab:
   m_ObjectHideFlags: 0
@@ -298,3 +303,120 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1087996483
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 120391948}
+    m_Modifications:
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494675835968634, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114409122279946722, guid: c7ec6f0f66673bb46ae212c8efee3cf4,
+        type: 2}
+      propertyPath: _AimPosition.Variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7,
+        type: 2}
+    - target: {fileID: 114409122279946722, guid: c7ec6f0f66673bb46ae212c8efee3cf4,
+        type: 2}
+      propertyPath: range.Variable
+      value: 
+      objectReference: {fileID: 11400000, guid: a70fefdc2aa940647bde5fdc7d8d5c08,
+        type: 2}
+    - target: {fileID: 1303546719485506, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7ec6f0f66673bb46ae212c8efee3cf4, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &1586779007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586779008}
+  - component: {fileID: 1586779009}
+  m_Layer: 0
+  m_Name: Throw Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586779008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586779007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 120391948}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586779009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586779007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec305bc2952852419b556e407efb227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AimPosition:
+    UseType: 1
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  range:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: a70fefdc2aa940647bde5fdc7d8d5c08, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  currentObject: {fileID: 0}
+  PlayerHasSomethingInHand:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0e0264e0a2c964345ad7a24d4ee73554, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
