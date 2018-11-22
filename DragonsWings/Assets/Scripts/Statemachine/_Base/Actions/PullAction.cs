@@ -18,6 +18,8 @@ public class PullAction : Action
 
     public override void Act(StateController controller)
     {
+
+
         controller.rigidbody2D.velocity = (hookPosition - playerPosition).normalized * pullSpeed;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, _DamageCircleRadius, LayerList.PlayerAttack.LayerMask);

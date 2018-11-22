@@ -11,5 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9511afc78c1401479821188263dcf6c, type: 3}
   m_Name: PlayerFall Action
   m_EditorClassIdentifier: 
+  health:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0ac9a046feaa25749bfd4b30a4b6547c, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   scaleDecrease: 1
   colorDecrease: 1

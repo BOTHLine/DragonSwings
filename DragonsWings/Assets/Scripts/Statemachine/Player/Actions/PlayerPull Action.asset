@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullSpeed:
     UseType: 0
-    ConstantValue: 20
+    ConstantValue: 50
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
     MapIdentifier: {fileID: 0}
   distanceThreshold:
     UseType: 0
-    ConstantValue: 0.25
+    ConstantValue: 0.5
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
