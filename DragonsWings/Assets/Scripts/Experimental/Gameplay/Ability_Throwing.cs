@@ -80,7 +80,6 @@ public class Ability_Throwing : MonoBehaviour
 
             if (raycasthit.transform.tag == "Box" && raycasthit.collider.gameObject.GetComponent<ThrowMyBox>())
             {
-                Debug.Log("hit");
                 currentTarget = raycasthit.transform.gameObject;
 
                 if (currentTarget.GetComponent<ThrowMyBox>() && !currentTarget.GetComponent<ThrowMyBox>().flying)
