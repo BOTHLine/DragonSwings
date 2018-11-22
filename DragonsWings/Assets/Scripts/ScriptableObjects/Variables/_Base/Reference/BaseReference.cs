@@ -24,7 +24,7 @@ public class BaseReference<TVariable, TSet, TDatatype>
 
     public BaseReference(TDatatype value)
     {
-        UseType = ReferenceUseType.Constant;
+        UseType = ReferenceUseType.Variable;
         ConstantValue = value;
     }
 
@@ -63,13 +63,36 @@ public class BaseReference<TVariable, TSet, TDatatype>
     }
 
     public static implicit operator TDatatype(BaseReference<TVariable, TSet, TDatatype> reference) { return reference.Value; }
-    public void SetEmptyMapIdentifier(GameObject identifier) { if (UseType == ReferenceUseType.Map && MapIdentifier == null) MapIdentifier = identifier; }
 
     public TDatatype Get(GameObject mapIdentifier = null)
     {
-        if (mapIdentifier != null)
-            MapIdentifier = mapIdentifier;
+        switch (UseType)
+        {
+            case ReferenceUseType.Constant:
+                return ConstantValue;
+            case ReferenceUseType.Variable:
+                return Variable.Value;
+            case ReferenceUseType.Map:
+                return Map.Get(mapIdentifier == null ? MapIdentifier : mapIdentifier);
 
-        return Value;
+            default:
+                return ConstantValue;
+        }
+    }
+
+    public void Set(TDatatype value, GameObject mapIdentifier = null)
+    {
+        switch (UseType)
+        {
+            case ReferenceUseType.Constant:
+                ConstantValue = value;
+                break;
+            case ReferenceUseType.Variable:
+                Variable.Value = value;
+                break;
+            case ReferenceUseType.Map:
+                Map.Set(mapIdentifier == null ? MapIdentifier : mapIdentifier, value);
+                break;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Statemachine/Actions/Event Action")]
+[CreateAssetMenu(menuName = "Statemachine/Actions/Start Hook Action")]
 public class StartHookAction : Action
 {
     private Hook hook;

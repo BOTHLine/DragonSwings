@@ -17,6 +17,8 @@ public class Hook : MonoBehaviour
     [SerializeField] private Vector2Reference startPosition;
     [SerializeField] private Vector2Reference targetPosition;
 
+    [SerializeField] private BoolReference playerHasSomethingInHand;
+
     private Vector2 start;
     private bool canShoot = true;
     private Transform parent;
@@ -87,7 +89,7 @@ public class Hook : MonoBehaviour
     // Methods
     public void Shoot()
     {
-        if (!canShoot || targetPosition.Value.Equals(startPosition.Value))
+        if (!canShoot || targetPosition.Value.Equals(startPosition.Value) || playerHasSomethingInHand.Value)
             return;
 
         canShoot = false;

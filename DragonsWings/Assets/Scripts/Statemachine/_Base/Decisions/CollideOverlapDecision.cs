@@ -7,9 +7,6 @@ public class CollideOverlapDecision : Decision
         return false;
     }
 
-    public override void EnterState(StateController controller)
-    { }
-
-    public override void ExitState(StateController controller)
-    { }
+    public override void EnterState(StateController controller) { }
+    public override void ExitState(StateController controller) { }
 }

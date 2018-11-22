@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 50359491533953692}
   - component: {fileID: 58541078202963322}
   - component: {fileID: 114426680646719172}
-  m_Layer: 15
+  m_Layer: 13
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -595,7 +595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a7c6b7608477c4bbbb4f20ba2b8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aim: {fileID: 1364389024330548}
+  _AimPosition:
+    UseType: 0
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   aimingDot: {fileID: 1622121343633032}
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
@@ -619,6 +624,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61493e0469e2d644b5b992ed7869d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _SourcePosition:
+    UseType: 0
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   aimRange:
     UseType: 0
     ConstantValue: 4
@@ -803,6 +814,12 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  playerHasSomethingInHand:
+    UseType: 0
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   OnHookShoot: {fileID: 11400000, guid: 5e453a6f9be6c834a8207849975c2790, type: 2}
   OnHookHitLightHookable: {fileID: 11400000, guid: 1ac05eba55fe83c419fbba427189102b,
     type: 2}
@@ -873,20 +890,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d8dfb272c8f404c8b596b0aefa2ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthMax:
-    UseType: 1
+  _HealthMax:
+    UseType: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 160ef464343788d49beb7a21a7cc3ed0, type: 2}
+    Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  healthActual:
-    UseType: 1
+  _HealthActual:
+    UseType: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 0ac9a046feaa25749bfd4b30a4b6547c, type: 2}
-    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
-    MapIdentifier: {fileID: 4200131888599794}
-  OnHurt: {fileID: 11400000, guid: 5092d8a8c9d1bbe408d23483cf30f273, type: 2}
-  OnDie: {fileID: 11400000, guid: fe71c3cd68ae4874faf5b51d65f721cd, type: 2}
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _CanBeHooked: 1
+  _CanBeThrownAt: 1
+  _OnHurt: {fileID: 0}
+  _OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114616522583028476
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,6 +3,8 @@
 [System.Serializable]
 public class FloatReference : BaseReference<FloatVariable, FloatMap, float>
 {
+    public void ChangeValue(float value, GameObject mapIdentifier) { Set(Get(mapIdentifier) + value, mapIdentifier); }
+
     public static bool operator ==(FloatReference left, FloatReference right) { return left.Value == right.Value; }
     public static bool operator !=(FloatReference left, FloatReference right) { return left.Value != right.Value; }
     public static bool operator <(FloatReference left, FloatReference right) { return left.Value < right.Value; }
