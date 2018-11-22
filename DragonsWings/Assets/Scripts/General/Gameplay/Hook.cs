@@ -54,6 +54,7 @@ public class Hook : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         HookInteraction hookInteraction = collision.collider.GetComponentInSiblings<HookInteraction>();
         if (hookInteraction != null)
         {
@@ -79,8 +80,8 @@ public class Hook : MonoBehaviour
         {
             OnHookHitNotHookable.Raise();
         }
-        /*
-        Hookable hookable = collision.collider.GetComponent<Hookable>();
+        */
+        Hookable hookable = collision.collider.GetComponentInParent<Hookable>();
         if (hookable != null)
         {
             switch (hookable.Weight)
@@ -106,7 +107,6 @@ public class Hook : MonoBehaviour
         {
             OnHookHitNotHookable.Raise();
         }
-        */
     }
 
     // Methods

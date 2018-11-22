@@ -224,7 +224,6 @@ public class ThrowMyBox : MonoBehaviour, Aimable
         for (int i = 0; i < colliders.Length; i++)
         {
             HurtBox hurtBox = colliders[i].GetComponent<HurtBox>();
-            Debug.Log(hurtBox);
             if (hurtBox != null)
             {
                 hurtBox.Hurt(_Damage);

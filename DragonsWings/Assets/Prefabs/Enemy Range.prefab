@@ -528,8 +528,6 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
     MapIdentifier: {fileID: 1363905136896846}
-  _CanBeHooked: 1
-  _CanBeThrownAt: 1
   _OnHurt: {fileID: 11400000, guid: 5f0663182c311cc4d863d03ff8a71d63, type: 2}
   _OnDieEvent:
     m_PersistentCalls:

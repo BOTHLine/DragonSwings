@@ -222,7 +222,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838723580773390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.59, y: 40.9, z: 0}
+  m_LocalPosition: {x: -52.93, y: 30.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371574835338158}
@@ -405,8 +405,6 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
     MapIdentifier: {fileID: 1838723580773390}
-  _CanBeHooked: 1
-  _CanBeThrownAt: 1
   _OnHurt: {fileID: 11400000, guid: 5f0663182c311cc4d863d03ff8a71d63, type: 2}
   _OnDieEvent:
     m_PersistentCalls:

@@ -29,6 +29,18 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 12dde5696aa245b46ac33b761bee0419, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  _DamageCircleRadius:
+    UseType: 0
+    ConstantValue: 1
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _PullDamage:
+    UseType: 0
+    ConstantValue: 1
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   distanceThreshold:
     UseType: 0
     ConstantValue: 0.25
