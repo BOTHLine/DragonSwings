@@ -17,3 +17,5 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  _IgnoreTags:
+  - Vase
