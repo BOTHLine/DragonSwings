@@ -222,8 +222,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838723580773390}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.93, y: 30.18, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.712757, y: 13.624018, z: 0.5625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371574835338158}
@@ -326,7 +326,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -385,7 +385,7 @@ Animator:
   m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114039902721352170
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840700841724608}
@@ -510,6 +510,12 @@ MonoBehaviour:
     Map: {fileID: 11400000, guid: a0dc55fe1adab4c4dbdf498a43feb431, type: 2}
     MapIdentifier: {fileID: 1838723580773390}
   testAngle: 90
+  _AttackRange_Temp:
+    UseType: 0
+    ConstantValue: 1
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
 --- !u!114 &114180879087271066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -802,7 +808,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2009635867
-  m_SortingLayer: 7
+  m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: e3af640d522f9eb41bf1b7b9ffdd194c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -847,8 +853,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1355276891
-  m_SortingLayer: 5
+  m_SortingLayerID: -723998591
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a386181b12a522a42bb2a270e6b162ea, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.5019608}
