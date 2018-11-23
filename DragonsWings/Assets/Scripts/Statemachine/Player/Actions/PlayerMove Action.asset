@@ -19,7 +19,7 @@ MonoBehaviour:
     MapIdentifier: {fileID: 0}
   moveSpeed:
     UseType: 0
-    ConstantValue: 10
+    ConstantValue: 15
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

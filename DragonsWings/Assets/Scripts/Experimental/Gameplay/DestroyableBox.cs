@@ -65,7 +65,7 @@ public class DestroyableBox : MonoBehaviour {
 
 
             gameObject.transform.GetComponent<SpriteRenderer>().sprite = destroyed;
-            gameObject.transform.GetComponent<SpriteRenderer>().sortingOrder = 23;
+            gameObject.transform.GetComponent<SpriteRenderer>().sortingLayerName = "On Ground";
 
             //Destroy(this.gameObject);
         }
