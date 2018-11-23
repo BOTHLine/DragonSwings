@@ -26,12 +26,13 @@ public class ShootAction : Action
     }
 
     public override void EnterState(StateController controller)
-    { _CurrentAttackTime = 0.0f; }
+    { _CurrentAttackTime = 0.0f; Debug.Log("Enter Shoot"); }
 
     private void Attack(StateController controller)
     {
-        Projectile projectile = Instantiate(_ProjectilePrefab, controller.transform.position, Quaternion.identity, null);
-        projectile.SetDirection((_TargetPosition.Get(controller.gameObject) - (Vector2)controller.transform.position).normalized);
+        Vector2 shootDirection = (_TargetPosition.Get(controller.gameObject) - (Vector2)controller.transform.position).normalized;
+        Projectile projectile = Instantiate(_ProjectilePrefab, (Vector2)controller.transform.position + shootDirection * 0.1f, Quaternion.identity, null);
+        projectile.SetDirection(shootDirection);
         _CurrentAttackTime = 0.0f;
         _CurrentAttackCooldown.Set(_AttackCooldown.Get(controller.gameObject), controller.gameObject);
         _OnAttack.Raise();

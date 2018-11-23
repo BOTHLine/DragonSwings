@@ -19,13 +19,13 @@ MonoBehaviour:
     MapIdentifier: {fileID: 0}
   _AttackTime:
     UseType: 0
-    ConstantValue: 1
+    ConstantValue: 0.2
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _AttackCooldown:
     UseType: 0
-    ConstantValue: 100
+    ConstantValue: 3
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

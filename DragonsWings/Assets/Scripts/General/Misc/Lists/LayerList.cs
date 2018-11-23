@@ -39,15 +39,15 @@ public static class LayerList
     // 20
     // 21
     // 22
-    public static readonly Layer EnemyLow = new Layer(13, "Enemy Low");
-    public static readonly Layer EnemyHigh = new Layer(14, "Enemy High");
-    public static readonly Layer EnemyHurtBox = new Layer(15, "Enemy Hurt Box");
-    public static readonly Layer EnemyAttack = new Layer(16, "Enemy Attack");
-    public static readonly Layer EnemyProjectile = new Layer(17, "Enemy Projectile");
+    public static readonly Layer EnemyLow = new Layer(23, "Enemy Low");
+    public static readonly Layer EnemyHigh = new Layer(24, "Enemy High");
+    public static readonly Layer EnemyHurtBox = new Layer(25, "Enemy Hurt Box");
+    public static readonly Layer EnemyAttack = new Layer(26, "Enemy Attack");
+    public static readonly Layer EnemyProjectile = new Layer(27, "Enemy Projectile");
     // 28
     // 29
     // 30
-    public static readonly Layer Minimap = new Layer(25, "Minimap");
+    public static readonly Layer Minimap = new Layer(31, "Minimap");
 
     public static int CreateLayerMask(int layer)
     {

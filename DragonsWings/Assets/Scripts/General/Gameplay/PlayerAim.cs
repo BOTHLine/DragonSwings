@@ -2,7 +2,7 @@
 
 public class PlayerAim : MonoBehaviour
 {
-    private CircleCollider2D circleCollider2D;
+    public CircleCollider2D circleCollider2D;
 
     public Vector2Reference _SourcePosition;
     public FloatReference aimRange;
@@ -21,11 +21,6 @@ public class PlayerAim : MonoBehaviour
 
     private ColliderDistance2D closestColliderDistance2D;
 
-    private void Awake()
-    {
-        circleCollider2D = GetComponent<CircleCollider2D>();
-    }
-
     private void Update()
     {
         transform.localPosition = aimDirection.Value * aimRange;
@@ -42,6 +37,71 @@ public class PlayerAim : MonoBehaviour
         if ((Vector2)transform.localPosition == Vector2.zero)
             return;
 
+        Vector2 closestTarget = transform.position;
+        RaycastHit2D[] hit2Ds = Physics2D.CircleCastAll(_SourcePosition + (aimDirection.Value.normalized * aimHelpRadius), aimHelpRadius, aimDirection, aimRange, LayerList.PlayerProjectile.LayerMask);
+        for (int i = 0; i < hit2Ds.Length; i++)
+        {
+            HurtBox hurtBox = hit2Ds[i].collider.GetComponent<HurtBox>();
+            if (hurtBox == null) { continue; }
+
+            if (Vector2.Distance(_SourcePosition, hurtBox.transform.position) > aimRange) { continue; }
+
+            RaycastHit2D hit2D = Physics2D.Raycast(_SourcePosition, (Vector2)hurtBox.transform.position - _SourcePosition, aimRange, LayerList.PlayerProjectile.LayerMask);
+            if (hit2D.collider != hit2Ds[i].collider) { continue; }
+
+            if (!hasTarget)
+            {
+                closestColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
+                if (closestColliderDistance2D.isValid)
+                {
+                    autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
+                    hasTarget = true;
+                }
+            }
+            else
+            {
+                ColliderDistance2D newColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
+                if (newColliderDistance2D.isValid && newColliderDistance2D.distance < closestColliderDistance2D.distance)
+                {
+                    closestColliderDistance2D = newColliderDistance2D;
+                    autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
+                }
+            }
+        }
+        if (!hasTarget)
+        {
+            for (int i = 0; i < hit2Ds.Length; i++)
+            {
+                ThrowMyBox throwMyBox = hit2Ds[i].collider.GetComponent<ThrowMyBox>();
+                if (throwMyBox == null) { continue; }
+
+                if (Vector2.Distance(_SourcePosition, throwMyBox.transform.position) > aimRange) { continue; }
+
+                RaycastHit2D hit2D = Physics2D.Raycast(_SourcePosition, (Vector2)throwMyBox.transform.position - _SourcePosition, aimRange, LayerList.PlayerProjectile.LayerMask);
+                if (hit2D.collider != hit2Ds[i].collider) { continue; }
+
+                if (!hasTarget)
+                {
+                    closestColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
+                    if (closestColliderDistance2D.isValid)
+                    {
+                        autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
+                        hasTarget = true;
+                    }
+                }
+                else
+                {
+                    ColliderDistance2D newColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
+                    if (newColliderDistance2D.isValid && newColliderDistance2D.distance < closestColliderDistance2D.distance)
+                    {
+                        closestColliderDistance2D = newColliderDistance2D;
+                        autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
+                    }
+                }
+            }
+        }
+
+        /*
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, aimHelpRadius, LayerList.PlayerProjectile.LayerMask);
         if (colliders.Length >= 1)
         {
@@ -79,7 +139,7 @@ public class PlayerAim : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
 
     private void OnDrawGizmos()

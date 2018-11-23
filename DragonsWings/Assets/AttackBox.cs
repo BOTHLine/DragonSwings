@@ -12,6 +12,9 @@ public class AttackBox : MonoBehaviour
 
     public float testAngle = 0;
 
+    public FloatReference _AttackRange_Temp;
+
+    /*
     private void Update()
     {
         transform.rotation = Utils.GetLookAtRotation(transform.position, targetPosition, 90.0f);
@@ -30,6 +33,22 @@ public class AttackBox : MonoBehaviour
                     isPlayerInAttackRange.Value = true;
                     return;
                 }
+            }
+        }
+        isPlayerInAttackRange.Value = false;
+    }
+    */
+
+    private void Update()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _AttackRange_Temp, LayerList.EnemyAttack.LayerMask);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            HurtBox hurtBox = colliders[i].GetComponent<HurtBox>();
+            if (hurtBox != null)
+            {
+                isPlayerInAttackRange.Value = true;
+                return;
             }
         }
         isPlayerInAttackRange.Value = false;
