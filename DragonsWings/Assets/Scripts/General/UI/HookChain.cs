@@ -2,7 +2,8 @@
 
 public class HookChain : MonoBehaviour
 {
-    public Vector2Reference _ChainFromPosition;
+    [HideInInspector] public Transform _ChainFromPosition;
+    [HideInInspector] public Transform _ChainToPosition;
 
     private SpriteRenderer hookChain;
 
@@ -10,6 +11,9 @@ public class HookChain : MonoBehaviour
     {
         hookChain = GetComponent<SpriteRenderer>();
         hookChain.enabled = false;
+
+        _ChainFromPosition = transform.parent.parent;
+        _ChainToPosition = transform.parent;
     }
 
     private void Update()
@@ -19,8 +23,8 @@ public class HookChain : MonoBehaviour
 
     private void UpdateHookChain()
     {
-        hookChain.size = new Vector2(Vector2.Distance(_ChainFromPosition, transform.position), hookChain.size.y);
-        hookChain.transform.rotation = Utils.GetLookAtRotation(_ChainFromPosition, transform.position);
+        hookChain.transform.rotation = Utils.GetLookAtRotation(_ChainToPosition.position, _ChainFromPosition.position, 180.0f);
+        hookChain.size = new Vector2(Vector2.Distance(_ChainFromPosition.position, _ChainToPosition.position) / transform.lossyScale.x, hookChain.size.y);
     }
 
     public void SetActive(bool active)

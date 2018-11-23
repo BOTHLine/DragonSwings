@@ -4,10 +4,9 @@ public class CameraFollow : MonoBehaviour
 {
     private Camera _Camera;
 
-    public Vector2Reference _PlayerPosition;
-    public Vector2Reference _AimPosition;
+    public Vector2Reference _TargetPosition;
 
-    public FloatReference _CameraZoom;
+    public FloatReference _TargetZoom;
 
     public FloatReference _CameraMoveSpeed;
     public FloatReference _CameraZoomSpeed;
@@ -26,7 +25,7 @@ public class CameraFollow : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 cameraFollowPosition = (_PlayerPosition + _AimPosition) / 2.0f;
+        Vector3 cameraFollowPosition = _TargetPosition.Value;
 
         cameraFollowPosition.z = transform.position.z;
 
@@ -47,17 +46,17 @@ public class CameraFollow : MonoBehaviour
 
     private void HandleZoom()
     {
-        float cameraZoomDifference = _CameraZoom - _Camera.orthographicSize;
+        float cameraZoomDifference = _TargetZoom - _Camera.orthographicSize;
 
         _Camera.orthographicSize += cameraZoomDifference * _CameraZoomSpeed * Time.deltaTime;
 
         if (cameraZoomDifference > 0)
         {
-            if (_Camera.orthographicSize > _CameraZoom) { _Camera.orthographicSize = _CameraZoom; }
+            if (_Camera.orthographicSize > _TargetZoom) { _Camera.orthographicSize = _TargetZoom; }
         }
         else
         {
-            if (_Camera.orthographicSize < _CameraZoom) { _Camera.orthographicSize = _CameraZoom; }
+            if (_Camera.orthographicSize < _TargetZoom) { _Camera.orthographicSize = _TargetZoom; }
         }
     }
 }
