@@ -20,7 +20,11 @@ public class Ability_Throwing : MonoBehaviour
         {
             currentObject = getTarget();
 
-            if (currentObject != null) PlayerHasSomethingInHand.Value = true;
+            if (currentObject != null)
+            {
+                PlayerHasSomethingInHand.Value = true;
+                currentObject.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
+            }
         }
         else
         {
@@ -40,6 +44,7 @@ public class Ability_Throwing : MonoBehaviour
                     currentObject.GetComponent<ThrowMyBox>().destroyAllLines();
                 }
 
+                currentObject.GetComponent<SpriteRenderer>().sortingLayerName = "Objects";
                 currentObject = null;
                 PlayerHasSomethingInHand.Value = false;
 

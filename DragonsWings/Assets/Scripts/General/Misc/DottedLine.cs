@@ -16,6 +16,7 @@ public class DottedLine : MonoBehaviour
     public GameObject cursor;
 
     public bool shrinkDots = false;
+    public float shrinkingRate;
     private Vector3 startScaleDots;
 
     public FloatReference range;
@@ -87,7 +88,7 @@ public class DottedLine : MonoBehaviour
             GameObject currentDot = dots[i];
             currentDot.transform.position = startPoint + new Vector3(diff.x, diff.y, 0).normalized * offset + (step * i);
 
-            if (shrinkDots) currentDot.transform.localScale = startScaleDots - startScaleDots * (0.05f * i);
+            if (shrinkDots) currentDot.transform.localScale = startScaleDots - startScaleDots * (shrinkingRate * i);
         }
 
         // Um in der Nächsten Runde Punkte die zu weit draußen sind wieder auszusortieren
