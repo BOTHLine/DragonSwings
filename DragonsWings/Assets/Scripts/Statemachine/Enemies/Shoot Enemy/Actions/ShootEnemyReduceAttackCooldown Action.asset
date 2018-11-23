@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: ShootEnemyReduceAttackCooldown Action
   m_EditorClassIdentifier: 
   _CurrentAttackCooldown:
-    UseType: 1
+    UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
-    Map: {fileID: 0}
+    Map: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6, type: 2}
     MapIdentifier: {fileID: 0}
   _ReduceFactor:
-    UseType: 1
-    ConstantValue: 0
+    UseType: 0
+    ConstantValue: 1
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

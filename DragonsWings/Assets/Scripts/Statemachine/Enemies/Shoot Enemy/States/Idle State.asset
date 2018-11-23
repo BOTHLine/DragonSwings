@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Idle State
   m_EditorClassIdentifier: 
   layer: 23
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: 17a8e27ea4f94b046824a5e10480e3f5, type: 2}
   transitions:
   - decisions:
     - {fileID: 11400000, guid: df3c76918aebab34f91117b824ecad74, type: 2}

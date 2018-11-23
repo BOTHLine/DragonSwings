@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: HasNoAttackCooldown Float Decision
   m_EditorClassIdentifier: 
   value:
-    UseType: 0
+    UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
-    Map: {fileID: 0}
+    Map: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6, type: 2}
     MapIdentifier: {fileID: 0}
-  compareOperator: 0
+  compareOperator: 4
   compareValue:
     UseType: 0
     ConstantValue: 0

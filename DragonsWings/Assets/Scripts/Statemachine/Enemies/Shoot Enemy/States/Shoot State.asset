@@ -13,7 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer: 23
   actions:
+  - {fileID: 11400000, guid: f19f9e1d620b5b24a8fd6ef262663767, type: 2}
   - {fileID: 11400000, guid: 0ab3091ef30192149a1cadbee35fee59, type: 2}
+  - {fileID: 11400000, guid: 17a8e27ea4f94b046824a5e10480e3f5, type: 2}
   transitions:
   - decisions:
     - {fileID: 11400000, guid: e41a7853d67693c47ab384ddd1f99e1e, type: 2}
