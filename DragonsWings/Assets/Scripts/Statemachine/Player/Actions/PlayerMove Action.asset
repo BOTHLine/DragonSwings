@@ -18,9 +18,9 @@ MonoBehaviour:
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   moveSpeed:
-    UseType: 0
+    UseType: 1
     ConstantValue: 15
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 4a1c6f792a181ae4f9618a5d3219e769, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   lastSavePosition:
