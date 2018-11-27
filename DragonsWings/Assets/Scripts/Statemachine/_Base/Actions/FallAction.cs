@@ -3,8 +3,6 @@
 [CreateAssetMenu(menuName = "Statemachine/Actions/Fall Action")]
 public class FallAction : Action
 {
-    public FloatReference health;
-
     public float scaleDecrease;
     public float colorDecrease;
 
@@ -41,6 +39,6 @@ public class FallAction : Action
 
         controller.spriteRenderer.enabled = false;
 
-        health.Value -= 1.0f;
+        controller.GetComponentInChildren<HurtBox>()?.Hurt(1.0f);
     }
 }

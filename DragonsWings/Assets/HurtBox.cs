@@ -10,15 +10,13 @@ public class HurtBox : MonoBehaviour
     public UnityEngine.Events.UnityEvent _OnDieEvent;
 
     private void Awake()
-    {
-        _HealthActual.Value = _HealthMax;
-    }
+    { _HealthActual.Value = _HealthMax; }
 
     public void Hurt(float damage)
     {
         _OnHurt.Raise();
         _HealthActual.Value -= damage;
-        if (_HealthActual <= 0.0f)
+        if (CheckDead())
             Die();
     }
 
@@ -31,6 +29,9 @@ public class HurtBox : MonoBehaviour
     {
 
     }
+
+    public bool CheckDead()
+    { return _HealthActual <= 0.0f; }
 
     public void Die()
     { _OnDieEvent.Invoke(); }

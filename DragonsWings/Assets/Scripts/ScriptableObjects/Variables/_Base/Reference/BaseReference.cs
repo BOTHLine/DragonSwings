@@ -20,6 +20,9 @@ public class BaseReference<TVariable, TSet, TDatatype>
     public TSet Map;
     public GameObject MapIdentifier;
 
+    public System.Action<TDatatype> OnValueChange = delegate { };
+    public System.Collections.Generic.Dictionary<GameObject, System.Action<TDatatype>> OnValueChangeInMap;
+
     public BaseReference() { }
 
     public BaseReference(TDatatype value)
@@ -47,6 +50,7 @@ public class BaseReference<TVariable, TSet, TDatatype>
         }
         set
         {
+            OnValueChange.Invoke(Value);
             switch (UseType)
             {
                 case ReferenceUseType.Constant:
@@ -94,5 +98,12 @@ public class BaseReference<TVariable, TSet, TDatatype>
                 Map.Set(mapIdentifier == null ? MapIdentifier : mapIdentifier, value);
                 break;
         }
+        OnValueChange(Value);
     }
+
+    public void Subscribe(System.Action<TDatatype> action, GameObject mapIdentifier = null)
+    { OnValueChange += action; }
+
+    public void Unsubscribe(System.Action<TDatatype> action, GameObject mapIdentifier = null)
+    { OnValueChange -= action; }
 }

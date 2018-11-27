@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: PlayerFallTimerDecision
   m_EditorClassIdentifier: 
   time:
-    UseConstant: 1
+    UseType: 0
     ConstantValue: 0.5
     Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
