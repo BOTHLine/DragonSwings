@@ -23,7 +23,7 @@ public class HookChain : MonoBehaviour
 
     private void UpdateHookChain()
     {
-        hookChain.transform.rotation = Utils.GetLookAtRotation(_ChainToPosition.position, _ChainFromPosition.position, 180.0f);
+        transform.LookAt2D(_ChainFromPosition.position, 180.0f);
         hookChain.size = new Vector2(Vector2.Distance(_ChainFromPosition.position, _ChainToPosition.position) / transform.lossyScale.x, hookChain.size.y);
     }
 

@@ -41,7 +41,7 @@ public abstract class BaseMap<T> : ScriptableObject, ISerializationCallbackRecei
         KeyNames = new string[Keys.Length];
         for (int i = 0; i < Keys.Length; i++)
         {
-            KeyNames[i] = Utils.GetFullName(Keys[i]);
+            KeyNames[i] = Keys[i].GetFullName();
         }
 
         Values = new T[Items.Values.Count];

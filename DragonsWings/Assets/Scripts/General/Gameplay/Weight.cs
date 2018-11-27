@@ -1,6 +1,7 @@
 ﻿public enum Weight
 {
-    Light, // can be thrown
-    Medium, // can be kicked
-    Heavy // is fix
+    None, // Does not affect the Hook
+    Light, // Can be thrown
+    Medium, // Can be kicked
+    Heavy // Can not be affected by the Hook
 }

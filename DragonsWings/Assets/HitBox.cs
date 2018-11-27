@@ -26,7 +26,7 @@ public class HitBox : MonoBehaviour
 
     public void AttackStart()
     {
-        transform.rotation = Utils.GetLookAtRotation(transform.position, targetPosition, 90.0f);
+        transform.LookAt2D(targetPosition, 90.0f);
         spriteRenderer.enabled = true;
     }
 

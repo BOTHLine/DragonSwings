@@ -15,6 +15,6 @@ public class LookForward : MonoBehaviour
         if (rigidbody2D.velocity.Equals(Vector2.zero))
             return;
 
-        transform.parent.rotation = Utils.GetLookAtRotation(rigidbody2D.velocity, correctionValue);
+        transform.parent.LookAt2D(rigidbody2D.velocity, correctionValue);
     }
 }
