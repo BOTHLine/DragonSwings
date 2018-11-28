@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 114277562133288624}
   - component: {fileID: 114120205622860236}
   - component: {fileID: 114347532281533360}
-  - component: {fileID: 114039902721352170}
   m_Layer: 26
   m_Name: HitBox
   m_TagString: Untagged
@@ -223,8 +222,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838723580773390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.712757, y: 13.624018, z: 0.5625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 81.17, y: 4.11, z: 0.5625}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4371574835338158}
   - {fileID: 4780386448771370}
@@ -268,7 +267,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840700841724608}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7790667, w: -0.6269411}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -383,34 +382,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114039902721352170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840700841724608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 69c563021160afe4a92381bed0521901, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114350231624160412}
-        m_MethodName: Attack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114052779678519190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,7 +428,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840700841724608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
   m_Name: 
@@ -516,6 +487,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  colliders: []
 --- !u!114 &114180879087271066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -598,7 +570,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840700841724608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
   m_Name: 
@@ -661,8 +633,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafef6efe05e87c429569867a0f1f9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  hitBoxColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+  spriteRenderer: {fileID: 212069084775540934}
+  _IsStartingAttack:
+    UseType: 2
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: 1ffcecc53a60b1e49bd12857b3aeedec, type: 2}
+    MapIdentifier: {fileID: 1838723580773390}
+  _IsAttacking:
+    UseType: 2
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: ffb8fe66e7202d8449b8e8faf01e5f07, type: 2}
+    MapIdentifier: {fileID: 1838723580773390}
+  hitBoxColor: {r: 1, g: 0, b: 0, a: 0.2509804}
   hitBoxSize:
     UseType: 0
     ConstantValue: {x: 2, y: 1}
@@ -809,8 +793,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2009635867
   m_SortingLayer: 6
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: e3af640d522f9eb41bf1b7b9ffdd194c, type: 3}
+  m_SortingOrder: -755
+  m_Sprite: {fileID: 21300000, guid: bb71e834c7b89094589d153bb5b908d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -855,9 +839,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -723998591
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: -755
   m_Sprite: {fileID: 21300000, guid: a386181b12a522a42bb2a270e6b162ea, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.5019608}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.2509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -901,7 +885,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1355276891
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: -755
   m_Sprite: {fileID: 21300000, guid: 537bee5175824824db117a36fbfdf88f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.72156864}
   m_FlipX: 0

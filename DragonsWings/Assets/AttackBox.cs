@@ -14,6 +14,8 @@ public class AttackBox : MonoBehaviour
 
     public FloatReference _AttackRange_Temp;
 
+    public Collider2D[] colliders;
+
     /*
     private void Update()
     {
@@ -41,13 +43,14 @@ public class AttackBox : MonoBehaviour
 
     private void Update()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _AttackRange_Temp, LayerList.EnemyAttack.LayerMask);
+        colliders = Physics2D.OverlapCircleAll(transform.position, _AttackRange_Temp, LayerList.CreateLayerMask(gameObject.layer));
         for (int i = 0; i < colliders.Length; i++)
         {
             HurtBox hurtBox = colliders[i].GetComponent<HurtBox>();
             if (hurtBox != null)
             {
                 isPlayerInAttackRange.Value = true;
+                Debug.Log("Player in Range  for: " + transform.parent.name);
                 return;
             }
         }

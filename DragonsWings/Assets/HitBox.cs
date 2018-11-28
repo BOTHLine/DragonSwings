@@ -5,6 +5,9 @@ public class HitBox : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
 
+    public BoolReference _IsStartingAttack;
+    public BoolReference _IsAttacking;
+
     public Color hitBoxColor;
     public Vector2Reference hitBoxSize;
 
@@ -15,6 +18,20 @@ public class HitBox : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (_IsStartingAttack.Value)
+        {
+            AttackStart();
+            _IsStartingAttack.Value = false;
+        }
+        if (_IsAttacking.Value)
+        {
+            Attack();
+            _IsAttacking.Value = false;
+        }
     }
 
     private void OnDrawGizmos()

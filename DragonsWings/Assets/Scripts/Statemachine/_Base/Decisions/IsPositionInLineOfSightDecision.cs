@@ -5,14 +5,13 @@ public class IsPositionInLineOfSightDecision : Decision
 {
     public Vector2Reference _TargetPosition;
 
+    public LayerMask _LayerMask;
     public string[] _IgnoreTags;
 
     public override bool Decide(StateController controller)
     {
         Vector2 direction = _TargetPosition.Get(controller.gameObject) - (Vector2)controller.transform.position;
-        bool hitTriggers = Physics2D.queriesHitTriggers;
-        Physics2D.queriesHitTriggers = false;
-        RaycastHit2D[] raycastHit2D = Physics2D.RaycastAll(controller.transform.position, direction, direction.magnitude, LayerList.EnemyProjectile.LayerMask);
+        RaycastHit2D[] raycastHit2D = Physics2D.RaycastAll(controller.transform.position, direction, direction.magnitude, _LayerMask);
         for (int i = 0; i < raycastHit2D.Length; i++)
         {
             bool tagIncluded = false;
