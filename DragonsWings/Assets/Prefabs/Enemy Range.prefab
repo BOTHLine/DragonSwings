@@ -11,6 +11,38 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1363905136896846}
   m_IsPrefabAsset: 1
+--- !u!1 &1070833280756038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4973158057181748}
+  - component: {fileID: 114387096317934802}
+  m_Layer: 0
+  m_Name: ThrowInteraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1133097267501038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4614801987178064}
+  - component: {fileID: 114475486059717434}
+  m_Layer: 0
+  m_Name: HookResponder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1174726437892384
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +89,7 @@ GameObject:
   - component: {fileID: 50652380710370190}
   - component: {fileID: 114631229393924136}
   - component: {fileID: 114945916663301956}
-  m_Layer: 23
+  m_Layer: 0
   m_Name: Enemy Range
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -219,6 +251,19 @@ Transform:
   m_Father: {fileID: 4929730895997440}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4614801987178064
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133097267501038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4929730895997440}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4736151745833358
 Transform:
   m_ObjectHideFlags: 1
@@ -239,7 +284,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363905136896846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4509092881372958}
@@ -247,8 +292,23 @@ Transform:
   - {fileID: 4040069645361082}
   - {fileID: 4213130567272118}
   - {fileID: 4736151745833358}
+  - {fileID: 4614801987178064}
+  - {fileID: 4973158057181748}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4973158057181748
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1070833280756038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4929730895997440}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50652380710370190
 Rigidbody2D:
@@ -392,16 +452,62 @@ MonoBehaviour:
   _Max:
     UseType: 1
     ConstantValue: 0
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _Actual:
+    UseType: 2
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
+    MapIdentifier: {fileID: 1363905136896846}
+  _Image: {fileID: 114207029849936288}
+--- !u!114 &114387096317934802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1070833280756038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9ed5eb6fd35d4b84cd6392f4bb1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AutoAim: 0
+  _AutoAimPriority: 0
+  _IsDamagableByThrow:
     UseType: 1
     ConstantValue: 0
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _Image: {fileID: 0}
+  _HurtBox: {fileID: 0}
+  _OnHitByThrowable: {fileID: 0}
+  _OnHitByThrowableUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ThrowableUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &114475486059717434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133097267501038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32bddcdc4836d9c4bbea9c56ed18da20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AutoAim: 0
+  _AutoAimPriority: 0
+  _Weight: 0
+  _OnHitByHook: {fileID: 0}
+  _OnHitByHookUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HookUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114594204703378220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,7 +610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7f6c7f70d63ff47b30cf93909d1468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
 --- !u!114 &114993927631029848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -522,7 +627,7 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _HealthActual:
+  _HealthCurrent:
     UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}

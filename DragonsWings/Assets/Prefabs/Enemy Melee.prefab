@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 50672921586522760}
   - component: {fileID: 114313907568555680}
   - component: {fileID: 114194488785081056}
-  m_Layer: 23
+  m_Layer: 0
   m_Name: Enemy Melee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _HealthActual:
+  _HealthCurrent:
     UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
@@ -525,7 +525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7f6c7f70d63ff47b30cf93909d1468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
 --- !u!114 &114234325237878306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -553,16 +552,16 @@ MonoBehaviour:
   _Max:
     UseType: 1
     ConstantValue: 0
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _Actual:
-    UseType: 1
+    UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  _Image: {fileID: 0}
+    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
+    MapIdentifier: {fileID: 1838723580773390}
+  _Image: {fileID: 114180879087271066}
 --- !u!114 &114277562133288624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -693,11 +692,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position:
-    UseType: 1
+    UseType: 2
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
+    Map: {fileID: 11400000, guid: 32814ae2749d317489ecb502bc6f5e46, type: 2}
+    MapIdentifier: {fileID: 1838723580773390}
 --- !u!114 &114739924692973288
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,7 +21,6 @@ public class HookResponderDrawer : Editor
 
 
         serializedObject.Update();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("_OnHitByHook"), true);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_OnHitByHookUnityEvent"), true);
         serializedObject.ApplyModifiedProperties();
     }

@@ -107,7 +107,7 @@ MonoBehaviour:
   _CircleCollider2D: {fileID: 0}
   _Speed:
     UseType: 0
-    ConstantValue: 20
+    ConstantValue: 15
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

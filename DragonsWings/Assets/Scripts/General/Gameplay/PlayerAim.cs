@@ -35,9 +35,11 @@ public class PlayerAim : MonoBehaviour
     private void Update()
     {
         _Crosshair.transform.localPosition = _AimRawDirection.Value * _AimRange;
-        _AimRawPosition.Variable.Value = transform.position;
+        _AimRawPosition.Value = _Crosshair.transform.position;
 
-        FindClosestHookResponder();
+        HookResponder hookResponder = FindClosestHookResponder();
+        if (hookResponder == null) { _AimAutoPosition.Value = _AimRawPosition.Value; }
+        else { _AimAutoPosition.Value = hookResponder.transform.position; }
     }
 
     private HookResponder FindClosestHookResponder()

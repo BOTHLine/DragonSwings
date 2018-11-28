@@ -26,7 +26,7 @@ public class ShootAction : Action
     }
 
     public override void EnterState(StateController controller)
-    { _CurrentAttackTime = 0.0f; Debug.Log("Enter Shoot"); }
+    { _CurrentAttackTime = 0.0f; }
 
     private void Attack(StateController controller)
     {
