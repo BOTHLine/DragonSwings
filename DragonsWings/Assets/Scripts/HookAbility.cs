@@ -15,6 +15,7 @@ public class HookAbility : MonoBehaviour
 
     // Events
     public GameEvent OnHookShoot;
+    public GameEvent OnHookHit;
     public GameEvent OnHookReset;
 
     // Variables
@@ -24,7 +25,7 @@ public class HookAbility : MonoBehaviour
     // Mono Behaviour
     private void FixedUpdate()
     {
-        if (_TargetPosition.Value.SquaredDistanceTo(transform.position) >= _HookRange * _HookRange)
+        if (hookIsFlying && ((Vector2)_Hook.transform.position).SquaredDistanceTo(transform.position) >= _HookRange * _HookRange)
         { ResetHook(); }
     }
 
@@ -42,7 +43,7 @@ public class HookAbility : MonoBehaviour
 
     public void HookHitSomething(Collision2D collision)
     {
-        HookInteraction hookInteraction = collision.collider.GetComponentInSiblings<HookInteraction>();
+        HookResponder hookInteraction = collision.collider.GetComponentInSiblings<HookResponder>();
         if (hookInteraction != null)
         {
             hookInteraction.HitByHook(_Hook);
@@ -58,14 +59,14 @@ public class HookAbility : MonoBehaviour
                     break;
             }
         }
+        OnHookHit.Raise();
     }
 
     public void ResetHook()
     {
-        OnHookReset.Raise();
-
         hookIsFlying = false;
 
         _Hook.Reset();
+        OnHookReset.Raise();
     }
 }

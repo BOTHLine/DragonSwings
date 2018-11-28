@@ -2,13 +2,13 @@
 
 public class FloatSetImageFillSetter : MonoBehaviour
 {
-    public FloatReference variable;
-    public FloatReference max;
+    public FloatReference _Max;
+    public FloatReference _Actual;
 
-    public UnityEngine.UI.Image image;
+    public UnityEngine.UI.Image _Image;
 
     private void Update()
     {
-        image.fillAmount = Mathf.Clamp01(variable.Value / max.Value);
+        _Image.fillAmount = Mathf.Clamp01(_Actual.Value / _Max.Value);
     }
 }

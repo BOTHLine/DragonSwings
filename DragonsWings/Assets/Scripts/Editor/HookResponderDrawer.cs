@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(HookInteraction))]
-public class HookInteractionEditor : Editor
+[CustomEditor(typeof(HookResponder))]
+public class HookResponderDrawer : Editor
 {
     public override void OnInspectorGUI()
     {
-        HookInteraction instance = target as HookInteraction;
+        HookResponder instance = target as HookResponder;
 
         EditorGUILayout.BeginHorizontal();
         {

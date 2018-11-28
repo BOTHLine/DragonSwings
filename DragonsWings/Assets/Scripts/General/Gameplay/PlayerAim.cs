@@ -2,158 +2,71 @@
 
 public class PlayerAim : MonoBehaviour
 {
-    public CircleCollider2D circleCollider2D;
+    private struct ClosestHookResponder
+    {
+        public HookResponder hookResponder;
+        public float distance;
+    }
 
-    public Vector2Reference _SourcePosition;
-    public FloatReference aimRange;
-    public Vector2Reference aimDirection;
-    public Vector2Reference aimPosition;
+    // Components
+    private CircleCollider2D _Crosshair;
 
-    public FloatReference aimHelpRadius;
+    // References
+    [SerializeField] private FloatReference _AimRange;
+    [SerializeField] private Vector2Reference _AimRawDirection;
+    [SerializeField] private Vector2Reference _AimRawPosition;
 
-    private bool hasTarget;
-    public Vector2Reference autoAimPosition;
+    [SerializeField] private FloatReference _AimAutoRadius;
 
+    [SerializeField] private Vector2Reference _AimAutoPosition;
+
+    // Variables
     [SerializeField] private Color NoAimColor;
     [SerializeField] private Color NoTargetColor;
     [SerializeField] private Color TargetFoundColor;
     [SerializeField] private Color TargetLineColor;
 
-    private ColliderDistance2D closestColliderDistance2D;
+    // Mono Behaviour
+    private void Awake()
+    {
+        _Crosshair = GetComponentInChildren<CircleCollider2D>();
+    }
 
     private void Update()
     {
-        transform.localPosition = aimDirection.Value * aimRange;
-        aimPosition.Variable.Value = transform.position;
+        _Crosshair.transform.localPosition = _AimRawDirection.Value * _AimRange;
+        _AimRawPosition.Variable.Value = transform.position;
 
-        FindClosestHookable();
+        FindClosestHookResponder();
     }
 
-    private void FindClosestHookable()
+    private HookResponder FindClosestHookResponder()
     {
-        autoAimPosition.Variable.Value = transform.position;
-        hasTarget = false;
+        _AimAutoPosition.Value = transform.position;
 
-        if ((Vector2)transform.localPosition == Vector2.zero)
-            return;
+        if (((Vector2)_Crosshair.transform.localPosition).Equals(Vector2.zero)) { return null; }
 
-        Vector2 closestTarget = transform.position;
-        RaycastHit2D[] hit2Ds = Physics2D.CircleCastAll(_SourcePosition + (aimDirection.Value.normalized * aimHelpRadius), aimHelpRadius, aimDirection, aimRange, LayerList.PlayerProjectile.LayerMask);
-        for (int i = 0; i < hit2Ds.Length; i++)
+        ClosestHookResponder closestHookResponder = new ClosestHookResponder();
+
+        Vector2 closestTarget = _Crosshair.transform.position;
+        RaycastHit2D[] circlecastHit2D = Physics2D.CircleCastAll((Vector2)transform.position + (_AimRawDirection.Value.normalized * _AimAutoRadius), _AimAutoRadius, _AimRawDirection, _AimRange, LayerList.CreateLayerMask(gameObject.layer));
+        for (int i = 0; i < circlecastHit2D.Length; i++)
         {
-            HurtBox hurtBox = hit2Ds[i].collider.GetComponent<HurtBox>();
-            if (hurtBox == null) { continue; }
+            HookResponder hookResponder = circlecastHit2D[i].collider.GetComponent<HookResponder>();
+            if (hookResponder == null || !hookResponder._AutoAim) { continue; }
 
-            if (Vector2.Distance(_SourcePosition, hurtBox.transform.position) > aimRange) { continue; }
+            if (((Vector2)transform.position - (Vector2)hookResponder.transform.position).sqrMagnitude > _AimRange * _AimRange) { continue; }
 
-            RaycastHit2D hit2D = Physics2D.Raycast(_SourcePosition, (Vector2)hurtBox.transform.position - _SourcePosition, aimRange, LayerList.PlayerProjectile.LayerMask);
-            if (hit2D.collider != hit2Ds[i].collider) { continue; }
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, hookResponder.transform.position - transform.position, _AimRange, LayerList.CreateLayerMask(gameObject.layer));
+            if (raycastHit2D.collider != circlecastHit2D[i].collider) { continue; }
 
-            if (!hasTarget)
+            ColliderDistance2D colliderDistance2D = _Crosshair.Distance(circlecastHit2D[i].collider);
+            if (colliderDistance2D.isValid && (closestHookResponder.hookResponder == null ^ colliderDistance2D.distance < closestHookResponder.distance))
             {
-                closestColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
-                if (closestColliderDistance2D.isValid)
-                {
-                    autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
-                    hasTarget = true;
-                }
-            }
-            else
-            {
-                ColliderDistance2D newColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
-                if (newColliderDistance2D.isValid && newColliderDistance2D.distance < closestColliderDistance2D.distance)
-                {
-                    closestColliderDistance2D = newColliderDistance2D;
-                    autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
-                }
+                closestHookResponder.hookResponder = hookResponder;
+                closestHookResponder.distance = colliderDistance2D.distance;
             }
         }
-        if (!hasTarget)
-        {
-            for (int i = 0; i < hit2Ds.Length; i++)
-            {
-                ThrowMyBox throwMyBox = hit2Ds[i].collider.GetComponent<ThrowMyBox>();
-                if (throwMyBox == null) { continue; }
-
-                if (Vector2.Distance(_SourcePosition, throwMyBox.transform.position) > aimRange) { continue; }
-
-                RaycastHit2D hit2D = Physics2D.Raycast(_SourcePosition, (Vector2)throwMyBox.transform.position - _SourcePosition, aimRange, LayerList.PlayerProjectile.LayerMask);
-                if (hit2D.collider != hit2Ds[i].collider) { continue; }
-
-                if (!hasTarget)
-                {
-                    closestColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
-                    if (closestColliderDistance2D.isValid)
-                    {
-                        autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
-                        hasTarget = true;
-                    }
-                }
-                else
-                {
-                    ColliderDistance2D newColliderDistance2D = circleCollider2D.Distance(hit2Ds[i].collider);
-                    if (newColliderDistance2D.isValid && newColliderDistance2D.distance < closestColliderDistance2D.distance)
-                    {
-                        closestColliderDistance2D = newColliderDistance2D;
-                        autoAimPosition.Variable.Value = hit2Ds[i].collider.transform.position;
-                    }
-                }
-            }
-        }
-
-        /*
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, aimHelpRadius, LayerList.PlayerProjectile.LayerMask);
-        if (colliders.Length >= 1)
-        {
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                // TODO HurtBox als Aimable nutzen oder nicht? Eigentlich will man nur HurtBoxen anvisieren können? Oder HurtBox muss Aimable implementieren, anstatt die Gegner selbst. Dann hat aber auch Spieler eine HurtBox mit Aimable drauf
-
-                HurtBox hurtBox = colliders[i].GetComponentInSiblings<HurtBox>();
-                if (hurtBox == null) { continue; }
-
-                //    HookInteraction hookInteraction = colliders[i].GetComponentInSiblings<HookInteraction>();
-                //    if (hookInteraction == null || !hookInteraction._AutoAim) { continue; }
-
-                if (Vector2.Distance(_SourcePosition, colliders[i].transform.position) > aimRange) { continue; }
-
-                RaycastHit2D hit2D = Physics2D.Raycast(_SourcePosition, (Vector2)colliders[i].transform.position - _SourcePosition, aimRange, LayerList.PlayerProjectile.LayerMask);
-                if (hit2D.collider != colliders[i]) { continue; }
-
-                if (!hasTarget)
-                {
-                    closestColliderDistance2D = circleCollider2D.Distance(colliders[i]);
-                    if (closestColliderDistance2D.isValid)
-                    {
-                        autoAimPosition.Variable.Value = colliders[i].transform.position;
-                        hasTarget = true;
-                    }
-                }
-                else
-                {
-                    ColliderDistance2D newColliderDistance2D = circleCollider2D.Distance(colliders[i]);
-                    if (newColliderDistance2D.isValid && newColliderDistance2D.distance < closestColliderDistance2D.distance)
-                    {
-                        closestColliderDistance2D = newColliderDistance2D;
-                        autoAimPosition.Variable.Value = colliders[i].transform.position;
-                    }
-                }
-            }
-        }*/
-    }
-
-    private void OnDrawGizmos()
-    {
-        if ((Vector2)transform.localPosition == Vector2.zero)
-            UnityEditor.Handles.color = NoAimColor;
-        else if (!hasTarget)
-            UnityEditor.Handles.color = NoTargetColor;
-        else
-        {
-            UnityEditor.Handles.color = TargetLineColor;
-            UnityEditor.Handles.DrawLine(aimPosition.Value, autoAimPosition.Value);
-            UnityEditor.Handles.color = TargetFoundColor;
-        }
-        UnityEditor.Handles.DrawSolidDisc(aimPosition.Value, Vector3.forward, aimHelpRadius);
+        return closestHookResponder.hookResponder;
     }
 }

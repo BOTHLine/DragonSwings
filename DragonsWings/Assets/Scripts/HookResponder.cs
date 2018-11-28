@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HookInteraction : MonoBehaviour
+public class HookResponder : MonoBehaviour
 {
     public bool _AutoAim;
     public int _AutoAimPriority;

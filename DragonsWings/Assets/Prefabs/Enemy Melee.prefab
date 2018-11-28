@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 114277562133288624}
   - component: {fileID: 114120205622860236}
   - component: {fileID: 114347532281533360}
-  - component: {fileID: 114039902721352170}
   m_Layer: 26
   m_Name: HitBox
   m_TagString: Untagged
@@ -222,8 +221,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838723580773390}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.712757, y: 13.624018, z: 0.5625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371574835338158}
@@ -383,34 +382,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114039902721352170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840700841724608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 69c563021160afe4a92381bed0521901, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114350231624160412}
-        m_MethodName: Attack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114052779678519190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,7 +409,7 @@ MonoBehaviour:
   _OnDieEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114194488785081056}
+      - m_Target: {fileID: 0}
         m_MethodName: Die
         m_Mode: 1
         m_Arguments:
@@ -462,12 +433,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5b2dac19e72d3434daef4e99dfd31012, type: 2}
+  Event: {fileID: 11400000, guid: 69c563021160afe4a92381bed0521901, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114350231624160412}
-        m_MethodName: AttackStart
+        m_MethodName: Attack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -554,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7f6c7f70d63ff47b30cf93909d1468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 2
 --- !u!114 &114234325237878306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -579,19 +550,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c437561c12345d45b126eac9755d2c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variable:
-    UseType: 2
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
-    MapIdentifier: {fileID: 1838723580773390}
-  max:
+  _Max:
     UseType: 1
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
+    Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  image: {fileID: 114180879087271066}
+  _Actual:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _Image: {fileID: 0}
 --- !u!114 &114277562133288624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,12 +574,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 69c563021160afe4a92381bed0521901, type: 2}
+  Event: {fileID: 11400000, guid: 5b2dac19e72d3434daef4e99dfd31012, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114350231624160412}
-        m_MethodName: Attack
+        m_MethodName: AttackStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -631,9 +602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fed56c474b81744bc88230624fe7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody2D: {fileID: 50672921586522760}
-  animator: {fileID: 95060914847497130}
-  spriteRenderer: {fileID: 212031312922743242}
+  rigidbody2D: {fileID: 0}
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   hook: {fileID: 0}
   currentState: {fileID: 11400000, guid: 793d1921a14169143b07d81ab4a8f372, type: 2}
   remainState: {fileID: 11400000, guid: 4f1247f8201d72744ab9a02b8dd22177, type: 2}
@@ -722,11 +693,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position:
-    UseType: 2
+    UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 32814ae2749d317489ecb502bc6f5e46, type: 2}
-    MapIdentifier: {fileID: 1838723580773390}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
 --- !u!114 &114739924692973288
 MonoBehaviour:
   m_ObjectHideFlags: 1

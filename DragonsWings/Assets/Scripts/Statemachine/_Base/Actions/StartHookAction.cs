@@ -24,5 +24,5 @@ public class StartHookAction : Action
     { OnHookInput.UnregisterListener(hookShootEvent); }
 
     public void ShootHook()
-    { hook.Shoot(); }
+    {/* hook.Shoot();*/ }
 }

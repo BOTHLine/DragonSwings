@@ -9,7 +9,7 @@ public class HookChain : MonoBehaviour
 
     private void Awake()
     {
-        hookChain = GetComponent<SpriteRenderer>();
+        hookChain = GetComponentInChildren<SpriteRenderer>();
         hookChain.enabled = false;
 
         _ChainFromPosition = transform.parent.parent;

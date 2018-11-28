@@ -1,15 +1,8 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(StateController))]
-public class Enemy : MonoBehaviour, Hookable, Aimable
+public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Weight weight;
-    public Weight Weight { get { return weight; } }
-
-    public void OnHookHit()
-    {
-    }
-
     public void Die()
     {
         Destroy(gameObject);
