@@ -2,13 +2,20 @@
 
 public class PlayerKeyboardInput : MonoBehaviour
 {
+    public Vector2Reference playerPosition;
+
     public Vector2Reference moveDirection;
     public Vector2Reference aimDirection;
+
+    public GameEvent OnHookInput;
 
     private void Update()
     {
         moveDirection.Variable.Value = GetMoveDirection();
         aimDirection.Variable.Value = GetAimDirection();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            OnHookInput.Raise();
     }
 
     private Vector2 GetMoveDirection()
@@ -28,6 +35,9 @@ public class PlayerKeyboardInput : MonoBehaviour
 
     private Vector2 GetAimDirection()
     {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 targetVector = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - playerPosition;
+        if (targetVector.magnitude > 1.0f)
+            targetVector = targetVector.normalized;
+        return targetVector;
     }
 }

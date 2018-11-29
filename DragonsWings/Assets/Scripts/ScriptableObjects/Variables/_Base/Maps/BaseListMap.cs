@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Maps/List Map")]
 public class BaseListMap<T> : BaseMap<System.Collections.Generic.List<T>>
 {

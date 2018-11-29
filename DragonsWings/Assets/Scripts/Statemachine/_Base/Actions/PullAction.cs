@@ -18,14 +18,12 @@ public class PullAction : Action
 
     public override void Act(StateController controller)
     {
-
-
         controller.rigidbody2D.velocity = (hookPosition - playerPosition).normalized * pullSpeed;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, _DamageCircleRadius, LayerList.PlayerAttack.LayerMask);
         for (int i = 0; i < colliders.Length; i++)
         {
-            HurtBox hurtBox = colliders[i].GetComponent<HurtBox>();
+            HurtBox hurtBox = colliders[i].GetComponentInSiblings<HurtBox>();
             if (hurtBox != null && !_AlreadyDamagedHurtBoxes.Contains(hurtBox))
             {
                 hurtBox.Hurt(_PullDamage);
@@ -45,13 +43,8 @@ public class PullAction : Action
     }
 
     public override void EnterState(StateController controller)
-    {
-        controller.rigidbody2D.velocity = (hookPosition - playerPosition).normalized * pullSpeed;
-        _AlreadyDamagedHurtBoxes = new System.Collections.Generic.List<HurtBox>();
-    }
+    { _AlreadyDamagedHurtBoxes = new System.Collections.Generic.List<HurtBox>(); }
 
     public override void ExitState(StateController controller)
-    {
-        controller.rigidbody2D.velocity = Vector2.zero;
-    }
+    { controller.rigidbody2D.velocity = Vector2.zero; }
 }

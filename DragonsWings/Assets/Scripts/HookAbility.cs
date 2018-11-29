@@ -9,18 +9,26 @@ public class HookAbility : MonoBehaviour
     public FloatReference _HookRange;
     public FloatReference _HookSpeed;
 
+    public FloatReference _PullSpeed;
+
     public FloatReference _Damage;
 
     public Vector2Reference _TargetPosition;
+
+    public HookResponderVariable _AttachedHookResponder;
 
     // Events
     public GameEvent OnHookShoot;
     public GameEvent OnHookHit;
     public GameEvent OnHookReset;
 
+    public GameEvent OnPullStart;
+    public GameEvent OnPullFinished;
+
+    public GameEvent OnObjectPickedUp;
+
     // Variables
     private bool _HookIsFlying;
-    private HookResponder _AttachedHookResponder;
 
     // Mono Behaviour
     private void Awake()
@@ -39,21 +47,17 @@ public class HookAbility : MonoBehaviour
     {
         if (_HookIsFlying || _TargetPosition.Value.Equals(transform.position)) { return; }
 
-        if (_AttachedHookResponder == null)
+        if (_AttachedHookResponder?.Value == null)
         {
             _HookIsFlying = true;
             _Hook.Shoot(_TargetPosition.Value);
             OnHookShoot.Raise();
         }
-        else
-        {
-            // Throw;
-        }
     }
 
-    public void HookHitSomething(Collider2D collision)
+    public void HookHitSomething(Collider2D collider)
     {
-        HookResponder hookResponder = collision.GetComponentInSiblings<HookResponder>();
+        HookResponder hookResponder = collider.GetComponentInSiblings<HookResponder>();
         if (hookResponder != null)
         {
             hookResponder.HitByHook(_Hook);
@@ -62,13 +66,18 @@ public class HookAbility : MonoBehaviour
                 case Weight.None:
                     break;
                 case Weight.Light:
-                    AttachHookResponder(hookResponder);
+                    _Hook.AttachHookResponder(hookResponder);
                     _Hook.FlyBack();
                     break;
                 case Weight.Medium:
+                    _PullSpeed.Value = _HookSpeed / 2.0f;
+                    _Hook.AttachHookResponder(hookResponder);
+                    OnPullStart.Raise();
                     _Hook.FlyBack();
                     break;
                 case Weight.Heavy:
+                    _PullSpeed.Value = _HookSpeed;
+                    OnPullStart.Raise();
                     break;
             }
         }
@@ -77,7 +86,21 @@ public class HookAbility : MonoBehaviour
 
     public void HookReachedPlayer()
     {
+        OnPullFinished.Raise();
+        PickUpHookResponder();
         ResetHook();
+    }
+
+    private void PickUpHookResponder()
+    {
+        HookResponder hookResponder = _Hook.DetachHookResponder();
+
+        if (hookResponder?._Weight == Weight.Light)
+        {
+            hookResponder.AttachToObject(transform);
+            _AttachedHookResponder.Value = hookResponder;
+            OnObjectPickedUp.Raise();
+        }
     }
 
     public void ResetHook()
@@ -86,17 +109,5 @@ public class HookAbility : MonoBehaviour
 
         _Hook.Reset();
         OnHookReset.Raise();
-    }
-
-    private void AttachHookResponder(HookResponder hookResponder)
-    {
-        _AttachedHookResponder = hookResponder;
-        hookResponder.AttachToObject(_Hook.transform);
-    }
-
-    private void ThrowHookResponder()
-    {
-        _AttachedHookResponder?.DetachFromObject();
-        _AttachedHookResponder = null;
     }
 }

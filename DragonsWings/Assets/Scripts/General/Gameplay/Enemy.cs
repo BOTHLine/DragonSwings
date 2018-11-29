@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     public void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        //    Destroy(gameObject);
     }
 }

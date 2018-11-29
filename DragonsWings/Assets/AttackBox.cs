@@ -14,6 +14,8 @@ public class AttackBox : MonoBehaviour
 
     public FloatReference _AttackRange_Temp;
 
+    public LayerMask _LayerMask;
+
     /*
     private void Update()
     {
@@ -41,7 +43,7 @@ public class AttackBox : MonoBehaviour
 
     private void Update()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _AttackRange_Temp, LayerList.EnemyAttack.LayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _AttackRange_Temp, _LayerMask);
         for (int i = 0; i < colliders.Length; i++)
         {
             HurtBox hurtBox = colliders[i].GetComponent<HurtBox>();

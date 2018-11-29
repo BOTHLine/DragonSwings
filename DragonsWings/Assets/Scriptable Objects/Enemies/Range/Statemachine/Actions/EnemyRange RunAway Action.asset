@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063dba874c6d96d43b9d72a8fd7dbf1f, type: 3}
+  m_Name: EnemyRange RunAway Action
+  m_EditorClassIdentifier: 
+  targetPosition:
+    UseType: 1
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  maxDistance:
+    UseType: 1
+    ConstantValue: 12
+    Variable: {fileID: 11400000, guid: 1ea62c35768a1ee49a922e17391a8431, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  moveDirection:
+    UseType: 2
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: 3cafedb1e0c67364c98be850865ea112, type: 2}
+    MapIdentifier: {fileID: 0}

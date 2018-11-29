@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Maps/Float Map")]
 public class FloatMap : BaseMap<float>
 {
