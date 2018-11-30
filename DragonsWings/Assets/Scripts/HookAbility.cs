@@ -23,7 +23,7 @@ public class HookAbility : MonoBehaviour
     public GameEvent OnHookReset;
 
     public GameEvent OnPullStart;
-    public GameEvent OnPullFinished;
+    public GameEvent OnPullFinish;
 
     public GameEvent OnObjectPickedUp;
 
@@ -90,7 +90,7 @@ public class HookAbility : MonoBehaviour
 
     public void HookReachedPlayer()
     {
-        OnPullFinished.Raise();
+        OnPullFinish.Raise();
         PickUpHookResponder();
         ResetHook();
     }

@@ -5,7 +5,7 @@ public class Hook : MonoBehaviour
 {
     // Components
     private Rigidbody2D _Rigidbody2D;
-    private Collider2D _Collider2D;
+    private PushBox _PushBox;
     private SpriteRenderer _SpriteRenderer;
 
     private LookForward _LookForward;
@@ -26,12 +26,12 @@ public class Hook : MonoBehaviour
     {
         _SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _Rigidbody2D = GetComponentInChildren<Rigidbody2D>();
-        _Collider2D = GetComponentInChildren<Collider2D>();
+        _PushBox = GetComponentInChildren<PushBox>();
 
         _LookForward = GetComponentInChildren<LookForward>();
 
         _SpriteRenderer.enabled = false;
-        _Collider2D.enabled = false;
+        _PushBox.gameObject.SetActive(false);
 
         _OldMass = _Rigidbody2D.mass;
         _OldDrag = _Rigidbody2D.drag;
@@ -74,7 +74,7 @@ public class Hook : MonoBehaviour
         transform.position = _HookAbility.transform.position;
         transform.LookAt2D(targetPosition, -90.0f);
 
-        _Collider2D.enabled = true;
+        _PushBox.gameObject.SetActive(true);
         _SpriteRenderer.enabled = true;
 
         _Rigidbody2D.velocity = (targetPosition - (Vector2)transform.position).normalized * _HookSpeed;
@@ -90,7 +90,7 @@ public class Hook : MonoBehaviour
     {
         _FlyingBack = true;
         _LookForward.correctionValue += 180;
-        _Collider2D.enabled = false;
+        _PushBox.gameObject.SetActive(false);
     }
 
     public void AttachHookResponder(HookResponder hookResponder)
@@ -117,7 +117,7 @@ public class Hook : MonoBehaviour
     public void Reset()
     {
         _FlyingBack = false;
-        _Collider2D.enabled = false;
+        _PushBox.gameObject.SetActive(false);
         _SpriteRenderer.enabled = false;
         _Rigidbody2D.velocity = Vector2.zero;
         _Rigidbody2D.angularVelocity = 0.0f;

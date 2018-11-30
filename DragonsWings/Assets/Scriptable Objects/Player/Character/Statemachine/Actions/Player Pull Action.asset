@@ -47,4 +47,5 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  OnPullFinish: {fileID: 11400000, guid: 88ddce240656d8f448a2d8825f67ba3f, type: 2}
   OnPullFinished: {fileID: 11400000, guid: 4e71e374e9a588048a15002da0c33133, type: 2}

@@ -14,6 +14,7 @@ public class PullAction : Action
 
     private System.Collections.Generic.List<HurtBox> _AlreadyDamagedHurtBoxes;
 
+    public GameEvent OnPullFinish;
     public GameEvent OnPullFinished;
 
     public override void Act(StateController controller)
@@ -39,12 +40,15 @@ public class PullAction : Action
         }
 
         if ((hookPosition - playerPosition).sqrMagnitude <= distanceThreshold * distanceThreshold)
-            OnPullFinished.Raise();
+            OnPullFinish.Raise();
     }
 
     public override void EnterState(StateController controller)
     { _AlreadyDamagedHurtBoxes = new System.Collections.Generic.List<HurtBox>(); }
 
     public override void ExitState(StateController controller)
-    { controller.rigidbody2D.velocity = Vector2.zero; }
+    {
+        controller.rigidbody2D.velocity = Vector2.zero;
+        OnPullFinished.Raise();
+    }
 }

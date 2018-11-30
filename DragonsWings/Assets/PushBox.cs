@@ -3,7 +3,7 @@
 public class PushBox : MonoBehaviour
 {
     // Components
-    public Collider2D _Collider2D;
+    [HideInInspector] public Collider2D _Collider2D;
 
     public UnityEngine.Events.UnityEvent OnCollide;
 

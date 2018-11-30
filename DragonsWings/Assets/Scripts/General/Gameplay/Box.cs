@@ -35,7 +35,6 @@ public class Box : MonoBehaviour
 
         _AlreadyDamagedHurtBoxes.Clear();
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, _DamageRadius, LayerList.CreateLayerMask(gameObject.layer));
-        Debug.Log(collider2Ds.Length);
         for (int i = 0; i < collider2Ds.Length; i++)
         {
             HurtBox hurtBox = collider2Ds[i].GetComponentInSiblings<HurtBox>();

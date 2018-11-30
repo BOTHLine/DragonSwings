@@ -3,17 +3,26 @@
 [RequireComponent(typeof(Collider2D))]
 public class HurtBox : MonoBehaviour
 {
+    [HideInInspector] public Collider2D _Collider2D;
+
+    //References
     public FloatReference _HealthMax;
     public FloatReference _HealthCurrent;
 
     // public GameEvent OnHurt;
 
+    //Events
     public UnityEngine.Events.UnityEvent OnHurtEvent;
     public UnityEngine.Events.UnityEvent OnDieEvent;
 
+    // Mono Behaviour
     private void Awake()
-    { _HealthCurrent.Value = _HealthMax; }
+    {
+        _Collider2D = GetComponent<Collider2D>();
+        _HealthCurrent.Value = _HealthMax;
+    }
 
+    // Methods
     public void Hurt(float damage)
     {
         // OnHurt.Raise();

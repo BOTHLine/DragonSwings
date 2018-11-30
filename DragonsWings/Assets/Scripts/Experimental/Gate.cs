@@ -9,14 +9,14 @@ public class Gate : MonoBehaviour
 
     public Sprite openPic;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         bool emptycheck = false;
 
@@ -25,7 +25,7 @@ public class Gate : MonoBehaviour
             emptycheck = true;
             foreach (GameObject current in EnemyList)
             {
-                if (current != null) emptycheck = false;
+                if (current.activeInHierarchy) emptycheck = false;
             }
 
         }
@@ -39,5 +39,5 @@ public class Gate : MonoBehaviour
                 current.transform.Find("SpriteRenderer").GetComponent<SpriteRenderer>().sortingOrder = 10;
             }
         }
-	}
+    }
 }

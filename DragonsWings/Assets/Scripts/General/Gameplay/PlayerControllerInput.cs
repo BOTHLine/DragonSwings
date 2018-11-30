@@ -28,11 +28,9 @@ public class PlayerControllerInput : MonoBehaviour
 
         if (GetAxisDown("Axis10")) { OnHookInput.Raise(); }
 
-        if (Input.GetKeyDown(KeyCode.K))
-            OnResetHookInput.Raise();
+        if (Input.GetKeyDown(KeyCode.K)) { OnResetHookInput.Raise(); }
 
-        if (Input.GetKeyDown(KeyCode.L))
-            OnResetLevelInput.Raise();
+        if (Input.GetKeyDown(KeyCode.L)) { OnResetLevelInput.Raise(); }
     }
 
     // Methods
@@ -79,7 +77,7 @@ public class PlayerControllerInput : MonoBehaviour
 
     private bool GetAxisDown(string name, float dead)
     {
-        bool value = false;
+        bool value;
         value = isAxisInUse.TryGetValue(name, out value);
 
         if (Mathf.Abs(Input.GetAxisRaw(name)) >= dead)

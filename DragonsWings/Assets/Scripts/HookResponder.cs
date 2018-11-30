@@ -5,6 +5,7 @@ public class HookResponder : MonoBehaviour
     // Components
     public Rigidbody2D _Rigidbody2D;
     public PushBox _PushBox;
+    public HurtBox _HurtBox;
 
     // References
     public bool _AutoAim;
@@ -28,6 +29,7 @@ public class HookResponder : MonoBehaviour
     {
         _Rigidbody2D = GetComponentInParent<Rigidbody2D>();
         _PushBox = transform.GetComponentInSiblings<PushBox>();
+        _HurtBox = transform.GetComponentInSiblings<HurtBox>();
 
         _OldParent = transform.parent.parent;
     }
@@ -42,6 +44,7 @@ public class HookResponder : MonoBehaviour
     {
         transform.parent.parent = targetObject.transform;
         _PushBox._Collider2D.enabled = false;
+        if (_HurtBox != null) { _HurtBox._Collider2D.enabled = false; }
         _OldRigidbodyType2D = _Rigidbody2D.bodyType;
         _Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         transform.parent.transform.position = targetObject.transform.position;
@@ -51,6 +54,7 @@ public class HookResponder : MonoBehaviour
     {
         transform.parent.parent = _OldParent;
         _PushBox._Collider2D.enabled = true;
+        if (_HurtBox != null) { _HurtBox._Collider2D.enabled = true; }
         _Rigidbody2D.bodyType = _OldRigidbodyType2D;
     }
 

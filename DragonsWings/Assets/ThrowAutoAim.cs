@@ -30,7 +30,15 @@ public class ThrowAutoAim : MonoBehaviour
         _AimRawPosition.Value = (Vector2)transform.position + (_AimRawDirection.Value * _AimRange);
 
         ThrowResponder throwResponder = FindClosestThrowResponder();
-        _AimAutoPosition.Value = throwResponder != null ? (Vector2)throwResponder.transform.position : _AimRawPosition;
+        if (throwResponder != null)
+        {
+            _AimAutoPosition.Value = throwResponder.transform.position;
+        }
+        else
+        {
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, _AimRawDirection, _AimRange, LayerList.PlayerProjectile.LayerMask);
+            _AimAutoPosition.Value = (Vector2)transform.position + _AimRawDirection.Value.normalized * raycastHit2D.distance;
+        }
     }
 
     private ThrowResponder FindClosestThrowResponder()

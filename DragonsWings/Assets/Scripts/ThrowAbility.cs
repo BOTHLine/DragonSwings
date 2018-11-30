@@ -21,10 +21,10 @@ public class ThrowAbility : MonoBehaviour
         HookResponder hookResponder = _HookResponder?.Value;
         if (hookResponder != null)
         {
-            _HookResponder.Value = null;
             hookResponder.DetachFromObject();
             hookResponder.StartThrow(_ThrowTargetPosition);
             OnObjectThrown.Raise();
+            _HookResponder.Value = null;
         }
     }
 }

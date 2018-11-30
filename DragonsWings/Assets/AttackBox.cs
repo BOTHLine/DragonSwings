@@ -27,7 +27,6 @@ public class AttackBox : MonoBehaviour
 
         int amount = _Collider2D.OverlapColliderWithOwnLayerMask(_Collider2Ds);
 
-        Debug.Log("AttackBox Amount: " + amount);
         for (int i = 0; i < amount; i++)
         {
             if (_Collider2Ds[i].transform.parent.tag == "Player")

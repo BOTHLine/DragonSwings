@@ -51,8 +51,6 @@ public class HitBox : MonoBehaviour
     {
         int amount = _Collider2D.OverlapColliderWithOwnLayerMask(_Collider2Ds);
 
-        Debug.Log("HitBox Amount: " + amount);
-
         for (int i = 0; i < amount; i++)
         { _Collider2Ds[i].GetComponent<HurtBox>()?.Hurt(_Damage); }
 
