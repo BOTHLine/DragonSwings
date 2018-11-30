@@ -19,7 +19,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4336390192309492}
-  m_Layer: 0
+  - component: {fileID: 58102284045655430}
+  - component: {fileID: 114870536015733196}
+  m_Layer: 9
   m_Name: PushBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4916580920457606}
   - component: {fileID: 114587921842986100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ThrowResponder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +52,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4283298895573798}
-  m_Layer: 0
+  - component: {fileID: 58820542364491468}
+  - component: {fileID: 114107978102199810}
+  m_Layer: 9
   m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +69,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4918468466820180}
-  m_Layer: 0
+  - component: {fileID: 212820028138451482}
+  - component: {fileID: 114107811872310788}
+  m_Layer: 9
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4203901005713954}
   - component: {fileID: 114136306249551966}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Vase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1604305306605650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.56, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4918468466820180}
@@ -157,6 +163,93 @@ Transform:
   m_Father: {fileID: 4203901005713954}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58102284045655430
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123302287943996}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!58 &58820542364491468
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304187615804810}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &114107811872310788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401183434794676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnlyOnce: 0
+  offset: 0
+--- !u!114 &114107978102199810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304187615804810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d8dfb272c8f404c8b596b0aefa2ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HealthMax:
+    UseType: 0
+    ConstantValue: 1
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _HealthCurrent:
+    UseType: 0
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  OnHurtEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114136306249551966}
+        m_MethodName: DestroyVase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114136306249551966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,6 +261,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7731b251f4a30d44b89a9e876312e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _PushBox: {fileID: 0}
+  _HurtBox: {fileID: 0}
+  _ThrowResponder: {fileID: 0}
+  _SpriteRenderer: {fileID: 0}
+  _DestroyedSprites:
+  - {fileID: 21300198, guid: 0c87d02ebf4d86547bee6ee33957bb8d, type: 3}
+  - {fileID: 21300200, guid: 0c87d02ebf4d86547bee6ee33957bb8d, type: 3}
 --- !u!114 &114587921842986100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,3 +288,71 @@ MonoBehaviour:
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _HurtBox: {fileID: 0}
+  OnHitByThrowUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114870536015733196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123302287943996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abeb34d6bc9a7541a3661c0892b40a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Collider2D: {fileID: 0}
+  OnCollide:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!212 &212820028138451482
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401183434794676}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300196, guid: 0c87d02ebf4d86547bee6ee33957bb8d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

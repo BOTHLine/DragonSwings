@@ -218,8 +218,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341257002829630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4798745136786774}
@@ -343,9 +343,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.25}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.25
 --- !u!58 &58704683278423998
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -616,6 +616,11 @@ MonoBehaviour:
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _HurtBox: {fileID: 0}
+  OnHitByThrowUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114846861979015422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -662,16 +667,16 @@ MonoBehaviour:
   _AutoAim: 1
   _AutoAimPriority: 0
   _Weight: 2
-  OnObjectLanded:
+  OnHitByHookUnityEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnHitByHookUnityEvent:
+  OnObjectLandedUnityEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: HookUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212231687896851186
 SpriteRenderer:
   m_ObjectHideFlags: 1

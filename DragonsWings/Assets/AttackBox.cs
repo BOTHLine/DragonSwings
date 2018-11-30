@@ -1,65 +1,61 @@
 ﻿using UnityEngine;
 
-// AttackBox is the area where the Entity starts to Attack
+[RequireComponent(typeof(Collider2D))]
 public class AttackBox : MonoBehaviour
 {
-    public Color attackBoxColor;
-    public Vector2Reference attackBoxSize;
+    // Components
+    [HideInInspector] public Collider2D _Collider2D;
 
-    public Vector2Reference targetPosition;
+    // References
+    public Vector2Reference _TargetPosition;
 
-    public BoolReference isPlayerInAttackRange;
+    public BoolReference _IsPlayerInAttackRange;
 
-    public float testAngle = 0;
+    // Variables
+    private Collider2D[] _Collider2Ds;
 
-    public FloatReference _AttackRange_Temp;
-
-    public LayerMask _LayerMask;
-
-    /*
-    private void Update()
+    // Mono Behaviour
+    private void Awake()
     {
-        transform.rotation = Utils.GetLookAtRotation(transform.position, targetPosition, 90.0f);
-        // transform.rotation = Utils.GetLookAtRotation(Vector2.down, testAngle);
-        Vector2 center = (Vector2)transform.position + (targetPosition - (Vector2)transform.position).normalized * attackBoxSize.Value.y / 2.0f;
-        float angle = Quaternion.Angle(Utils.GetLookAtRotation(transform.position, targetPosition), Quaternion.identity);
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position - new Vector3(0.0f, attackBoxSize.Value.y / 2.0f), attackBoxSize, testAngle + 90, LayerList.CreateLayerMask
-            (gameObject.layer));
-
-        if (colliders.Length > 0)
-        {
-            foreach (Collider2D collider in colliders)
-            {
-                if (collider.tag == "Player")
-                {
-                    isPlayerInAttackRange.Value = true;
-                    return;
-                }
-            }
-        }
-        isPlayerInAttackRange.Value = false;
+        _Collider2D = GetComponent<Collider2D>();
+        _Collider2Ds = new Collider2D[50];
     }
-    */
 
     private void Update()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _AttackRange_Temp, _LayerMask);
-        for (int i = 0; i < colliders.Length; i++)
+        transform.LookAt2D(_TargetPosition, -90.0f);
+
+        int amount = _Collider2D.OverlapColliderWithOwnLayerMask(_Collider2Ds);
+
+        Debug.Log("AttackBox Amount: " + amount);
+        for (int i = 0; i < amount; i++)
         {
-            HurtBox hurtBox = colliders[i].GetComponent<HurtBox>();
-            if (hurtBox != null)
+            if (_Collider2Ds[i].transform.parent.tag == "Player")
             {
-                isPlayerInAttackRange.Value = true;
+                _IsPlayerInAttackRange.Value = true;
                 return;
             }
         }
-        isPlayerInAttackRange.Value = false;
+        _IsPlayerInAttackRange.Value = false;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    { if (collision.transform.parent.tag == "Player") { _IsPlayerInAttackRange.Value = true; } }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    { if (collision.transform.parent.tag == "Player") { _IsPlayerInAttackRange.Value = false; } }
+
+    // Debug
+    public Color _DebugColor;
 
     private void OnDrawGizmos()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
-        Gizmos.color = attackBoxColor;
-        Gizmos.DrawCube(Vector3.down * attackBoxSize.Value.y / 2.0f, attackBoxSize.Value);
+        Gizmos.color = _DebugColor;
+        if (_Collider2D is BoxCollider2D)
+        {
+            BoxCollider2D boxCollider2D = _Collider2D as BoxCollider2D;
+            Gizmos.DrawCube(boxCollider2D.offset, new Vector2(boxCollider2D.size.x, boxCollider2D.size.y));
+        }
     }
 }

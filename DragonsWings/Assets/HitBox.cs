@@ -1,49 +1,75 @@
 ﻿using UnityEngine;
 
-// HitBox is the area where this entities damages others
+[RequireComponent(typeof(Collider2D))]
 public class HitBox : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    // Components
+    private Collider2D _Collider2D;
+    private SpriteRenderer _SpriteRenderer;
 
-    public Color hitBoxColor;
-    public Vector2Reference hitBoxSize;
+    // References
+    public Vector2Reference _TargetPosition;
 
-    public Vector2Reference targetPosition;
+    public BoolReference _IsAttackStarting;
+    public BoolReference _IsAttacking;
 
-    public FloatReference damage;
+    // Variables
+    public FloatReference _Damage;
+
+    private Collider2D[] _Collider2Ds;
+
+    // Mono Behaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _Collider2D = GetComponent<Collider2D>();
+        _SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void OnDrawGizmos()
+    private void Update()
     {
-        Gizmos.matrix = transform.localToWorldMatrix;
-        Gizmos.color = hitBoxColor;
-        Gizmos.DrawCube(Vector3.down * hitBoxSize.Value.y / 2.0f, hitBoxSize.Value);
+        if (_IsAttackStarting.Value)
+        {
+            AttackStart();
+            _IsAttackStarting.Value = false;
+        }
+        if (_IsAttacking.Value)
+        {
+            Attack();
+            _IsAttacking.Value = false;
+        }
     }
 
+    // Méthods
     public void AttackStart()
     {
-        transform.LookAt2D(targetPosition, 90.0f);
-        spriteRenderer.enabled = true;
+        transform.LookAt2D(_TargetPosition, -90.0f);
+        _SpriteRenderer.enabled = true;
     }
 
     public void Attack()
     {
-        Vector2 directionVector = (transform.rotation * Vector2.down).normalized;
-        Vector2 center = (Vector2)transform.position + (directionVector * hitBoxSize.Value.y);
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(center, hitBoxSize, 0);
-        foreach (Collider2D collider in colliders)
+        int amount = _Collider2D.OverlapColliderWithOwnLayerMask(_Collider2Ds);
+
+        Debug.Log("HitBox Amount: " + amount);
+
+        for (int i = 0; i < amount; i++)
+        { _Collider2Ds[i].GetComponent<HurtBox>()?.Hurt(_Damage); }
+
+        _SpriteRenderer.enabled = false;
+    }
+
+    // Debug
+    public Color _DebugColor;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.color = _DebugColor;
+        if (_Collider2D is BoxCollider2D)
         {
-            if (collider.tag == "Player")
-            {
-                HurtBox hurtBox = collider.GetComponent<HurtBox>();
-                if (hurtBox != null && hurtBox.transform.parent != transform.parent)
-                    hurtBox.Hurt(damage);
-            }
+            BoxCollider2D boxCollider2D = _Collider2D as BoxCollider2D;
+            Gizmos.DrawCube(boxCollider2D.offset, new Vector2(boxCollider2D.size.x, boxCollider2D.size.y));
         }
-        spriteRenderer.enabled = false;
     }
 }

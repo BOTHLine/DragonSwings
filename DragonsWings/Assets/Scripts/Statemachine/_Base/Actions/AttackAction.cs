@@ -3,15 +3,15 @@
 [CreateAssetMenu(menuName = "Statemachine/Actions/Attack Action")]
 public class AttackAction : Action
 {
-    public GameEvent OnEnemyAttackStart;
-    public GameEvent OnEnemyAttack;
+    public BoolReference _IsAttackStarting;
+    public BoolReference _IsAttacking;
 
     public override void Act(StateController controller)
     { }
 
     public override void EnterState(StateController controller)
-    { OnEnemyAttackStart.Raise(); }
+    { _IsAttackStarting.Set(true, controller.gameObject); }
 
     public override void ExitState(StateController controller)
-    { OnEnemyAttack.Raise(); }
+    { _IsAttacking.Set(true, controller.gameObject); }
 }
