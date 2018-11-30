@@ -46,22 +46,16 @@ public class Hook : MonoBehaviour
 
             if (targetVector.sqrMagnitude <= (_Rigidbody2D.velocity * Time.fixedDeltaTime * 2.0f).sqrMagnitude)
             { _HookAbility.HookReachedPlayer(); }
-
-            // Velocity -> Units per Second
-            // Abstand < Units per Frame
-            // 
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _Rigidbody2D.velocity = Vector2.zero;
         _HookAbility.HookHitSomething(collision.collider);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _Rigidbody2D.velocity = Vector2.zero;
         _HookAbility.HookHitSomething(collision);
     }
 
@@ -83,9 +77,14 @@ public class Hook : MonoBehaviour
         _Collider2D.enabled = true;
         _SpriteRenderer.enabled = true;
 
-        //   _Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         _Rigidbody2D.velocity = (targetPosition - (Vector2)transform.position).normalized * _HookSpeed;
     }
+
+    public void ResetVelocity()
+    { _Rigidbody2D.velocity = _Rigidbody2D.velocity.normalized * _HookSpeed; }
+
+    public void StopHook()
+    { _Rigidbody2D.velocity = Vector2.zero; }
 
     public void FlyBack()
     {
@@ -120,7 +119,6 @@ public class Hook : MonoBehaviour
         _FlyingBack = false;
         _Collider2D.enabled = false;
         _SpriteRenderer.enabled = false;
-        //   _Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         _Rigidbody2D.velocity = Vector2.zero;
         _Rigidbody2D.angularVelocity = 0.0f;
 

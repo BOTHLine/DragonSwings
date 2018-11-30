@@ -18,6 +18,7 @@ public class ThrowResponderEditor : Editor
         EditorGUILayout.EndHorizontal();
 
         serializedObject.Update();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("OnHitByThrowUnityEvent"), true);
         serializedObject.ApplyModifiedProperties();
     }
 }

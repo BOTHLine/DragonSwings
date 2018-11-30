@@ -21,8 +21,8 @@ public class HookResponderEditor : Editor
 
         serializedObject.Update();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("OnHitByHookUnityEvent"), true);
-        if (instance._Weight == Weight.Light || instance._Weight == Weight.None)
-        { EditorGUILayout.PropertyField(serializedObject.FindProperty("OnObjectLanded"), true); }
+        if (instance._Weight == Weight.Light)
+        { EditorGUILayout.PropertyField(serializedObject.FindProperty("OnObjectLandedUnityEvent"), true); }
         serializedObject.ApplyModifiedProperties();
     }
 }

@@ -19,10 +19,9 @@ public class HookResponder : MonoBehaviour
 
     private RigidbodyType2D _OldRigidbodyType2D;
 
-    public UnityEngine.Events.UnityEvent OnObjectLanded;
-
     // Events
-    public HookUnityEvent OnHitByHookUnityEvent;
+    public UnityEngine.Events.UnityEvent OnHitByHookUnityEvent;
+    public UnityEngine.Events.UnityEvent OnObjectLandedUnityEvent;
 
     // Mono Behaviour
     private void Awake()
@@ -34,9 +33,9 @@ public class HookResponder : MonoBehaviour
     }
 
     // Methods
-    public void HitByHook(Hook hook)
+    public void HitByHook()
     {
-        OnHitByHookUnityEvent.Invoke(hook);
+        OnHitByHookUnityEvent.Invoke();
     }
 
     public void AttachToObject(Transform targetObject)
@@ -77,7 +76,7 @@ public class HookResponder : MonoBehaviour
             flyCounter++;
             yield return new WaitForEndOfFrame();
         }
-        OnObjectLanded.Invoke();
+        OnObjectLandedUnityEvent.Invoke();
         StopCoroutine(_CurrentThrowRoutine);
     }
 

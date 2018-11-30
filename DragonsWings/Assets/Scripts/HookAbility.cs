@@ -60,10 +60,11 @@ public class HookAbility : MonoBehaviour
         HookResponder hookResponder = collider.GetComponentInSiblings<HookResponder>();
         if (hookResponder != null)
         {
-            hookResponder.HitByHook(_Hook);
+            hookResponder.HitByHook();
             switch (hookResponder._Weight)
             {
                 case Weight.None:
+                    _Hook.ResetVelocity();
                     break;
                 case Weight.Light:
                     _Hook.AttachHookResponder(hookResponder);
@@ -77,10 +78,13 @@ public class HookAbility : MonoBehaviour
                     break;
                 case Weight.Heavy:
                     _PullSpeed.Value = _HookSpeed;
+                    _Hook.StopHook();
                     OnPullStart.Raise();
                     break;
             }
         }
+        else
+        { _Hook.FlyBack(); }
         OnHookHit.Raise();
     }
 

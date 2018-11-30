@@ -11,14 +11,13 @@ public class HookAutoAim : MonoBehaviour
     // References
     [SerializeField] private FloatReference _AimRange;
     [SerializeField] private Vector2Reference _AimRawDirection;
+    [SerializeField] private Vector2Reference _AimRawPosition;
 
     [SerializeField] private FloatReference _AimAutoRadius;
 
     [SerializeField] private Vector2Reference _AimAutoPosition;
 
     // Variables
-    private Vector2 aimRawPosition;
-
     [SerializeField] private Color NoAimColor;
     [SerializeField] private Color NoTargetColor;
     [SerializeField] private Color TargetFoundColor;
@@ -28,10 +27,10 @@ public class HookAutoAim : MonoBehaviour
 
     private void Update()
     {
-        aimRawPosition = (Vector2)transform.position + (_AimRawDirection.Value * _AimRange);
+        _AimRawPosition.Value = (Vector2)transform.position + (_AimRawDirection.Value * _AimRange);
 
         HookResponder hookResponder = FindClosestHookResponder();
-        _AimAutoPosition.Value = hookResponder != null ? (Vector2)hookResponder.transform.position : aimRawPosition;
+        _AimAutoPosition.Value = hookResponder != null ? (Vector2)hookResponder.transform.position : _AimRawPosition;
     }
 
     private HookResponder FindClosestHookResponder()
@@ -40,7 +39,7 @@ public class HookAutoAim : MonoBehaviour
 
         ClosestHookResponder closestHookResponder = new ClosestHookResponder();
 
-        Vector2 closestTarget = aimRawPosition;
+        Vector2 closestTarget = _AimRawPosition;
         RaycastHit2D[] raycastHit2Ds = Physics2D.CircleCastAll((Vector2)transform.position + (_AimRawDirection.Value.normalized * _AimAutoRadius), _AimAutoRadius, _AimRawDirection, _AimRange, LayerList.PlayerProjectile.LayerMask);
         for (int i = 0; i < raycastHit2Ds.Length; i++)
         {
