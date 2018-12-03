@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DottedLine : MonoBehaviour
 {
-    public Vector2Reference _AimPosition;
+    public Vector2Reference _AimDirection;
     public GameObject aimingDot;
 
     public Vector3 startPoint;
@@ -37,7 +37,7 @@ public class DottedLine : MonoBehaviour
         //Cam setzt die z Position auf -10 ... das fixe ich hiermit: ++ new Vector3 (0,0,10)
         //endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
 
-        endPoint = gameObject.transform.parent.position + (((Vector3)_AimPosition.Value - transform.parent.position).normalized * checkRange());
+        endPoint = (Vector2)gameObject.transform.parent.position + _AimDirection.Value * checkRange();
 
         cursor.transform.position = endPoint;
 
@@ -119,7 +119,7 @@ public class DottedLine : MonoBehaviour
         //    int layerMask = 1 << 13;
 
         //LayerList.Hook.LayerMask
-        RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, (Vector3)_AimPosition.Value - transform.parent.position, range, LayerList.PlayerProjectile.LayerMask);
+        RaycastHit2D raycasthit = Physics2D.Raycast(transform.parent.position, _AimDirection, range, LayerList.PlayerProjectile.LayerMask);
         if (raycasthit.collider)
         {
             //result = (raycasthit.transform.position - transform.parent.position).magnitude;

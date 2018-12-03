@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: OnAttackFinished Timer Decision
   m_EditorClassIdentifier: 
   time:
-    UseType: 0
+    UseType: 1
     ConstantValue: 0.5
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 58c3b990377d35e48965c6c334c835d7, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

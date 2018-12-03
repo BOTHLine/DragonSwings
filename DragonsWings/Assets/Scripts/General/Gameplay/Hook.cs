@@ -54,11 +54,6 @@ public class Hook : MonoBehaviour
         _HookAbility.HookHitSomething(collision.collider);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        _HookAbility.HookHitSomething(collision);
-    }
-
     // Methods
     public void Initialize(HookAbility hookAbility, float hookSpeed)
     {
@@ -68,7 +63,7 @@ public class Hook : MonoBehaviour
 
     public void Shoot(Vector2 targetPosition)
     {
-        _LookForward.correctionValue -= 180;
+        _LookForward._CorrectionValue -= 180;
 
         transform.parent = null;
         transform.position = _HookAbility.transform.position;
@@ -89,12 +84,13 @@ public class Hook : MonoBehaviour
     public void FlyBack()
     {
         _FlyingBack = true;
-        _LookForward.correctionValue += 180;
+        _LookForward._CorrectionValue += 180;
         _PushBox.gameObject.SetActive(false);
     }
 
     public void AttachHookResponder(HookResponder hookResponder)
     {
+        if (_AttachedHookResponder != null) return;
         _AttachedHookResponder = hookResponder;
         hookResponder.AttachToObject(transform);
 

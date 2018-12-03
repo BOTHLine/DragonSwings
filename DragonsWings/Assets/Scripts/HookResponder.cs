@@ -67,14 +67,16 @@ public class HookResponder : MonoBehaviour
     private System.Collections.IEnumerator Throw(Vector2 targetPosition)
     {
         float flyCounter = 0.0f;
-        float flyTime = 20.0f; // TODO Remove magic number flyTime;
-        float height = 3.0f; // TODO Remove magic number height;
+        float flyTime = 15.0f; // TODO Remove magic number flyTime;
+        float height = 2.0f; // TODO Remove magic number height;
 
         Vector2 startPosition = transform.position;
 
-        while (targetPosition.SquaredDistanceTo(transform.position) >= 0.0001f)
+        Vector2 realTargetPosition = targetPosition + (startPosition - targetPosition).normalized * 0.5f;
+
+        while (realTargetPosition.SquaredDistanceTo(transform.position) >= 0.0001f)
         {
-            Vector2 nextPosition = CalculateParabola(startPosition, targetPosition, height, flyCounter / flyTime);
+            Vector2 nextPosition = CalculateParabola(startPosition, realTargetPosition, height, flyCounter / flyTime);
             transform.parent.position = nextPosition;
 
             flyCounter++;

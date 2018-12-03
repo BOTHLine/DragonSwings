@@ -5,7 +5,9 @@ public class HitBox : MonoBehaviour
 {
     // Components
     private Collider2D _Collider2D;
-    private SpriteRenderer _SpriteRenderer;
+
+    public SpriteRenderer _Indicator;
+    public SpriteRenderer _Slash;
 
     // References
     public Vector2Reference _TargetPosition;
@@ -18,12 +20,14 @@ public class HitBox : MonoBehaviour
 
     private Collider2D[] _Collider2Ds;
 
+    private System.Collections.Generic.List<HurtBox> _HurtBoxesInRange;
+
     // Mono Behaviour
 
     private void Awake()
     {
         _Collider2D = GetComponent<Collider2D>();
-        _SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _HurtBoxesInRange = new System.Collections.Generic.List<HurtBox>();
     }
 
     private void Update()
@@ -40,21 +44,48 @@ public class HitBox : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    { AddHurtBox(collision.GetComponent<HurtBox>()); }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    { RemoveHurtBox(collision.GetComponent<HurtBox>()); }
+
     // Méthods
     public void AttackStart()
     {
         transform.LookAt2D(_TargetPosition, -90.0f);
-        _SpriteRenderer.enabled = true;
+        _Indicator.enabled = true;
     }
 
     public void Attack()
     {
+        /*
         int amount = _Collider2D.OverlapColliderWithOwnLayerMask(_Collider2Ds);
 
         for (int i = 0; i < amount; i++)
         { _Collider2Ds[i].GetComponent<HurtBox>()?.Hurt(_Damage); }
+        */
+        foreach (HurtBox hurtBox in _HurtBoxesInRange)
+        { hurtBox.Hurt(_Damage); }
 
-        _SpriteRenderer.enabled = false;
+        _Indicator.enabled = false;
+        _Slash.enabled = true;
+
+        System.Collections.IEnumerator DisableSlashRendererCoroutine = DisableSlashRenderer(0.1f);
+        StartCoroutine(DisableSlashRendererCoroutine);
+    }
+
+    private void AddHurtBox(HurtBox hurtBox)
+    {
+        if (hurtBox == null) return;
+        if (_HurtBoxesInRange.Contains(hurtBox)) return;
+        _HurtBoxesInRange.Add(hurtBox);
+    }
+
+    private void RemoveHurtBox(HurtBox hurtBox)
+    {
+        if (hurtBox == null) return;
+        _HurtBoxesInRange.Remove(hurtBox);
     }
 
     // Debug
@@ -69,5 +100,11 @@ public class HitBox : MonoBehaviour
             BoxCollider2D boxCollider2D = _Collider2D as BoxCollider2D;
             Gizmos.DrawCube(boxCollider2D.offset, new Vector2(boxCollider2D.size.x, boxCollider2D.size.y));
         }
+    }
+
+    private System.Collections.IEnumerator DisableSlashRenderer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _Slash.enabled = false;
     }
 }

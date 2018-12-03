@@ -25,6 +25,7 @@ public class AttackBox : MonoBehaviour
     {
         transform.LookAt2D(_TargetPosition, -90.0f);
 
+        /*
         int amount = _Collider2D.OverlapColliderWithOwnLayerMask(_Collider2Ds);
 
         for (int i = 0; i < amount; i++)
@@ -36,13 +37,16 @@ public class AttackBox : MonoBehaviour
             }
         }
         _IsPlayerInAttackRange.Value = false;
+        */
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     { if (collision.transform.parent.tag == "Player") { _IsPlayerInAttackRange.Value = true; } }
 
     private void OnTriggerExit2D(Collider2D collision)
     { if (collision.transform.parent.tag == "Player") { _IsPlayerInAttackRange.Value = false; } }
+
 
     // Debug
     public Color _DebugColor;

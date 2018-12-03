@@ -23,3 +23,15 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 11400000, guid: 6a8acd6cbf6287146b60f2efaef7bfa6, type: 2}
     MapIdentifier: {fileID: 0}
+  _CurrentAttackCooldown:
+    UseType: 2
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6, type: 2}
+    MapIdentifier: {fileID: 0}
+  _TotalAttackCooldown:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 9a7f41abd1dd67c4fbd1aa4bab497400, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}

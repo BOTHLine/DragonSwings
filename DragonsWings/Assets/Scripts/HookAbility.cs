@@ -3,7 +3,8 @@
 public class HookAbility : MonoBehaviour
 {
     // Components
-    public Hook _Hook;
+    private AbilityManager _AbilityManager;
+    private Hook _Hook;
 
     // References
     public FloatReference _HookRange;
@@ -25,7 +26,7 @@ public class HookAbility : MonoBehaviour
     public GameEvent OnPullStart;
     public GameEvent OnPullFinish;
 
-    public GameEvent OnObjectPickedUp;
+    public GameEvent OnObjectPickUp;
 
     // Variables
     private bool _HookIsFlying;
@@ -33,6 +34,8 @@ public class HookAbility : MonoBehaviour
     // Mono Behaviour
     private void Awake()
     {
+        _AbilityManager = GetComponentInParent<AbilityManager>();
+        _Hook = GetComponentInChildren<Hook>();
         _Hook.Initialize(this, _HookSpeed);
     }
 
@@ -47,16 +50,14 @@ public class HookAbility : MonoBehaviour
     {
         if (_HookIsFlying || _TargetPosition.Value.Equals(transform.position)) { return; }
 
-        if (_AttachedHookResponder?.Value == null)
-        {
-            _HookIsFlying = true;
-            _Hook.Shoot(_TargetPosition.Value);
-            OnHookShoot.Raise();
-        }
+        _HookIsFlying = true;
+        _Hook.Shoot(_TargetPosition.Value);
+        OnHookShoot.Raise();
     }
 
     public void HookHitSomething(Collider2D collider)
     {
+        OnHookHit.Raise();
         HookResponder hookResponder = collider.GetComponentInSiblings<HookResponder>();
         if (hookResponder != null)
         {
@@ -83,27 +84,33 @@ public class HookAbility : MonoBehaviour
                     break;
             }
         }
-        else
-        { _Hook.FlyBack(); }
-        OnHookHit.Raise();
+        else { _Hook.FlyBack(); }
     }
 
     public void HookReachedPlayer()
     {
         OnPullFinish.Raise();
-        PickUpHookResponder();
         ResetHook();
+        PickUpHookResponder();
     }
 
     private void PickUpHookResponder()
     {
         HookResponder hookResponder = _Hook.DetachHookResponder();
+        if (hookResponder == null) return;
 
-        if (hookResponder?._Weight == Weight.Light)
+        switch (hookResponder._Weight)
         {
-            hookResponder.AttachToObject(transform);
-            _AttachedHookResponder.Value = hookResponder;
-            OnObjectPickedUp.Raise();
+            case Weight.None:
+                break;
+            case Weight.Light:
+                _AttachedHookResponder.Value = hookResponder;
+                OnObjectPickUp.Raise();
+                break;
+            case Weight.Medium:
+                break;
+            case Weight.Heavy:
+                break;
         }
     }
 

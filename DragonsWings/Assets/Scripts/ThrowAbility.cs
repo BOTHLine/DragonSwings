@@ -10,21 +10,19 @@ public class ThrowAbility : MonoBehaviour
     // Variables
 
     // Events
-    public GameEvent OnObjectPickedUp;
     public GameEvent OnObjectThrown;
 
     // Mono Behaviour
 
+    private void OnEnable()
+    { _HookResponder.Value.AttachToObject(transform); }
+
     // Methods
     public void ThrowObject()
     {
-        HookResponder hookResponder = _HookResponder?.Value;
-        if (hookResponder != null)
-        {
-            hookResponder.DetachFromObject();
-            hookResponder.StartThrow(_ThrowTargetPosition);
-            OnObjectThrown.Raise();
-            _HookResponder.Value = null;
-        }
+        _HookResponder.Value.DetachFromObject();
+        _HookResponder.Value.StartThrow(_ThrowTargetPosition);
+        _HookResponder.Value = null;
+        OnObjectThrown.Raise();
     }
 }

@@ -15,6 +15,7 @@ public class HookAutoAim : MonoBehaviour
 
     [SerializeField] private FloatReference _AimAutoRadius;
 
+    [SerializeField] private Vector2Reference _AimAutoDirection;
     [SerializeField] private Vector2Reference _AimAutoPosition;
 
     // Variables
@@ -30,6 +31,7 @@ public class HookAutoAim : MonoBehaviour
         _AimRawPosition.Value = (Vector2)transform.position + (_AimRawDirection.Value * _AimRange);
 
         HookResponder hookResponder = FindClosestHookResponder();
+        _AimAutoDirection.Value = hookResponder != null ? (Vector2)(hookResponder.transform.position - transform.position).normalized : _AimRawDirection;
         _AimAutoPosition.Value = hookResponder != null ? (Vector2)hookResponder.transform.position : _AimRawPosition;
     }
 

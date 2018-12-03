@@ -3,10 +3,14 @@
 public class Box : MonoBehaviour
 {
     // Components
-    private SpriteRenderer _SpriteRenderer;
+    public SpriteRenderer _SpriteRenderer;
     private PushBox _PushBox;
     private HurtBox _HurtBox;
     private HookResponder _HookResponder;
+
+    public SpriteRenderer _LandedAnimationRenderer;
+
+    public Sprite[] _LandedAnimationSprites;
 
     // Reference
     public FloatReference _Damage;
@@ -22,7 +26,6 @@ public class Box : MonoBehaviour
     // Mono Behaviour
     private void Awake()
     {
-        _SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _PushBox = GetComponentInChildren<PushBox>();
         _HurtBox = GetComponentInChildren<HurtBox>();
         _HookResponder = GetComponentInChildren<HookResponder>();
@@ -45,6 +48,9 @@ public class Box : MonoBehaviour
                 continue;
             }
         }
+
+        System.Collections.IEnumerator PlayLandedAnimationCoroutine = PlayLandedAnimation(0.1f);
+        StartCoroutine(PlayLandedAnimationCoroutine);
     }
 
     public void ChangeSprite()
@@ -55,5 +61,16 @@ public class Box : MonoBehaviour
         _PushBox?.gameObject.SetActive(false);
         _HurtBox?.gameObject.SetActive(false);
         _HookResponder?.gameObject.SetActive(false);
+    }
+
+    private System.Collections.IEnumerator PlayLandedAnimation(float time)
+    {
+        _LandedAnimationRenderer.enabled = true;
+        for (int i = 0; i < _LandedAnimationSprites.Length; i++)
+        {
+            _LandedAnimationRenderer.sprite = _LandedAnimationSprites[i];
+            yield return new WaitForSeconds(time);
+        }
+        _LandedAnimationRenderer.enabled = false;
     }
 }

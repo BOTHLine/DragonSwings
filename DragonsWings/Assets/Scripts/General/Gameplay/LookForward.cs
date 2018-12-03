@@ -2,19 +2,19 @@
 
 public class LookForward : MonoBehaviour
 {
-    new public Rigidbody2D rigidbody2D;
-    public float correctionValue;
+    public Rigidbody2D _Rigidbody2D;
+    public float _CorrectionValue;
 
     private void Awake()
     {
-        rigidbody2D = GetComponentInParent<Rigidbody2D>();
+        _Rigidbody2D = GetComponentInParent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (rigidbody2D.velocity.Equals(Vector2.zero))
+        if (_Rigidbody2D.velocity.Equals(Vector2.zero))
             return;
 
-        transform.parent.LookAt2D(rigidbody2D.velocity, correctionValue);
+        transform.parent.rotation = Utils.GetLookAtRotation(_Rigidbody2D.velocity, _CorrectionValue);
     }
 }

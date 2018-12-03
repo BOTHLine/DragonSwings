@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0693b511eedf364ebe4b30e0ff399af, type: 3}
   m_Name: EnemyMelee AttackTime
   m_EditorClassIdentifier: 
-  InitialValue: 0
-  _Value: 0
+  InitialValue: 1
+  _Value: 1
