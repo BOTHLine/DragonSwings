@@ -14,6 +14,7 @@ public class HookAbility : MonoBehaviour
 
     public FloatReference _Damage;
 
+    public Vector2Reference _TargetDirection;
     public Vector2Reference _TargetPosition;
 
     public HookResponderVariable _AttachedHookResponder;
@@ -48,7 +49,7 @@ public class HookAbility : MonoBehaviour
     // Methods
     public void ShootHook()
     {
-        if (_HookIsFlying || _TargetPosition.Value.Equals(transform.position)) { return; }
+        if (_HookIsFlying || _TargetDirection.Value.Equals(Vector2.zero)) { return; }
 
         _HookIsFlying = true;
         _Hook.Shoot(_TargetPosition.Value);

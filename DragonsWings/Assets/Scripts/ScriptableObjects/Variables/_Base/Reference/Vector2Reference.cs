@@ -13,4 +13,6 @@ public class Vector2Reference : BaseReference<Vector2Variable, Vector2Map, Vecto
 
     public override bool Equals(object obj) { return base.Equals(obj); }
     public override int GetHashCode() { return base.GetHashCode(); }
+
+    public bool Equals(Vector2 vector2) { return Value.Equals(vector2); }
 }

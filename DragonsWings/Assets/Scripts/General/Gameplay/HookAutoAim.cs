@@ -18,6 +18,8 @@ public class HookAutoAim : MonoBehaviour
     [SerializeField] private Vector2Reference _AimAutoDirection;
     [SerializeField] private Vector2Reference _AimAutoPosition;
 
+    [SerializeField] private BoolReference _UseAutoAim;
+
     // Variables
     [SerializeField] private Color NoAimColor;
     [SerializeField] private Color NoTargetColor;
@@ -30,14 +32,16 @@ public class HookAutoAim : MonoBehaviour
     {
         _AimRawPosition.Value = (Vector2)transform.position + (_AimRawDirection.Value * _AimRange);
 
-        HookResponder hookResponder = FindClosestHookResponder();
+        HookResponder hookResponder = null;
+        if (_UseAutoAim.Value) { hookResponder = FindClosestHookResponder(); }
+
         _AimAutoDirection.Value = hookResponder != null ? (Vector2)(hookResponder.transform.position - transform.position).normalized : _AimRawDirection;
         _AimAutoPosition.Value = hookResponder != null ? (Vector2)hookResponder.transform.position : _AimRawPosition;
     }
 
     private HookResponder FindClosestHookResponder()
     {
-        if ((_AimRawDirection).Equals(Vector2.zero)) { return null; }
+        if ((_AimRawDirection.Value).Equals(Vector2.zero)) { return null; }
 
         ClosestHookResponder closestHookResponder = new ClosestHookResponder();
 

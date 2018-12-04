@@ -12,6 +12,8 @@ public class PlayerControllerInput : MonoBehaviour
 
     // Events
     public GameEvent OnHookInput;
+    public GameEvent OnToogleAutoAimInput;
+
     public GameEvent OnResetHookInput;
     public GameEvent OnResetLevelInput;
 
@@ -27,6 +29,8 @@ public class PlayerControllerInput : MonoBehaviour
         aimDirection.Variable.Value = GetAxis2D("Axis4", "Axis5");
 
         if (GetAxisDown("Axis10")) { OnHookInput.Raise(); }
+
+        if (Input.GetKeyDown(KeyCode.JoystickButton4)) { OnToogleAutoAimInput.Raise(); }
 
         if (Input.GetKeyDown(KeyCode.K)) { OnResetHookInput.Raise(); }
 

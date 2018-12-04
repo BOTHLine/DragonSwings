@@ -53,13 +53,13 @@ public class HookResponder : MonoBehaviour
     public void DetachFromObject()
     {
         transform.parent.parent = _OldParent;
-        _PushBox._Collider2D.enabled = true;
-        if (_HurtBox != null) { _HurtBox._Collider2D.enabled = true; }
         _Rigidbody2D.bodyType = _OldRigidbodyType2D;
     }
 
     public void StartThrow(Vector2 targetPosition)
     {
+        DetachFromObject();
+
         _CurrentThrowRoutine = Throw(targetPosition);
         StartCoroutine(_CurrentThrowRoutine);
     }
@@ -82,7 +82,7 @@ public class HookResponder : MonoBehaviour
             flyCounter++;
             yield return new WaitForEndOfFrame();
         }
-        OnObjectLandedUnityEvent.Invoke();
+        ObjectLanded();
         StopCoroutine(_CurrentThrowRoutine);
     }
 
@@ -109,5 +109,13 @@ public class HookResponder : MonoBehaviour
             result += ((-parabolicT * parabolicT + 1) * height) * up;
             return result;
         }
+    }
+
+    protected virtual void ObjectLanded()
+    {
+        OnObjectLandedUnityEvent.Invoke();
+
+        _PushBox._Collider2D.enabled = true;
+        if (_HurtBox != null) { _HurtBox._Collider2D.enabled = true; }
     }
 }

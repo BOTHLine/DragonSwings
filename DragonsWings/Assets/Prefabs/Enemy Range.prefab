@@ -298,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363905136896846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 1.4, y: -19.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4509092881372958}
@@ -495,7 +495,7 @@ MonoBehaviour:
   _Max:
     UseType: 1
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
+    Variable: {fileID: 11400000, guid: cef5fb8ddeaddfa4da50c710de3b053d, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _Actual:
@@ -649,7 +649,7 @@ MonoBehaviour:
   _HealthMax:
     UseType: 1
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
+    Variable: {fileID: 11400000, guid: cef5fb8ddeaddfa4da50c710de3b053d, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _HealthCurrent:
@@ -715,7 +715,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: e3af640d522f9eb41bf1b7b9ffdd194c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.79235554, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

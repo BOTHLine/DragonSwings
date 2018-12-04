@@ -18,6 +18,8 @@ public class ThrowAutoAim : MonoBehaviour
     [SerializeField] private Vector2Reference _AimAutoDirection;
     [SerializeField] private Vector2Reference _AimAutoPosition;
 
+    [SerializeField] private BoolReference _UseAutoAim;
+
     // Variables
     [SerializeField] private Color NoAimColor;
     [SerializeField] private Color NoTargetColor;
@@ -30,7 +32,9 @@ public class ThrowAutoAim : MonoBehaviour
     {
         _AimRawPosition.Value = (Vector2)transform.position + (_AimRawDirection.Value * _AimRange);
 
-        ThrowResponder throwResponder = FindClosestThrowResponder();
+        ThrowResponder throwResponder = null;
+        if (_UseAutoAim.Value) { throwResponder = FindClosestThrowResponder(); }
+
         if (throwResponder != null)
         {
             _AimAutoDirection.Value = (throwResponder.transform.position - transform.position).normalized;
@@ -38,9 +42,10 @@ public class ThrowAutoAim : MonoBehaviour
         }
         else
         {
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, _AimRawDirection, _AimRange, LayerList.PlayerProjectile.LayerMask);
             _AimAutoDirection.Value = _AimRawDirection;
-            _AimAutoPosition.Value = (Vector2)transform.position + _AimRawDirection.Value.normalized * raycastHit2D.distance;
+
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, _AimRawDirection, _AimRange, LayerList.PlayerProjectile.LayerMask);
+            _AimAutoPosition.Value = (Vector2)transform.position + _AimRawDirection.Value.normalized * (raycastHit2D.collider ? raycastHit2D.distance : _AimRange);
         }
     }
 

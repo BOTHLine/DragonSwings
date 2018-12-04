@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 4995065406743992}
   - component: {fileID: 212409217853348072}
   - component: {fileID: 95422080035339676}
+  - component: {fileID: 114925528793441632}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -379,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1666066904262398
 GameObject:
   m_ObjectHideFlags: 1
@@ -489,6 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4910100873810814}
+  - component: {fileID: 114883915326320750}
   m_Layer: 0
   m_Name: AutoAim
   m_TagString: Untagged
@@ -884,7 +886,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435583165638088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4436717664152038}
@@ -959,7 +961,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.25
 --- !u!58 &58930793255852038
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -974,7 +976,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.2
 --- !u!70 &70685361301428196
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -1104,6 +1106,12 @@ MonoBehaviour:
     UseType: 0
     ConstantValue: 0
     Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _TargetDirection:
+    UseType: 1
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: dd2217d84e29b4944b3e1ca75e81643c, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _TargetPosition:
@@ -1274,7 +1282,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481080329763196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f108ac3f501faad428f8232e76703fbd, type: 3}
   m_Name: 
@@ -1461,6 +1469,12 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  _UseAutoAim:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: ec759e438e7125349bd809ab99f84ff4, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   NoAimColor: {r: 1, g: 0, b: 0, a: 0.050980393}
   NoTargetColor: {r: 1, g: 1, b: 0, a: 0.09803922}
   TargetFoundColor: {r: 0, g: 1, b: 0, a: 0.09803922}
@@ -1510,6 +1524,12 @@ MonoBehaviour:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _UseAutoAim:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: ec759e438e7125349bd809ab99f84ff4, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   NoAimColor: {r: 1, g: 0, b: 0, a: 0.050980393}
@@ -1690,7 +1710,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _HookResponder: {fileID: 11400000, guid: 1da096ba612fb4648a8a00fb0397b2c2, type: 2}
-  _ThrowTargetPosition:
+  _TargetDirection:
+    UseType: 1
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 11400000, guid: dd2217d84e29b4944b3e1ca75e81643c, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _TargetPosition:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
@@ -1861,6 +1887,45 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: a70fefdc2aa940647bde5fdc7d8d5c08, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+--- !u!114 &114883915326320750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913315781519108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8495c1316b3fd8459773962b504268a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 6dc8b540e9d05c943bafb9e145d126ff, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114412488361551004}
+        m_MethodName: ToggleUseAutioAim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114395179221086594}
+        m_MethodName: ToggleUseAutioAim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114905956599207566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1902,6 +1967,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Rigidbody2D: {fileID: 50872209782518316}
   _CorrectionValue: -90
+--- !u!114 &114925528793441632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435583165638088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnlyOnce: 0
+  offset: 0
 --- !u!212 &212210089425131146
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1980,8 +2058,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -944077891
+  m_SortingLayer: 9
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 367f29f51b53cf840ba6a9f0c899275d, type: 3}
   m_Color: {r: 0, g: 0.980809, b: 1, a: 1}
@@ -2074,7 +2152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2009635867
   m_SortingLayer: 6
-  m_SortingOrder: 34
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b34821f1e24df904b8a4a04c6716f2e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
