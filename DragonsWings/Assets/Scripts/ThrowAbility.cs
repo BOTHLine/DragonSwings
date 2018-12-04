@@ -17,22 +17,10 @@ public class ThrowAbility : MonoBehaviour
     private void OnEnable()
     { _HookResponder.Value.AttachToObject(transform); }
 
-    private void Update()
-    {
-        if (!IsAiming()) { return; }
-
-        ShowThrowParabola();
-    }
-
     // Methods
-    private bool IsAiming()
+    public bool IsAiming()
     {
         return (!_TargetDirection.Value.Equals(Vector2.zero));
-    }
-
-    private void ShowThrowParabola()
-    {
-
     }
 
     public void ThrowObject()

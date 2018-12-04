@@ -14,6 +14,8 @@ public class HookAbility : MonoBehaviour
 
     public FloatReference _Damage;
 
+    public Vector2ComplexReference _Aim;
+
     public Vector2Reference _TargetDirection;
     public Vector2Reference _TargetPosition;
 
@@ -50,9 +52,12 @@ public class HookAbility : MonoBehaviour
     public void ShootHook()
     {
         if (_HookIsFlying || _TargetDirection.Value.Equals(Vector2.zero)) { return; }
+        // Vector2Complex aim = _Aim.Value;
+        // if (_HookIsFlying || aim.Direction.Equals(Vector2.zero)) { return; }
 
         _HookIsFlying = true;
         _Hook.Shoot(_TargetPosition.Value);
+        //_Hook.Shoot(aim.EndPoint);
         OnHookShoot.Raise();
     }
 

@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6dafb803aabcc44aa99e93ac0f0039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Player: {fileID: 0}
   deadValue:
     UseType: 1
     ConstantValue: 0
@@ -156,6 +157,28 @@ MonoBehaviour:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: f9b6543429741764a91c6ed5457afe59, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _MovementInput:
+    UseType: 1
+    ConstantValue:
+      _Vector: {x: 0, y: 0}
+      _StartPoint: {x: 0, y: 0}
+      _EndPoint: {x: 0, y: 0}
+      _Direction: {x: 0, y: 0}
+      _Magnitude: 0
+    Variable: {fileID: 11400000, guid: fc6c3007a2adf44439277321ccd60ede, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _AimInput:
+    UseType: 1
+    ConstantValue:
+      _Vector: {x: 0, y: 0}
+      _StartPoint: {x: 0, y: 0}
+      _EndPoint: {x: 0, y: 0}
+      _Direction: {x: 0, y: 0}
+      _Magnitude: 0
+    Variable: {fileID: 11400000, guid: e9930e1cbf6acdf41b352aef6229951d, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   OnHookInput: {fileID: 11400000, guid: a8846eef8a853a2419adf2e2b9406628, type: 2}

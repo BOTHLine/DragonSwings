@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DottedLine : MonoBehaviour
 {
+    public Vector2ComplexReference _Aim;
     public Vector2Reference _AimDirection;
     public GameObject aimingDot;
 
@@ -21,6 +22,11 @@ public class DottedLine : MonoBehaviour
 
     public FloatReference range;
 
+    public Color _NothingColor;
+    public Color _EnemyColor;
+    public Color _BoxColor;
+    public Color _WallColor;
+    public Color _VaseColor;
 
     void Start()
     {
@@ -38,6 +44,8 @@ public class DottedLine : MonoBehaviour
         //endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
 
         endPoint = (Vector2)gameObject.transform.parent.position + _AimDirection.Value * checkRange();
+        // Vector2Complex aim = _Aim;
+        // endPoint = aim.EndPoint;
 
         cursor.transform.position = endPoint;
 
@@ -109,9 +117,8 @@ public class DottedLine : MonoBehaviour
 
     public void resetColorOfDots()
     {
-        colorAllDots(new Color(1, 1, 1, 0.8f));
+        colorAllDots(_NothingColor);
     }
-
 
     public float checkRange()
     {
@@ -123,9 +130,10 @@ public class DottedLine : MonoBehaviour
         if (raycasthit.collider)
         {
             //result = (raycasthit.transform.position - transform.parent.position).magnitude;
-            if (raycasthit.transform.tag == "Vase") colorAllDots(new Color(1, 0, 0, 0.8f));
-            else if (raycasthit.transform.tag == "Box" || raycasthit.transform.tag == "Wall") colorAllDots(new Color(0.043f, 0.4f, 0.137f, 0.8f));
-            else if (raycasthit.transform.tag == "Enemy") colorAllDots(new Color(0.2f, 0.5f, 0.5f, 0.8f));
+            if (raycasthit.collider.tag == "Vase") colorAllDots(_VaseColor);
+            else if (raycasthit.collider.tag == "Box") colorAllDots(_BoxColor);
+            else if (raycasthit.collider.tag == "Wall") colorAllDots(_WallColor);
+            else if (raycasthit.collider.tag == "Enemy") colorAllDots(_EnemyColor);
             else resetColorOfDots();
 
             result = raycasthit.distance;

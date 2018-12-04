@@ -76,7 +76,7 @@ public class HookResponder : MonoBehaviour
 
         while (realTargetPosition.SquaredDistanceTo(transform.position) >= 0.0001f)
         {
-            Vector2 nextPosition = CalculateParabola(startPosition, realTargetPosition, height, flyCounter / flyTime);
+            Vector2 nextPosition = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, height, flyCounter / flyTime);
             transform.parent.position = nextPosition;
 
             flyCounter++;
@@ -86,36 +86,11 @@ public class HookResponder : MonoBehaviour
         StopCoroutine(_CurrentThrowRoutine);
     }
 
-    // TODO Move Parabola to Utils class?
-    private Vector2 CalculateParabola(Vector2 start, Vector2 end, float height, float time)
-    {
-        float parabolicT = time * 2 - 1;
-        if (Mathf.Abs(start.y - end.y) < 0.1f)
-        {
-            //start and end are roughly level, pretend they are - simpler solution with less steps
-            Vector2 travelDirection = end - start;
-            Vector2 result = start + time * travelDirection;
-            result.y += (-parabolicT * parabolicT + 1) * height;
-            return result;
-        }
-        else
-        {
-            //start and end are not level, gets more complicated
-            Vector2 travelDirection = end - start;
-            Vector2 levelDirecteion = end - new Vector2(start.x, end.y);
-            Vector2 up = new Vector2(0.0f, 1.0f);
-            //if (end.y > start.y) up = -up;
-            Vector2 result = start + time * travelDirection;
-            result += ((-parabolicT * parabolicT + 1) * height) * up;
-            return result;
-        }
-    }
-
     protected virtual void ObjectLanded()
     {
-        OnObjectLandedUnityEvent.Invoke();
-
         _PushBox._Collider2D.enabled = true;
         if (_HurtBox != null) { _HurtBox._Collider2D.enabled = true; }
+
+        OnObjectLandedUnityEvent.Invoke();
     }
 }

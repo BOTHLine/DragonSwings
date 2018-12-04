@@ -10,6 +10,10 @@ public class HookAutoAim : MonoBehaviour
 
     // References
     [SerializeField] private FloatReference _AimRange;
+
+    [SerializeField] private Vector2ComplexReference _AimRaw;
+    [SerializeField] private Vector2ComplexReference _AimAuto;
+
     [SerializeField] private Vector2Reference _AimRawDirection;
     [SerializeField] private Vector2Reference _AimRawPosition;
 
@@ -30,6 +34,27 @@ public class HookAutoAim : MonoBehaviour
 
     private void Update()
     {
+        /*
+        Vector2Complex aimRaw = _AimRaw;
+        aimRaw.Magnitude = _AimRange;
+        _AimRaw.Value = aimRaw;
+
+        Vector2Complex aimAuto = new Vector2Complex(_AimRaw);
+        HookResponder hookResponder = null;
+        if (_UseAutoAim.Value) { hookResponder = FindClosestHookResponder(); }
+        if (hookResponder != null)
+        {
+            aimAuto.EndPoint = hookResponder.transform.position;
+        }
+        else
+        {
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
+            aimAuto.Magnitude = (raycastHit2D.collider ? raycastHit2D.distance : _AimRange);
+        }
+
+        _AimAuto.Value = aimAuto;
+        */
+
         _AimRawPosition.Value = (Vector2)transform.position + (_AimRawDirection.Value * _AimRange);
 
         HookResponder hookResponder = null;
