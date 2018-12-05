@@ -34,8 +34,8 @@ public class State : ScriptableObject
     public void EnterState(StateController controller)
     {
         //   Debug.Log("Enter State: " + name);
-
-        controller.GetComponentInChildren<PushBox>().gameObject.layer = (int)layer;
+        PushBox pushBox = controller.GetComponentInChildren<PushBox>();
+        if (pushBox != null) { pushBox.gameObject.layer = (int)layer; };
 
         for (int i = 0; i < actions.Length; i++)
         {

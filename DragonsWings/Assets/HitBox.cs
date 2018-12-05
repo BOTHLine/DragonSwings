@@ -39,9 +39,21 @@ public class HitBox : MonoBehaviour
         }
         if (_IsAttacking.Value)
         {
+            //    Debug.Log("Attack Call: " + transform.parent.name);
             Attack();
             _IsAttacking.Value = false;
         }
+
+        /*
+        if (_HurtBoxesInRange.Count > 0)
+        {
+            Debug.Log("Hurtboxes for Enemy: " + transform.parent.name);
+            for (int i = 0; i < _HurtBoxesInRange.Count; i++)
+            {
+                Debug.Log(_HurtBoxesInRange[i] + " of parent: " + _HurtBoxesInRange[i].transform.parent.name);
+            }
+        }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -59,6 +71,7 @@ public class HitBox : MonoBehaviour
 
     public void Attack()
     {
+        //   Debug.Log("Attack: " + transform.parent.name);
         /*
         int amount = _Collider2D.OverlapColliderWithOwnLayerMask(_Collider2Ds);
 
@@ -78,6 +91,7 @@ public class HitBox : MonoBehaviour
     private void AddHurtBox(HurtBox hurtBox)
     {
         if (hurtBox == null) return;
+        if (hurtBox.transform.parent.tag != "Player") return;
         if (_HurtBoxesInRange.Contains(hurtBox)) return;
         _HurtBoxesInRange.Add(hurtBox);
     }

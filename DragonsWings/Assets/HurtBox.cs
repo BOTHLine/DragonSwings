@@ -25,11 +25,13 @@ public class HurtBox : MonoBehaviour
     // Methods
     public void Hurt(float damage)
     {
-        // OnHurt.Raise();
-        OnHurtEvent.Invoke();
-        _HealthCurrent.Value -= damage;
-        if (CheckDead())
-            Die();
+        if (gameObject.activeInHierarchy)
+        {
+            OnHurtEvent.Invoke();
+            _HealthCurrent.Value -= damage;
+            if (CheckDead())
+                Die();
+        }
     }
 
     public bool CheckDead()

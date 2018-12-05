@@ -51,6 +51,7 @@ public class Hook : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (_AttachedHookResponder != null) { return; }
         _HookAbility.HookHitSomething(collision.collider);
     }
 

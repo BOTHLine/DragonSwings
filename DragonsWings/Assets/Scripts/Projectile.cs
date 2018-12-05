@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HurtBox hurtBox = collision.GetComponent<HurtBox>();
+        HurtBox hurtBox = collision.GetComponentInSiblings<HurtBox>();
         hurtBox?.Hurt(_Damage);
         DestroyProjectile();
     }
