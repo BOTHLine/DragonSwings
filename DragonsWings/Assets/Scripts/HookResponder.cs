@@ -43,8 +43,6 @@ public class HookResponder : MonoBehaviour
     public void AttachToObject(Transform targetObject)
     {
         transform.parent.parent = targetObject.transform;
-        _PushBox._Collider2D.enabled = false;
-        if (_HurtBox != null) { _HurtBox._Collider2D.enabled = false; }
         _OldRigidbodyType2D = _Rigidbody2D.bodyType;
         _Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         transform.parent.transform.position = targetObject.transform.position;
@@ -87,10 +85,5 @@ public class HookResponder : MonoBehaviour
     }
 
     protected virtual void ObjectLanded()
-    {
-        _PushBox._Collider2D.enabled = true;
-        if (_HurtBox != null) { _HurtBox._Collider2D.enabled = true; }
-
-        OnObjectLandedUnityEvent.Invoke();
-    }
+    { OnObjectLandedUnityEvent.Invoke(); }
 }

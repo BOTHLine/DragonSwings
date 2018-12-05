@@ -521,7 +521,7 @@ MonoBehaviour:
   _HurtBox: {fileID: 0}
   _AutoAim: 1
   _AutoAimPriority: 0
-  _Weight: 2
+  _Weight: 3
   OnHitByHookUnityEvent:
     m_PersistentCalls:
       m_Calls: []
