@@ -4,6 +4,7 @@ public class HookResponder : MonoBehaviour
 {
     // Components
     public Rigidbody2D _Rigidbody2D;
+    public SpriteRenderer _SpriteRenderer;
     public PushBox _PushBox;
     public HurtBox _HurtBox;
 
@@ -28,8 +29,9 @@ public class HookResponder : MonoBehaviour
     private void Awake()
     {
         _Rigidbody2D = GetComponentInParent<Rigidbody2D>();
-        _PushBox = transform.GetComponentInSiblings<PushBox>();
-        _HurtBox = transform.GetComponentInSiblings<HurtBox>();
+        _SpriteRenderer = this.GetComponentInSiblings<SpriteRenderer>();
+        _PushBox = this.GetComponentInSiblings<PushBox>();
+        _HurtBox = this.GetComponentInSiblings<HurtBox>();
 
         _OldParent = transform.parent.parent;
     }
@@ -46,12 +48,14 @@ public class HookResponder : MonoBehaviour
         _OldRigidbodyType2D = _Rigidbody2D.bodyType;
         _Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         transform.parent.transform.position = targetObject.transform.position;
+        _SpriteRenderer.sortingLayerName = "Foreground";
     }
 
     public void DetachFromObject()
     {
         transform.parent.parent = _OldParent;
         _Rigidbody2D.bodyType = _OldRigidbodyType2D;
+        _SpriteRenderer.sortingLayerName = "Objects";
     }
 
     public void StartThrow(Vector2 targetPosition, float flyTime, float flyHeight)
