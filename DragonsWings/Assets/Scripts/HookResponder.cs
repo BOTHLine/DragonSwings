@@ -54,19 +54,17 @@ public class HookResponder : MonoBehaviour
         _Rigidbody2D.bodyType = _OldRigidbodyType2D;
     }
 
-    public void StartThrow(Vector2 targetPosition)
+    public void StartThrow(Vector2 targetPosition, float flyTime, float flyHeight)
     {
         DetachFromObject();
 
-        _CurrentThrowRoutine = Throw(targetPosition);
+        _CurrentThrowRoutine = Throw(targetPosition, flyTime, flyHeight);
         StartCoroutine(_CurrentThrowRoutine);
     }
 
-    private System.Collections.IEnumerator Throw(Vector2 targetPosition)
+    private System.Collections.IEnumerator Throw(Vector2 targetPosition, float flyTime, float flyHeight)
     {
         float flyCounter = 0.0f;
-        float flyTime = 15.0f; // TODO Remove magic number flyTime;
-        float height = 2.0f; // TODO Remove magic number height;
 
         Vector2 startPosition = transform.position;
 
@@ -74,7 +72,7 @@ public class HookResponder : MonoBehaviour
 
         while (realTargetPosition.SquaredDistanceTo(transform.position) >= 0.0001f)
         {
-            Vector2 nextPosition = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, height, flyCounter / flyTime);
+            Vector2 nextPosition = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, flyHeight, flyCounter / flyTime);
             transform.parent.position = nextPosition;
 
             flyCounter++;

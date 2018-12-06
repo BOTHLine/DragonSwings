@@ -57,10 +57,10 @@ public class HitBox : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    { AddHurtBox(collision.GetComponent<HurtBox>()); }
+    { AddHurtBox(collision.GetComponentInSiblings<HurtBox>()); }
 
     private void OnTriggerExit2D(Collider2D collision)
-    { RemoveHurtBox(collision.GetComponent<HurtBox>()); }
+    { RemoveHurtBox(collision.GetComponentInSiblings<HurtBox>()); }
 
     // Méthods
     public void AttackStart()
@@ -91,7 +91,6 @@ public class HitBox : MonoBehaviour
     private void AddHurtBox(HurtBox hurtBox)
     {
         if (hurtBox == null) return;
-        if (hurtBox.transform.parent.tag != "Player") return;
         if (_HurtBoxesInRange.Contains(hurtBox)) return;
         _HurtBoxesInRange.Add(hurtBox);
     }

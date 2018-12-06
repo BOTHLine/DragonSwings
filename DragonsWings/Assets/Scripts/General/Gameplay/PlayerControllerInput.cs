@@ -23,6 +23,11 @@ public class PlayerControllerInput : MonoBehaviour
     public GameEvent OnResetHookInput;
     public GameEvent OnResetLevelInput;
 
+    public GameEvent OnTeleportTo1Input;
+    public GameEvent OnTeleportTo2Input;
+    public GameEvent OnTeleportTo3Input;
+    public GameEvent OnTeleportTo4Input;
+
     // Mono Behaviour
     private void Awake()
     {
@@ -53,6 +58,11 @@ public class PlayerControllerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K)) { OnResetHookInput.Raise(); }
 
         if (Input.GetKeyDown(KeyCode.L)) { OnResetLevelInput.Raise(); }
+
+        if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Alpha1)) { OnTeleportTo1Input.Raise(); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { OnTeleportTo2Input.Raise(); }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { OnTeleportTo3Input.Raise(); }
+        if (Input.GetKeyDown(KeyCode.Alpha4)) { OnTeleportTo4Input.Raise(); }
     }
 
     // Methods

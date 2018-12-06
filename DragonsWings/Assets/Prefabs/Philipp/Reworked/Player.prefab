@@ -635,7 +635,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346631424536814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -82.5, y: 42.5, z: 0}
+  m_LocalPosition: {x: -97.299995, y: -25.65, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4503385454889396}
@@ -1819,6 +1819,18 @@ MonoBehaviour:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _FlyTime:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 7fd6b5062f39be3468f8ffad10148fa6, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _FlyHeight:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 006c7c64dec81c3409b07ede99b642a1, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   OnObjectThrown: {fileID: 11400000, guid: a438964cc645375438109d79f626e0f9, type: 2}

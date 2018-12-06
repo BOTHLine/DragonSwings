@@ -8,6 +8,9 @@ public class ThrowAbility : MonoBehaviour
     public Vector2Reference _TargetDirection;
     public Vector2Reference _TargetPosition;
 
+    public FloatReference _FlyTime;
+    public FloatReference _FlyHeight;
+
     // Variables
 
     // Events
@@ -27,7 +30,7 @@ public class ThrowAbility : MonoBehaviour
     {
         if (!IsAiming()) { return; }
 
-        _HookResponder.Value.StartThrow(_TargetPosition);
+        _HookResponder.Value.StartThrow(_TargetPosition, _FlyTime, _FlyHeight);
         _HookResponder.Value = null;
         OnObjectThrown.Raise();
     }
