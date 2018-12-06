@@ -11,6 +11,8 @@ public class ThrowAbility : MonoBehaviour
     public FloatReference _FlyTime;
     public FloatReference _FlyHeight;
 
+    public Transform _PickUpTargetPosition;
+
     // Variables
 
     // Events
@@ -18,7 +20,7 @@ public class ThrowAbility : MonoBehaviour
 
     // Mono Behaviour
     private void OnEnable()
-    { _HookResponder.Value.AttachToObject(transform); }
+    { _HookResponder.Value.AttachToObject(_PickUpTargetPosition); }
 
     // Methods
     public bool IsAiming()
