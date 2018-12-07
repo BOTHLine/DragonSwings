@@ -63,6 +63,8 @@ public class PlayerControllerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) { OnTeleportTo2Input.Raise(); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { OnTeleportTo3Input.Raise(); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { OnTeleportTo4Input.Raise(); }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
     }
 
     // Methods
