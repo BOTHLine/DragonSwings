@@ -9,7 +9,8 @@ public class ShootAction : Action
     // private float _CurrentAttackTime;
 
     public FloatReference _AttackCooldown;
-    public FloatReference _CurrentAttackCooldown;
+    public FloatMap _CurrentAttackCoolDownMap;
+    // public FloatReference _CurrentAttackCooldown;
 
     public Projectile _ProjectilePrefab;
 
@@ -34,6 +35,6 @@ public class ShootAction : Action
         Projectile projectile = Instantiate(_ProjectilePrefab, (Vector2)controller.transform.position + shootDirection * 0.1f, Quaternion.identity, null);
         projectile.SetDirection(shootDirection);
         //   _CurrentAttackTime = 0.0f;
-        _CurrentAttackCooldown.Set(_AttackCooldown.Get(controller.gameObject), controller.gameObject);
+        _CurrentAttackCoolDownMap.Set(controller.gameObject, _AttackCooldown.Get(controller.gameObject));
     }
 }

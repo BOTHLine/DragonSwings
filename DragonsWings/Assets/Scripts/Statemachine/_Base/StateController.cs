@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 [RequireComponent(typeof(Rigidbody2D))]
 public class StateController : MonoBehaviour
 {

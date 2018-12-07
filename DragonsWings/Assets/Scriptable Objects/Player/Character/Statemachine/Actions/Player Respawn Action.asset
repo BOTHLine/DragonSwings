@@ -11,12 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3264154deb34a34297246c49e1b80d8, type: 3}
   m_Name: Player Respawn Action
   m_EditorClassIdentifier: 
-  lastSavePosition:
-    UseType: 1
-    ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: 535a0a6eca96cdb4e95529c2814d9d75, type: 2}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
+  _LastSavePositionMap: {fileID: 11400000, guid: 839df2474588c694d85d9253880e4de4,
+    type: 2}
   health:
     UseType: 1
     ConstantValue: 0

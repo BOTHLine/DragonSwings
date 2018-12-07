@@ -11,21 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc04d9fd0cf37e41bbd440757366f31, type: 3}
   m_Name: EnemyMove Action
   m_EditorClassIdentifier: 
-  moveDirection:
-    UseType: 2
-    ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 3cafedb1e0c67364c98be850865ea112, type: 2}
-    MapIdentifier: {fileID: 0}
+  _MoveDirectionMap: {fileID: 11400000, guid: 3cafedb1e0c67364c98be850865ea112, type: 2}
   moveSpeed:
     UseType: 1
     ConstantValue: 5
     Variable: {fileID: 11400000, guid: 7e5f572cecf8118408d03a1883e09862, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  lastSavePosition:
-    UseType: 2
-    ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 839df2474588c694d85d9253880e4de4, type: 2}
-    MapIdentifier: {fileID: 0}
+  _LastSavePositionMap: {fileID: 11400000, guid: 839df2474588c694d85d9253880e4de4,
+    type: 2}

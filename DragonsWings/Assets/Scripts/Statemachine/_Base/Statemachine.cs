@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Statemachine/Statemachine")]
 public class Statemachine : ScriptableObject
 {

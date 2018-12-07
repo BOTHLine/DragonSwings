@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 
 [ExecuteInEditMode]
 public class EditorComplieTimer : MonoBehaviour
@@ -34,3 +35,4 @@ public class EditorComplieTimer : MonoBehaviour
         Debug.Log("Compile Finished: " + compileTime.ToString("F2") + "s");
     }
 }
+#endif

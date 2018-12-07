@@ -3,14 +3,17 @@
 [CreateAssetMenu(menuName = "Statemachine/Actions/Move Action")]
 public class MoveAction : Action
 {
-    public Vector2Reference moveDirection;
+    public Vector2Map _MoveDirectionMap;
+    // public Vector2Reference moveDirection;
     public FloatReference moveSpeed;
 
-    public Vector2Reference lastSavePosition;
+    // public Vector2Reference lastSavePosition;
+    public Vector2Map _LastSavePositionMap;
 
     public override void Act(StateController controller)
     {
-        controller.rigidbody2D.velocity = moveDirection.Get(controller.gameObject) * moveSpeed.Get(controller.gameObject);
+        controller.rigidbody2D.velocity = _MoveDirectionMap.Get(controller.gameObject) * moveSpeed.Get(controller.gameObject);
+        //    controller.rigidbody2D.velocity = moveDirection.Get(controller.gameObject) * moveSpeed.Get(controller.gameObject);
 
         controller.animator.SetBool("IsMoving", controller.rigidbody2D.velocity.x != 0 || controller.rigidbody2D.velocity.y != 0);
 
@@ -29,7 +32,7 @@ public class MoveAction : Action
     public override void ExitState(StateController controller)
     {
         controller.rigidbody2D.velocity = Vector2.zero;
-        lastSavePosition.Set(controller.transform.position, controller.gameObject);
+        _LastSavePositionMap.Set(controller.gameObject, controller.transform.position);
         controller.animator.SetBool("IsMoving", false);
     }
 }

@@ -12,7 +12,7 @@ public class Pit : MonoBehaviour
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (Physics2D.OverlapPoint(playerPosition, LayerList.FallCheck.LayerMask) == boxCollider2D)
@@ -21,4 +21,5 @@ public class Pit : MonoBehaviour
             UnityEditor.Handles.DrawSolidDisc(playerPosition.Value, Vector3.forward, 0.1f);
         }
     }
+#endif
 }

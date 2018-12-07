@@ -23,9 +23,4 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 1ea62c35768a1ee49a922e17391a8431, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  moveDirection:
-    UseType: 2
-    ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 3cafedb1e0c67364c98be850865ea112, type: 2}
-    MapIdentifier: {fileID: 0}
+  _MoveDirectionMap: {fileID: 11400000, guid: 3cafedb1e0c67364c98be850865ea112, type: 2}

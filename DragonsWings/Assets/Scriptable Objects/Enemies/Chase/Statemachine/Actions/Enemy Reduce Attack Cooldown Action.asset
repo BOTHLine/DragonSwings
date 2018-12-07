@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21fba776782294ebffb6f2eed7f429, type: 3}
   m_Name: Enemy Reduce Attack Cooldown Action
   m_EditorClassIdentifier: 
+  _CurrentAttackCoolDownMap: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6,
+    type: 2}
   _CurrentAttackCooldown:
     UseType: 2
     ConstantValue: 0

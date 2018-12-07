@@ -28,6 +28,8 @@ public class PlayerControllerInput : MonoBehaviour
     public GameEvent OnTeleportTo3Input;
     public GameEvent OnTeleportTo4Input;
 
+    public GameEvent OnToggleControlsInput;
+
     // Mono Behaviour
     private void Awake()
     {
@@ -48,12 +50,14 @@ public class PlayerControllerInput : MonoBehaviour
         _AimInput.Value = aimInput;
         */
 
-        moveDirection.Variable.Value = GetAxis2D("AxisX", "AxisY");
-        aimDirection.Variable.Value = GetAxis2D("Axis4", "Axis5");
+        moveDirection.Value = GetAxis2D("AxisX", "AxisY");
+        aimDirection.Value = GetAxis2D("Axis4", "Axis5");
 
         if (GetAxisDown("Axis10")) { OnHookInput.Raise(); }
 
         if (Input.GetKeyDown(KeyCode.JoystickButton4)) { OnToogleAutoAimInput.Raise(); }
+
+        if (Input.GetButtonDown("Button3")) { OnToggleControlsInput.Raise(); }
 
         if (Input.GetKeyDown(KeyCode.K)) { OnResetHookInput.Raise(); }
 
@@ -65,6 +69,7 @@ public class PlayerControllerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)) { OnTeleportTo4Input.Raise(); }
 
         if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
+
     }
 
     // Methods

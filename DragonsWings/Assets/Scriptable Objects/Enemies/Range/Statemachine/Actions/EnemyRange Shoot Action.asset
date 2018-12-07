@@ -17,25 +17,13 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _AttackTime:
-    UseType: 0
-    ConstantValue: 0.2
-    Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
   _AttackCooldown:
     UseType: 0
     ConstantValue: 3
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _CurrentAttackCooldown:
-    UseType: 2
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6, type: 2}
-    MapIdentifier: {fileID: 0}
+  _CurrentAttackCoolDownMap: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6,
+    type: 2}
   _ProjectilePrefab: {fileID: 114875199832240382, guid: 89122ac5050c9e648997f54d2a0e4638,
     type: 2}
-  _OnAttackStart: {fileID: 0}
-  _OnAttack: {fileID: 11400000, guid: 69c563021160afe4a92381bed0521901, type: 2}

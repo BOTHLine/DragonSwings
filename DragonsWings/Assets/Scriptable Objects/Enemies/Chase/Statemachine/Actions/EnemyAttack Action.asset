@@ -11,24 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498fc5f0959f9a74d9b6fc1b9fe4d1ab, type: 3}
   m_Name: EnemyAttack Action
   m_EditorClassIdentifier: 
-  _IsAttackStarting:
-    UseType: 2
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 5e69c3f368243a7499c272548754bce6, type: 2}
-    MapIdentifier: {fileID: 0}
-  _IsAttacking:
-    UseType: 2
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 6a8acd6cbf6287146b60f2efaef7bfa6, type: 2}
-    MapIdentifier: {fileID: 0}
-  _CurrentAttackCooldown:
-    UseType: 2
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6, type: 2}
-    MapIdentifier: {fileID: 0}
+  _IsAttackStartingMap: {fileID: 11400000, guid: 5e69c3f368243a7499c272548754bce6,
+    type: 2}
+  _IsAttackingMap: {fileID: 11400000, guid: 6a8acd6cbf6287146b60f2efaef7bfa6, type: 2}
+  _CurrentAttackCoolDownMap: {fileID: 11400000, guid: 1da429e5d21e6e147b964602b94568c6,
+    type: 2}
   _TotalAttackCooldown:
     UseType: 1
     ConstantValue: 0

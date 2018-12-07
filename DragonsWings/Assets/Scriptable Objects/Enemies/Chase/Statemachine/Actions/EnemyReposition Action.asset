@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: EnemyReposition Action
   m_EditorClassIdentifier: 
   targetPosition:
-    UseConstant: 0
+    UseType: 1
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
