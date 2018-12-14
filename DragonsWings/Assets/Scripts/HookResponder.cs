@@ -57,7 +57,7 @@ public class HookResponder : MonoBehaviour
         transform.parent.parent = _OldParent;
         _Rigidbody2D.bodyType = _OldRigidbodyType2D;
         _SpriteRenderer.sortingLayerName = "Objects";
-        _PushBox.gameObject.SetActive(true);
+        // _PushBox.gameObject.SetActive(true);
     }
 
     public void StartThrow(Vector2 targetPosition, float flyTime, float flyHeight)
@@ -85,6 +85,7 @@ public class HookResponder : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         transform.parent.position = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, flyHeight, 1.0f);
+        _PushBox.gameObject.SetActive(true);
         ObjectLanded();
         StopCoroutine(_CurrentThrowRoutine);
     }

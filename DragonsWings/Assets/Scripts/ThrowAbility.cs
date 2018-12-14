@@ -24,10 +24,7 @@ public class ThrowAbility : MonoBehaviour
 
     // Methods
     public bool IsAiming()
-    {
-        return (!_Aim.Value.Direction.Equals(Vector2.zero));
-        //    return (!_TargetDirection.Value.Equals(Vector2.zero));
-    }
+    { return (!_Aim.Value.Direction.Equals(Vector2.zero)); }
 
     public void PickUp()
     {
@@ -41,7 +38,6 @@ public class ThrowAbility : MonoBehaviour
 
         _OnThrow.Raise();
         _HookResponder.Value.StartThrow(_Aim.Value.EndPoint, _FlyTime.Value, _FlyHeight.Value);
-        // _HookResponder.Value.StartThrow(_TargetPosition.Value, _FlyTime.Value, _FlyHeight.Value);
         _HookResponder.Value = null;
     }
 }

@@ -26,7 +26,6 @@ public class PlayerControllerInput : MonoBehaviour
 
     private void Update()
     {
-        /*
         // TODO:
         // Change to Vector2ComplexReference System in Dotted Line (Rewrite anyway), HookAutoAim, ThrowAutoAim (merge them?), HookAbility, ThrowAbility and CameraFollow.
         Vector2Complex moveInput = new Vector2Complex(_Player.position, _Player.position);
@@ -44,7 +43,6 @@ public class PlayerControllerInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.JoystickButton4)) { _OnInputAimAutoToggle.Raise(); }
 
-        */
     }
 
     // Methods

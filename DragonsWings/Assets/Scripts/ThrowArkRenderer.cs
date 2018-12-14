@@ -1,6 +1,6 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class ThrowArkRenderer : MonoBehaviour
 {
     // Components
@@ -14,6 +14,9 @@ public class ThrowArkRenderer : MonoBehaviour
     public FloatReference _ThrowArkThicknessStart;
     public FloatReference _ThrowArkThicknessEnd;
 
+    // Variables
+    private bool _DrawArk;
+
     // Mono Behaviour
     private void Awake()
     {
@@ -26,14 +29,10 @@ public class ThrowArkRenderer : MonoBehaviour
 
     private void Update()
     {
-        _LineRenderer.startWidth = _ThrowArkThicknessStart.Value;
-        _LineRenderer.endWidth = _ThrowArkThicknessEnd.Value;
-
-        if (!_ThrowAbility.IsAiming())
+        if (!_ThrowAbility.IsAiming() || !_DrawArk)
         { RemoveThrowArk(); }
         else
         { DrawThrowArk(); }
-
     }
 
     // Methods
@@ -53,4 +52,7 @@ public class ThrowArkRenderer : MonoBehaviour
 
     private void RemoveThrowArk()
     { _LineRenderer.positionCount = 0; }
+
+    public void DrawThroArk(bool value)
+    { _DrawArk = value; }
 }
