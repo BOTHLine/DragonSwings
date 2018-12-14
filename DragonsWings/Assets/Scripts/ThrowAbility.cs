@@ -5,35 +5,43 @@ public class ThrowAbility : MonoBehaviour
     // References
     public HookResponderVariable _HookResponder;
 
-    public Vector2Reference _TargetDirection;
-    public Vector2Reference _TargetPosition;
+    // public Vector2Reference _TargetDirection;
+    // public Vector2Reference _TargetPosition;
+    public Vector2ComplexReference _Aim;
 
     public FloatReference _FlyTime;
     public FloatReference _FlyHeight;
 
-    public Transform _PickUpTargetPosition;
+    public Transform _PickUpAttachTransform;
 
     // Variables
 
     // Events
-    public GameEvent OnObjectThrown;
+    public GameEvent _OnPickUp;
+    public GameEvent _OnThrow;
 
     // Mono Behaviour
-    private void OnEnable()
-    { _HookResponder.Value.AttachToObject(_PickUpTargetPosition); }
 
     // Methods
     public bool IsAiming()
     {
-        return (!_TargetDirection.Value.Equals(Vector2.zero));
+        return (!_Aim.Value.Direction.Equals(Vector2.zero));
+        //    return (!_TargetDirection.Value.Equals(Vector2.zero));
     }
 
-    public void ThrowObject()
+    public void PickUp()
+    {
+        _OnPickUp.Raise();
+        _HookResponder.Value.AttachToObject(_PickUpAttachTransform);
+    }
+
+    public void Throw()
     {
         if (!IsAiming()) { return; }
 
-        _HookResponder.Value.StartThrow(_TargetPosition, _FlyTime, _FlyHeight);
+        _OnThrow.Raise();
+        _HookResponder.Value.StartThrow(_Aim.Value.EndPoint, _FlyTime.Value, _FlyHeight.Value);
+        // _HookResponder.Value.StartThrow(_TargetPosition.Value, _FlyTime.Value, _FlyHeight.Value);
         _HookResponder.Value = null;
-        OnObjectThrown.Raise();
     }
 }

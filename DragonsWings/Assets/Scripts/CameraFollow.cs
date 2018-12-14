@@ -34,7 +34,7 @@ public class CameraFollow : MonoBehaviour
 
         if (distance > 0)
         {
-            Vector3 newCameraPosition = transform.position + cameraMoveDir * distance * _CameraMoveSpeed * Time.deltaTime;
+            Vector3 newCameraPosition = transform.position + cameraMoveDir * distance * _CameraMoveSpeed.Value * Time.deltaTime;
             float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
 
             if (distanceAfterMoving > distance)
@@ -46,17 +46,17 @@ public class CameraFollow : MonoBehaviour
 
     private void HandleZoom()
     {
-        float cameraZoomDifference = _TargetZoom - _Camera.orthographicSize;
+        float cameraZoomDifference = _TargetZoom.Value - _Camera.orthographicSize;
 
-        _Camera.orthographicSize += cameraZoomDifference * _CameraZoomSpeed * Time.deltaTime;
+        _Camera.orthographicSize += cameraZoomDifference * _CameraZoomSpeed.Value * Time.deltaTime;
 
         if (cameraZoomDifference > 0)
         {
-            if (_Camera.orthographicSize > _TargetZoom) { _Camera.orthographicSize = _TargetZoom; }
+            if (_Camera.orthographicSize > _TargetZoom.Value) { _Camera.orthographicSize = _TargetZoom.Value; }
         }
         else
         {
-            if (_Camera.orthographicSize < _TargetZoom) { _Camera.orthographicSize = _TargetZoom; }
+            if (_Camera.orthographicSize < _TargetZoom.Value) { _Camera.orthographicSize = _TargetZoom.Value; }
         }
     }
 }

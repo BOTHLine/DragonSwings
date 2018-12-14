@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1295161738160486
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +96,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1394218355788274
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4489872444969642}
+  - component: {fileID: 114486637217165844}
+  m_Layer: 0
+  m_Name: Blinker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1419299531168464
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +122,7 @@ GameObject:
   - component: {fileID: 4740495458263910}
   - component: {fileID: 61077124867456212}
   - component: {fileID: 114365320248595716}
+  - component: {fileID: 114562136692576486}
   m_Layer: 26
   m_Name: HitBox
   m_TagString: Untagged
@@ -176,7 +193,7 @@ GameObject:
   - component: {fileID: 4514554204811334}
   - component: {fileID: 212596797310312638}
   - component: {fileID: 95776760367129760}
-  - component: {fileID: 114931965643728856}
+  - component: {fileID: 114369666811641634}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -266,7 +283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4046538019323700
 Transform:
   m_ObjectHideFlags: 1
@@ -319,6 +336,19 @@ Transform:
   m_Father: {fileID: 4507386655532970}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4489872444969642
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394218355788274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4514554204811334}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4507386655532970
 Transform:
   m_ObjectHideFlags: 1
@@ -350,7 +380,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4489872444969642}
   m_Father: {fileID: 4507386655532970}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -561,7 +592,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1673362520990754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b2ab59808efaaa488f2f17e43a9488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   runOnlyOnce: 0
@@ -574,7 +605,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1419325069949178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7f6c7f70d63ff47b30cf93909d1468, type: 3}
+  m_Script: {fileID: 11500000, guid: db6defa9ff894f740a8076f74ee761bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114163903236377278
@@ -585,7 +616,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1226761255627588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b2ab59808efaaa488f2f17e43a9488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   runOnlyOnce: 0
@@ -598,28 +629,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1471955599414352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d8dfb272c8f404c8b596b0aefa2ba7, type: 3}
+  m_Script: {fileID: 11500000, guid: 25999ea4cb7891f49af0edae17e3ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Collider2D: {fileID: 0}
   _HealthMax:
-    UseType: 0
-    ConstantValue: 15
-    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 7493112f62c34ae4d9bd4c8d5f326b2f, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _HealthCurrent:
     UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
+    Map: {fileID: 11400000, guid: 21ad669c84792fe42b522976c2d5f9bf, type: 2}
     MapIdentifier: {fileID: 1419325069949178}
-  OnHurtEvent:
+  _OnHurtEvents:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnDieEvent:
+  _OnDieEvents:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114103121805202026}
@@ -691,23 +722,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245284652963678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b0169d1523840646adc56dc982182d0, type: 3}
+  m_Script: {fileID: 11500000, guid: b9f3ef35764a246449873886fab337d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Collider2D: {fileID: 0}
   _TargetPosition:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
+    Variable: {fileID: 11400000, guid: 627c6047e15f9744aa17497e861b01fa, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _IsPlayerInAttackRange:
     UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: a0dc55fe1adab4c4dbdf498a43feb431, type: 2}
+    Map: {fileID: 11400000, guid: 91aa625335782eb41a713403a9cfcf5d, type: 2}
     MapIdentifier: {fileID: 1419325069949178}
-  _DebugColor: {r: 1, g: 1, b: 0, a: 0.5019608}
+  _DebugColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114365320248595716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -716,7 +747,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1419299531168464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fafef6efe05e87c429569867a0f1f9f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9470ddde2249d404b91ad913ebcc2102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Indicator: {fileID: 212448116359357456}
@@ -724,28 +755,25 @@ MonoBehaviour:
   _TargetPosition:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: 0dff378bf59dcbf43842e71db684232e, type: 2}
+    Variable: {fileID: 11400000, guid: 40068d516a0daf946ae90763e43b1f6d, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _IsAttackStarting:
-    UseType: 2
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 5e69c3f368243a7499c272548754bce6, type: 2}
-    MapIdentifier: {fileID: 1419325069949178}
-  _IsAttacking:
-    UseType: 2
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 6a8acd6cbf6287146b60f2efaef7bfa6, type: 2}
-    MapIdentifier: {fileID: 1419325069949178}
   _Damage:
-    UseType: 0
-    ConstantValue: 1
-    Variable: {fileID: 0}
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0e57c94a11ba8f14598714abfdfe27d8, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _DebugColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+  _AttackTime:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: b846f9d233c8d074ebdf9a89288bc4b6, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _OnAttackStart: {fileID: 11400000, guid: ee61089f4ff451846904ee399b41b510, type: 2}
+  _OnAttackFinishRaise: {fileID: 11400000, guid: fa739011c370b85429cde1591c2da8b1,
+    type: 2}
+  _DebugColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114367195364382416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -754,7 +782,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659195643064938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b2ab59808efaaa488f2f17e43a9488e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnlyOnce: 0
+  offset: 0
+--- !u!114 &114369666811641634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510394380180830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2ab59808efaaa488f2f17e43a9488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   runOnlyOnce: 0
@@ -794,7 +835,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1524686063318014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da9ed5eb6fd35d4b84cd6392f4bb1d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c51a963fe2abe74cb9140a7cf3f60ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _AutoAim: 1
@@ -826,8 +867,60 @@ MonoBehaviour:
     UseType: 2
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 32814ae2749d317489ecb502bc6f5e46, type: 2}
+    Map: {fileID: 0}
     MapIdentifier: {fileID: 1419325069949178}
+--- !u!114 &114486637217165844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394218355788274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05629d1df72aea4e881d5303e940098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _BlinkTime:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: d4118654f0b5cb24398bc33002e679a7, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _BlinkColor:
+    UseType: 1
+    ConstantValue: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0}
+    Variable: {fileID: 11400000, guid: acf67c71eaccb344eb197e702f2ba4d6, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+--- !u!114 &114562136692576486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419299531168464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2ada7ef037fae41974ed8d0a611cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event: {fileID: 11400000, guid: 0642f4ddaff840a4e9ca6c80c4419b33, type: 2}
+  _Key: {fileID: 1419325069949178}
+  _Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114365320248595716}
+        m_MethodName: AttackStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114629333483097232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -836,15 +929,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1419325069949178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56fed56c474b81744bc88230624fe7ef, type: 3}
+  m_Script: {fileID: 11500000, guid: b2ff7654b54a21043b80f2df94bc703a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
-  hook: {fileID: 0}
-  currentState: {fileID: 11400000, guid: 793d1921a14169143b07d81ab4a8f372, type: 2}
-  remainState: {fileID: 11400000, guid: 4f1247f8201d72744ab9a02b8dd22177, type: 2}
+  currentState: {fileID: 11400000, guid: d0194b8811e0ec0419f69f3cf7989411, type: 2}
+  remainState: {fileID: 0}
 --- !u!114 &114766153982175038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -853,10 +945,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1312676446014504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32bddcdc4836d9c4bbea9c56ed18da20, type: 3}
+  m_Script: {fileID: 11500000, guid: f5bbf8f539fb1af4cb63d8cd676fe3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Rigidbody2D: {fileID: 0}
+  _SpriteRenderer: {fileID: 0}
   _PushBox: {fileID: 0}
   _HurtBox: {fileID: 0}
   _AutoAim: 1
@@ -880,22 +973,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1234229317910068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c437561c12345d45b126eac9755d2c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f34c92a4addbf14c9db147692bba8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Max:
-    UseType: 0
-    ConstantValue: 15
-    Variable: {fileID: 11400000, guid: 297ffbe3364edfd41bbd8cfbb6b4bb6c, type: 2}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  _Actual:
+  variable:
     UseType: 2
     ConstantValue: 0
     Variable: {fileID: 0}
-    Map: {fileID: 11400000, guid: 03770e39d9180d84eafb4b9062a6cd95, type: 2}
+    Map: {fileID: 11400000, guid: 21ad669c84792fe42b522976c2d5f9bf, type: 2}
     MapIdentifier: {fileID: 1419325069949178}
-  _Image: {fileID: 114196917490581388}
+  max:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 7493112f62c34ae4d9bd4c8d5f326b2f, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  image: {fileID: 114196917490581388}
 --- !u!114 &114842903199039302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -904,28 +997,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295161738160486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abeb34d6bc9a7541a3661c0892b40a5, type: 3}
+  m_Script: {fileID: 11500000, guid: af6fd565296080e4b8ee1ec396632ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Collider2D: {fileID: 0}
-  OnCollide:
+  _OnCollide:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114931965643728856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1510394380180830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runOnlyOnce: 0
-  offset: 0
 --- !u!114 &114974296056746150
 MonoBehaviour:
   m_ObjectHideFlags: 1

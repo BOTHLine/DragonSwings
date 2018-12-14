@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7a1d277ab7e494585d3c383104030e, type: 3}
+  m_Name: Behaviour EnemyShoot RunAway
+  m_EditorClassIdentifier: 
+  _EnterStateActions: []
+  _ActActions:
+  - {fileID: 11400000, guid: 0b656927c17e63049931a33c9a466249, type: 2}
+  - {fileID: 11400000, guid: 245061d8213ff764b9a092d871ce8625, type: 2}
+  - {fileID: 11400000, guid: a3dcb5d0fd572bb49b998caf63e5bae3, type: 2}
+  _ExitStateActions:
+  - {fileID: 11400000, guid: 6e8aa7652407e6249822b58dda8128d7, type: 2}
+  - {fileID: 11400000, guid: 9b748440a4f8c2d4aaa3e0cf635cad4a, type: 2}

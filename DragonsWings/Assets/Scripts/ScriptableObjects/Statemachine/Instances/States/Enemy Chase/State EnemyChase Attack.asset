@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc46fd40bd79c49a2fd08d69632582, type: 3}
+  m_Name: State EnemyChase Attack
+  m_EditorClassIdentifier: 
+  _Layer: 23
+  _Behaviours:
+  - {fileID: 11400000, guid: c45e52187cca83f49a18404548560d59, type: 2}
+  _Transitions:
+  - {fileID: 11400000, guid: 2b346c33b7a86e841a6546be7d1d6a74, type: 2}

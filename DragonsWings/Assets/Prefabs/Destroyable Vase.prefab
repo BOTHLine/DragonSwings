@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1600505958283524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -69.49, y: 20.55, z: 0}
+  m_LocalPosition: {x: -68.46, y: 20.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4309232560868736}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1600505958283524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7731b251f4a30d44b89a9e876312e92, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d5f746408e4fe64cb7c5a231afefc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _PushBox: {fileID: 0}
@@ -219,10 +219,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1041371876999740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b2ab59808efaaa488f2f17e43a9488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runOnlyOnce: 0
+  runOnlyOnce: 1
   offset: 0
 --- !u!114 &114844728033980718
 MonoBehaviour:
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320111278499474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d8dfb272c8f404c8b596b0aefa2ba7, type: 3}
+  m_Script: {fileID: 11500000, guid: 25999ea4cb7891f49af0edae17e3ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Collider2D: {fileID: 0}
@@ -248,12 +248,12 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  OnHurtEvent:
+  _OnHurtEvents:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnDieEvent:
+  _OnDieEvents:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114663470064103278}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1563968706849988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da9ed5eb6fd35d4b84cd6392f4bb1d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c51a963fe2abe74cb9140a7cf3f60ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _AutoAim: 1
@@ -302,11 +302,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1911408735316108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abeb34d6bc9a7541a3661c0892b40a5, type: 3}
+  m_Script: {fileID: 11500000, guid: af6fd565296080e4b8ee1ec396632ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Collider2D: {fileID: 0}
-  OnCollide:
+  _OnCollide:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

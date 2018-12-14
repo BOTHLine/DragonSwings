@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamFollowPlayer : MonoBehaviour
 {
+    /*
     public GameObject playerGameObject;
     private Transform target;
     private Rigidbody2D playerRigidBody;
@@ -186,5 +187,5 @@ public class CamFollowPlayer : MonoBehaviour
         boarderLine.SetPosition(9, new Vector2(upperLeftBoarder.x + screenSize.x, upperLeftBoarder.y - screenSize.y));
     }
 
-
+    */
 }

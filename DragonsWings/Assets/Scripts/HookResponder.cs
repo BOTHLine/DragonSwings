@@ -49,6 +49,7 @@ public class HookResponder : MonoBehaviour
         _Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         transform.parent.transform.position = targetObject.transform.position;
         _SpriteRenderer.sortingLayerName = "Foreground";
+        _PushBox.gameObject.SetActive(false);
     }
 
     public void DetachFromObject()
@@ -56,6 +57,7 @@ public class HookResponder : MonoBehaviour
         transform.parent.parent = _OldParent;
         _Rigidbody2D.bodyType = _OldRigidbodyType2D;
         _SpriteRenderer.sortingLayerName = "Objects";
+        _PushBox.gameObject.SetActive(true);
     }
 
     public void StartThrow(Vector2 targetPosition, float flyTime, float flyHeight)
@@ -74,7 +76,7 @@ public class HookResponder : MonoBehaviour
 
         Vector2 realTargetPosition = targetPosition + (startPosition - targetPosition).normalized * 0.5f;
 
-        while (realTargetPosition.SquaredDistanceTo(transform.position) >= 0.0001f)
+        while (realTargetPosition.SquaredDistanceTo(transform.position) >= 0.0001f && flyCounter < flyTime)
         {
             Vector2 nextPosition = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, flyHeight, flyCounter / flyTime);
             transform.parent.position = nextPosition;
@@ -82,6 +84,7 @@ public class HookResponder : MonoBehaviour
             flyCounter++;
             yield return new WaitForEndOfFrame();
         }
+        transform.parent.position = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, flyHeight, 1.0f);
         ObjectLanded();
         StopCoroutine(_CurrentThrowRoutine);
     }

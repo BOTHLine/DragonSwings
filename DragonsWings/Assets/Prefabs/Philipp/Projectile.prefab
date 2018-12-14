@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4781750562938978}
   - component: {fileID: 212714948144053408}
-  - component: {fileID: 114185470658439208}
+  - component: {fileID: 114669074072199864}
   m_Layer: 27
   m_Name: Renderer
   m_TagString: Untagged
@@ -205,10 +205,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1753703409808438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32bddcdc4836d9c4bbea9c56ed18da20, type: 3}
+  m_Script: {fileID: 11500000, guid: f5bbf8f539fb1af4cb63d8cd676fe3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Rigidbody2D: {fileID: 0}
+  _SpriteRenderer: {fileID: 0}
   _PushBox: {fileID: 0}
   _HurtBox: {fileID: 0}
   _AutoAim: 0
@@ -235,19 +236,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114185470658439208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490636910355104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4498b4b7484af94b87afeaf10648e09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runOnlyOnce: 0
-  offset: 0
 --- !u!114 &114187615316765428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920412622425564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da9ed5eb6fd35d4b84cd6392f4bb1d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c51a963fe2abe74cb9140a7cf3f60ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _AutoAim: 0
@@ -284,6 +272,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114669074072199864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490636910355104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2ab59808efaaa488f2f17e43a9488e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnlyOnce: 0
+  offset: 0
 --- !u!114 &114875199832240382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,21 +293,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640498996448310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebec84fecb82cd4aafb11df04bd7c9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8224ff63c8e04ac45b20076855966f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Rigidbody2D: {fileID: 0}
   _CircleCollider2D: {fileID: 0}
   _Speed:
     UseType: 1
-    ConstantValue: 15
-    Variable: {fileID: 11400000, guid: 74926c5b7f6b6e845a52598bd5c4a739, type: 2}
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0da7c7c8c4a0700439cc2fe74bda7476, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   _Damage:
     UseType: 1
-    ConstantValue: 1
-    Variable: {fileID: 11400000, guid: 6e46686ed2385014798149ca6ef5f3a8, type: 2}
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: faedbd06c6b7507439b7eb3ea231c22d, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
 --- !u!212 &212714948144053408

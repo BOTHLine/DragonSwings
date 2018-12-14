@@ -3,7 +3,6 @@
 public class HookAbility : MonoBehaviour
 {
     // Components
-    private AbilityManager _AbilityManager;
     private Hook _Hook;
 
     // References
@@ -16,20 +15,21 @@ public class HookAbility : MonoBehaviour
 
     public Vector2ComplexReference _Aim;
 
-    public Vector2Reference _TargetDirection;
-    public Vector2Reference _TargetPosition;
+    // public Vector2Reference _TargetDirection;
+    // public Vector2Reference _TargetPosition;
 
     public HookResponderVariable _AttachedHookResponder;
 
     // Events
-    public GameEvent OnHookShoot;
-    public GameEvent OnHookHit;
-    public GameEvent OnHookReset;
+    public GameEvent _OnHookShoot;
 
-    public GameEvent OnPullStart;
-    public GameEvent OnPullFinish;
+    public GameEvent _OnHookHit;
+    public GameEvent _OnHookReset;
 
-    public GameEvent OnObjectPickUp;
+    public GameEvent _OnPullStartRaise;
+    public GameEvent _OnPullFinishRaise;
+
+    public GameEvent _OnPickUpRaise;
 
     // Variables
     private bool _HookIsFlying;
@@ -37,33 +37,32 @@ public class HookAbility : MonoBehaviour
     // Mono Behaviour
     private void Awake()
     {
-        _AbilityManager = GetComponentInParent<AbilityManager>();
         _Hook = GetComponentInChildren<Hook>();
-        _Hook.Initialize(this, _HookSpeed);
+        _Hook.Initialize(this, _HookSpeed.Value);
     }
 
     private void FixedUpdate()
     {
-        if (_HookIsFlying && ((Vector2)_Hook.transform.position).SquaredDistanceTo(transform.position) >= _HookRange * _HookRange)
-        { _Hook.FlyBack(); }
+        if (_HookIsFlying && ((Vector2)_Hook.transform.position).SquaredDistanceTo(transform.position) >= _HookRange.Value * _HookRange.Value)
+        { _Hook.FlyBack(); Debug.Log(_HookRange.Value); }
     }
 
     // Methods
     public void ShootHook()
     {
-        if (_HookIsFlying || _TargetDirection.Value.Equals(Vector2.zero)) { return; }
-        // Vector2Complex aim = _Aim.Value;
-        // if (_HookIsFlying || aim.Direction.Equals(Vector2.zero)) { return; }
+        // if (_HookIsFlying || _TargetDirection.Value.Equals(Vector2.zero)) { return; }
+        if (_HookIsFlying) { return; }
+        if (_Aim.Value.Direction.Equals(Vector2.zero)) { return; }
+        _OnHookShoot.Raise();
 
         _HookIsFlying = true;
-        _Hook.Shoot(_TargetPosition.Value);
-        //_Hook.Shoot(aim.EndPoint);
-        OnHookShoot.Raise();
+        //_Hook.Shoot(_TargetPosition.Value);
+        _Hook.Shoot(_Aim.Value.EndPoint);
     }
 
     public void HookHitSomething(Collider2D collider)
     {
-        OnHookHit.Raise();
+        _OnHookHit.Raise();
         HookResponder hookResponder = collider.GetComponentInSiblings<HookResponder>();
         if (hookResponder != null)
         {
@@ -78,15 +77,15 @@ public class HookAbility : MonoBehaviour
                     _Hook.FlyBack();
                     break;
                 case Weight.Medium:
-                    _PullSpeed.Value = _HookSpeed / 2.0f;
+                    _PullSpeed.Value = _HookSpeed.Value / 2.0f;
                     _Hook.AttachHookResponder(hookResponder);
-                    OnPullStart.Raise();
+                    _OnPullStartRaise.Raise();
                     _Hook.FlyBack();
                     break;
                 case Weight.Heavy:
-                    _PullSpeed.Value = _HookSpeed;
+                    _PullSpeed.Value = _HookSpeed.Value;
                     _Hook.StopHook();
-                    OnPullStart.Raise();
+                    _OnPullStartRaise.Raise();
                     break;
             }
         }
@@ -95,7 +94,7 @@ public class HookAbility : MonoBehaviour
 
     public void HookReachedPlayer()
     {
-        OnPullFinish.Raise();
+        //   _OnPullFinishRaise.Raise();
         ResetHook();
         PickUpHookResponder();
     }
@@ -111,7 +110,7 @@ public class HookAbility : MonoBehaviour
                 break;
             case Weight.Light:
                 _AttachedHookResponder.Value = hookResponder;
-                OnObjectPickUp.Raise();
+                _OnPickUpRaise.Raise();
                 break;
             case Weight.Medium:
                 break;
@@ -125,6 +124,6 @@ public class HookAbility : MonoBehaviour
         _HookIsFlying = false;
 
         _Hook.Reset();
-        OnHookReset.Raise();
+        _OnHookReset.Raise();
     }
 }

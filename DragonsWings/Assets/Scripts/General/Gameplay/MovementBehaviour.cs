@@ -2,6 +2,7 @@
 
 public class MovementBehaviour : MonoBehaviour
 {
+    /*
     // Components
     private Rigidbody2D Rigidbody2D;
 
@@ -17,4 +18,5 @@ public class MovementBehaviour : MonoBehaviour
     private void Awake() { Rigidbody2D = GetComponentInParent<Rigidbody2D>(); }
 
     public void Move() { Rigidbody2D.velocity = _MoveDirection.Value * _MoveSpeed; }
+    */
 }

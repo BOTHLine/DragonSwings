@@ -26,7 +26,7 @@ public static class Utils
         {
             //start and end are not level, gets more complicated
             Vector2 travelDirection = end - start;
-            Vector2 levelDirecteion = end - new Vector2(start.x, end.y);
+            // Vector2 levelDirecteion = end - new Vector2(start.x, end.y);
             Vector2 up = new Vector2(0.0f, 1.0f);
             //if (end.y > start.y) up = -up;
             Vector2 result = start + time * travelDirection;

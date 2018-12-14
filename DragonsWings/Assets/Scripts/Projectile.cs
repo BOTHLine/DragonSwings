@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         HurtBox hurtBox = collision.GetComponentInSiblings<HurtBox>();
-        hurtBox?.Hurt(_Damage);
+        hurtBox?.Hurt(_Damage.Value);
         DestroyProjectile();
     }
 
@@ -39,6 +39,6 @@ public class Projectile : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
-        _Rigidbody2D.velocity = direction * _Speed;
+        _Rigidbody2D.velocity = direction * _Speed.Value;
     }
 }

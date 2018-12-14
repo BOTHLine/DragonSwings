@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc46fd40bd79c49a2fd08d69632582, type: 3}
+  m_Name: State Player Move
+  m_EditorClassIdentifier: 
+  _Layer: 13
+  _Behaviours:
+  - {fileID: 11400000, guid: 79e697d18acd6ac409c02db20662ab5c, type: 2}
+  - {fileID: 11400000, guid: f5a805e58ed2a7e46844fa281708759b, type: 2}
+  _Transitions:
+  - {fileID: 11400000, guid: e289e7638708f7a458d14ca518b7f256, type: 2}
+  - {fileID: 11400000, guid: 4da3a660bb98f0843b1439c9bb7e99a8, type: 2}
