@@ -1811,18 +1811,18 @@ MonoBehaviour:
   aimingDot: {fileID: 1476180198409708}
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
-  spacing: 0
+  spacing: 0.5
   cursor: {fileID: 1711116991385648}
   shrinkDots: 0
-  shrinkingRate: 0
+  shrinkingRate: 0.03
   range:
     UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: d94330adb134aa6438f521fc51cecadf, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _NothingColor: {r: 0, g: 0, b: 0, a: 0}
-  _EnemyColor: {r: 0, g: 0, b: 0, a: 0}
+  _NothingColor: {r: 1, g: 1, b: 1, a: 1}
+  _EnemyColor: {r: 0.54901963, g: 0.7019608, b: 0.654902, a: 0}
   _BoxColor: {r: 0, g: 0, b: 0, a: 0}
   _WallColor: {r: 0, g: 0, b: 0, a: 0}
   _VaseColor: {r: 0, g: 0, b: 0, a: 0}
