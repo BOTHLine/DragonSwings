@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1838723580773390}
   m_IsPrefabAsset: 1
+--- !u!1 &1010972408166640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4015308178476908}
+  - component: {fileID: 114682879632502552}
+  m_Layer: 0
+  m_Name: Corpse Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1121005222754384
 GameObject:
   m_ObjectHideFlags: 1
@@ -300,6 +316,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!4 &4015308178476908
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010972408166640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4373660712988604}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4182690788551430
 Transform:
   m_ObjectHideFlags: 1
@@ -373,6 +402,7 @@ Transform:
   - {fileID: 4423895619799842}
   - {fileID: 4513940433231746}
   - {fileID: 4212296271191942}
+  - {fileID: 4015308178476908}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -685,6 +715,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114682879632502552}
+        m_MethodName: SpawnCorpse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114123748712451012
@@ -941,6 +982,19 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: acf67c71eaccb344eb197e702f2ba4d6, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+--- !u!114 &114682879632502552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010972408166640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec26fa01e74b6842bf14b6511f23291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PrefabCorpse: {fileID: 1232211054248496, guid: 68afd140f9061b2409720c099da4c9dc,
+    type: 2}
 --- !u!114 &114728176258749164
 MonoBehaviour:
   m_ObjectHideFlags: 1

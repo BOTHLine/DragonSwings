@@ -114,6 +114,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1381731265634784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4555609078375604}
+  - component: {fileID: 114464330439227364}
+  m_Layer: 0
+  m_Name: CorpseSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1562421327003556
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +386,19 @@ Transform:
   m_Father: {fileID: 4929730895997440}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4555609078375604
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381731265634784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4929730895997440}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4614801987178064
 Transform:
   m_ObjectHideFlags: 1
@@ -428,6 +457,7 @@ Transform:
   - {fileID: 4736151745833358}
   - {fileID: 4168274807090512}
   - {fileID: 4350592421390588}
+  - {fileID: 4555609078375604}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -649,6 +679,19 @@ MonoBehaviour:
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   image: {fileID: 114207029849936288}
+--- !u!114 &114464330439227364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381731265634784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec26fa01e74b6842bf14b6511f23291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PrefabCorpse: {fileID: 1514306024825356, guid: 4c8ea3e6b8577a442b19fe2b776baba7,
+    type: 2}
 --- !u!114 &114475486059717434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -875,6 +918,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114945916663301956}
         m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114464330439227364}
+        m_MethodName: SpawnCorpse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
