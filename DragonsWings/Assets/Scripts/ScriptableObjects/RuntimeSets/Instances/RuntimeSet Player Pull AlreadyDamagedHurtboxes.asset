@@ -8,7 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: dfb9e3909d7681547a5d65c3341b6bbb, type: 3}
   m_Name: RuntimeSet Player Pull AlreadyDamagedHurtboxes
-  m_EditorClassIdentifier: Assembly-CSharp::HurtBoxListRuntimeSet
-  _Items: []
+  m_EditorClassIdentifier: 
+  _Items:
+  - {fileID: 0}
