@@ -42,9 +42,10 @@ public class DottedLine : MonoBehaviour
         //Cam setzt die z Position auf -10 ... das fixe ich hiermit: ++ new Vector3 (0,0,10)
         //endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
 
-        endPoint = (Vector2)gameObject.transform.parent.position + _Aim.Value.Direction * checkRange();
+        // endPoint = (Vector2)gameObject.transform.parent.position + _Aim.Value.Direction * checkRange();
         // Vector2Complex aim = _Aim;
-        // endPoint = aim.EndPoint;
+        checkRange();
+        endPoint = _Aim.Value.EndPoint;
 
         cursor.transform.position = endPoint;
 

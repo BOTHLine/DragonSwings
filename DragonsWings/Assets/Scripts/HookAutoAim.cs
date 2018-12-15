@@ -18,6 +18,8 @@ public class HookAutoAim : MonoBehaviour
 
     [SerializeField] private BoolReference _UseAutoAim;
 
+    [SerializeField] private FloatReference _HookPushboxRadius;
+
     // Variables
     [SerializeField] private Color NoAimColor;
     [SerializeField] private Color NoTargetColor;
@@ -43,7 +45,8 @@ public class HookAutoAim : MonoBehaviour
         }
         else
         {
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
+            RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
+            // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
             aimAuto.Magnitude = (raycastHit2D.collider ? raycastHit2D.distance : _AimRange.Value);
         }
 
@@ -65,7 +68,8 @@ public class HookAutoAim : MonoBehaviour
 
             if (((Vector2)transform.position - (Vector2)hookResponder.transform.position).sqrMagnitude > _AimRange * _AimRange) { continue; }
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
+            RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
+            // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
             if (raycastHit2D.collider != raycastHit2Ds[i].collider) { continue; }
 
             float newDistance = Vector2.Distance(transform.position, hookResponder.transform.position);

@@ -57,7 +57,7 @@ public class HookAbility : MonoBehaviour
 
         _HookIsFlying = true;
         //_Hook.Shoot(_TargetPosition.Value);
-        _Hook.Shoot(_Aim.Value.EndPoint);
+        _Hook.Shoot(_Aim.Value);
     }
 
     public void HookHitSomething(Collider2D collider)

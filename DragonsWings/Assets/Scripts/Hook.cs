@@ -68,19 +68,19 @@ public class Hook : MonoBehaviour
         _HookSpeed = hookSpeed;
     }
 
-    public void Shoot(Vector2 targetPosition)
+    public void Shoot(Vector2Complex aim)
     {
         _HitSomething = false;
         _LookForward._CorrectionValue = _OriginalCorrectionValue;
 
         transform.parent = null;
-        transform.position = _HookAbility.transform.position;
-        transform.LookAt2D(targetPosition, -90.0f);
+        transform.position = aim.StartPoint + aim.Direction * 0.05f;
+        transform.LookAt2D(aim.EndPoint, -90.0f);
 
         _PushBox.gameObject.SetActive(true);
         _SpriteRenderer.enabled = true;
 
-        _Rigidbody2D.velocity = (targetPosition - (Vector2)transform.position).normalized * _HookSpeed;
+        _Rigidbody2D.velocity = (aim.Direction * _HookSpeed);
     }
 
     public void ResetVelocity()
