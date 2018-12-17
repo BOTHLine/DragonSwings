@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DottedLine : MonoBehaviour
 {
+    private Renderer _Renderer;
+
     public Vector2ComplexReference _Aim;
     public GameObject aimingDot;
 
@@ -27,9 +29,10 @@ public class DottedLine : MonoBehaviour
     public Color _WallColor;
     public Color _VaseColor;
 
-    void Start()
+    void Awake()
     {
-        startPoint = gameObject.transform.parent.position;
+        _Renderer = cursor.GetComponent<Renderer>();
+
         dots = new List<GameObject>();
         //cursor = aimingDot;
         startScaleDots = cursor.transform.localScale / 4;
@@ -44,15 +47,21 @@ public class DottedLine : MonoBehaviour
 
         // endPoint = (Vector2)gameObject.transform.parent.position + _Aim.Value.Direction * checkRange();
         // Vector2Complex aim = _Aim;
-        checkRange();
-        endPoint = _Aim.Value.EndPoint;
+        if (_Aim.Value.Direction.Equals(Vector2.zero))
+        {
+            _Renderer.enabled = false;
+        }
+        else
+        {
+            checkRange();
+            endPoint = _Aim.Value.EndPoint;
 
-        cursor.transform.position = endPoint;
+            cursor.transform.position = endPoint;
 
-        if ((gameObject.transform.parent.position - endPoint).magnitude <= 0.001f) cursor.GetComponent<Renderer>().enabled = false;
-        else cursor.GetComponent<Renderer>().enabled = true;
+            drawLine();
 
-        drawLine();
+            _Renderer.enabled = true;
+        }
     }
 
     public void drawLine()
