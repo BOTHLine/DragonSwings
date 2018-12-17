@@ -2,12 +2,16 @@
 
 public class DebugInput : MonoBehaviour
 {
+    // References
+    public HookResponderReference _CurrentAttachedHookResponder;
+
     // Variables
     public GameObject[] _SkipPoints;
 
     // Events
     public GameEvent _OnInputHookReset;
     public GameEvent _OnInputLevelReset;
+    public GameEvent _OnInputTypeToggle;
 
     public GameEventMap _OnInputSkipPointTelport;
 
@@ -16,6 +20,8 @@ public class DebugInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K)) { _OnInputHookReset.Raise(); }
 
         if (Input.GetKeyDown(KeyCode.L)) { _OnInputLevelReset.Raise(); }
+
+        if (Input.GetKeyDown(KeyCode.I)) { _OnInputTypeToggle.Raise(); }
 
         for (int i = 0; i < _SkipPoints.Length; i++)
         {
@@ -28,6 +34,7 @@ public class DebugInput : MonoBehaviour
 
     public void ResetLevel()
     {
+        _CurrentAttachedHookResponder.Value = null;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

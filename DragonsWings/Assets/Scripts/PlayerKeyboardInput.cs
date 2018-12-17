@@ -14,6 +14,7 @@ public class PlayerKeyboardInput : MonoBehaviour
 
     // Events
     public GameEvent _OnInputActionButton;
+    public GameEvent _OnInputAimAutoToggle;
 
     // Mono Behaviour
     private void Update()
@@ -29,6 +30,9 @@ public class PlayerKeyboardInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             _OnInputActionButton.Raise();
+
+        if (Input.GetKeyDown(KeyCode.O))
+            _OnInputAimAutoToggle.Raise();
     }
 
     // Methods
