@@ -19,6 +19,7 @@ public class PlayerControllerInput : MonoBehaviour
     // Events
     public GameEvent _OnInputAction;
     public GameEvent _OnInputAimAutoToggle;
+    public GameEvent _OnInputControlsShowToggle;
 
     // Mono Behaviour
     private void Awake()
@@ -42,7 +43,7 @@ public class PlayerControllerInput : MonoBehaviour
         if (GetAxisDown("Axis10")) { _OnInputAction.Raise(); }
 
         if (Input.GetKeyDown(KeyCode.JoystickButton4)) { _OnInputAimAutoToggle.Raise(); }
-
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)) { _OnInputControlsShowToggle.Raise(); }
     }
 
     // Methods
