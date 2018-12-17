@@ -11,17 +11,13 @@ public class AimSupportSwitcher : MonoBehaviour
 
     private bool supportIsOn = true;
 
-    public GameObject picture;
+    public Image picture;
 
 
 
     public void switchPic()
     {
         supportIsOn = !supportIsOn;
-
-        if (supportIsOn) picture.GetComponent<Image>().sprite = picOn;
-        else picture.GetComponent<Image>().sprite = picOn;
+        picture.sprite = supportIsOn ? picOn : picOff;
     }
-
-
 }
