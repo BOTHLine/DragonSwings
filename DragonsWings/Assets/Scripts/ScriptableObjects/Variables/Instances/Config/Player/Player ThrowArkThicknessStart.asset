@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf4b08e77558cf44a1d75bcff08dda9, type: 3}
   m_Name: Player ThrowArkThicknessStart
   m_EditorClassIdentifier: 
-  InitialValue: 0.1
-  _Value: 0.1
+  InitialValue: 0.4
+  _Value: 0.4
