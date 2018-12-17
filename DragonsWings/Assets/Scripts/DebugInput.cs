@@ -15,6 +15,10 @@ public class DebugInput : MonoBehaviour
 
     public GameEventMap _OnInputSkipPointTelport;
 
+    public GameEvent _OnInputActionButton;
+    public GameEvent _OnHookShootRaise;
+    public GameEvent _OnThrowRaise;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K)) { _OnInputHookReset.Raise(); }
@@ -35,6 +39,8 @@ public class DebugInput : MonoBehaviour
     public void ResetLevel()
     {
         _CurrentAttachedHookResponder.Value = null;
+        _OnInputActionButton.UnregisterListener(_OnHookShootRaise.Raise);
+        _OnInputActionButton.UnregisterListener(_OnThrowRaise.Raise);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
