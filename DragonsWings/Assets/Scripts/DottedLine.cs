@@ -33,6 +33,7 @@ public class DottedLine : MonoBehaviour
     {
         _Renderer = cursor.GetComponent<Renderer>();
 
+        startPoint = gameObject.transform.parent.position;
         dots = new List<GameObject>();
         //cursor = aimingDot;
         startScaleDots = cursor.transform.localScale / 4;
@@ -47,21 +48,22 @@ public class DottedLine : MonoBehaviour
 
         // endPoint = (Vector2)gameObject.transform.parent.position + _Aim.Value.Direction * checkRange();
         // Vector2Complex aim = _Aim;
+
+        checkRange();
+        endPoint = _Aim.Value.EndPoint;
+
+        cursor.transform.position = endPoint;
+
         if (_Aim.Value.Direction.Equals(Vector2.zero))
         {
             _Renderer.enabled = false;
         }
         else
         {
-            checkRange();
-            endPoint = _Aim.Value.EndPoint;
-
-            cursor.transform.position = endPoint;
-
-            drawLine();
-
             _Renderer.enabled = true;
         }
+
+        drawLine();
     }
 
     public void drawLine()
