@@ -63,6 +63,7 @@ public class Box : MonoBehaviour
         _PushBox?.gameObject.SetActive(false);
         _HurtBox?.gameObject.SetActive(false);
         _HookResponder?.gameObject.SetActive(false);
+        _SpriteRenderer.sortingLayerName = "On Ground";
     }
 
     private System.Collections.IEnumerator PlayLandedAnimation(float time)

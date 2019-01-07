@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf4b08e77558cf44a1d75bcff08dda9, type: 3}
   m_Name: Camera ZoomMinimum
   m_EditorClassIdentifier: 
-  InitialValue: 15
-  _Value: 15
+  InitialValue: 10
+  _Value: 10

@@ -23,5 +23,6 @@ public class Vase : MonoBehaviour
         _PushBox?.gameObject.SetActive(false);
         _HurtBox?.gameObject.SetActive(false);
         _ThrowResponder?.gameObject.SetActive(false);
+        _SpriteRenderer.sortingLayerName = "On Ground";
     }
 }
