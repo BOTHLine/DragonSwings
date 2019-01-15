@@ -130,10 +130,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a7c6b7608477c4bbbb4f20ba2b8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AimPosition:
+  _Aim:
+    UseType: 1
+    ConstantValue:
+      _Vector: {x: 0, y: 0}
+      _StartPoint: {x: 0, y: 0}
+      _EndPoint: {x: 0, y: 0}
+      _Direction: {x: 0, y: 0}
+      _Magnitude: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
+  _AimDirection:
     UseType: 1
     ConstantValue: {x: 0, y: 0}
-    Variable: {fileID: 11400000, guid: 57edf82827104064a92d92e5630455c7, type: 2}
+    Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
   aimingDot: {fileID: 1217724259226166}
@@ -142,12 +153,18 @@ MonoBehaviour:
   spacing: 0.5
   cursor: {fileID: 1300936432406780}
   shrinkDots: 0
+  shrinkingRate: 0
   range:
     UseType: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: a70fefdc2aa940647bde5fdc7d8d5c08, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  _NothingColor: {r: 0, g: 0, b: 0, a: 0}
+  _EnemyColor: {r: 0, g: 0, b: 0, a: 0}
+  _BoxColor: {r: 0, g: 0, b: 0, a: 0}
+  _WallColor: {r: 0, g: 0, b: 0, a: 0}
+  _VaseColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212107062592787172
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -229,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 21300000, guid: 815c269f4dbebb447881bec2cc22e9f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0791860a29b65094fbe071be1523a9fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

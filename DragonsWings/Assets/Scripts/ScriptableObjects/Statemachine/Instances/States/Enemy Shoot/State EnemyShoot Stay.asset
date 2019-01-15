@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc46fd40bd79c49a2fd08d69632582, type: 3}
+  m_Name: State EnemyShoot Stay
+  m_EditorClassIdentifier: 
+  _Layer: 23
+  _Behaviours:
+  - {fileID: 11400000, guid: f600f56c14e3be3438be89456e8bd6a9, type: 2}
+  - {fileID: 11400000, guid: 257ffc15842b16847bda8206ce6a453e, type: 2}
+  _Transitions:
+  - {fileID: 11400000, guid: 8472158c4dc53c34aa59880b57ee2eda, type: 2}
+  - {fileID: 11400000, guid: f427c0c1dfd448a4e972a3bd593f4a97, type: 2}
+  - {fileID: 11400000, guid: 6371789785391d441bda2cd6d5fb0bfb, type: 2}

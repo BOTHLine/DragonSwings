@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274c23dd59603db4cbdc1356ef94a8fc, type: 3}
+  m_Name: Transition EnemyShoot Chase to Stay
+  m_EditorClassIdentifier: 
+  _Decisions:
+  - {fileID: 11400000, guid: 48ba1c27c7c4ad7448f919fd62ac16c6, type: 2}
+  _TrueState: {fileID: 11400000, guid: 75b40dc0b45c9f846ac83a43b3209258, type: 2}
+  _FalseState: {fileID: 0}

@@ -2,6 +2,7 @@
 
 public class DashBehaviour : MonoBehaviour
 {
+    /*
     // Components
     private Rigidbody2D _Rigidbody2D;
 
@@ -54,4 +55,5 @@ public class DashBehaviour : MonoBehaviour
         _IsDashing.Variable.Value = false;
         OnDashEnd.Raise();
     }
+    */
 }

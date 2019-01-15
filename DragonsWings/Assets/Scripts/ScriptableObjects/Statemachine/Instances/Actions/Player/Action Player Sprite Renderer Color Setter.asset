@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18200c8ca4e92b4ea52f62dafe32e3f, type: 3}
+  m_Name: Action Player Sprite Renderer Color Setter
+  m_EditorClassIdentifier: 
+  _Color: {fileID: 11400000, guid: 95373335d644018478f17b373ba46a4b, type: 2}
