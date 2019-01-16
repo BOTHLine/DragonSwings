@@ -2,11 +2,11 @@
 
 public class CameraSettings : MonoBehaviour
 {
-    public Vector2Reference _CameraTargetPosition;
+    public Vector3Reference _CameraTargetPosition;
     public FloatReference _CameraTargetZoom;
 
-    public Vector2Reference _PlayerPosition;
-    public Vector2ComplexReference _Aim;
+    public Vector3Reference _PlayerPosition;
+    public Vector3ComplexReference _Aim;
 
     public FloatReference _CameraZoomMinimum;
 

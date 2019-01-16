@@ -7,7 +7,7 @@ public class ThrowAbility : MonoBehaviour
 
     // public Vector2Reference _TargetDirection;
     // public Vector2Reference _TargetPosition;
-    public Vector2ComplexReference _Aim;
+    public Vector3ComplexReference _Aim;
 
     public FloatReference _FlyTime;
     public FloatReference _FlyHeight;

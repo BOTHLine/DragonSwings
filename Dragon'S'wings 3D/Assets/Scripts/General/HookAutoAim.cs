@@ -2,17 +2,18 @@
 
 public class HookAutoAim : MonoBehaviour
 {
-    private struct ClosestHookResponder
+    private struct HookResponderDistance
     {
         public HookResponder hookResponder;
         public float distance;
+        public float value { get { return hookResponder._AutoAimPriority - distance; } }
     }
 
     // References
     [SerializeField] private FloatReference _AimRange;
 
-    [SerializeField] private Vector2ComplexReference _AimRaw;
-    [SerializeField] private Vector2ComplexReference _AimAuto;
+    [SerializeField] private Vector3ComplexReference _AimRaw;
+    [SerializeField] private Vector3ComplexReference _AimAuto;
 
     [SerializeField] private FloatReference _AimAutoRadius;
 
@@ -30,11 +31,11 @@ public class HookAutoAim : MonoBehaviour
 
     private void Update()
     {
-        Vector2Complex aimRaw = _AimRaw.Value;
+        Vector3Complex aimRaw = _AimRaw.Value;
         aimRaw.Magnitude = _AimRange.Value;
         _AimRaw.Value = aimRaw;
 
-        Vector2Complex aimAuto = new Vector2Complex(_AimRaw.Value);
+        Vector3Complex aimAuto = new Vector3Complex(_AimRaw.Value);
 
         HookResponder hookResponder = null;
         if (_UseAutoAim.Value) { hookResponder = FindClosestHookResponder(); }
@@ -45,9 +46,13 @@ public class HookAutoAim : MonoBehaviour
         }
         else
         {
-            RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
+            RaycastHit raycastHit;
+            Physics.SphereCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, out raycastHit, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
+            aimAuto.Magnitude = (raycastHit.collider ? raycastHit.distance : _AimRange.Value);
+
+            // RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
             // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
-            aimAuto.Magnitude = (raycastHit2D.collider ? raycastHit2D.distance : _AimRange.Value);
+            // aimAuto.Magnitude = (raycastHit2D.collider ? raycastHit2D.distance : _AimRange.Value);
         }
 
         _AimAuto.Value = aimAuto;
@@ -55,25 +60,33 @@ public class HookAutoAim : MonoBehaviour
 
     private HookResponder FindClosestHookResponder()
     {
-        if ((_AimRaw.Value.Direction).Equals(Vector2.zero)) { return null; }
+        if ((_AimRaw.Value.Direction).Equals(Vector3.zero)) { return null; }
 
-        ClosestHookResponder closestHookResponder = new ClosestHookResponder();
+        HookResponderDistance closestHookResponder = new HookResponderDistance();
 
-        Vector2 closestTarget = _AimRaw.Value.EndPoint;
-        RaycastHit2D[] raycastHit2Ds = Physics2D.CircleCastAll((Vector2)transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
-        for (int i = 0; i < raycastHit2Ds.Length; i++)
+        Vector3 closestTarget = _AimRaw.Value.EndPoint;
+        RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
+        // RaycastHit2D[] raycastHit2Ds = Physics2D.CircleCastAll((Vector2)transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
+        for (int i = 0; i < raycastHits.Length; i++)
         {
-            HookResponder hookResponder = raycastHit2Ds[i].collider.GetComponentInSiblings<HookResponder>();
+            HookResponder hookResponder = raycastHits[i].collider.GetComponentInSiblings<HookResponder>();
             if (hookResponder == null || !hookResponder._AutoAim) { continue; }
 
-            if (((Vector2)transform.position - (Vector2)hookResponder.transform.position).sqrMagnitude > _AimRange * _AimRange) { continue; }
+            if ((transform.position - hookResponder.transform.position).sqrMagnitude > _AimRange * _AimRange) { continue; }
 
-            RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
+            RaycastHit raycastHit;
+            if (!Physics.SphereCast(transform.position, _HookPushboxRadius.Value, hookResponder.transform.position - transform.position, out raycastHit, _AimRange.Value, LayerList.PlayerProjectile.LayerMask)) { continue; }
+
+            // RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
             // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
-            if (raycastHit2D.collider != raycastHit2Ds[i].collider) { continue; }
+            // if (raycastHit2D.collider != raycastHits[i].collider) { continue; }
 
-            float newDistance = Vector2.Distance(transform.position, hookResponder.transform.position);
-            if (closestHookResponder.hookResponder != null && closestHookResponder.distance < newDistance) { continue; }
+            float newDistance = Vector3.Distance(transform.position, hookResponder.transform.position);
+            HookResponderDistance newHookResponderDistance = new HookResponderDistance();
+            newHookResponderDistance.hookResponder = hookResponder;
+            newHookResponderDistance.distance = newDistance;
+
+            if (closestHookResponder.hookResponder != null && closestHookResponder.value < newHookResponderDistance.value) { continue; }
 
             closestHookResponder.hookResponder = hookResponder;
             closestHookResponder.distance = newDistance;

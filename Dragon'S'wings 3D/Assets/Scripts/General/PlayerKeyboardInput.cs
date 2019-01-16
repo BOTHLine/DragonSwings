@@ -9,8 +9,8 @@ public class PlayerKeyboardInput : MonoBehaviour
     // public Vector2Reference _MoveDirection;
     // public Vector2Reference _AimDirection;
 
-    public Vector2ComplexReference _MoveInput;
-    public Vector2ComplexReference _AimInput;
+    public Vector3ComplexReference _MoveInput;
+    public Vector3ComplexReference _AimInput;
 
     // Events
     public GameEvent _OnInputActionButton;
@@ -22,11 +22,11 @@ public class PlayerKeyboardInput : MonoBehaviour
         // _MoveDirection.Value = GetMoveDirection();
         // _AimDirection.Value = GetAimDirection();
 
-        Vector2Complex moveInput = new Vector2Complex(_Player.transform.position, _Player.transform.position);
+        Vector3Complex moveInput = new Vector3Complex(_Player.transform.position, _Player.transform.position);
         moveInput.Direction = GetMoveDirection();
         _MoveInput.Value = moveInput;
 
-        _AimInput.Value = new Vector2Complex(_Player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        _AimInput.Value = new Vector3Complex(_Player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             _OnInputActionButton.Raise();

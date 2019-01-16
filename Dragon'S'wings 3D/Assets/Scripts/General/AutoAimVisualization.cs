@@ -2,8 +2,8 @@
 
 public class AutoAimVisualization : MonoBehaviour
 {
-    public Vector2ComplexReference _AimRaw;
-    public Vector2ComplexReference _AimAuto;
+    public Vector3ComplexReference _AimRaw;
+    public Vector3ComplexReference _AimAuto;
 
     // public Vector2Reference _StartPosition;
     // public Vector2Reference _AimRawDirection;
