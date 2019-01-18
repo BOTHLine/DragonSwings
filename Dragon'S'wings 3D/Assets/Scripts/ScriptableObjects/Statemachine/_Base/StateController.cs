@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class StateController : MonoBehaviour
 {
     // Components
-    [HideInInspector] public new Rigidbody2D rigidbody2D;
-    [HideInInspector] public Animator animator;
-    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public Rigidbody _Rigidbody;
+    [HideInInspector] public Animator _Animator;
+    [HideInInspector] public SpriteRenderer _SpriteRenderer;
 
     // Variables
     public Statemachine statemachine;
@@ -16,10 +16,10 @@ public class StateController : MonoBehaviour
     // Methods
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        _Rigidbody = GetComponent<Rigidbody>();
 
-        animator = transform.Find("Renderer").GetComponent<Animator>();
-        spriteRenderer = transform.Find("Renderer").GetComponent<SpriteRenderer>();
+        _Animator = transform.Find("Renderer").GetComponent<Animator>();
+        _SpriteRenderer = transform.Find("Renderer").GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -40,6 +40,6 @@ public class StateController : MonoBehaviour
 
     public void Respawn()
     {
-        // TODO Set Position to LastSavePosition Vector2Reference;
+        // TODO Set Position to LastSavePosition Vector3Reference;
     }
 }

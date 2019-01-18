@@ -30,11 +30,13 @@ public class PlayerControllerInput : MonoBehaviour
         // TODO:
         // Change to Vector2ComplexReference System in Dotted Line (Rewrite anyway), HookAutoAim, ThrowAutoAim (merge them?), HookAbility, ThrowAbility and CameraFollow.
         Vector3Complex moveInput = new Vector3Complex(_Player.position, _Player.position);
-        moveInput.Direction = GetAxis2D("AxisX", "AxisY");
+        Vector2 moveInput2D = GetAxis2D("AxisX", "AxisY");
+        moveInput.Direction = new Vector3(moveInput2D.x, 0.0f, moveInput2D.y);
         _MoveInput.Value = moveInput;
 
         Vector3Complex aimInput = new Vector3Complex(_Player.position, _Player.position);
-        aimInput.Direction = GetAxis2D("Axis4", "Axis5");
+        Vector2 aimInput2D = GetAxis2D("Axis4", "Axis5");
+        aimInput.Direction = new Vector3(aimInput2D.x, 0.0f, aimInput2D.y);
         _AimInput.Value = aimInput;
 
         //_MoveDirection.Value = GetAxis2D("AxisX", "AxisY");

@@ -15,10 +15,10 @@ TagManager:
   - 
   - PostProcessing
   - 
-  - 
-  - 
-  - 
-  - 
+  - Floor
+  - Wall
+  - Pit
+  - Object
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 1717146293
+    locked: 0
+  - name: Object
+    uniqueID: 2147027967
+    locked: 0
+  - name: Ceiling
+    uniqueID: 3251028235
+    locked: 0
+  - name: UI
+    uniqueID: 1574883189
+    locked: 0
+  - name: UI Overlay
+    uniqueID: 3163781595
     locked: 0

@@ -3,7 +3,7 @@
 public class HookResponder : MonoBehaviour
 {
     // Components
-    public Rigidbody2D _Rigidbody2D;
+    public Rigidbody _Rigidbody;
     public Renderer _Renderer;
     public PushBox _PushBox;
     public HurtBox _HurtBox;
@@ -19,7 +19,7 @@ public class HookResponder : MonoBehaviour
 
     private System.Collections.IEnumerator _CurrentThrowRoutine;
 
-    private RigidbodyType2D _OldRigidbodyType2D;
+    // private RigidbodyType _OldRigidbodyType2D;
 
     // Events
     public UnityEngine.Events.UnityEvent OnHitByHookUnityEvent;
@@ -28,7 +28,7 @@ public class HookResponder : MonoBehaviour
     // Mono Behaviour
     private void Awake()
     {
-        _Rigidbody2D = GetComponentInParent<Rigidbody2D>();
+        _Rigidbody = GetComponentInParent<Rigidbody>();
         _Renderer = this.GetComponentInSiblings<Renderer>();
         _PushBox = this.GetComponentInSiblings<PushBox>();
         _HurtBox = this.GetComponentInSiblings<HurtBox>();
@@ -45,8 +45,8 @@ public class HookResponder : MonoBehaviour
     public void AttachToObject(Transform targetObject)
     {
         transform.parent.parent = targetObject.transform;
-        _OldRigidbodyType2D = _Rigidbody2D.bodyType;
-        _Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        // _OldRigidbodyType2D = _Rigidbody.bodyType;
+        // _Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         transform.parent.transform.position = targetObject.transform.position;
         _Renderer.sortingLayerName = "Foreground";
         _PushBox.gameObject.SetActive(false);
@@ -55,12 +55,12 @@ public class HookResponder : MonoBehaviour
     public void DetachFromObject()
     {
         transform.parent.parent = _OldParent;
-        _Rigidbody2D.bodyType = _OldRigidbodyType2D;
+        // _Rigidbody.bodyType = _OldRigidbodyType2D;
         _Renderer.sortingLayerName = "Objects";
         // _PushBox.gameObject.SetActive(true);
     }
 
-    public void StartThrow(Vector2 targetPosition, float flyTime, float flyHeight)
+    public void StartThrow(Vector3 targetPosition, float flyTime, float flyHeight)
     {
         DetachFromObject();
 
@@ -68,17 +68,17 @@ public class HookResponder : MonoBehaviour
         StartCoroutine(_CurrentThrowRoutine);
     }
 
-    private System.Collections.IEnumerator Throw(Vector2 targetPosition, float flyTime, float flyHeight)
+    private System.Collections.IEnumerator Throw(Vector3 targetPosition, float flyTime, float flyHeight)
     {
         float flyCounter = 0.0f;
 
-        Vector2 startPosition = transform.position;
+        Vector3 startPosition = transform.position;
 
-        Vector2 realTargetPosition = targetPosition + (startPosition - targetPosition).normalized * 0.5f;
+        Vector3 realTargetPosition = targetPosition + (startPosition - targetPosition).normalized * 0.5f;
 
         while (realTargetPosition.SquaredDistanceTo(transform.position) >= 0.0001f && flyCounter < flyTime)
         {
-            Vector2 nextPosition = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, flyHeight, flyCounter / flyTime);
+            Vector3 nextPosition = Utils.CalculatePositionOnParabola(startPosition, realTargetPosition, flyHeight, flyCounter / flyTime);
             transform.parent.position = nextPosition;
 
             flyCounter++;

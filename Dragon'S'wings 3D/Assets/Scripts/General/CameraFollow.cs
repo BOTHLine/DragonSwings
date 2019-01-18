@@ -4,12 +4,14 @@ public class CameraFollow : MonoBehaviour
 {
     private Camera _Camera;
 
-    public Vector2Reference _TargetPosition;
+    public Vector3Reference _TargetPosition;
 
     public FloatReference _TargetZoom;
 
     public FloatReference _CameraMoveSpeed;
     public FloatReference _CameraZoomSpeed;
+
+    public FloatReference _CameraHeight;
 
     private void Awake()
     {
@@ -27,10 +29,11 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 cameraFollowPosition = _TargetPosition.Value;
 
-        cameraFollowPosition.z = transform.position.z;
+        cameraFollowPosition.y = _TargetPosition.Value.y + _CameraHeight.Value;
+        cameraFollowPosition.z = cameraFollowPosition.z -= _CameraHeight.Value;
 
         Vector3 cameraMoveDir = (cameraFollowPosition - transform.position).normalized;
-        float distance = Vector2.Distance(cameraFollowPosition, transform.position);
+        float distance = Vector3.Distance(cameraFollowPosition, transform.position);
 
         if (distance > 0)
         {
