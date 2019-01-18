@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Behaviour Player Move
   m_EditorClassIdentifier: 
   _EnterStateActions: []
-  _ActActions: []
-  _ExitStateActions: []
+  _ActActions:
+  - {fileID: 11400000, guid: 0352b90e259563440b495820eb2658ad, type: 2}
+  - {fileID: 11400000, guid: 7ec8b779388535b49af72c66966ae0d8, type: 2}
+  _ExitStateActions:
+  - {fileID: 11400000, guid: ca0960c6ba855a9428c0bc09e5d7bd3d, type: 2}
+  - {fileID: 11400000, guid: 755744d9f25ed9c4296f73a6083e4fa3, type: 2}
+  - {fileID: 11400000, guid: b3818741e621ba64d8a95fd4def32f98, type: 2}

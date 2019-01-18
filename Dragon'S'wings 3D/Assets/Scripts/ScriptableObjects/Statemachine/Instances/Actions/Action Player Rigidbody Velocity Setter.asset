@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17aaab5e1a7c27f4e9cbba67894e84a0, type: 3}
-  m_Name: Action Rigidbody Velocity
+  m_Name: Action Player Rigidbody Velocity Setter
   m_EditorClassIdentifier: 
-  _MoveMap: {fileID: 0}
+  _MoveMap: {fileID: 11400000, guid: 0749e269a22868d4d9866fa89c533ec5, type: 2}
   _MoveSpeed:
     UseType: 1
     ConstantValue: 0
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 4752b7328aba7ff46807325eac6cbea8, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}

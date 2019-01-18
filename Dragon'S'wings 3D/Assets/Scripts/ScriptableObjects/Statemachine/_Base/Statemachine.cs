@@ -3,14 +3,15 @@
 [CreateAssetMenu(menuName = "Statemachine/Statemachine")]
 public class Statemachine : ScriptableObject
 {
+    public State _InitialState;
+
     public Transition[] _TransitionsFromAnyState;
     public StateTransitionPair[] _States;
 
     public State Initialize(StateController controller)
     {
-        //_InitialState.EnterState(controller);
-        // return _InitialState;
-        return null;
+        _InitialState.EnterState(controller);
+        return _InitialState;
     }
 
     public void UpdateStatemachine(StateController controller, State state)
@@ -34,7 +35,7 @@ public class Statemachine : ScriptableObject
     {
         foreach (StateTransitionPair state in _States)
         {
-            if (state.fromState == controller.currentState)
+            if (state.fromState == controller._CurrentState)
             {
                 foreach (Transition transition in state.transitionsTo)
                 {

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed6712266c349a47b0d2c00530e59f2, type: 3}
   m_Name: Action Animator Bool Setter IsMoving false
   m_EditorClassIdentifier: 
-  _Name: 
+  _Name: IsMoving
   _Value:
-    UseType: 1
+    UseType: 0
     ConstantValue: 0
     Variable: {fileID: 0}
     Map: {fileID: 0}

@@ -20,6 +20,15 @@ TagManager:
   - Pit
   - Object
   - 
+  - Player Low
+  - Player High
+  - Player Hurt Box
+  - Player Projectile
+  - 
+  - Enemy Low
+  - Enemy High
+  - Enemy Hurt Box
+  - Enemy Projectile
   - 
   - 
   - 
@@ -27,16 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Minimap
   m_SortingLayers:
   - name: Default
     uniqueID: 0

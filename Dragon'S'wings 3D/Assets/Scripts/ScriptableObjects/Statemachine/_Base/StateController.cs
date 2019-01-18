@@ -10,8 +10,8 @@ public class StateController : MonoBehaviour
     [HideInInspector] public SpriteRenderer _SpriteRenderer;
 
     // Variables
-    public Statemachine statemachine;
-    public State currentState;
+    public Statemachine _Statemachine;
+    [HideInInspector] public State _CurrentState;
 
     // Methods
     private void Awake()
@@ -23,18 +23,18 @@ public class StateController : MonoBehaviour
     }
 
     private void Start()
-    { statemachine.Initialize(this); }
+    { _CurrentState = _Statemachine.Initialize(this); }
 
     private void Update()
-    { statemachine.UpdateStatemachine(this, currentState); }
+    { _Statemachine.UpdateStatemachine(this, _CurrentState); }
 
     public bool TransitionToState(State nextState)
     {
         if (nextState == null)
             return false;
 
-        statemachine.EnterState(this, currentState, nextState);
-        currentState = nextState;
+        _Statemachine.EnterState(this, _CurrentState, nextState);
+        _CurrentState = nextState;
         return true;
     }
 

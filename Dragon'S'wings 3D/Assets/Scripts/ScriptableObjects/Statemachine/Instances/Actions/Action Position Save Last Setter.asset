@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ff434465c826e43a545c5470ea8e5f, type: 3}
   m_Name: Action Position Save Last Setter
   m_EditorClassIdentifier: 
-  _PositionMap: {fileID: 0}
+  _PositionMap: {fileID: 11400000, guid: b02c585412663cf4fb4909e4724f6e84, type: 2}

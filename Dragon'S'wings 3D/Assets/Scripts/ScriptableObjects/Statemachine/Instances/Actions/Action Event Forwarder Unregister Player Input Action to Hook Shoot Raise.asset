@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67047907daf77c04bbdd0533790b7bcc, type: 3}
   m_Name: Action Event Forwarder Unregister Player Input Action to Hook Shoot Raise
   m_EditorClassIdentifier: 
-  _ListenEvent: {fileID: 0}
-  _RaiseEvent: {fileID: 0}
+  _ListenEvent: {fileID: 11400000, guid: c25797c00e51cb442a786fbe5e1f79e1, type: 2}
+  _RaiseEvent: {fileID: 11400000, guid: 5964ac022053764438e5c573f6d83f4e, type: 2}

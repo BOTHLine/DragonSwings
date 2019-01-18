@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 379d5bd5d9a6dd6468fec01bf39e4efa, type: 3}
-  m_Name: Behaviour Player HookInputListener
+  m_Name: Behaviour Player Hook Input Listen
   m_EditorClassIdentifier: 
-  _EnterStateActions: []
+  _EnterStateActions:
+  - {fileID: 11400000, guid: c4c0940875c9ba94eaada7a848785765, type: 2}
   _ActActions: []
-  _ExitStateActions: []
+  _ExitStateActions:
+  - {fileID: 11400000, guid: 9696fcd5734161e4d99b3d5399d1fd2a, type: 2}
