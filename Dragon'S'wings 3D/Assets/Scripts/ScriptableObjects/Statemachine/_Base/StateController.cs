@@ -11,7 +11,7 @@ public class StateController : MonoBehaviour
 
     // Variables
     public Statemachine _Statemachine;
-    [HideInInspector] public State _CurrentState;
+    public State _CurrentState { get; private set; }
 
     // Methods
     private void Awake()

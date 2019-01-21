@@ -16,4 +16,14 @@ MonoBehaviour:
   _TransitionsFromAnyState: []
   _States:
   - fromState: {fileID: 11400000, guid: 1c69a50830500c9448fc10dfe0766920, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: dcbb0a6a68504ec4789f6d3b9ce8eb3a, type: 2}
+  - fromState: {fileID: 11400000, guid: 9857b5b24a39d10439f46d044141972c, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: c4bf42edd8dc9ff40a2a5bcfd744c2c1, type: 2}
+    - {fileID: 11400000, guid: 7da5985a9e4a7214db6de45b90a40bbe, type: 2}
+  - fromState: {fileID: 11400000, guid: 9adb00dd68d80bf42a10a062aca65601, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: 75516514f86d0e54baf95730b7433ae1, type: 2}
+  - fromState: {fileID: 11400000, guid: 405737dca94508d46b322f03e5dc9462, type: 2}
     transitionsTo: []

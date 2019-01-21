@@ -11,6 +11,15 @@ public class Statemachine : ScriptableObject
     public State Initialize(StateController controller)
     {
         _InitialState.EnterState(controller);
+        foreach (StateTransitionPair state in _States)
+        {
+            if (state.fromState == _InitialState)
+            {
+                foreach (Transition transition in state.transitionsTo)
+                { transition.EnterState(controller); }
+                break;
+            }
+        }
         return _InitialState;
     }
 
@@ -56,7 +65,7 @@ public class Statemachine : ScriptableObject
             {
                 foreach (Transition transition in state.transitionsTo)
                 { transition.ExitState(controller); }
-                return;
+                break;
             }
         }
 
@@ -67,7 +76,7 @@ public class Statemachine : ScriptableObject
             {
                 foreach (Transition transition in state.transitionsTo)
                 { transition.EnterState(controller); }
-                return;
+                break;
             }
         }
     }

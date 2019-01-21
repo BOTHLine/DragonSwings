@@ -8,26 +8,26 @@
     UI = 5,
     // 6
     // 7
-    Wall = 8,
-    Object = 9,
-    Pit = 10,
-    FallCheck = 11,
-    // 12
-    PlayerLow = 13,
-    PlayerHigh = 14,
-    PlayerHurtBox = 15,
-    PlayerAttack = 16,
-    PlayerProjectile = 17,
-    // 18
+    PostProcessing = 8,
+    // 9
+    Floor = 10,
+    Wall = 11,
+    Pit = 12,
+    Object = 13,
+    // 14
+    PlayerLow = 15,
+    PlayerHigh = 16,
+    PlayerHurtBox = 17,
+    PlayerProjectile = 18,
     // 19
-    // 20
-    // 21
-    // 22
-    EnemyLow = 23,
-    EnemyHigh = 24,
-    EnemyHurtBox = 25,
-    EnemyAttack = 26,
-    EnemyProjectile = 27,
+    EnemyLow = 20,
+    EnemyHigh = 21,
+    EnemyHurtBox = 22,
+    EnemyProjectile = 23,
+    // 24
+    // 25
+    // 26
+    // 27
     // 28
     // 29
     // 30

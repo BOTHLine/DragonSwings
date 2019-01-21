@@ -44,7 +44,7 @@ public class HookAbility : MonoBehaviour
     private void FixedUpdate()
     {
         if (_HookIsFlying && (_Hook.transform.position).SquaredDistanceTo(transform.position) >= _HookRange.Value * _HookRange.Value)
-        { _Hook.FlyBack(); Debug.Log(_HookRange.Value); }
+        { _Hook.FlyBack(); }
     }
 
     // Methods
@@ -58,7 +58,6 @@ public class HookAbility : MonoBehaviour
         _HookIsFlying = true;
         //_Hook.Shoot(_TargetPosition.Value);
         _Hook.Shoot(_Aim.Value);
-        Debug.Log("Shoot");
     }
 
     public void HookHitSomething(Collider collider)

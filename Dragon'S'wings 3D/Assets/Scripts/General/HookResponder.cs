@@ -48,7 +48,7 @@ public class HookResponder : MonoBehaviour
         // _OldRigidbodyType2D = _Rigidbody.bodyType;
         // _Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         transform.parent.transform.position = targetObject.transform.position;
-        _Renderer.sortingLayerName = "Foreground";
+        // _Renderer.sortingLayerName = "Foreground";
         _PushBox.gameObject.SetActive(false);
     }
 
@@ -56,7 +56,7 @@ public class HookResponder : MonoBehaviour
     {
         transform.parent.parent = _OldParent;
         // _Rigidbody.bodyType = _OldRigidbodyType2D;
-        _Renderer.sortingLayerName = "Objects";
+        // _Renderer.sortingLayerName = "Objects";
         // _PushBox.gameObject.SetActive(true);
     }
 

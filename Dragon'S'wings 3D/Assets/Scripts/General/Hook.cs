@@ -81,7 +81,10 @@ public class Hook : MonoBehaviour
         _PushBox.gameObject.SetActive(true);
         _SpriteRenderer.enabled = true;
 
+        _Rigidbody.isKinematic = false;
+        _Rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         _Rigidbody.velocity = (aim.Direction * _HookSpeed);
+        Debug.Log(aim.Direction + " / " + _HookSpeed);
     }
 
     public void ResetVelocity()
@@ -95,6 +98,7 @@ public class Hook : MonoBehaviour
         _FlyingBack = true;
         _LookForward._CorrectionValue = _OriginalCorrectionValue + 180.0f;
         _PushBox.gameObject.SetActive(false);
+        Debug.Log("Fly Back");
     }
 
     public void AttachHookResponder(HookResponder hookResponder)
@@ -124,6 +128,8 @@ public class Hook : MonoBehaviour
         _FlyingBack = false;
         _PushBox.gameObject.SetActive(false);
         _SpriteRenderer.enabled = false;
+        _Rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
+        _Rigidbody.isKinematic = true;
         _Rigidbody.velocity = Vector3.zero;
         _Rigidbody.angularVelocity = Vector3.zero;
 
