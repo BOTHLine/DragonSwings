@@ -4,6 +4,7 @@ public class PlayerKeyboardInput : MonoBehaviour
 {
     // References
     public Transform _Player;
+    private Camera _CameraMain;
 
     // Variables
     // public Vector2Reference _MoveDirection;
@@ -15,6 +16,11 @@ public class PlayerKeyboardInput : MonoBehaviour
     // Events
     public GameEvent _OnInputActionButton;
     public GameEvent _OnInputAimToggle;
+
+    private void Awake()
+    {
+        _CameraMain = Camera.main;
+    }
 
     // Mono Behaviour
     private void Update()
@@ -36,29 +42,29 @@ public class PlayerKeyboardInput : MonoBehaviour
     }
 
     // Methods
-    private Vector2 GetMoveVector()
+    private Vector3 GetMoveVector()
     {
-        Vector2 moveVector = new Vector2();
+        Vector3 moveVector = new Vector2();
         if (Input.GetKey(KeyCode.W))
-            moveVector.y += 1.0f;
+            moveVector.z += 1.0f;
         if (Input.GetKey(KeyCode.D))
             moveVector.x += 1.0f;
         if (Input.GetKey(KeyCode.S))
-            moveVector.y -= 1.0f;
+            moveVector.z -= 1.0f;
         if (Input.GetKey(KeyCode.A))
             moveVector.x -= 1.0f;
 
         return moveVector.normalized;
     }
 
-    private Vector2 GetMoveDirection()
+    private Vector3 GetMoveDirection()
     {
         return GetMoveVector().normalized;
     }
 
-    private Vector2 GetAimDirection()
+    private Vector3 GetAimDirection()
     {
-        Vector2 targetVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _Player.position;
+        Vector3 targetVector = _CameraMain.ScreenToWorldPoint(Input.mousePosition) - _Player.position;
         if (targetVector.magnitude > 1.0f)
             targetVector = targetVector.normalized;
         return targetVector;

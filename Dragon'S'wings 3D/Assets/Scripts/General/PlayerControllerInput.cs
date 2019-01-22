@@ -32,11 +32,13 @@ public class PlayerControllerInput : MonoBehaviour
         Vector3Complex moveInput = new Vector3Complex(_Player.position, _Player.position);
         Vector2 moveInput2D = GetAxis2D("AxisX", "AxisY");
         moveInput.Direction = new Vector3(moveInput2D.x, 0.0f, moveInput2D.y);
+        moveInput.Magnitude = moveInput2D.magnitude;
         _MoveInput.Value = moveInput;
 
         Vector3Complex aimInput = new Vector3Complex(_Player.position, _Player.position);
         Vector2 aimInput2D = GetAxis2D("Axis4", "Axis5");
         aimInput.Direction = new Vector3(aimInput2D.x, 0.0f, aimInput2D.y);
+        aimInput.Magnitude = aimInput2D.magnitude;
         _AimInput.Value = aimInput;
 
         //_MoveDirection.Value = GetAxis2D("AxisX", "AxisY");

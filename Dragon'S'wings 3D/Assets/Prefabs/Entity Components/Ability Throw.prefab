@@ -51,10 +51,10 @@ MonoBehaviour:
   _Aim:
     UseType: 1
     ConstantValue:
-      _Vector: {x: 0, y: 0}
-      _StartPoint: {x: 0, y: 0}
-      _EndPoint: {x: 0, y: 0}
-      _Direction: {x: 0, y: 0}
+      _Vector: {x: 0, y: 0, z: 0}
+      _StartPoint: {x: 0, y: 0, z: 0}
+      _EndPoint: {x: 0, y: 0, z: 0}
+      _Direction: {x: 0, y: 0, z: 0}
       _Magnitude: 0
     Variable: {fileID: 0}
     Map: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
-  _PickUpAttachTransform: {fileID: 0}
+  _PickUpAttachTransform: {fileID: 530798917940851076}
   _OnPickUp: {fileID: 0}
   _OnThrow: {fileID: 0}
 --- !u!114 &1736999624908741820

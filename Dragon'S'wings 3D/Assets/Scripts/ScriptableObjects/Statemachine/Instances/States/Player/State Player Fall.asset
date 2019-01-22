@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: State Player Fall
   m_EditorClassIdentifier: 
   _Layer: 16
-  _Behaviours: []
+  _Behaviours:
+  - {fileID: 11400000, guid: 6b7e767f02e7a9745aa02939d70feba3, type: 2}
+  - {fileID: 11400000, guid: eba5736e0f21a4a4998d9cd00d0e0a4f, type: 2}
+  - {fileID: 11400000, guid: 224162f4b2e63e042893dbd34ad9aaa5, type: 2}
