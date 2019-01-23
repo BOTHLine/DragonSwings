@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379d5bd5d9a6dd6468fec01bf39e4efa, type: 3}
+  m_Name: Behaviour Enemy Look at Player
+  m_EditorClassIdentifier: 
+  _EnterStateActions: []
+  _ActActions:
+  - {fileID: 11400000, guid: c5e682b215fb50746874036a6262b213, type: 2}
+  _ExitStateActions: []

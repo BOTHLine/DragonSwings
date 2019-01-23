@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292c672df9eafbf4b87164f12e05a488, type: 3}
+  m_Name: Decision Enemy Has No AttackCooldown
+  m_EditorClassIdentifier: 
+  value:
+    UseType: 2
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 11400000, guid: 2bd3eb07ad28fcb4bb876d4d06cf246e, type: 2}
+    MapIdentifier: {fileID: 0}
+  compareOperator: 4
+  compareValue:
+    UseType: 0
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}

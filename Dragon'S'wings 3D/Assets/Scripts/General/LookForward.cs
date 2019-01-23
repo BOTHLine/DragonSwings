@@ -12,7 +12,7 @@ public class LookForward : MonoBehaviour
 
     private void Update()
     {
-        if (_Rigidbody.velocity.Equals(Vector3.zero))
+        if (_Rigidbody.velocity.sqrMagnitude <= 0.001f)
             return;
 
         Vector3 newRotation = transform.parent.localEulerAngles;

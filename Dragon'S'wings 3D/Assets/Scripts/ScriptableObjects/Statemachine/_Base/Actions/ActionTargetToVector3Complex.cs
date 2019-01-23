@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Statemachine/Actions/Target To Vector2Complex")]
+[CreateAssetMenu(menuName = "Statemachine/Actions/Target To Vector3Complex")]
 public class ActionTargetToVector3Complex : Action
 {
     public Vector3Reference _TargetPosition;

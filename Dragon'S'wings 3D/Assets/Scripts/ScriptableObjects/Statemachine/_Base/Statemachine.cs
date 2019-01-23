@@ -5,6 +5,8 @@ public class Statemachine : ScriptableObject
 {
     public State _InitialState;
 
+    public Action[] _ActionsAnyState;
+
     public Transition[] _TransitionsFromAnyState;
     public StateTransitionPair[] _States;
 
@@ -25,6 +27,7 @@ public class Statemachine : ScriptableObject
 
     public void UpdateStatemachine(StateController controller, State state)
     {
+        foreach (Action action in _ActionsAnyState) { action.Act(controller); }
         state.DoActions(controller);
         if (CheckTransitionsFromAnyState(controller)) return;
         CheckTransitionsFromCurrentState(controller);

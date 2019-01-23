@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e44334e3f1dd14c8af84709476dd75, type: 3}
+  m_Name: Statemachine Shooter
+  m_EditorClassIdentifier: 
+  _InitialState: {fileID: 11400000, guid: 9f1d65fd3126768489ba27073cd1494c, type: 2}
+  _ActionsAnyState:
+  - {fileID: 11400000, guid: e9801a2e8d660444a9f290e26f723059, type: 2}
+  _TransitionsFromAnyState: []
+  _States:
+  - fromState: {fileID: 11400000, guid: 9f1d65fd3126768489ba27073cd1494c, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: 74e52a9992b83fd4a840e3e80a1648e1, type: 2}
+  - fromState: {fileID: 11400000, guid: 770be7d1288799c4d8d64ede87982d60, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: 66d33e8d1819a3f43a0f765ce04f993c, type: 2}
+    - {fileID: 11400000, guid: fa5650d710fc68d4eafb0aad378f740c, type: 2}
+  - fromState: {fileID: 11400000, guid: e860daf0acc07ec4597ea8016c13f7d3, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: 32d8c6e5f94de8d4c85b02530dcde376, type: 2}
+    - {fileID: 11400000, guid: 563637e011bad6d499358a07c1f53812, type: 2}
+    - {fileID: 11400000, guid: a413ffa0cb019df409f68761d0fdade7, type: 2}
+  - fromState: {fileID: 11400000, guid: 282a4f04c5fbb294cad058a8d52cc449, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: f46dd151897a91d40acadb9c6be445e1, type: 2}
+  - fromState: {fileID: 11400000, guid: 3d90ed64242d7794396ca74b21858f2a, type: 2}
+    transitionsTo:
+    - {fileID: 11400000, guid: 94ce08cb3dfa28d419c3c580b3b3ad3f, type: 2}
+    - {fileID: 11400000, guid: 17ade0eb73647404c979e5dc25891009, type: 2}
