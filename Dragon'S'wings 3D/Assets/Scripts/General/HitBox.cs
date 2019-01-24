@@ -41,7 +41,7 @@ public class HitBox : MonoBehaviour
     {
         _OnAttackStart.Raise(transform.parent.gameObject);
 
-        transform.LookAt2D(_TargetPosition.Value, -90.0f);
+        transform.LookAt(_TargetPosition.Value);
         _Indicator.enabled = true;
 
         System.Collections.IEnumerator AttackCoroutine = Attack(_AttackTime.Value);
@@ -76,6 +76,7 @@ public class HitBox : MonoBehaviour
     {
         if (hurtBox == null) return;
         _HurtBoxesInRange.Remove(hurtBox);
+        Debug.Log("Removed Hurtbox: " + hurtBox.transform.parent.name);
     }
 
     // Debug

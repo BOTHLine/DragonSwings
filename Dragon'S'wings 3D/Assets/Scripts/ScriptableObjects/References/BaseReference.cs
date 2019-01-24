@@ -21,10 +21,12 @@ public class BaseReference<TVariable, TMap, TDatatype>
     public TMap Map;
     public GameObject MapIdentifier;
 
-    public System.Action<TDatatype> OnValueChange = delegate { };
-    public Dictionary<GameObject, System.Action<TDatatype>> OnValueChangeInMap;
+    private System.Action<TDatatype> OnValueChange = delegate { };
+    private Dictionary<GameObject, System.Action<TDatatype>> OnValueChangeInMap = new Dictionary<GameObject, System.Action<TDatatype>>();
 
     public BaseReference() { }
+
+    private static GameObject debugObject;
 
     public BaseReference(TDatatype value)
     {
@@ -51,17 +53,22 @@ public class BaseReference<TVariable, TMap, TDatatype>
         }
         set
         {
-            OnValueChange.Invoke(Value);
             switch (UseType)
             {
                 case ReferenceUseType.Constant:
                     ConstantValue = value;
+                    OnValueChange.Invoke(Value);
                     break;
                 case ReferenceUseType.Variable:
                     Variable.Value = value;
+                    OnValueChange.Invoke(Value);
                     break;
                 case ReferenceUseType.Map:
                     Map.Set(MapIdentifier, value);
+                    System.Action<TDatatype> actions = GetActions(MapIdentifier);
+                    actions.Invoke(Value);
+                    // Debug.Log("Set static: " + MapIdentifier + ": " + OnValueChangeInMap[MapIdentifier].GetInvocationList().Length);
+                    // Debug.Log("Compare Objects: " + debugObject + " and " + MapIdentifier + ": " + (debugObject == MapIdentifier));
                     break;
             }
         }
@@ -77,7 +84,6 @@ public class BaseReference<TVariable, TMap, TDatatype>
                 return Variable.Value;
             case ReferenceUseType.Map:
                 return Map.Get(mapIdentifier == null ? MapIdentifier : mapIdentifier);
-
             default:
                 return ConstantValue;
         }
@@ -89,20 +95,68 @@ public class BaseReference<TVariable, TMap, TDatatype>
         {
             case ReferenceUseType.Constant:
                 ConstantValue = value;
+                OnValueChange.Invoke(Value);
                 break;
             case ReferenceUseType.Variable:
                 Variable.Value = value;
+                OnValueChange.Invoke(Value);
                 break;
             case ReferenceUseType.Map:
                 Map.Set(mapIdentifier == null ? MapIdentifier : mapIdentifier, value);
+                GetActions(mapIdentifier).Invoke(Value);
+                // Debug.Log("Set dynamic: " + (mapIdentifier == null ? MapIdentifier : mapIdentifier) + ": " + OnValueChangeInMap[mapIdentifier == null ? MapIdentifier : mapIdentifier].GetInvocationList().Length);
                 break;
         }
-        OnValueChange(Value);
     }
 
     public void Subscribe(System.Action<TDatatype> action, GameObject mapIdentifier = null)
-    { OnValueChange += action; }
+    {
+        switch (UseType)
+        {
+            case ReferenceUseType.Constant:
+                OnValueChange += action;
+                break;
+            case ReferenceUseType.Variable:
+                OnValueChange += action;
+                break;
+            case ReferenceUseType.Map:
+                System.Action<TDatatype> actions = GetActions(mapIdentifier);
+                actions += action;
+                OnValueChangeInMap[mapIdentifier == null ? MapIdentifier : mapIdentifier] = actions;
+                // Debug.Log("Subscribe: " + (mapIdentifier == null ? MapIdentifier : mapIdentifier) + ": " + OnValueChangeInMap[mapIdentifier == null ? MapIdentifier : mapIdentifier].GetInvocationList().Length);
+                // debugObject = mapIdentifier == null ? MapIdentifier : mapIdentifier;
+                break;
+        }
+    }
 
     public void Unsubscribe(System.Action<TDatatype> action, GameObject mapIdentifier = null)
-    { OnValueChange -= action; }
+    {
+        switch (UseType)
+        {
+            case ReferenceUseType.Constant:
+                OnValueChange -= action;
+                break;
+            case ReferenceUseType.Variable:
+                OnValueChange -= action;
+                break;
+            case ReferenceUseType.Map:
+                System.Action<TDatatype> actions = GetActions(mapIdentifier);
+                actions -= action;
+                OnValueChangeInMap[mapIdentifier == null ? MapIdentifier : mapIdentifier] = actions;
+                // Debug.Log("Unsubscribe " + (mapIdentifier == null ? MapIdentifier : mapIdentifier) + ": " + OnValueChangeInMap[mapIdentifier == null ? MapIdentifier : mapIdentifier].GetInvocationList().Length);
+                break;
+        }
+    }
+
+    private System.Action<TDatatype> GetActions(GameObject mapIdentifier)
+    {
+        System.Action<TDatatype> actions;
+        OnValueChangeInMap.TryGetValue(mapIdentifier == null ? MapIdentifier : mapIdentifier, out actions);
+        if (actions == null)
+        {
+            actions = delegate { };
+            OnValueChangeInMap[mapIdentifier == null ? MapIdentifier : mapIdentifier] = actions;
+        }
+        return actions;
+    }
 }

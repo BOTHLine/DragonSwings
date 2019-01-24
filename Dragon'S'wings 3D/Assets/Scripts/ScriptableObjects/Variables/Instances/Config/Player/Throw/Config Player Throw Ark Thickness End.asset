@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b854f4caffe48c409537064650c627c, type: 3}
   m_Name: Config Player Throw Ark Thickness End
   m_EditorClassIdentifier: 
-  InitialValue: 0.15
-  _Value: 0.15
+  InitialValue: 0.1
+  _Value: 0.1

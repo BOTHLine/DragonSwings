@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c265ab587d0b246ba58da649926ffb, type: 3}
   m_Name: Config Player Throw Ark Segment Count
   m_EditorClassIdentifier: 
-  InitialValue: 25
-  _Value: 25
+  InitialValue: 100
+  _Value: 100

@@ -29,7 +29,9 @@ public class HurtBox : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             _OnHurtEvents.Invoke();
+            Debug.Log("Health before: " + _HealthCurrent.Value);
             _HealthCurrent.Value -= damage;
+            Debug.Log("Health after: " + _HealthCurrent.Value);
             if (CheckDead())
                 Die();
         }
