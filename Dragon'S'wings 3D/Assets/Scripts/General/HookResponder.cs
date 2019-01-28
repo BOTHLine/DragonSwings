@@ -60,6 +60,7 @@ public class HookResponder : MonoBehaviour
         // _PushBox.gameObject.SetActive(true);
     }
 
+    /*
     public void StartThrow(Vector3 targetPosition, float flyTime, float flyHeight)
     {
         DetachFromObject();
@@ -89,6 +90,7 @@ public class HookResponder : MonoBehaviour
         ObjectLanded();
         StopCoroutine(_CurrentThrowRoutine);
     }
+    */
 
     protected virtual void ObjectLanded()
     { OnObjectLandedUnityEvent.Invoke(); }

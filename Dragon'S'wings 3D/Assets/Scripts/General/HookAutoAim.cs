@@ -13,7 +13,7 @@ public class HookAutoAim : MonoBehaviour
     [SerializeField] private FloatReference _AimRange;
 
     [SerializeField] private Vector3ComplexReference _AimRaw;
-    [SerializeField] private Vector3ComplexReference _AimAuto;
+    [SerializeField] private Vector3ComplexReference _AimSmart;
 
     [SerializeField] private FloatReference _AimAutoRadius;
 
@@ -35,27 +35,27 @@ public class HookAutoAim : MonoBehaviour
         aimRaw.Magnitude = _AimRange.Value;
         _AimRaw.Value = aimRaw;
 
-        Vector3Complex aimAuto = new Vector3Complex(_AimRaw.Value);
+        Vector3Complex aimSmart = new Vector3Complex(_AimRaw.Value);
 
         HookResponder hookResponder = null;
         if (_UseAutoAim.Value) { hookResponder = FindClosestHookResponder(); }
 
         if (hookResponder != null)
         {
-            aimAuto.EndPoint = hookResponder.transform.position;
+            aimSmart.EndPoint = hookResponder.transform.position;
         }
         else
         {
             RaycastHit raycastHit;
             Physics.SphereCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, out raycastHit, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
-            aimAuto.Magnitude = (raycastHit.collider ? raycastHit.distance : _AimRange.Value);
+            aimSmart.Magnitude = (raycastHit.collider ? raycastHit.distance : _AimRange.Value);
 
             // RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
             // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
             // aimAuto.Magnitude = (raycastHit2D.collider ? raycastHit2D.distance : _AimRange.Value);
         }
 
-        _AimAuto.Value = aimAuto;
+        _AimSmart.Value = aimSmart;
     }
 
     private HookResponder FindClosestHookResponder()

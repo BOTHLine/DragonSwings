@@ -1,135 +1,103 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
 public class AbilityThrowNew : MonoBehaviour
 {
     public HookResponderReference _HookResponder;
     public Vector3ComplexReference _Aim;
 
+    public Transform _PickUpAttachTransform;
+
     public FloatReference _ThrowHeight;
-    public FloatReference _ThrowGravity;
-
-    public bool debugPath;
-
-    public bool launch = false;
-    public bool reset = false;
-
-    private LineRenderer _LineRenderer;
     public IntReference _ThrowSegmentAmount;
-    public FloatReference _ThrowArkThicknessStart;
-    public FloatReference _ThrowArkThicknessEnd;
+    public FloatReference _ThrowRange;
 
+    private Vector3[] _CurrentThrowPath;
 
-    private void Awake()
+    public AnimationCurve _DistanceHeightCurve;
+    public AnimationCurve _DistanceTimeCurve;
+
+    public GameEvent _OnPickUp;
+    public GameEvent _OnThrow;
+
+    public bool IsAiming()
+    { return (!_Aim.Value.Direction.Equals(Vector2.zero)); }
+
+    public void PickUp()
     {
-        _LineRenderer = GetComponent<LineRenderer>();
-        _LineRenderer.startWidth = _ThrowArkThicknessStart.Value;
-        _LineRenderer.endWidth = _ThrowArkThicknessEnd.Value;
+        _OnPickUp.Raise();
+        _HookResponder.Value._Rigidbody.isKinematic = true;
+        _HookResponder.Value.AttachToObject(_PickUpAttachTransform);
     }
 
-    void Start()
+    public void Throw()
     {
+        if (!IsAiming()) return;
 
+        _OnThrow.Raise();
+        _CurrentThrowPath = CalculateThrowArkPath();
+        _HookResponder.Value._Rigidbody.useGravity = false;
+        _HookResponder.Value._Rigidbody.isKinematic = false;
+        _HookResponder.Value._PushBox.gameObject.SetActive(true);
+        _HookResponder.Value.DetachFromObject();
+        // _HookResponder.Value.GetComponentInParent<Rigidbody>().velocity = CalculateThrowArkData().initialVelocity;
+        System.Collections.IEnumerator currentThrowRoutine = ThrowRoutine();
+        StartCoroutine(currentThrowRoutine);
     }
 
-    void Update()
+    private System.Collections.IEnumerator ThrowRoutine()
     {
-        if (reset)
+        float flyTime = _DistanceTimeCurve.Evaluate(_Aim.Value.Magnitude / _ThrowRange.Value);
+        Debug.Log("Fly Time:" + flyTime);
+        float timePerSegment = flyTime / _ThrowSegmentAmount.Value;
+        Debug.Log("Time Per Segment: " + timePerSegment);
+        for (int i = 1; i < _CurrentThrowPath.Length; i++)
         {
-            resetBox();
-            reset = false;
-        }
+            // Debug.Log("Difference to should-be-position: " + (_CurrentThrowPath[i - 1] - _HookResponder.Value.transform.position));
+            //    Vector3 directionVector = _CurrentThrowPath[i] - _HookResponder.Value.transform.position;
+            //    Vector3 velocityVector = directionVector / timePerSegment;
+            //    _HookResponder.Value._Rigidbody.velocity = velocityVector;
+            //    Debug.Log(velocityVector);
 
-
-        if (launch)
-        {
-            RemovePath();
-            debugPath = false;
-            Launch();
-            launch = false;
+            _HookResponder.Value._Rigidbody.MovePosition(_CurrentThrowPath[i]);
+            yield return new WaitForSeconds(timePerSegment);
         }
-
-        if (debugPath)
-        {
-            DrawPath();
-        }
+        _HookResponder.Value._Rigidbody.useGravity = true;
+        _HookResponder.Value = null;
     }
 
-    void Launch()
+    public ThrowArkData CalculateThrowArkData()
     {
-        Physics.gravity = Vector3.up * _ThrowGravity.Value;
-        _HookResponder.Value.GetComponentInParent<Rigidbody>().velocity = CalculateLaunchData().initialVelocity;
-    }
+        float throwHeight = _DistanceHeightCurve.Evaluate(_Aim.Value.Magnitude / _ThrowRange.Value);
 
-    LaunchData CalculateLaunchData()
-    {
-        /*
-        float displacementY = _Aim.Value.EndPoint.y - _HookResponder.Value.transform.position.y;
-        Vector3 displacementXZ = new Vector3(_Aim.Value.EndPoint.x - _HookResponder.Value.transform.position.x, 0, _Aim.Value.EndPoint.z - _HookResponder.Value.transform.position.z);
-        float time = Mathf.Sqrt(-2 * _ThrowHeight.Value / _ThrowGravity.Value) + Mathf.Sqrt(2 * (displacementY - _ThrowHeight.Value) / _ThrowGravity.Value);
-        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * _ThrowGravity.Value * _ThrowHeight.Value);
-        Vector3 velocityXZ = displacementXZ / time;
-        return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(_ThrowGravity.Value), time);
-        */
         Vector3 displacement = _Aim.Value.EndPoint - _HookResponder.Value.transform.position;
-        Debug.Log("Displacement: " + displacement.y);
-        float time = Mathf.Sqrt(-2 * _ThrowHeight.Value / _ThrowGravity.Value) + Mathf.Sqrt(2 * (displacement.y - _ThrowHeight.Value) / _ThrowGravity.Value);
-        Vector3 velocity = new Vector3(displacement.x / time, Mathf.Sqrt(-2 * _ThrowGravity.Value * _ThrowHeight.Value), displacement.z / time);
-        return new LaunchData(velocity * -Mathf.Sign(_ThrowGravity.Value), time);
+        float time = Mathf.Sqrt(-2 * throwHeight / Physics.gravity.y) + Mathf.Sqrt(2 * (displacement.y - throwHeight) / Physics.gravity.y);
+        Vector3 velocity = new Vector3(displacement.x / time, Mathf.Sqrt(-2 * Physics.gravity.y * throwHeight), displacement.z / time);
+        return new ThrowArkData(velocity * -Mathf.Sign(Physics.gravity.y), time);
     }
 
-    void DrawPath()
-    {
-
-        _LineRenderer.positionCount = _ThrowSegmentAmount.Value + 1;
-        LaunchData launchData = CalculateLaunchData();
-        //Vector3 previousDrawPoint = boxRigidbody.position;
-
-        for (int i = 0; i < _LineRenderer.positionCount; i++)
-        {
-            float simulationTime = i / (float)_ThrowSegmentAmount.Value * launchData.timeToTarget;
-            Vector3 displacement = launchData.initialVelocity * simulationTime + Vector3.up * _ThrowGravity.Value * simulationTime * simulationTime / 2f;
-            Vector3 drawPoint = _HookResponder.Value.transform.position + displacement;
-            //   Debug.Log(displacement);
-            _LineRenderer.SetPosition(i, drawPoint);
-            //Debug.DrawLine(previousDrawPoint, drawPoint, Color.green);
-            //previousDrawPoint = drawPoint;
-        }
-
-        Vector3[] positions = new Vector3[_LineRenderer.positionCount];
-        _LineRenderer.GetPositions(positions);
-
-        foreach (Vector3 position in positions)
-        {
-            //   Debug.Log(position);
-        }
-    }
-
-    void RemovePath()
-    {
-        _LineRenderer.positionCount = 0;
-    }
-
-
-    void resetBox()
-    {
-        debugPath = true;
-        _HookResponder.Value.transform.parent.position = transform.position;
-        _HookResponder.Value.GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
-        _HookResponder.Value.GetComponentInParent<Rigidbody>().angularVelocity = Vector3.zero;
-    }
-
-
-    struct LaunchData
+    public struct ThrowArkData
     {
         public readonly Vector3 initialVelocity;
         public readonly float timeToTarget;
 
-        public LaunchData(Vector3 initialVelocity, float timeToTarget)
+        public ThrowArkData(Vector3 initialVelocity, float timeToTarget)
         {
             this.initialVelocity = initialVelocity;
             this.timeToTarget = timeToTarget;
         }
+    }
 
+    public Vector3[] CalculateThrowArkPath()
+    {
+        Vector3[] points = new Vector3[_ThrowSegmentAmount.Value + 1];
+        ThrowArkData launchData = CalculateThrowArkData();
+
+        for (int i = 0; i < points.Length; i++)
+        {
+            float simulationTime = i / (float)_ThrowSegmentAmount.Value * launchData.timeToTarget;
+            Vector3 displacement = launchData.initialVelocity * simulationTime + Vector3.up * Physics.gravity.y * simulationTime * simulationTime / 2f;
+            points[i] = _HookResponder.Value.transform.position + displacement;
+        }
+        return points;
     }
 }

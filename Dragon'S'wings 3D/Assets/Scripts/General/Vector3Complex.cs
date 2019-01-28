@@ -125,7 +125,7 @@ public struct Vector3Complex
     { _Direction = CalculateDirection(_Vector); }
 
     private void CalculateMagnitude()
-    { _Magnitude = CalculateMagnitude(_Vector); }
+    { _Magnitude = CalculateMagnitude(_Vector); Debug.Log("New Magnitude: " + _Magnitude); }
 
     /*
     private void CalculateSquaredMagnitude()
@@ -149,4 +149,14 @@ public struct Vector3Complex
 
     private static float CalculateSquaredMagnitude(Vector3 vector)
     { return vector.sqrMagnitude; }
+
+    public override string ToString()
+    {
+        return
+            "Startpoint: " + _StartPoint + "\n" +
+            "Endpoint: " + _EndPoint + "\n" +
+            "Vector: " + _Vector + "\n" +
+            "Direction: " + _Direction + "\n" +
+            "Magnitude: " + _Magnitude;
+    }
 }

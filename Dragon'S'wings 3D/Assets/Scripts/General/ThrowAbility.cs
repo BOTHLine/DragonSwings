@@ -37,7 +37,7 @@ public class ThrowAbility : MonoBehaviour
         if (!IsAiming()) { return; }
 
         _OnThrow.Raise();
-        _HookResponder.Value.StartThrow(_Aim.Value.EndPoint, _FlyTime.Value, _FlyHeight.Value);
+        //_HookResponder.Value.StartThrow(_Aim.Value.EndPoint, _FlyTime.Value, _FlyHeight.Value);
         _HookResponder.Value = null;
     }
 }
