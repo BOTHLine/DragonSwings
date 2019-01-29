@@ -11,8 +11,6 @@ public class AbilityThrowNew : MonoBehaviour
     public IntReference _ThrowSegmentAmount;
     public FloatReference _ThrowRange;
 
-    private Vector3[] _CurrentThrowPath;
-
     public AnimationCurve _DistanceHeightCurve;
     public AnimationCurve _DistanceTimeCurve;
 
@@ -20,7 +18,7 @@ public class AbilityThrowNew : MonoBehaviour
     public GameEvent _OnThrow;
 
     public bool IsAiming()
-    { return (!_Aim.Value.Direction.Equals(Vector2.zero)); }
+    { return (!_Aim.Value.Direction.Equals(Vector3.zero)); }
 
     public void PickUp()
     {
@@ -34,34 +32,9 @@ public class AbilityThrowNew : MonoBehaviour
         if (!IsAiming()) return;
 
         _OnThrow.Raise();
-        _CurrentThrowPath = CalculateThrowArkPath();
-        _HookResponder.Value._Rigidbody.useGravity = false;
-        _HookResponder.Value._Rigidbody.isKinematic = false;
-        _HookResponder.Value._PushBox.gameObject.SetActive(true);
-        _HookResponder.Value.DetachFromObject();
-        // _HookResponder.Value.GetComponentInParent<Rigidbody>().velocity = CalculateThrowArkData().initialVelocity;
-        System.Collections.IEnumerator currentThrowRoutine = ThrowRoutine();
-        StartCoroutine(currentThrowRoutine);
-    }
 
-    private System.Collections.IEnumerator ThrowRoutine()
-    {
         float flyTime = _DistanceTimeCurve.Evaluate(_Aim.Value.Magnitude / _ThrowRange.Value);
-        Debug.Log("Fly Time:" + flyTime);
-        float timePerSegment = flyTime / _ThrowSegmentAmount.Value;
-        Debug.Log("Time Per Segment: " + timePerSegment);
-        for (int i = 1; i < _CurrentThrowPath.Length; i++)
-        {
-            // Debug.Log("Difference to should-be-position: " + (_CurrentThrowPath[i - 1] - _HookResponder.Value.transform.position));
-            //    Vector3 directionVector = _CurrentThrowPath[i] - _HookResponder.Value.transform.position;
-            //    Vector3 velocityVector = directionVector / timePerSegment;
-            //    _HookResponder.Value._Rigidbody.velocity = velocityVector;
-            //    Debug.Log(velocityVector);
-
-            _HookResponder.Value._Rigidbody.MovePosition(_CurrentThrowPath[i]);
-            yield return new WaitForSeconds(timePerSegment);
-        }
-        _HookResponder.Value._Rigidbody.useGravity = true;
+        _HookResponder.Value.StartThrow(flyTime / _ThrowSegmentAmount.Value, CalculateThrowArkPath());
         _HookResponder.Value = null;
     }
 

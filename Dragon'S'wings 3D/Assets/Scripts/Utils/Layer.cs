@@ -19,7 +19,7 @@
     PlayerHigh = 16,
     PlayerHurtBox = 17,
     PlayerProjectile = 18,
-    // 19
+    PlayerAttack = 19,
     EnemyLow = 20,
     EnemyHigh = 21,
     EnemyHurtBox = 22,

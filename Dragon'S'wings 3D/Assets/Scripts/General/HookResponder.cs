@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class HookResponder : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class HookResponder : MonoBehaviour
 
     private Transform _OldParent;
 
-    private System.Collections.IEnumerator _CurrentThrowRoutine;
+    public bool _IsThrowing;
 
     // private RigidbodyType _OldRigidbodyType2D;
 
@@ -49,7 +50,9 @@ public class HookResponder : MonoBehaviour
         // _Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         transform.parent.position = targetObject.transform.position;
         // _Renderer.sortingLayerName = "Foreground";
-        _PushBox.gameObject.SetActive(false);
+        _PushBox.Disable();
+        _Rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
+        _Rigidbody.isKinematic = true;
     }
 
     public void DetachFromObject()
@@ -58,6 +61,47 @@ public class HookResponder : MonoBehaviour
         // _Rigidbody.bodyType = _OldRigidbodyType2D;
         // _Renderer.sortingLayerName = "Objects";
         // _PushBox.gameObject.SetActive(true);
+    }
+
+    public void StartThrow(float timePerSegment, Vector3[] segments)
+    {
+        Debug.Log("Start Throw!");
+        _IsThrowing = true;
+
+        _Rigidbody.useGravity = false;
+        _Rigidbody.isKinematic = false;
+        _Rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        _PushBox.Enable();
+        DetachFromObject();
+        IEnumerator throwRoutine = ThrowRoutine(timePerSegment, segments);
+        StartCoroutine(throwRoutine);
+    }
+
+    private IEnumerator ThrowRoutine(float timePerSegment, Vector3[] segments)
+    {
+        int index = 0;
+        Debug.Log("Time per Segment: " + timePerSegment);
+        for (int i = 1; _IsThrowing && i < segments.Length - 1; i++)
+        {
+            float distance = (segments[i - 1] - segments[i]).magnitude;
+            Debug.Log("Zuletzt zurückgelegte Distanz: " + distance);
+            Debug.Log("Letzte Velocity: " + distance / timePerSegment);
+            yield return new WaitForSeconds(timePerSegment);
+            _Rigidbody.MovePosition(segments[i]);
+            index = i;
+        }
+
+        _Rigidbody.velocity = ((segments[index + 1] - segments[index]) / timePerSegment) /* Time.deltaTime*/;
+
+        Debug.Log("Neue Velocity: " + _Rigidbody.velocity.magnitude);
+
+        _Rigidbody.useGravity = true;
+    }
+
+    public void StopThrow()
+    {
+        _IsThrowing = false;
+        _Rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
     }
 
     /*

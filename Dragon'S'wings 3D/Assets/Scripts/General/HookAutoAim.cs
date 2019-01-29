@@ -47,7 +47,7 @@ public class HookAutoAim : MonoBehaviour
         else
         {
             RaycastHit raycastHit;
-            Physics.SphereCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, out raycastHit, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
+            Physics.SphereCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, out raycastHit, aimRaw.Magnitude, Layer.PlayerProjectile.GetLayerMask());
             aimSmart.Magnitude = (raycastHit.collider ? raycastHit.distance : _AimRange.Value);
 
             // RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
@@ -65,7 +65,7 @@ public class HookAutoAim : MonoBehaviour
         HookResponderDistance closestHookResponder = new HookResponderDistance();
 
         Vector3 closestTarget = _AimRaw.Value.EndPoint;
-        RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
+        RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, Layer.PlayerProjectile.GetLayerMask());
         // RaycastHit2D[] raycastHit2Ds = Physics2D.CircleCastAll((Vector2)transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
         for (int i = 0; i < raycastHits.Length; i++)
         {
@@ -75,7 +75,7 @@ public class HookAutoAim : MonoBehaviour
             if ((transform.position - hookResponder.transform.position).sqrMagnitude > _AimRange * _AimRange) { continue; }
 
             RaycastHit raycastHit;
-            if (!Physics.SphereCast(transform.position, _HookPushboxRadius.Value, hookResponder.transform.position - transform.position, out raycastHit, _AimRange.Value, LayerList.PlayerProjectile.LayerMask)) { continue; }
+            if (!Physics.SphereCast(transform.position, _HookPushboxRadius.Value, hookResponder.transform.position - transform.position, out raycastHit, _AimRange.Value, Layer.PlayerProjectile.GetLayerMask())) { continue; }
 
             // RaycastHit2D raycastHit2D = Physics2D.CircleCast(transform.position, _HookPushboxRadius.Value, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
             // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, hookResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);

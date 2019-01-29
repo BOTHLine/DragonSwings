@@ -45,7 +45,7 @@ public class ThrowAutoAim : MonoBehaviour
         else
         {
             RaycastHit raycastHit;
-            Physics.Raycast(transform.position, aimRaw.Direction, out raycastHit, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
+            Physics.Raycast(transform.position, aimRaw.Direction, out raycastHit, aimRaw.Magnitude, Layer.PlayerProjectile.GetLayerMask());
             aimAuto.Magnitude = (raycastHit.collider ? raycastHit.distance : _AimRange.Value);
 
             // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, aimRaw.Direction, aimRaw.Magnitude, LayerList.PlayerProjectile.LayerMask);
@@ -62,16 +62,16 @@ public class ThrowAutoAim : MonoBehaviour
         ThrowResponderDistance closestThrowResponder = new ThrowResponderDistance();
 
         Vector3 closestTarget = _AimRaw.Value.EndPoint;
-        RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
+        RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, Layer.PlayerProjectile.GetLayerMask());
         // RaycastHit2D[] raycastHit2Ds = Physics2D.CircleCastAll((Vector2)transform.position + (_AimRaw.Value.Direction * _AimAutoRadius.Value), _AimAutoRadius.Value, _AimRaw.Value.Direction, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
         for (int i = 0; i < raycastHits.Length; i++)
         {
             ThrowResponder throwResponder = raycastHits[i].collider.GetComponentInSiblings<ThrowResponder>();
             if (throwResponder == null || !throwResponder._AutoAim) { continue; }
 
-            if (((Vector2)transform.position - (Vector2)throwResponder.transform.position).sqrMagnitude > _AimRange * _AimRange) { continue; }
+            if ((transform.position - throwResponder.transform.position).sqrMagnitude > _AimRange * _AimRange) { continue; }
 
-            if (Physics.Raycast(transform.position, throwResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerAttack.LayerMask)) { continue; }
+            if (Physics.Raycast(transform.position, throwResponder.transform.position - transform.position, _AimRange.Value, Layer.PlayerAttack.GetLayerMask())) { continue; }
             // RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, throwResponder.transform.position - transform.position, _AimRange.Value, LayerList.PlayerProjectile.LayerMask);
             //if (raycastHit2D.collider != raycastHits[i].collider) { continue; }
 

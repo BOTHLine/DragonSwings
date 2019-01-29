@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
 {
     [HideInInspector] public Rigidbody _Rigidbody;
@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
     }
     */
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         HurtBox hurtBox = collision.GetComponentInSiblings<HurtBox>();
         hurtBox?.Hurt(_Damage.Value);
@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetDirection(Vector2 direction)
+    public void SetDirection(Vector3 direction)
     {
         _Rigidbody.velocity = direction * _Speed.Value;
     }

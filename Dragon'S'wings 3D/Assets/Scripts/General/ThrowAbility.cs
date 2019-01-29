@@ -24,7 +24,7 @@ public class ThrowAbility : MonoBehaviour
 
     // Methods
     public bool IsAiming()
-    { return (!_Aim.Value.Direction.Equals(Vector2.zero)); }
+    { return (!_Aim.Value.Direction.Equals(Vector3.zero)); }
 
     public void PickUp()
     {

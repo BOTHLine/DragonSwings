@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class HurtBox : MonoBehaviour
 {
-    [HideInInspector] public Collider _Collider;
+    private Collider _Collider;
 
     //References
     public FloatReference _HealthMax;
@@ -17,13 +17,23 @@ public class HurtBox : MonoBehaviour
     public UnityEvent _OnDieEvents;
 
     // Mono Behaviour
+    private void OnEnable()
+    { _Collider.enabled = true; }
+
+    private void OnDisable()
+    { _Collider.enabled = false; }
+
     private void Awake()
     {
         _Collider = GetComponent<Collider>();
+        _Collider.isTrigger = true;
         _HealthCurrent.Value = _HealthMax.Value;
     }
 
     // Methods
+    public void Enable() { enabled = true; }
+    public void Disable() { enabled = false; }
+
     public void Hurt(float damage)
     {
         if (gameObject.activeInHierarchy)

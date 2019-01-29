@@ -9,10 +9,11 @@ public class DecisionLineOfSight : Decision
 
     public override bool Decide(StateController controller)
     {
-        Vector2 direction = _TargetPosition.Get(controller.gameObject) - controller.transform.position;
+        Vector2 test;
+        Vector3 direction = _TargetPosition.Get(controller.gameObject) - controller.transform.position;
         bool hitTriggers = Physics.queriesHitTriggers;
         Physics.queriesHitTriggers = false;
-        RaycastHit[] raycastHit = Physics.RaycastAll(controller.transform.position, direction, direction.magnitude, LayerList.EnemyProjectile.LayerMask);
+        RaycastHit[] raycastHit = Physics.RaycastAll(controller.transform.position, direction, direction.magnitude, Layer.EnemyProjectile.GetLayerMask());
         for (int i = 0; i < raycastHit.Length; i++)
         {
             bool tagIncluded = false;

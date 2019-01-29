@@ -44,7 +44,7 @@ public class PlayerKeyboardInput : MonoBehaviour
     // Methods
     private Vector3 GetMoveVector()
     {
-        Vector3 moveVector = new Vector2();
+        Vector3 moveVector = new Vector3();
         if (Input.GetKey(KeyCode.W))
             moveVector.z += 1.0f;
         if (Input.GetKey(KeyCode.D))

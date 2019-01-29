@@ -10,7 +10,7 @@ public class ActionDamageCircle : Action
 
     public override void Act(StateController controller)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, _Radius.Get(controller.gameObject), LayerList.PlayerAttack.LayerMask);
+        Collider[] colliders = Physics.OverlapSphere(controller.transform.position, _Radius.Get(controller.gameObject), Layer.PlayerAttack.GetLayerMask());
         for (int i = 0; i < colliders.Length; i++)
         {
             HurtBox hurtBox = colliders[i].GetComponentInSiblings<HurtBox>();

@@ -5,11 +5,17 @@ using UnityEngine.Events;
 public class PushBox : MonoBehaviour
 {
     // Components
-    [HideInInspector] public Collider _Collider;
+    private Collider _Collider;
 
     public UnityEvent _OnCollide;
 
     // Mono Behaviour
+    private void OnEnable()
+    { _Collider.enabled = true; }
+
+    private void OnDisable()
+    { _Collider.enabled = false; }
+
     private void Awake()
     {
         _Collider = GetComponent<Collider>();
@@ -17,5 +23,9 @@ public class PushBox : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    { _OnCollide.Invoke(); }
+    { _OnCollide.Invoke(); Debug.Log("Collide"); }
+
+    // Methods
+    public void Enable() { enabled = true; }
+    public void Disable() { enabled = false; }
 }

@@ -31,10 +31,10 @@ public class Box : MonoBehaviour
         // TODO Anstatt HurtBoxes zu treffen, aus ThrowResponder auslagern. Die Objekte können dann selbst entscheiden, wie sie reagieren (Schaden nehmen, Hebel umlegen etc.)
 
         _AlreadyDamagedHurtBoxes.Clear();
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, _DamageRadius.Value, LayerList.CreateLayerMask(gameObject.layer));
-        for (int i = 0; i < collider2Ds.Length; i++)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _DamageRadius.Value, ((Layer)gameObject.layer).GetLayerMask());
+        for (int i = 0; i < colliders.Length; i++)
         {
-            HurtBox hurtBox = collider2Ds[i].GetComponentInSiblings<HurtBox>();
+            HurtBox hurtBox = colliders[i].GetComponentInSiblings<HurtBox>();
             if (hurtBox != null && !_AlreadyDamagedHurtBoxes.Contains(hurtBox))
             {
                 hurtBox.Hurt(_Damage.Value);
