@@ -738,6 +738,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 8470408934149307248, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 290359265859542173, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
         type: 3}
       propertyPath: m_Enabled
@@ -747,7 +752,17 @@ PrefabInstance:
         type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 644900706604956713}
+      objectReference: {fileID: 9028242480379020830}
+    - target: {fileID: 1584924735886246514, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Disable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584924735886246514, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3533159732492058315, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
         type: 3}
       propertyPath: position.Variable
@@ -758,12 +773,32 @@ PrefabInstance:
         type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 644900706604956713}
+      objectReference: {fileID: 9028242480379020830}
+    - target: {fileID: 3742261288797599927, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Enable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3742261288797599927, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4897291643514169312, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
         type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 644900706604956713}
+      objectReference: {fileID: 9028242480379020830}
+    - target: {fileID: 4897291643514169312, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Disable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897291643514169312, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6475499808151231930, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
         type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -774,6 +809,11 @@ PrefabInstance:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1444481044575522098}
+    - target: {fileID: 8196119504113002154, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6310930073024696829, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
         type: 3}
       propertyPath: m_Enabled
@@ -797,12 +837,18 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 933571066752344244}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &644900706604956713 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 290359265859542173, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
+--- !u!114 &9028242480379020830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8196119504113002154, guid: 67a942d0b43a6f744ae31b184dc4c4a2,
     type: 3}
   m_PrefabInstance: {fileID: 933571066752344244}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af60d347b9a6ca144b1c34cfc509ea84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7960789712993898639 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7101857618713309243, guid: 67a942d0b43a6f744ae31b184dc4c4a2,

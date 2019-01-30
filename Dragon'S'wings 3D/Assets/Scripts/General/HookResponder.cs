@@ -65,6 +65,7 @@ public class HookResponder : MonoBehaviour
 
     public void StartThrow(float timePerSegment, Vector3[] segments)
     {
+
         Debug.Log("Start Throw!");
         _IsThrowing = true;
 
@@ -79,19 +80,24 @@ public class HookResponder : MonoBehaviour
 
     private IEnumerator ThrowRoutine(float timePerSegment, Vector3[] segments)
     {
+        float lastTime = Time.time;
+        float elapsedTime = 1.0f;
         int index = 0;
         Debug.Log("Time per Segment: " + timePerSegment);
         for (int i = 1; _IsThrowing && i < segments.Length - 1; i++)
         {
-            float distance = (segments[i - 1] - segments[i]).magnitude;
-            Debug.Log("Zuletzt zurückgelegte Distanz: " + distance);
-            Debug.Log("Letzte Velocity: " + distance / timePerSegment);
+            elapsedTime = Time.time - lastTime;
+            float elapsedDistance = (segments[i - 1] - segments[i]).magnitude;
+            Debug.Log("Elapsed Time:" + elapsedTime);
+            Debug.Log("Elapsed Distance: " + elapsedDistance);
+            Debug.Log("Velocity: " + elapsedDistance / elapsedTime);
+            lastTime = Time.time;
             yield return new WaitForSeconds(timePerSegment);
             _Rigidbody.MovePosition(segments[i]);
             index = i;
         }
 
-        _Rigidbody.velocity = ((segments[index + 1] - segments[index]) / timePerSegment) /* Time.deltaTime*/;
+        _Rigidbody.velocity = ((segments[index + 1] - segments[index]) / elapsedTime) /* Time.deltaTime*/;
 
         Debug.Log("Neue Velocity: " + _Rigidbody.velocity.magnitude);
 
