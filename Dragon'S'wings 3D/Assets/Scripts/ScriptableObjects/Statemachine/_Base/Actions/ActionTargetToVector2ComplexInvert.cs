@@ -7,5 +7,5 @@ public class ActionTargetToVector2ComplexInvert : Action
     public Vector3ComplexMap _MoveMap;
 
     public override void Act(StateController controller)
-    { _MoveMap.Set(controller.gameObject, new Vector3Complex(_TargetPosition.Get(controller.gameObject), controller.transform.position)); }
+    { _MoveMap.Set(controller.gameObject, new Vector3Complex(controller.transform.position, _TargetPosition.Get(controller.gameObject) - controller.transform.position)); }
 }

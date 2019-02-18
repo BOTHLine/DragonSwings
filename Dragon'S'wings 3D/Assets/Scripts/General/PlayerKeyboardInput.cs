@@ -28,11 +28,11 @@ public class PlayerKeyboardInput : MonoBehaviour
         // _MoveDirection.Value = GetMoveDirection();
         // _AimDirection.Value = GetAimDirection();
 
-        Vector3Complex moveInput = new Vector3Complex(_Player.transform.position, _Player.transform.position);
+        Vector3Complex moveInput = new Vector3Complex(_Player.transform.position, Vector3.zero);
         moveInput.Direction = GetMoveDirection();
         _MoveInput.Value = moveInput;
 
-        _AimInput.Value = new Vector3Complex(_Player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        _AimInput.Value = new Vector3Complex(_Player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - _Player.transform.position);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             _OnInputActionButton.Raise();

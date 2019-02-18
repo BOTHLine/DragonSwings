@@ -97,20 +97,20 @@ public struct Vector3Complex
         _Magnitude = original.Magnitude;
     }
 
-    public Vector3Complex(Vector3 startPoint, Vector3 endPoint)
+    public Vector3Complex(Vector3 startPoint, Vector3 vector)
     {
         _StartPoint = startPoint;
-        _EndPoint = endPoint;
+        _Vector = vector;
 
-        _Vector = CalculateVector(startPoint, endPoint);
+        _EndPoint = CalculateEndPoint(startPoint, vector);
 
         _Direction = CalculateDirection(_Vector);
         _Magnitude = CalculateMagnitude(_Vector);
         //    _SquaredMagnitude = CalculateSquaredMagnitude(_Vector);
     }
 
-    public Vector3Complex(Vector3 endPoint)
-        : this(Vector3.zero, endPoint) { }
+    public Vector3Complex(Vector3 vector)
+        : this(Vector3.zero, vector) { }
 
     private void CalculateVectorByPoints()
     { _Vector = CalculateVector(_StartPoint, _EndPoint); }
@@ -125,7 +125,7 @@ public struct Vector3Complex
     { _Direction = CalculateDirection(_Vector); }
 
     private void CalculateMagnitude()
-    { _Magnitude = CalculateMagnitude(_Vector); Debug.Log("New Magnitude: " + _Magnitude); }
+    { _Magnitude = CalculateMagnitude(_Vector); }
 
     /*
     private void CalculateSquaredMagnitude()
