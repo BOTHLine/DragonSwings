@@ -517,69 +517,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &638963865
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 638963866}
-  - component: {fileID: 638963867}
-  m_Layer: 15
-  m_Name: Ability Dash
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &638963866
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638963865}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1390576655696618220}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &638963867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638963865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf02f344d64ac4458a95e4777abd6fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _DashRange:
-    UseType: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  _DashSpeed:
-    UseType: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  _Aim:
-    UseType: 1
-    ConstantValue: {x: 0, y: 0, z: 0}
-    Variable: {fileID: 0}
-    Map: {fileID: 0}
-    MapIdentifier: {fileID: 0}
-  _DashStart: {fileID: 0}
-  _DashFinish: {fileID: 0}
 --- !u!1 &660619301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,12 +1776,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!4 &1390576655696618220 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1390576655696618220, guid: 868f9ce2a3f06f0488f74159d18a5655,
-    type: 3}
-  m_PrefabInstance: {fileID: 7755902505864636080}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1839870927935893436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2187,5 +2118,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1b3255fef9f73e1439223cfe8a930cfb,
         type: 2}
+    - target: {fileID: 433500626256603535, guid: 868f9ce2a3f06f0488f74159d18a5655,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796252793873058729, guid: 868f9ce2a3f06f0488f74159d18a5655,
+        type: 3}
+      propertyPath: _Aim.Variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 3801d9c24ecabc74db1b8bc61d9536d6,
+        type: 2}
+    - target: {fileID: 8684421611241800781, guid: 868f9ce2a3f06f0488f74159d18a5655,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 868f9ce2a3f06f0488f74159d18a5655, type: 3}

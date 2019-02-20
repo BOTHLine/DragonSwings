@@ -1,32 +1,63 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
-public abstract class BaseMap<T> : ScriptableObject, ISerializationCallbackReceiver
+public abstract class BaseMap<TDatatype> : ScriptableObject, ISerializationCallbackReceiver
 {
     [HideInInspector] [SerializeField] public GameObject[] Keys;
     [SerializeField] public string[] KeyNames;
-    [SerializeField] public T[] Values;
+    [SerializeField] public TDatatype[] Values;
 
-    public System.Collections.Generic.Dictionary<GameObject, T> Items = new System.Collections.Generic.Dictionary<GameObject, T>();
+    protected Dictionary<GameObject, TDatatype> Items = new Dictionary<GameObject, TDatatype>();
+    private Dictionary<GameObject, System.Action<TDatatype>> OnValueChanges = new Dictionary<GameObject, System.Action<TDatatype>>();
 
-    public void Add(GameObject identifier, T item)
+    public void Add(GameObject identifier, TDatatype item)
     { Items.Add(identifier, item); }
 
-    public T Get(GameObject identifier)
+    public TDatatype Get(GameObject identifier)
     {
-        T value;
+        TDatatype value;
         Items.TryGetValue(identifier, out value);
         return value;
     }
 
-    public void Set(GameObject identifier, T item)
-    { Items[identifier] = item; }
+    public void Set(GameObject identifier, TDatatype item)
+    {
+        Items[identifier] = item;
+        GetActions(identifier)(item);
+    }
 
     public void Remove(GameObject identifier)
     { Items.Remove(identifier); }
 
     public void Clear()
-    { Items = new System.Collections.Generic.Dictionary<GameObject, T>(); }
+    { Items = new Dictionary<GameObject, TDatatype>(); }
+
+    public void Subscribe(GameObject identifier, System.Action<TDatatype> action)
+    {
+        System.Action<TDatatype> actions = GetActions(identifier);
+        actions += action;
+        OnValueChanges[identifier] = actions;
+    }
+
+    public void Unsubscribe(GameObject identifier, System.Action<TDatatype> action)
+    {
+        System.Action<TDatatype> actions = GetActions(identifier);
+        actions -= action;
+        OnValueChanges[identifier] = actions;
+    }
+
+    private System.Action<TDatatype> GetActions(GameObject identifier)
+    {
+        System.Action<TDatatype> actions;
+        OnValueChanges.TryGetValue(identifier, out actions);
+        if (actions == null)
+        {
+            actions = delegate { };
+            OnValueChanges[identifier] = actions;
+        }
+        return actions;
+    }
 
     public void OnBeforeSerialize()
     {
@@ -44,7 +75,7 @@ public abstract class BaseMap<T> : ScriptableObject, ISerializationCallbackRecei
             KeyNames[i] = Keys[i].GetFullName();
         }
 
-        Values = new T[Items.Values.Count];
+        Values = new TDatatype[Items.Values.Count];
         Items.Values.CopyTo(Values, 0);
     }
 }

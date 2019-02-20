@@ -9,7 +9,10 @@ public class Hook : MonoBehaviour
     // Variables
     private HookAbility _HookAbility;
 
+    public Vector3Complex _Aim { get; private set; }
+
     private float _HookSpeed;
+    public bool _IsFlying { get; private set; }
     private bool _FlyingBack;
 
     private float _OldMass;
@@ -32,6 +35,9 @@ public class Hook : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_IsFlying && transform.position.SquaredDistanceTo(_HookAbility.transform.position) >= _Aim.Magnitude * _Aim.Magnitude)
+        { FlyBack(); }
+
         if (_FlyingBack)
         {
             Vector3 targetVector = _HookAbility.transform.position - transform.position;
@@ -58,6 +64,9 @@ public class Hook : MonoBehaviour
 
     public void Shoot(Vector3Complex aim)
     {
+        _Aim = aim;
+
+        _IsFlying = true;
         _HitSomething = false;
 
         transform.parent = null;
@@ -106,6 +115,7 @@ public class Hook : MonoBehaviour
 
     public void Reset()
     {
+        _IsFlying = false;
         _FlyingBack = false;
         _Rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
         _Rigidbody.isKinematic = true;

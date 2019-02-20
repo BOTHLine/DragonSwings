@@ -100,13 +100,13 @@ public class PlayerControllerInput : MonoBehaviour
 
     private Vector2 GetAxis2D(string nameX, string nameY, float dead)
     {
-        Vector2 Axis2D = new Vector2(GetAxisRaw(nameX), -GetAxisRaw(nameY));
-        float magnitudeFactor = Axis2D.magnitude;
+        Vector2 axis2D = new Vector2(GetAxisRaw(nameX), -GetAxisRaw(nameY));
+        float magnitudeFactor = axis2D.magnitude;
         if (magnitudeFactor < Mathf.Sqrt(dead * dead + dead * dead))
             return Vector2.zero;
         else if (magnitudeFactor > 1)
-            return new Vector2(Axis2D.x / magnitudeFactor, Axis2D.y / magnitudeFactor);
-        return Axis2D;
+            return new Vector2(axis2D.x / magnitudeFactor, axis2D.y / magnitudeFactor);
+        return axis2D;
     }
 
     private Vector2 GetAxis2D(string nameX, string nameY)
@@ -125,8 +125,8 @@ public class PlayerControllerInput : MonoBehaviour
         else
         {
             _IsAxisInUse.Remove(name);
+            return false;
         }
-        return false;
     }
 
     private bool GetAxisDown(string name)

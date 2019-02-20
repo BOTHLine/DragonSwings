@@ -13,15 +13,21 @@ public abstract class BaseVariable<TDatatype> : ScriptableObject, ISerialization
         set
         {
             _Value = value;
-            OnValueChange.Invoke(_Value);
+            OnValueChange(_Value);
         }
     }
 
-    public System.Action<TDatatype> OnValueChange = delegate { };
+    private System.Action<TDatatype> OnValueChange = delegate { };
 
-    public void SetValue(TDatatype value) { _Value = value; }
-    public void SetValue(BaseVariable<TDatatype> value) { _Value = value.Value; }
+    public void SetValue(TDatatype value) { Value = value; }
+    public void SetValue(BaseVariable<TDatatype> value) { Value = value.Value; }
+
+    public void Subscribe(System.Action<TDatatype> action)
+    { OnValueChange += action; }
+
+    public void Unsubscribe(System.Action<TDatatype> action)
+    { OnValueChange -= action; }
 
     public void OnBeforeSerialize() { }
-    public void OnAfterDeserialize() { _Value = InitialValue; }
+    public void OnAfterDeserialize() { Value = InitialValue; }
 }

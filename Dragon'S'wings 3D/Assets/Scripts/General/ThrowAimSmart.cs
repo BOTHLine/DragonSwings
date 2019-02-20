@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ThrowAutoAim : MonoBehaviour
+public class ThrowAimSmart : MonoBehaviour
 {
     private struct ThrowResponderDistance
     {

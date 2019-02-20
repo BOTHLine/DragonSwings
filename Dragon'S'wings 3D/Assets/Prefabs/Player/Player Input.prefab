@@ -349,6 +349,12 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 3801d9c24ecabc74db1b8bc61d9536d6, type: 2}
     Map: {fileID: 0}
     MapIdentifier: {fileID: 0}
+  _AimVelocity:
+    UseType: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 1b3255fef9f73e1439223cfe8a930cfb, type: 2}
+    Map: {fileID: 0}
+    MapIdentifier: {fileID: 0}
   _OnInputAction: {fileID: 11400000, guid: c25797c00e51cb442a786fbe5e1f79e1, type: 2}
   _OnInputAimAutoToggle: {fileID: 11400000, guid: 72fc9c2ee01335b46b994474de451d3e,
     type: 2}

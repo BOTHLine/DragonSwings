@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AimingTheWayToGo : MonoBehaviour
 {
@@ -23,10 +21,9 @@ public class AimingTheWayToGo : MonoBehaviour
     {
         lastPlayerPosition = transform.position;
 
-
         myLine.startWidth = lineThickness;
         myLine.endWidth = lineThickness;
-        myLine.SetVertexCount(2);
+        myLine.positionCount = 2;
     }
 
     // Update is called once per frame
@@ -62,20 +59,14 @@ public class AimingTheWayToGo : MonoBehaviour
         Physics.SphereCast(transform.position, 0.3f, calculatedAimDirection, out raycastHitWalls, calculatedAimLength - 0.3f, myMask);
         //Physics.Raycast(transform.position, calculatedAimDirection, out raycastHitWalls, (transform.position - hiddenTarget.transform.position).magnitude, myMask);
 
-
         if (raycastHitWalls.collider != null && (raycastHitWalls.transform.tag == "Wall" || (!ignoreEnemies && raycastHitWalls.transform.tag == "Enemy") || raycastHitWalls.transform.tag == "Box"))
         {
             currentMaxRange = (raycastHitWalls.point - transform.position).magnitude;
             target.transform.position = transform.position + (hiddenTarget.transform.position - transform.position).normalized * currentMaxRange;
         }
 
-
-
         else
-        {
-            target.transform.position = hiddenTarget.transform.position;
-        }
-
+        { target.transform.position = hiddenTarget.transform.position; }
 
         //----------
         myLine.SetPosition(1, target.transform.position);

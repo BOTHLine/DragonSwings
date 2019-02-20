@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HookAutoAim : MonoBehaviour
+public class HookAimSmart : MonoBehaviour
 {
     private struct HookResponderDistance
     {
@@ -41,9 +41,7 @@ public class HookAutoAim : MonoBehaviour
         if (_UseAutoAim.Value) { hookResponder = FindClosestHookResponder(); }
 
         if (hookResponder != null)
-        {
-            aimSmart.EndPoint = hookResponder.transform.position;
-        }
+        { aimSmart.EndPoint = hookResponder.transform.position; }
         else
         {
             RaycastHit raycastHit;

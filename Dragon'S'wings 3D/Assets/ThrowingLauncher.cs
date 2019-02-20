@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(LineRenderer))]
 public class ThrowingLauncher : MonoBehaviour
@@ -22,7 +21,6 @@ public class ThrowingLauncher : MonoBehaviour
     public float _ThrowArkThicknessStart;
     public float _ThrowArkThicknessEnd;
 
-
     private bool hasBox = true;
 
     private void Awake()
@@ -37,17 +35,9 @@ public class ThrowingLauncher : MonoBehaviour
         boxRigidbody.useGravity = false;
 
         reset = true;
-
-
-
     }
 
-    void Start()
-    {
-
-    }
-
-    void Update()
+    private void Update()
     {
         if (reset)
         {
@@ -57,9 +47,7 @@ public class ThrowingLauncher : MonoBehaviour
         }
 
         if (hasBox)
-        {
-            box.transform.position = transform.position;
-        }
+        { box.transform.position = transform.position; }
 
         if (launch)
         {
@@ -71,9 +59,7 @@ public class ThrowingLauncher : MonoBehaviour
         }
 
         if (debugPath)
-        {
-            DrawPath();
-        }
+        { DrawPath(); }
     }
 
     void Launch()
@@ -96,7 +82,6 @@ public class ThrowingLauncher : MonoBehaviour
 
     void DrawPath()
     {
-
         _LineRenderer.positionCount = _ThrowSegmentAmount + 1;
         LaunchData launchData = CalculateLaunchData();
         //Vector3 previousDrawPoint = boxRigidbody.position;
@@ -114,10 +99,7 @@ public class ThrowingLauncher : MonoBehaviour
     }
 
     void RemovePath()
-    {
-        _LineRenderer.positionCount = 0;
-    }
-
+    { _LineRenderer.positionCount = 0; }
 
     void resetBox()
     {
@@ -127,7 +109,6 @@ public class ThrowingLauncher : MonoBehaviour
         boxRigidbody.angularVelocity = Vector3.zero;
         boxRigidbody.useGravity = false;
     }
-
 
     struct LaunchData
     {
@@ -139,18 +120,11 @@ public class ThrowingLauncher : MonoBehaviour
             this.initialVelocity = initialVelocity;
             this.timeToTarget = timeToTarget;
         }
-
     }
-
 
     public void fire()
-    {
-        launch = true;
-    }
+    { launch = true; }
 
     public void resetThrow()
-    {
-        reset = true;
-    }
-
+    { reset = true; }
 }

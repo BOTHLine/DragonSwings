@@ -31,9 +31,6 @@ public class HookAbility : MonoBehaviour
 
     public GameEvent _OnPickUpRaise;
 
-    // Variables
-    private bool _HookIsFlying;
-
     // Mono Behaviour
     private void Awake()
     {
@@ -41,23 +38,19 @@ public class HookAbility : MonoBehaviour
         _Hook.Initialize(this, _HookSpeed.Value);
     }
 
-    private void FixedUpdate()
-    {
-        if (_HookIsFlying && (_Hook.transform.position).SquaredDistanceTo(transform.position) >= _HookRange.Value * _HookRange.Value)
-        { _Hook.FlyBack(); }
-    }
-
     // Methods
     public void ShootHook()
     {
         // if (_HookIsFlying || _TargetDirection.Value.Equals(Vector2.zero)) { return; }
-        if (_HookIsFlying) { return; }
+        if (_Hook._IsFlying) { return; }
         if (_Aim.Value.Direction.Equals(Vector3.zero)) { return; }
         _OnHookShoot.Raise();
 
-        _HookIsFlying = true;
         //_Hook.Shoot(_TargetPosition.Value);
-        _Hook.Shoot(_Aim.Value);
+        Vector3Complex aim = _Aim.Value;
+        Debug.Log(aim.Magnitude);
+        aim.Magnitude = Mathf.Min(aim.Magnitude, _HookRange.Value);
+        _Hook.Shoot(aim);
     }
 
     public void HookHitSomething(Collider collider)
@@ -121,8 +114,6 @@ public class HookAbility : MonoBehaviour
 
     public void ResetHook()
     {
-        _HookIsFlying = false;
-
         _Hook.Reset();
         _OnHookReset.Raise();
     }
