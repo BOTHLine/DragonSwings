@@ -5,13 +5,15 @@ public class AimProcessorLerp : MonoBehaviour
     public Vector3ComplexReference _AimVectorIn;
     public Vector3ComplexReference _AimVectorOut;
 
+    // Wie schnell Aim die Distanz ändert
     public FloatReference _AimSpeedDistance;
+    // Wie schnell Aim den Winkel ändert
     public FloatReference _AimSpeedAngle;
 
+    // Ab welchem Winkelunterschied direktes Movement bevorzugt wird
     public FloatReference _MaxAngularMovement;
+    // Wie schnell Aim sich auf direktem Movement bewegt
     public FloatReference _AimSpeedDirect;
-
-    public LayerMask _RaycastLayerMask;
 
     private void Awake()
     { _AimVectorIn.Subscribe(ProcessAimLerp); }
@@ -39,21 +41,22 @@ public class AimProcessorLerp : MonoBehaviour
                     angle = angle / Mathf.Abs(angle) * Mathf.Min(Time.deltaTime * 180 * _AimSpeedAngle.Value, Mathf.Abs(angle));
                     outVector3Complex.Direction = Quaternion.Euler(0.0f, angle, 0.0f) * currentVectorDirection;
                     outVector3Complex.Magnitude = Mathf.Lerp(currentVectorMagnitude, targetVectorMagnitude, Time.deltaTime * _AimSpeedDistance.Value);
-                    Debug.Log("If");
 
                 }
                 else
                 {
                     outVector3Complex.Vector = Vector3.Lerp(_AimVectorIn.Value.Vector, _AimVectorOut.Value.Vector, Time.deltaTime * _AimSpeedDirect.Value);
-                    Debug.Log("Else");
                 }
+                if ((outVector3Complex.Vector - _AimVectorIn.Value.Vector).magnitude <= 0.01f) outVector3Complex.Vector = _AimVectorIn.Value.Vector;
+            }
+            else
+            {
+                if (currentVectorMagnitude != targetVectorMagnitude)
+                { outVector3Complex.Magnitude = Mathf.Lerp(currentVectorMagnitude, targetVectorMagnitude, Time.deltaTime * _AimSpeedDistance.Value); }
+                if ((outVector3Complex.Vector - _AimVectorIn.Value.Vector).magnitude <= 0.01f) outVector3Complex.Vector = _AimVectorIn.Value.Vector;
             }
         }
-        _AimVectorOut.Value = outVector3Complex;
-    }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(_AimVectorOut.Value.EndPoint, 0.5f);
+        _AimVectorOut.Value = outVector3Complex;
     }
 }

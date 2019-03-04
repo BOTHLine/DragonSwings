@@ -43,24 +43,18 @@ public class HookResponder : MonoBehaviour
         OnHitByHookUnityEvent.Invoke();
     }
 
-    public void AttachToObject(Transform targetObject)
+    public void AttachToTransform(Transform targetObject)
     {
-        transform.parent.parent = targetObject.transform;
-        // _OldRigidbodyType2D = _Rigidbody.bodyType;
-        // _Rigidbody.bodyType = RigidbodyType2D.Kinematic;
-        transform.parent.position = targetObject.transform.position;
-        // _Renderer.sortingLayerName = "Foreground";
+        transform.parent.parent = targetObject;
+        transform.parent.position = targetObject.position;
         _PushBox.Disable();
         _Rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
         _Rigidbody.isKinematic = true;
     }
 
-    public void DetachFromObject()
+    public void DetachFromTransform()
     {
         transform.parent.parent = _OldParent;
-        // _Rigidbody.bodyType = _OldRigidbodyType2D;
-        // _Renderer.sortingLayerName = "Objects";
-        // _PushBox.gameObject.SetActive(true);
     }
 
     public void StartThrow(float timePerSegment, Vector3[] segments)
@@ -73,7 +67,7 @@ public class HookResponder : MonoBehaviour
         _Rigidbody.isKinematic = false;
         _Rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         _PushBox.Enable();
-        DetachFromObject();
+        DetachFromTransform();
         IEnumerator throwRoutine = ThrowRoutine(timePerSegment, segments);
         StartCoroutine(throwRoutine);
     }

@@ -35,7 +35,7 @@ public class Hook : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_IsFlying && transform.position.SquaredDistanceTo(_HookAbility.transform.position) >= _Aim.Magnitude * _Aim.Magnitude)
+        if (_IsFlying && transform.position.SquaredDistanceTo(_HookAbility.transform.position) >= _Aim.SqrMagnitude)
         { FlyBack(); }
 
         if (_FlyingBack)
@@ -95,7 +95,7 @@ public class Hook : MonoBehaviour
     {
         if (_AttachedHookResponder != null) return;
         _AttachedHookResponder = hookResponder;
-        hookResponder.AttachToObject(transform);
+        hookResponder.AttachToTransform(transform);
 
         _Rigidbody.mass = hookResponder._Rigidbody.mass;
         _Rigidbody.drag = hookResponder._Rigidbody.drag;
@@ -104,7 +104,7 @@ public class Hook : MonoBehaviour
     public HookResponder DetachHookResponder()
     {
         HookResponder hookResponder = _AttachedHookResponder;
-        hookResponder?.DetachFromObject();
+        hookResponder?.DetachFromTransform();
         _AttachedHookResponder = null;
 
         _Rigidbody.mass = _OldMass;

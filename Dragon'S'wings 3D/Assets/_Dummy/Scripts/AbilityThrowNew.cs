@@ -24,7 +24,7 @@ public class AbilityThrowNew : MonoBehaviour
     {
         _OnPickUp.Raise();
         _HookResponder.Value._Rigidbody.isKinematic = true;
-        _HookResponder.Value.AttachToObject(_PickUpAttachTransform);
+        _HookResponder.Value.AttachToTransform(_PickUpAttachTransform);
     }
 
     public void Throw()

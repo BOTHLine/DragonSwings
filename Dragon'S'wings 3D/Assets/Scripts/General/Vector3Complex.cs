@@ -67,24 +67,16 @@ public struct Vector3Complex
             _Magnitude = value;
             CalculateVectorByValues();
             CalculateEndPoint();
-            //   CalculateSquaredMagnitude();
+            CalculateSqrMagnitude();
         }
     }
 
-    /*
-    [SerializeField] private float _SquaredMagnitude;
-    public float SquaredMagnitude
+    [SerializeField] private float _SqrMagnitude;
+    public float SqrMagnitude
     {
-        get { return _SquaredMagnitude; }
-        set
-        {
-            _SquaredMagnitude = value;
-            _Magnitude = Mathf.Sqrt(_SquaredMagnitude);
-            CalculateVectorByValues();
-            CalculateEndPoint();
-        }
+        get { return _SqrMagnitude; }
+        private set { _SqrMagnitude = value; }
     }
-    */
 
     public Vector3Complex(Vector3Complex original)
     {
@@ -95,6 +87,7 @@ public struct Vector3Complex
 
         _Direction = original.Direction;
         _Magnitude = original.Magnitude;
+        _SqrMagnitude = original.SqrMagnitude;
     }
 
     public Vector3Complex(Vector3 startPoint, Vector3 vector)
@@ -106,6 +99,7 @@ public struct Vector3Complex
 
         _Direction = CalculateDirection(_Vector);
         _Magnitude = CalculateMagnitude(_Vector);
+        _SqrMagnitude = CalculateSqrMagnitude(_Magnitude);
         //    _SquaredMagnitude = CalculateSquaredMagnitude(_Vector);
     }
 
@@ -127,6 +121,9 @@ public struct Vector3Complex
     private void CalculateMagnitude()
     { _Magnitude = CalculateMagnitude(_Vector); }
 
+    private void CalculateSqrMagnitude()
+    { _SqrMagnitude = CalculateSqrMagnitude(_Magnitude); }
+
     /*
     private void CalculateSquaredMagnitude()
     { _SquaredMagnitude = CalculateSquaredMagnitude(_Vector); }
@@ -147,8 +144,8 @@ public struct Vector3Complex
     private static float CalculateMagnitude(Vector3 vector)
     { return vector.magnitude; }
 
-    private static float CalculateSquaredMagnitude(Vector3 vector)
-    { return vector.sqrMagnitude; }
+    private static float CalculateSqrMagnitude(float magnitude)
+    { return magnitude * magnitude; }
 
     public override string ToString()
     {
@@ -157,6 +154,7 @@ public struct Vector3Complex
             "Endpoint: " + _EndPoint + "\n" +
             "Vector: " + _Vector + "\n" +
             "Direction: " + _Direction + "\n" +
-            "Magnitude: " + _Magnitude;
+            "Magnitude: " + _Magnitude + "\n" +
+            "Squared Magnitude: " + _SqrMagnitude;
     }
 }

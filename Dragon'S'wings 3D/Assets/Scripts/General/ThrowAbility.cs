@@ -29,7 +29,7 @@ public class ThrowAbility : MonoBehaviour
     public void PickUp()
     {
         _OnPickUp.Raise();
-        _HookResponder.Value.AttachToObject(_PickUpAttachTransform);
+        _HookResponder.Value.AttachToTransform(_PickUpAttachTransform);
     }
 
     public void Throw()
